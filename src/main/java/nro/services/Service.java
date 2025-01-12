@@ -1177,9 +1177,9 @@ public class Service {
             try {
                 msg = new Message(-42);
 
-                msg.writer().writeLong(player.nPoint.hpg);
-                msg.writer().writeLong(player.nPoint.mpg);
-                msg.writer().writeLong(player.nPoint.dameg);
+                msg.writer().writeInt((int) player.nPoint.hpg);
+                msg.writer().writeInt((int) player.nPoint.mpg);
+                msg.writer().writeInt((int) player.nPoint.dameg);
                 msg.writer().writeLong(player.nPoint.hpMax);// hp full
                 msg.writer().writeLong(player.nPoint.mpMax);// mp full
                 msg.writer().writeLong(player.nPoint.hp);// hp
@@ -1193,7 +1193,7 @@ public class Service {
                 msg.writer().writeByte(player.nPoint.crit);// crit full
                 msg.writer().writeLong(player.nPoint.tiemNang);
                 msg.writer().writeShort(100);
-                msg.writer().writeLong(player.nPoint.defg);
+                msg.writer().writeInt((int)player.nPoint.defg);
                 msg.writer().writeByte(player.nPoint.critg);
                 player.sendMessage(msg);
                 msg.cleanup();
@@ -1275,8 +1275,8 @@ public class Service {
                     List<ItemOption> itemOptions = item.getDisplayOptions();
                     msg.writer().writeByte(itemOptions.size());
                     for (ItemOption itemOption : itemOptions) {
-                        msg.writer().writeByte(itemOption.optionTemplate.id);
-                        msg.writer().writeShort(itemOption.param);
+                        msg.writer().writeShort(itemOption.optionTemplate.id);
+                        msg.writer().writeInt(itemOption.param);
                     }
                 }
 
@@ -1297,8 +1297,8 @@ public class Service {
                     List<ItemOption> itemOptions = item.getDisplayOptions();
                     msg.writer().writeByte(itemOptions.size());
                     for (ItemOption itemOption : itemOptions) {
-                        msg.writer().writeByte(itemOption.optionTemplate.id);
-                        msg.writer().writeShort(itemOption.param);
+                        msg.writer().writeShort(itemOption.optionTemplate.id);
+                        msg.writer().writeInt(itemOption.param);
                     }
                 }
 
@@ -1319,8 +1319,8 @@ public class Service {
                     List<ItemOption> itemOptions = item.getDisplayOptions();
                     msg.writer().writeByte(itemOptions.size());
                     for (ItemOption itemOption : itemOptions) {
-                        msg.writer().writeByte(itemOption.optionTemplate.id);
-                        msg.writer().writeShort(itemOption.param);
+                        msg.writer().writeShort(itemOption.optionTemplate.id);
+                        msg.writer().writeInt(itemOption.param);
                     }
                 }
             }
@@ -1336,6 +1336,7 @@ public class Service {
 
             msg.writer().writeShort(pl.getAura()); //idauraeff
             msg.writer().writeByte(pl.getEffFront());
+            msg.writer().writeShort(1); // idHat
             pl.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
@@ -1588,7 +1589,7 @@ public class Service {
         try {
             msg = new Message(-64);
             msg.writer().writeInt((int) pl.id);
-            msg.writer().writeByte(pl.getFlagBag());
+            msg.writer().writeShort(pl.getFlagBag());
             sendMessAllPlayerInMap(pl, msg);
             msg.cleanup();
         } catch (Exception e) {

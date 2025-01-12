@@ -928,8 +928,8 @@ public class InventoryService {
                 List<ItemOption> itemOptions = item.getDisplayOptions();
                 msg.writer().writeByte(itemOptions.size()); //options
                 for (ItemOption o : itemOptions) {
-                    msg.writer().writeByte(o.optionTemplate.id);
-                    msg.writer().writeShort(o.param);
+                    msg.writer().writeShort(o.optionTemplate.id);
+                    msg.writer().writeInt(o.param);
                 }
             }
 

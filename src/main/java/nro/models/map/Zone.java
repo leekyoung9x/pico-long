@@ -723,7 +723,7 @@ public class Zone {
                 msg.writer().writeBoolean(false); //is fire
                 msg.writer().writeBoolean(false); //is ice
                 msg.writer().writeBoolean(false); //is wind
-                msg.writer().writeByte(mob.tempId);
+                msg.writer().writeShort(mob.tempId);
                 msg.writer().writeByte(mob.getSys());
                 msg.writer().writeLong(mob.point.getHP());
                 msg.writer().writeByte(mob.level);

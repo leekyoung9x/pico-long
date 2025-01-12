@@ -50,8 +50,8 @@ public class ItemData {
         try {
             int count = Manager.ITEM_TEMPLATES.size();
 
-            msg = new Message(-28);
-            msg.writer().writeByte(8);
+            msg = new Message(12);
+            msg.writer().writeByte(0);
 
             msg.writer().writeByte(DataGame.vsItem); //vcitem
             msg.writer().writeByte(1); //reload itemtemplate
