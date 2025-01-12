@@ -1,0 +1,15 @@
+﻿TRUNCATE TABLE account;
+TRUNCATE TABLE bank_trans;
+TRUNCATE TABLE clan_sv1;
+TRUNCATE TABLE clan_sv2;
+TRUNCATE TABLE event;
+TRUNCATE TABLE event_turn;
+TRUNCATE TABLE gift_code_histories;
+TRUNCATE TABLE history_receive_goldbar;
+TRUNCATE TABLE mbbank;
+TRUNCATE TABLE player;
+TRUNCATE TABLE player_reward;
+TRUNCATE TABLE super;
+TRUNCATE TABLE super_history;
+TRUNCATE TABLE topup;
+TRUNCATE TABLE transaction_banking;

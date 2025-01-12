@@ -1,0 +1,2 @@
+﻿INSERT INTO item_template (id, TYPE, gender, NAME, description, icon_id, part, is_up_to_up, power_require) VALUES
+(2151, 27, 3, 'Hộp Set Thần Linh', 'Chọn tùy thích 1 set thần linh mà bạn muốn', 11201, -1, 0, 0);

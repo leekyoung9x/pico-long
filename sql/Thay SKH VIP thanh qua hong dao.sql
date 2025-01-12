@@ -1,0 +1,1 @@
+﻿UPDATE player p SET p.items_bag = REPLACE(p.items_bag, '"temp_id":2013', '"temp_id":541');

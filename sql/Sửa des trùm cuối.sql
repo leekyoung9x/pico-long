@@ -1,0 +1,1 @@
+﻿UPDATE item_template it SET it.description = 'Trùm cuối vô địch thiên hạ' WHERE it.id = 2136;
