@@ -433,7 +433,7 @@ public class Controller {
                     }
                     break;
                 case 11:
-                    byte modId = _msg.reader().readByte();
+                    short modId = _msg.reader().readShort();
                     Resources.requestMobTemplate(_session, modId);
                     break;
                 case 44:

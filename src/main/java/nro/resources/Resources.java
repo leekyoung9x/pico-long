@@ -344,15 +344,15 @@ public class Resources {
 
                 if (id != 88 && id != 89) {
                     if (id < 82) {
-                        msg.writer().writeByte(id);
+                        msg.writer().writeShort(id);
                     }
 
                     if (id == 82) {
-                        msg.writer().writeByte(0);
+                        msg.writer().writeShort(0);
                     }
 
                     if (id > 82) {
-                        msg.writer().writeByte(id);
+                        msg.writer().writeShort(id);
                     }
 
                 }

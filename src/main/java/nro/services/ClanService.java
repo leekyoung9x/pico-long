@@ -622,7 +622,7 @@ public class ClanService {
                 msg.writer().writeInt(clan.id);
                 msg.writer().writeUTF(Util.RemoveTagSize(clan.name));
                 msg.writer().writeUTF(clan.slogan);
-                msg.writer().writeByte(clan.imgId);
+                msg.writer().writeShort(clan.imgId);
                 msg.writer().writeUTF(String.valueOf(clan.powerPoint));
                 msg.writer().writeUTF(clan.getLeader().name);
                 msg.writer().writeByte(clan.getCurrMembers());

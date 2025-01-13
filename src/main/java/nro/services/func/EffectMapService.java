@@ -45,7 +45,7 @@ public class EffectMapService {
             msg = new Message(113);
             msg.writer().writeByte(loop);
             msg.writer().writeByte(layer);
-            msg.writer().writeByte(id);
+            msg.writer().writeShort(id);
             msg.writer().writeShort(x);
             msg.writer().writeShort(y);
             msg.writer().writeShort(delay);

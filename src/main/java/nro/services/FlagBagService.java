@@ -46,7 +46,7 @@ public class FlagBagService {
             Message msg;
             try {
                 msg = new Message(-63);
-                msg.writer().writeByte(fb.id);
+                msg.writer().writeShort(fb.id);
                 msg.writer().writeByte(fb.iconEffect.length);
                 for (Short iconId : fb.iconEffect) {
                     msg.writer().writeShort(iconId);
