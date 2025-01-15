@@ -2,12 +2,11 @@ package nro.models.player;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import nro.models.item.Item;
 
 /**
- *
  * Arriety
- *
  */
 public class Inventory {
 
@@ -54,11 +53,11 @@ public class Inventory {
     }
 
     public int getRubyLimit() {
-        return ruby + 2000000000;
+        return Integer.MAX_VALUE;
     }
 
     public int getGemLimit() {
-        return gem + 2000000000;
+        return Integer.MAX_VALUE;
     }
 
     public long getGoldDisplay() {

@@ -1804,8 +1804,7 @@ public class NPoint {
             }
         }
         dameAttack += calPercent(dameAttack, percentXDame);
-//        System.out.println(dameAttack);
-        dameAttack = Util.nextInt((int) (dameAttack - calPercent(dameAttack, 5)), (int) (dameAttack + calPercent(dameAttack, 5)));
+        dameAttack = Util.nextLong((dameAttack - calPercent(dameAttack, 5)), (dameAttack + calPercent(dameAttack, 5)));
 
         if (dameAttack >= 100_000_000 && player.isPl()) {
             String skillName = player.playerSkill.skillSelect.template.name;
