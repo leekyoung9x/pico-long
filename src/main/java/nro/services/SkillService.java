@@ -694,7 +694,7 @@ public class SkillService {
             if (plAtt.effectSkin.isVoHinh) {
                 plAtt.effectSkin.isVoHinh = false;
             }
-            int dameHit = plAtt.nPoint.getDameAttack(true);
+            long dameHit = plAtt.nPoint.getDameAttack(true);
             if ((plAtt.charms.tdBatTu > System.currentTimeMillis() || plAtt.itemTime.isMaTroi) && plAtt.nPoint.hp == 1) {
                 dameHit = 0;
             }

@@ -1615,9 +1615,12 @@ public class NPoint {
     }
 
     public void addHp(long hp) {
-
         this.hp += hp;
         if (this.hp > this.hpMax) {
+            this.hp = this.hpMax;
+        }
+
+        if (this.hp < 0) {
             this.hp = this.hpMax;
         }
     }
@@ -1627,7 +1630,10 @@ public class NPoint {
         this.mp += mp;
         if (this.mp > this.mpMax) {
             this.mp = this.mpMax;
+        }
 
+        if (this.mp < 0) {
+            this.mp = this.mpMax;
         }
     }
 
@@ -1662,7 +1668,7 @@ public class NPoint {
         }
     }
 
-    public int getDameAttack(boolean isAttackMob) {
+    public long getDameAttack(boolean isAttackMob) {
         setIsCrit();
         long dameAttack = this.dame;
         intrinsic = this.player.playerIntrinsic.intrinsic;
@@ -1827,7 +1833,7 @@ public class NPoint {
             }
             ServerLog.logDame(player.name, dameAttack);
         }
-        return (int) dameAttack;
+        return dameAttack;
     }
 
     public void powerSub(long point) {
@@ -2317,7 +2323,7 @@ public class NPoint {
             if (player.effectSkill.isCharging && player.effectSkill.countCharging < 10) {
                 int tiLeHoiPhuc = SkillUtil.getPercentCharge(player.playerSkill.skillSelect.point);
                 if (player.effectSkill.isCharging && !player.isDie() && !player.effectSkill.isHaveEffectSkill() && (hp < hpMax || mp < mpMax)) {
-                    PlayerService.gI().hoiPhuc(player, (int) calPercent(hpMax, tiLeHoiPhuc), (int) calPercent(mpMax, tiLeHoiPhuc));
+                    PlayerService.gI().hoiPhuc(player, calPercent(hpMax, tiLeHoiPhuc), calPercent(mpMax, tiLeHoiPhuc));
                     if (player.effectSkill.countCharging % 3 == 0) {
                         Service.getInstance().chat(player, "Phục hồi năng lượng " + getCurrPercentHP() + "%");
                     }
@@ -2409,7 +2415,7 @@ public class NPoint {
     }
 
     public long calPercent(long param, int percent) {
-        return param * percent / 100;
+        return param * (percent / 100);
     }
 
     public int calPercentInt(int param, int percent) {
