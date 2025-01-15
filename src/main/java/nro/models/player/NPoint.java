@@ -2362,9 +2362,6 @@ public class NPoint {
         setCritDame();
         setSpeed();
         setAttributeOverLimit();
-        if (this.player.id == 5662) {
-            System.out.println("setBasePoint");
-        }
     }
 
     public void setAttributeOverLimit() {
@@ -2409,13 +2406,10 @@ public class NPoint {
 
         setHp();
         setMp();
-        if (this.player.id == 5662) {
-            System.out.println("setAttributeOverLimit");
-        }
     }
 
     public long calPercent(long param, int percent) {
-        return param * (percent / 100);
+        return Math.round(param * (percent / 100.0)); // Chia với 100.0 để đảm bảo phép chia ra số thực
     }
 
     public int calPercentInt(int param, int percent) {
