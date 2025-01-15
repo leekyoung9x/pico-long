@@ -664,6 +664,7 @@ public class Zone {
 
             msg.writer().writeShort(plInfo.getAura()); //idauraeff
             msg.writer().writeByte(plInfo.getEffFront()); //seteff
+            msg.writer().writeShort(1); // idHat
 
             plReceive.sendMessage(msg);
             msg.cleanup();

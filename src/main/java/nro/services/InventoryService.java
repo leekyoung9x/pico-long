@@ -957,8 +957,8 @@ public class InventoryService {
                     List<ItemOption> itemOptions = item.getDisplayOptions();
                     msg.writer().writeByte(itemOptions.size());
                     for (ItemOption itemOption : itemOptions) {
-                        msg.writer().writeByte(itemOption.optionTemplate.id);
-                        msg.writer().writeShort(itemOption.param);
+                        msg.writer().writeShort(itemOption.optionTemplate.id);
+                        msg.writer().writeInt(itemOption.param);
                     }
                 }
             }
@@ -999,8 +999,8 @@ public class InventoryService {
                     List<ItemOption> itemOptions = it.getDisplayOptions();
                     msg.writer().writeByte(itemOptions.size());
                     for (ItemOption io : itemOptions) {
-                        msg.writer().writeByte(io.optionTemplate.id);
-                        msg.writer().writeShort(io.param);
+                        msg.writer().writeShort(io.optionTemplate.id);
+                        msg.writer().writeInt(io.param);
                     }
                 }
             }

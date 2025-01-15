@@ -405,20 +405,10 @@ public class SkillService {
                                     EffectSkillService.gI().sendEffectPlayer(pl, pl, EffectSkillService.TURN_ON_EFFECT, EffectSkillService.HUYT_SAO_EFFECT);
                                     pl.nPoint.calPoint();
                                     pl.nPoint.setHp(pl.nPoint.hp + (int) ((long) pl.nPoint.hp * tileHP / 100));
-                                    if (player.nPoint.hp >= 2000000000 || player.nPoint.hpMax >= 2000000000) {
-                                        player.nPoint.hpMax = 2000000000;
-                                        player.nPoint.hp = 2000000000;
                                     Service.getInstance().point(pl);
                                     Service.getInstance().Send_Info_NV(pl);
                                     ItemTimeService.gI().sendItemTime(pl, 3781, 30);
                                     PlayerService.gI().sendInfoHpMp(pl);
-                                    } else {
-                                        Service.getInstance().point(pl);
-                                        Service.getInstance().Send_Info_NV(pl);
-                                        ItemTimeService.gI().sendItemTime(pl, 3781, 30);
-                                        PlayerService.gI().sendInfoHpMp(pl);
-                                    }
-
                                 }
                             }
                         }
@@ -427,20 +417,11 @@ public class SkillService {
                         EffectSkillService.gI().sendEffectPlayer(player, player, EffectSkillService.TURN_ON_EFFECT, EffectSkillService.HUYT_SAO_EFFECT);
                         player.nPoint.calPoint();
                         player.nPoint.setHp(player.nPoint.hp + (int) ((long) player.nPoint.hp * tileHP / 100));
-                        if (player.nPoint.hp >= 2000000000 || player.nPoint.hpMax >= 2000000000) {
-                            player.nPoint.hpMax = 2000000000;
-                            player.nPoint.hp = 2000000000;
                         Service.getInstance().point(player);
                         Service.getInstance().Send_Info_NV(player);
                         ItemTimeService.gI().sendItemTime(player, 3781, 30);
                         PlayerService.gI().sendInfoHpMp(player);
-
-                    } else {
-                        Service.getInstance().point(player);
-                        Service.getInstance().Send_Info_NV(player);
-                        ItemTimeService.gI().sendItemTime(player, 3781, 30);
-                        PlayerService.gI().sendInfoHpMp(player);
-                    }}
+                    }
                 }
                 affterUseSkill(player, player.playerSkill.skillSelect.template.id);
                 break;
@@ -581,10 +562,10 @@ public class SkillService {
 
     private void hoaXuongPlayer(Player plAtt, Player plTarget) {
         int timeHoi = 60000;
-        if(plAtt != null && plAtt.effectSkin != null && Util.canDoWithTime(plAtt.effectSkin.lastTimeUseHoaXuong, timeHoi)) {
+        if (plAtt != null && plAtt.effectSkin != null && Util.canDoWithTime(plAtt.effectSkin.lastTimeUseHoaXuong, timeHoi)) {
             // kiểm tra người chơi tấn công có đang mặc cải trang ngộ không không
             if (plAtt != null && plAtt.inventory != null && plAtt.inventory.itemsBody != null && (long) plAtt.inventory.itemsBody.size() >= 5 && plAtt.inventory.itemsBody.get(5) != null && plAtt.inventory.itemsBody.get(5).template != null) {
-                if(plTarget != null && plTarget.inventory != null && plTarget.inventory.itemsBody != null && (long) plTarget.inventory.itemsBody.size() >= 5 && plTarget.inventory.itemsBody.get(5) != null && plTarget.inventory.itemsBody.get(5).template != null) {
+                if (plTarget != null && plTarget.inventory != null && plTarget.inventory.itemsBody != null && (long) plTarget.inventory.itemsBody.size() >= 5 && plTarget.inventory.itemsBody.get(5) != null && plTarget.inventory.itemsBody.get(5).template != null) {
                     boolean isHoaXuong = false;
                     int levelHoa = 0;
                     boolean isKhangXuong = false;
@@ -593,25 +574,25 @@ public class SkillService {
                     Item ctAtt = plAtt.inventory.itemsBody.get(5);
                     Item ctTg = plTarget.inventory.itemsBody.get(5);
                     for (ItemOption io : ctAtt.itemOptions) {
-                        if(io.optionTemplate.id == 174) {
+                        if (io.optionTemplate.id == 174) {
                             isHoaXuong = true;
-                        } else if(io.optionTemplate.id == 72) {
+                        } else if (io.optionTemplate.id == 72) {
                             levelHoa = io.param;
                         }
                     }
                     // người tấn công mặc cải trang có option hóa xương
-                    if(isHoaXuong) {
+                    if (isHoaXuong) {
                         for (ItemOption io : ctTg.itemOptions) {
-                            if(io.optionTemplate.id == 168) {
+                            if (io.optionTemplate.id == 168) {
                                 isKhangXuong = true;
-                            } else if(io.optionTemplate.id == 72) {
+                            } else if (io.optionTemplate.id == 72) {
                                 levelKhang = io.param;
                             }
                         }
                         // người bị tấn công mặc cải trang kháng xương thì so sánh level của cải trang hóa xương
-                        if(isKhangXuong) {
+                        if (isKhangXuong) {
                             // level hóa lớn hơn level kháng thì hóa xương người chơi
-                            if(levelHoa > levelKhang) {
+                            if (levelHoa > levelKhang) {
                                 isResult = true;
                             }
                         } else {
@@ -1090,7 +1071,7 @@ public class SkillService {
             } else {
                 if (player.skillSpecial.stepSkillSpecial == 0
                         && Util.canDoWithTime(player.skillSpecial.lastTimeSkillSpecial,
-                                SkillSpecial.TIME_GONG)) {
+                        SkillSpecial.TIME_GONG)) {
                     player.skillSpecial.lastTimeSkillSpecial = System.currentTimeMillis();
                     player.skillSpecial.stepSkillSpecial = 1;
                     if (player.skillSpecial.skillSpecial.template.id == Skill.SUPER_KAME) {
@@ -1100,7 +1081,7 @@ public class SkillService {
                     }
                 } else if (player.skillSpecial.stepSkillSpecial == 1
                         && !Util.canDoWithTime(player.skillSpecial.lastTimeSkillSpecial,
-                                SkillSpecial.TIME_END_24_25)) {
+                        SkillSpecial.TIME_END_24_25)) {
                     if (player.zone == null) {
                         return;
                     }

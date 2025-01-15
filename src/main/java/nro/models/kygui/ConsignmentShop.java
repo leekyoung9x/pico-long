@@ -419,8 +419,8 @@ public class ConsignmentShop {
                 ds.writeByte(item.getConsignorID() == player.id ? 0 : 1); // isMe
                 ds.writeByte(item.itemOptions.size());
                 for (ItemOption option : item.itemOptions) {
-                    ds.writeByte(option.optionTemplate.id);
-                    ds.writeShort(option.param);
+                    ds.writeShort(option.optionTemplate.id);
+                    ds.writeInt(option.param);
                 }
                 ds.writeByte(0);
                 ds.writeByte(0);
@@ -462,8 +462,8 @@ public class ConsignmentShop {
                     ds.writeByte(item.getConsignorID() == player.id ? 0 : 1); // isMe
                     ds.writeByte(item.itemOptions.size());
                     for (ItemOption option : item.itemOptions) {
-                        ds.writeByte(option.optionTemplate.id);
-                        ds.writeShort(option.param);
+                        ds.writeShort(option.optionTemplate.id);
+                        ds.writeInt(option.param);
                     }
                     ds.writeByte(0);
                     ds.writeByte(0);

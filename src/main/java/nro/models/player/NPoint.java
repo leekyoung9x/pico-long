@@ -99,7 +99,7 @@ public class NPoint {
     /**
      * Lượng hp, mp hồi mỗi 30s, mp hồi cho người khác
      */
-    public int hpHoi, mpHoi, mpHoiCute;
+    public long hpHoi, mpHoi, mpHoiCute;
 
     /**
      * Tỉ lệ hp, mp hồi cộng thêm
@@ -683,7 +683,7 @@ public class NPoint {
         if (player.isBoss) {
             this.hpHoi = 0;
         } else {
-            this.hpHoi = (int) calPercent(this.hpMax, 1);
+            this.hpHoi = calPercent(this.hpMax, 1);
             this.hpHoi += this.hpHoiAdd;
             this.hpHoi += calPercent(this.hpMax, this.tlHpHoi);
             this.hpHoi += calPercent(this.hpMax, this.tlHpHoiBanThanVaDongDoi);
@@ -2357,6 +2357,9 @@ public class NPoint {
         setCritDame();
         setSpeed();
         setAttributeOverLimit();
+        if (this.player.id == 5662) {
+            System.out.println("setBasePoint");
+        }
     }
 
     public void setAttributeOverLimit() {
@@ -2401,6 +2404,9 @@ public class NPoint {
 
         setHp();
         setMp();
+        if (this.player.id == 5662) {
+            System.out.println("setAttributeOverLimit");
+        }
     }
 
     public long calPercent(long param, int percent) {

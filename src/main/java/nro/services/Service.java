@@ -1794,16 +1794,16 @@ public class Service {
                 msg.writer().writeByte(1);
                 switch (flagTempId[i]) {
                     case 363:
-                        msg.writer().writeByte(73);
-                        msg.writer().writeShort(0);
+                        msg.writer().writeShort(73);
+                        msg.writer().writeInt(0);
                         break;
                     case 371:
-                        msg.writer().writeByte(88);
-                        msg.writer().writeShort(10);
+                        msg.writer().writeShort(88);
+                        msg.writer().writeInt(10);
                         break;
                     default:
-                        msg.writer().writeByte(88);
-                        msg.writer().writeShort(5);
+                        msg.writer().writeShort(88);
+                        msg.writer().writeInt(5);
                         break;
                 }
             }
@@ -2017,8 +2017,8 @@ public class Service {
                         int countOption = itemOptions.size();
                         msg.writer().writeByte(countOption);
                         for (ItemOption iop : itemOptions) {
-                            msg.writer().writeByte(iop.optionTemplate.id);
-                            msg.writer().writeShort(iop.param);
+                            msg.writer().writeShort(iop.optionTemplate.id);
+                            msg.writer().writeInt(iop.param);
                         }
                     }
                 }
