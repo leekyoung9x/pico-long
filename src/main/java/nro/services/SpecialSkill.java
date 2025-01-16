@@ -114,7 +114,7 @@ public class SpecialSkill {
                 .findFirst();
 
         if (player.gender == 2) {
-            type = 0;
+//            type = 0;
             for (Item item : player.inventory.itemsBody) {
                 if (item != null && item.template != null) {
                     if (item.template.id >= 2071 && item.template.id <= 2074) {
