@@ -1278,46 +1278,46 @@ public class InventoryService {
         }
     }
 
-    public void a(Player player) {
-        List<Item> itemBag = player.inventory.itemsBag; // check item bag
-        ReSetOptionCustomForItem(itemBag, 300);
-        List<Item> itembody = player.inventory.itemsBody; // check item bag
-        ReSetOptionCustomForItem(itembody, 200);
-        if (player.pet != null) {
-            List<Item> itempet = player.pet.inventory.itemsBody; // check item bag
-            ReSetOptionCustomForItem(itempet, 200);
-        }
-    }
+//    public void a(Player player) {
+//        List<Item> itemBag = player.inventory.itemsBag; // check item bag
+//        ReSetOptionCustomForItem(itemBag, 300);
+//        List<Item> itembody = player.inventory.itemsBody; // check item bag
+//        ReSetOptionCustomForItem(itembody, 200);
+//        if (player.pet != null) {
+//            List<Item> itempet = player.pet.inventory.itemsBody; // check item bag
+//            ReSetOptionCustomForItem(itempet, 200);
+//        }
+//    }
 
-    private static void ReSetOptionCustomForItem(List<Item> itemBag, int x) {
-        for (int j = 0; j < itemBag.size(); j++) {
-            Item item = itemBag.get(j);
-            if (item != null && item.template != null && !isSetThienSu(item.template.id)) {
-                for (ItemOption io : item.itemOptions) {
-                    // Gán giá trị theo id của optionTemplate
-                    switch (io.optionTemplate.id) {
-                        case 138:
-                            if (io.param <= 150) {
-                                io.param = 150;
-                            }
-                            break;
-                        case 141:
-                        case 143:
-                            if (io.param <= 100) {
-                                io.param = 100;
-                            }
-                            break;
-                        case 142:
-                            if (io.param <= x) {
-                                io.param = x;
-                            }
-                            break;
-                        default:
-                            // Không làm gì nếu id không khớp
-                            break;
-                    }
-                }
-            }
-        }
-    }
+//    private static void ReSetOptionCustomForItem(List<Item> itemBag, int x) {
+//        for (int j = 0; j < itemBag.size(); j++) {
+//            Item item = itemBag.get(j);
+//            if (item != null && item.template != null && !isSetThienSu(item.template.id)) {
+//                for (ItemOption io : item.itemOptions) {
+//                    // Gán giá trị theo id của optionTemplate
+//                    switch (io.optionTemplate.id) {
+//                        case 138:
+//                            if (io.param <= 150) {
+//                                io.param = 150;
+//                            }
+//                            break;
+//                        case 141:
+//                        case 143:
+//                            if (io.param <= 100) {
+//                                io.param = 100;
+//                            }
+//                            break;
+//                        case 142:
+//                            if (io.param <= x) {
+//                                io.param = x;
+//                            }
+//                            break;
+//                        default:
+//                            // Không làm gì nếu id không khớp
+//                            break;
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
