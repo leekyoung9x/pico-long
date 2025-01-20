@@ -27,24 +27,28 @@ public final class MobMe extends Mob {
         this.tempId = SkillUtil.getTempMobMe(level);
         this.point.maxHp = SkillUtil.getHPMobMe(player.nPoint.hpMax, level);
         this.point.dame = SkillUtil.getHPMobMe(player.nPoint.getDameAttack(false), level);
-        // ekko
-//        if (this.player.setClothes.pikkoroDaimao2 == 5) {
-//            this.point.dame *= 2;
-//        }
         if (this.player.setClothes.pikkoroDaimao1 == 5) {
             this.point.dame += ((long) this.point.dame * 50 / 100);
         }
         this.point.hp = this.point.maxHp;
         this.zone = player.zone;
         this.lastTimeSpawn = System.currentTimeMillis();
-        this.timeSurvive = SkillUtil.getTimeSurviveMobMe(level);
+
+        int timeSurvive = SkillUtil.getTimeSurviveMobMe(level);
+        // x2 thời gian đẻ trứng
+        if (this.player.setClothes.setDaimao == 5) {
+            timeSurvive *= 2;
+        }
+        this.timeSurvive = timeSurvive;
         spawn();
     }
 
     @Override
     public void update() {
         if (Util.canDoWithTime(lastTimeSpawn, timeSurvive)
-                && this.player.setClothes.pikkoroDaimao2 != 5) {
+                // ekko rem tạm lại
+                //&& this.player.setClothes.setDaimao != 5
+        ) {
             this.mobMeDie();
             this.dispose();
         }

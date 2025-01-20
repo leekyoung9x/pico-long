@@ -198,10 +198,8 @@ public class Mob {
             tiemNang = 1;
         }
         tiemNang = (int) pl.nPoint.calSucManhTiemNang(tiemNang);
-        // nếu set cadic đủ 5 món thì x3 tnsm
-        // set Daimao đủ 5 món thì x3 tnsm
         // Set gohan đủ 5 món thì x3 tnsm
-        if(pl.setClothes.cadic2 == 5 || pl.setClothes.pikkoroDaimao2 == 5 || pl.setClothes.setGohan == 5) {
+        if(pl.setClothes.setGohan == 5) {
             tiemNang *= 3;
         }
 
@@ -233,10 +231,8 @@ public class Mob {
             tiemNang = 0;
         }
         tiemNang = (int) pl.nPoint.calSucManhTiemNang(tiemNang);
-        // nếu set cadic đủ 5 món thì x3 tnsm
-        // set Daimao đủ 5 món thì x3 tnsm
         // Set gohan đủ 5 món thì x3 tnsm
-        if(pl.setClothes.cadic2 == 5 || pl.setClothes.pikkoroDaimao2 == 5 || pl.setClothes.setGohan == 5) {
+        if(pl.setClothes.setGohan == 5) {
             tiemNang *= 3;
         }
         return tiemNang;

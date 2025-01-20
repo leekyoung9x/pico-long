@@ -536,11 +536,12 @@ public class Player {
 //                            "|1|Bạn đã đạt 200 tỷ sức mạnh nên không thể vào khu vực này");
 //                }
 //            }
-            if (MapService.gI().isMapHTTV(mapid)) {
-                ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
-                Service.getInstance().sendBigMessage(this, 1139,
-                        "|1|Khu vực này đang bảo trì, vui lòng quay lại sau");
-            }
+            // ekko cho người chơi vào HTTV
+//            if (MapService.gI().isMapHTTV(mapid)) {
+//                ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
+//                Service.getInstance().sendBigMessage(this, 1139,
+//                        "|1|Khu vực này đang bảo trì, vui lòng quay lại sau");
+//            }
         }
     }
 

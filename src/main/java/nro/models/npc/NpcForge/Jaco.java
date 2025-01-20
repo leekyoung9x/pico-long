@@ -30,10 +30,10 @@ public class Jaco extends Npc {
             case 25:
             case 26:
                 // ekko tạm đóng
-//                this.createOtherMenu(player, ConstNpc.BASE_MENU,
-//                        "Gô Tên, Calich và Monaka đang gặp chuyện ở hành tinh Potaufeu \n Hãy đến đó ngay", "Đến \nPotaufeu");
                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                        "Gô Tên, Calich và Monaka đang gặp chuyện ở hành tinh Potaufeu \n Hãy đến đó ngay", "Đóng");
+                        "Gô Tên, Calich và Monaka đang gặp chuyện ở hành tinh Potaufeu \n Hãy đến đó ngay", "Đến \nPotaufeu");
+//                this.createOtherMenu(player, ConstNpc.BASE_MENU,
+//                        "Gô Tên, Calich và Monaka đang gặp chuyện ở hành tinh Potaufeu \n Hãy đến đó ngay", "Đóng");
 //                Service.getInstance().sendThongBao(player, "Chức năng đang bảo trì");
                 break;
             case 139:
@@ -58,9 +58,9 @@ public class Jaco extends Npc {
                 case 26:
                     if (player.iDMark.isBaseMenu()) {
                         // ekko tạm đóng qua hành tinh potafuse
-//                        if (select == 0) {
-//                            ChangeMapService.gI().goToPotaufeu(player);
-//                        }
+                        if (select == 0) {
+                            ChangeMapService.gI().goToPotaufeu(player);
+                        }
                     }
                     break;
                 case 139:

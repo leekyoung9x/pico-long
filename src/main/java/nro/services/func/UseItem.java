@@ -4080,21 +4080,21 @@ public class UseItem {
 //        else if (tempId == SummonDragon.NGOC_RONG_SIEU_CAP) {
 //            SummonDragon.gI().openMenuSummonShenron(pl, (byte) 1015, SummonDragon.DRAGON_BLACK_SHENRON);
 //        }
-//        else if (tempId >= SummonDragon.NGOC_RONG_BANG[0] && tempId <= SummonDragon.NGOC_RONG_BANG[6]) {
-//            switch (tempId) {
-//                case 2045:
-//                    SummonDragon.gI().openMenuSummonShenron(pl, (byte) 2045, SummonDragon.DRAGON_ICE_SHENRON);
-//                    EventTurnManager.ManageCallDragon(ConstAction.UPDATE_BY_ID, pl.id);
-////                    if (turn > 0) {
-////                    } else {
-////                        Service.getInstance().sendThongBao(pl, "Bạn chỉ có thể gọi rồng 1 lan 1 ngay");
-////                    }
-//                    break;
-//                default:
-//                    Service.getInstance().sendThongBao(pl, "Bạn chỉ có thể gọi rồng namec từ ngọc 1 sao");
-//                    break;
-//            }
-//        }
+        else if (tempId >= SummonDragon.NGOC_RONG_SIEU_CAP[0] && tempId <= SummonDragon.NGOC_RONG_SIEU_CAP[6]) {
+            switch (tempId) {
+                case 2045:
+                    SummonDragon.gI().openMenuSummonShenron(pl, (byte) 2045, SummonDragon.DRAGON_ICE_SHENRON);
+                    EventTurnManager.ManageCallDragon(ConstAction.UPDATE_BY_ID, pl.id);
+//                    if (turn > 0) {
+//                    } else {
+//                        Service.getInstance().sendThongBao(pl, "Bạn chỉ có thể gọi rồng 1 lan 1 ngay");
+//                    }
+                    break;
+                default:
+                    Service.getInstance().sendThongBao(pl, "Bạn chỉ có thể gọi rồng namec từ ngọc 1 sao");
+                    break;
+            }
+        }
         else if (tempId >= SummonDragon.NGOC_RONG_NOEL[0] && tempId <= SummonDragon.NGOC_RONG_NOEL[6]) {
             switch (tempId) {
                 case SummonDragon.NGOC_RONG_NOEL_1_SAO:

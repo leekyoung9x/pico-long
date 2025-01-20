@@ -6,7 +6,6 @@ import nro.models.item.Item;
 import nro.models.item.ItemOption;
 import nro.models.npc.Npc;
 import nro.models.npc.NpcManager;
-import nro.models.player.NPoint;
 import nro.models.player.Player;
 import nro.art.ServerLog;
 import nro.server.Manager;
@@ -2634,7 +2633,7 @@ public class CombineServiceNew {
         int percentAdd = 0;
         for (ItemOption itemOption : skhNew.itemOptions) {
             switch (itemOption.optionTemplate.id) {
-                case NPoint.OPTION_PERCENT_HP:
+                case ConstOption.OPTION_PERCENT_HP:
 //                case NPoint.OPTION_PERCENT_KI:
                     ratioMax = 200;
                     currentRatio = itemOption.param;
@@ -2646,7 +2645,7 @@ public class CombineServiceNew {
                         return;
                     }
                     break;
-                case NPoint.OPTION_PERCENT_KI:
+                case ConstOption.OPTION_PERCENT_KI:
                     ratioMax = 200;
                     currentRatio = itemOption.param;
                     percentAdd = 10;
@@ -2657,8 +2656,8 @@ public class CombineServiceNew {
                         return;
                     }
                     break;
-                case NPoint.OPTION_PERCENT_Kamejoko:
-                case NPoint.OPTION_PERCENT_LIEN_HOAN:
+                case ConstOption.OPTION_PERCENT_KAMEJOKO:
+                case ConstOption.OPTION_PERCENT_LIEN_HOAN:
                     ratioMax = 150;
                     currentRatio = itemOption.param;
                     percentAdd = 5;

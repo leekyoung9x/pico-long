@@ -3,7 +3,6 @@ package nro.models.player;
 import nro.consts.ConstOption;
 import nro.models.item.Item;
 import nro.models.item.ItemOption;
-import nro.utils.Util;
 
 /**
  * @Stole By Arriety
@@ -16,17 +15,21 @@ public class SetClothes {
         this.player = player;
     }
 
-    public byte songoku2;
-    public byte thienXinHang2;
-    public byte kaioken2;
+    // set trái đất
+    public byte setSongoku;
+    public byte setTenshinhan;
+    public byte setKrillin;
 
-    public byte lienhoan2;
-    public byte pikkoroDaimao2;
-    public byte picolo2;
+    // set Xayda
+    public byte setNappa;
+    public byte setKakarot;
+    public byte setCadic;
 
-    public byte kakarot2;
-    public byte cadic2;
-    public byte nappa2;
+    // set namec
+    public byte setDende;
+    public byte setDaimao;
+    public byte setPicolo;
+
 
     public byte songoku1;
     public byte thienXinHang1;
@@ -196,51 +199,50 @@ public class SetClothes {
 
                 for (ItemOption io : item.itemOptions) {
                     switch (io.optionTemplate.id) {
-                        case 129:
-                        case 141:
+                        case ConstOption.SET_SONGOKU:
+                        case ConstOption.OPTION_PERCENT_KAMEJOKO:
                             isActSet = true;
-                            songoku2++;
+                            setSongoku++;
                             break;
-
-                        case 127:
-                        case 139:
+                        case ConstOption.SET_TENSHINHAN:
+                        case ConstOption.SET_SAT_THUONG_KAIOKEN:
                             isActSet = true;
-                            thienXinHang2++;
+                            setTenshinhan++;
                             break;
-                        case 128:
-                        case 140:
+                        case ConstOption.SET_KRILLIN:
+                        case ConstOption.SET_QCKK:
                             isActSet = true;
-                            kaioken2++;
+                            setKrillin++;
                             break;
-                        case 131:
-                        case 143:
+                        case ConstOption.SET_DENDE:
+                        case ConstOption.OPTION_PERCENT_LIEN_HOAN:
                             isActSet = true;
-                            lienhoan2++;
+                            setDende++;
                             break;
                         case 132:
                         case 252:
                             isActSet = true;
-                            pikkoroDaimao2++;
+                            setDaimao++;
                             break;
-                        case 130:
-                        case 142:
+                        case ConstOption.SET_PICOLO:
+                        case ConstOption.OPTION_PERCENT_KI:
                             isActSet = true;
-                            picolo2++;
+                            setPicolo++;
                             break;
-                        case 135:
-                        case 138:
+                        case ConstOption.SET_NAPPA:
+                        case ConstOption.OPTION_PERCENT_HP:
                             isActSet = true;
-                            nappa2++;
+                            setNappa++;
                             break;
-                        case 133:
-                        case 136:
+                        case ConstOption.SET_KAKAROT:
+                        case ConstOption.SET_DAM_GALICK:
                             isActSet = true;
-                            kakarot2++;
+                            setKakarot++;
                             break;
-                        case 134:
-                        case 251:
+                        case ConstOption.SET_CADIC:
+                        case ConstOption.SET_X5_THOI_GIAN_HOA_KHI:
                             isActSet = true;
-                            cadic2++;
+                            setCadic++;
                             break;
                             // ekko set gohan
                         case 248:
@@ -262,26 +264,26 @@ public class SetClothes {
             }
         }
 
-        songoku2 = validateSKH(songoku2, isFullSetTL);
-        thienXinHang2 = validateSKH(thienXinHang2, isFullSetTL);
-        kaioken2 = validateSKH(kaioken2, isFullSetTL);
-        lienhoan2 = validateSKH(lienhoan2, isFullSetTL);
-        pikkoroDaimao2 = validateSKH(pikkoroDaimao2, isFullSetTL);
-        picolo2 = validateSKH(picolo2, isFullSetTL);
-        nappa2 = validateSKH(nappa2, isFullSetTL);
-        kakarot2 = validateSKH(kakarot2, isFullSetTL);
-        cadic2 = validateSKH(cadic2, isFullSetTL);
+        setSongoku = validateSKH(setSongoku, isFullSetTL);
+        setTenshinhan = validateSKH(setTenshinhan, isFullSetTL);
+        setKrillin = validateSKH(setKrillin, isFullSetTL);
+        setDende = validateSKH(setDende, isFullSetTL);
+        setDaimao = validateSKH(setDaimao, isFullSetTL);
+        setPicolo = validateSKH(setPicolo, isFullSetTL);
+        setNappa = validateSKH(setNappa, isFullSetTL);
+        setKakarot = validateSKH(setKakarot, isFullSetTL);
+        setCadic = validateSKH(setCadic, isFullSetTL);
         setGohan = validateSKH(setGohan, isFullSetTL);
 
-        songoku2 = validateSKH(songoku2, isFullSetHUYDIET);
-        thienXinHang2 = validateSKH(thienXinHang2, isFullSetHUYDIET);
-        kaioken2 = validateSKH(kaioken2, isFullSetHUYDIET);
-        lienhoan2 = validateSKH(lienhoan2, isFullSetHUYDIET);
-        pikkoroDaimao2 = validateSKH(pikkoroDaimao2, isFullSetHUYDIET);
-        picolo2 = validateSKH(picolo2, isFullSetHUYDIET);
-        nappa2 = validateSKH(nappa2, isFullSetHUYDIET);
-        kakarot2 = validateSKH(kakarot2, isFullSetHUYDIET);
-        cadic2 = validateSKH(cadic2, isFullSetHUYDIET);
+        setSongoku = validateSKH(setSongoku, isFullSetHUYDIET);
+        setTenshinhan = validateSKH(setTenshinhan, isFullSetHUYDIET);
+        setKrillin = validateSKH(setKrillin, isFullSetHUYDIET);
+        setDende = validateSKH(setDende, isFullSetHUYDIET);
+        setDaimao = validateSKH(setDaimao, isFullSetHUYDIET);
+        setPicolo = validateSKH(setPicolo, isFullSetHUYDIET);
+        setNappa = validateSKH(setNappa, isFullSetHUYDIET);
+        setKakarot = validateSKH(setKakarot, isFullSetHUYDIET);
+        setCadic = validateSKH(setCadic, isFullSetHUYDIET);
         setGohan = validateSKH(setGohan, isFullSetHUYDIET);
 
         setKHA = validateSKH(setKHA, isFullSetHUYDIET);
@@ -314,16 +316,16 @@ public class SetClothes {
         this.kakarot1 = 0;
         this.cadic1 = 0;
         this.nappa1 = 0;
-        this.songoku2 = 0;
+        this.setSongoku = 0;
         this.SetHuyDiet = 0;
-        this.thienXinHang2 = 0;
-        this.kaioken2 = 0;
-        this.lienhoan2 = 0;
-        this.pikkoroDaimao2 = 0;
-        this.picolo2 = 0;
-        this.kakarot2 = 0;
-        this.cadic2 = 0;
-        this.nappa2 = 0;
+        this.setTenshinhan = 0;
+        this.setKrillin = 0;
+        this.setDende = 0;
+        this.setDaimao = 0;
+        this.setPicolo = 0;
+        this.setKakarot = 0;
+        this.setCadic = 0;
+        this.setNappa = 0;
         this.godClothes = false;
         this.ctHaiTac = -1;
         this.ctBunmaXecXi = -1;

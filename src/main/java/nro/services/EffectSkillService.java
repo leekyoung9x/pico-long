@@ -8,8 +8,6 @@ import nro.utils.SkillUtil;
 import nro.utils.Log;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -290,9 +288,9 @@ public class EffectSkillService {
         }
         int timeMonkey = SkillUtil.getTimeMonkey(player.playerSkill.skillSelect.point);
         // ekko
-//        if (player.setClothes.cadic2 == 5) {
-//            timeMonkey *= 5;
-//        }
+        if (player.setClothes.setCadic == 5) {
+            timeMonkey *= 5;
+        }
         if (player.setClothes.cadic1 == 5) {
             timeMonkey *= 2;
         }
