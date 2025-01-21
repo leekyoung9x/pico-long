@@ -340,7 +340,7 @@ public class Session {
 //                Service.getInstance().sendThongBaoAllPlayer("|7|ADMIN VỪA VÔ GAME MẤY ĐỨA BUG CẨN THẬN!");
 //            }
             // ekko bỏ hàm gán fix chỉ số đi
-            InventoryService.gI().a(player);
+//            InventoryService.gI().a(player);
 //            InventoryService.gI().fixChiSo(player);
             CheckTop(player);
             // nhận quà đăng nhập hàng ngày

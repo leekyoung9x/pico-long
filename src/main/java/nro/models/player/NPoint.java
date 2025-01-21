@@ -227,9 +227,9 @@ public class NPoint {
     }
 
     public void setPoint(ItemOption io) {
-        int chiSoChiaKI = 4;
-        int chiSoChiaSD = 4;
-        int chiSoChiaHP = 4;
+        int chiSoChiaKI = 1;
+        int chiSoChiaSD = 1;
+        int chiSoChiaHP = 1;
 
         switch (io.optionTemplate.id) {
                case 37:
@@ -731,11 +731,9 @@ public class NPoint {
         this.hpMax += (int) calPercent(this.hpMax, GetValueOptionOfSpecialPlayer(ConstOption.HP_CONG_PHAN_TRAM));
 
         //set nappa
-        if (this.player.setClothes.nappa2 == 5) {
-            // ekko
-            byte setClothes = this.player.setClothes.nappa2;
-            //System.out.println("HP" + getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_HP));
-            int percent = getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_HP);
+        if (this.player.setClothes.setNappa == 5) {
+            byte setClothes = this.player.setClothes.setNappa;
+            int percent = getPercentNewSKH(this.player, setClothes, ConstOption.OPTION_PERCENT_HP);
             this.hpMax += calPercent(this.hpMax, percent);
         }
         if (this.player.setClothes.nappa1 == 5) {
@@ -1005,9 +1003,9 @@ public class NPoint {
 
         this.mpMax += (int) calPercent(this.mpMax, GetValueOptionOfSpecialPlayer(ConstOption.KI_CONG_PHAN_TRAM));
 
-        if (this.player.setClothes.picolo2 == 5) {
+        if (this.player.setClothes.setPicolo == 5) {
             //System.out.println("OPTION_PERCENT_KI" + getPercentNewSKH(this.player, this.player.setClothes.picolo2, OPTION_PERCENT_KI));
-            int percent = getPercentNewSKH(this.player, this.player.setClothes.picolo2, OPTION_PERCENT_KI);
+            int percent = getPercentNewSKH(this.player, this.player.setClothes.setPicolo, ConstOption.OPTION_PERCENT_KI);
             this.mpMax += calPercent(this.mpMax, percent);
         }
         if (this.player.setClothes.picolo1 == 5) {
@@ -1428,7 +1426,7 @@ public class NPoint {
         }
 
         if (player.setClothes.setKHA == 5) {
-            this.dame += calPercent(this.dame, 15);
+            this.dame += calPercent(this.dame, 10);
         }
 
         if (TopWhis.TOP_THREE == player.id) {
@@ -1688,10 +1686,10 @@ public class NPoint {
                     percentDameIntrinsic = intrinsic.param1;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.songoku2 == 5) {
-                    byte setClothes = this.player.setClothes.songoku2;
+                if (this.player.setClothes.setSongoku == 5) {
+                    byte setClothes = this.player.setClothes.setSongoku;
                     //System.out.println("OPTION_PERCENT_Kamejoko" + getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_Kamejoko));
-                    percentXDame = getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_Kamejoko);
+                    percentXDame = getPercentNewSKH(this.player, setClothes, ConstOption.OPTION_PERCENT_KAMEJOKO);
                 }
 //                if (this.player.setClothes.songoku1 == 5) {
 //                    // ekko
@@ -1708,7 +1706,7 @@ public class NPoint {
                     percentDameIntrinsic = intrinsic.param1;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.kakarot2 == 5) {
+                if (this.player.setClothes.setKakarot == 5) {
                     percentXDame = 100;
                 }
                 if (this.player.setClothes.kakarot1 == 5) {
@@ -1743,19 +1741,19 @@ public class NPoint {
                 }
                 percentDameSkill = skillSelect.damage;
                 // ekko
-//                if (this.player.setClothes.thienXinHang2 == 5) {
-//                    percentXDame = 150;
-//                }
+                if (this.player.setClothes.setTenshinhan == 5) {
+                    percentXDame = 50;
+                }
                 break;
             case Skill.LIEN_HOAN:
                 if (intrinsic.id == 13) {
                     percentDameIntrinsic = intrinsic.param1;
                 }
                 percentDameSkill = skillSelect.damage;
-                if (this.player.setClothes.lienhoan2 == 5) {
-                    byte setClothes = this.player.setClothes.lienhoan2;
+                if (this.player.setClothes.setDende == 5) {
+                    byte setClothes = this.player.setClothes.setDende;
 //                    System.out.println("OPTION_PERCENT_LIEN_HOAN" + getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_LIEN_HOAN));
-                    percentXDame = getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_LIEN_HOAN);
+                    percentXDame = getPercentNewSKH(this.player, setClothes, ConstOption.OPTION_PERCENT_LIEN_HOAN);
                 }
                 if (this.player.setClothes.lienhoan1 == 5) {
                     percentXDame = 50;
@@ -1780,7 +1778,7 @@ public class NPoint {
                     damage *= 2;
                 }
                 // 5 món set krillin
-                if (this.player.setClothes.kaioken2 == 5) {
+                if (this.player.setClothes.setKrillin == 5) {
                     damage *= 2;
                 }
                 return damage;
@@ -1984,7 +1982,7 @@ public class NPoint {
                 tiemNang += 100;
             }
             if (this.player.itemTime != null && this.player.itemTime.rateDame) {
-                tiemNang += tn * 2;
+                tiemNang += tn * 3;
             }
             // giảm TNSM map ngũ hành sơn
             if (this.player.itemTime != null && this.player.itemTime.isUsebinhtangluc && mapid >= 122 && mapid <= 124) {
@@ -2449,12 +2447,6 @@ public class NPoint {
 //        }
 //        return 0;
 //    }
-
-
-    public static final int OPTION_PERCENT_HP = 138;
-    public static final int OPTION_PERCENT_Kamejoko = 141;
-    public static final int OPTION_PERCENT_KI = 142;
-    public static final int OPTION_PERCENT_LIEN_HOAN = 143;
 
     public int getPercentNewSKH(Player player, byte setClothes, int optionId) {
         if (setClothes != 5) {

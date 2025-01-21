@@ -1,5 +1,6 @@
 package nro.utils;
 
+import nro.consts.ConstOption;
 import nro.models.item.Item;
 import nro.models.item.ItemOption;
 import nro.models.player.NPoint;
@@ -17,11 +18,11 @@ public class ItemUtil {
         List<ItemOption> itemOptionList = item.itemOptions;
         for (ItemOption itemOption : itemOptionList) {
             switch (itemOption.optionTemplate.id) {
-                case NPoint.OPTION_PERCENT_HP:
-                case NPoint.OPTION_PERCENT_KI:
+                case ConstOption.OPTION_PERCENT_HP:
+                case ConstOption.OPTION_PERCENT_KI:
                     return itemOption.param < 200;
-                case NPoint.OPTION_PERCENT_Kamejoko:
-                case NPoint.OPTION_PERCENT_LIEN_HOAN:
+                case ConstOption.OPTION_PERCENT_KAMEJOKO:
+                case ConstOption.OPTION_PERCENT_LIEN_HOAN:
                     return itemOption.param < 150;
             }
 
@@ -37,11 +38,11 @@ public class ItemUtil {
         List<ItemOption> itemOptionList = item.itemOptions;
         for (ItemOption itemOption : itemOptionList) {
             switch (itemOption.optionTemplate.id) {
-                case NPoint.OPTION_PERCENT_HP:
-                case NPoint.OPTION_PERCENT_KI:
+                case ConstOption.OPTION_PERCENT_HP:
+                case ConstOption.OPTION_PERCENT_KI:
                     return true;
-                case NPoint.OPTION_PERCENT_Kamejoko:
-                case NPoint.OPTION_PERCENT_LIEN_HOAN:
+                case ConstOption.OPTION_PERCENT_KAMEJOKO:
+                case ConstOption.OPTION_PERCENT_LIEN_HOAN:
                     return true;
             }
 

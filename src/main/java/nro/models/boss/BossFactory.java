@@ -338,8 +338,8 @@ public class BossFactory {
                 createBoss(BASIL);
                 createBoss(BLACKGOKU);
                 createBoss(CHILL);
-                createBoss(WHIS);
-                createBoss(WHIS_BILL);
+//                createBoss(WHIS);
+//                createBoss(WHIS_BILL);
                 createBoss(HIT);
                 createBoss(DR_HACHI);
                 createBoss(DR_LEE_CHE);
@@ -369,11 +369,11 @@ public class BossFactory {
                 createBoss(KAMI_OREN_ONE);
                 createBoss(MAVUONG_ONE);
                 createBoss(KING_COOLER);
-                createBoss(ZENO);
-                createBoss(BLACK_GOKU);
-                createBoss(NGO_KHONG);
-                createBoss(DUONG_TANG);
-                createBoss(BLACK_GOKU);
+//                createBoss(ZENO);
+//                createBoss(BLACK_GOKU);
+//                createBoss(NGO_KHONG);
+//                createBoss(DUONG_TANG);
+//                createBoss(BLACK_GOKU);
                 for (int i = 0; i < 2; i++) {
                     createBoss(TOPPO);
                     createBoss(KUKU);
@@ -383,10 +383,10 @@ public class BossFactory {
                     createBoss(ODO);
                     createBoss(PANDA);
                 }
-                for (int i = 0; i < 3; i++) {
-                    createBoss(LAN_CON);
-                    createBoss(THAN_MEO_KARIN);
-                }
+//                for (int i = 0; i < 3; i++) {
+//                    createBoss(LAN_CON);
+//                    createBoss(THAN_MEO_KARIN);
+//                }
             } catch (Exception e) {
                 logger.error("Err initboss", e);
             }

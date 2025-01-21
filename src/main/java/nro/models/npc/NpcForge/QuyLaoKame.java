@@ -74,14 +74,21 @@ public class QuyLaoKame extends Npc {
 //                                "Nhiệm vụ", "Về khu\nvực bang",
 //                                "Giản tán\nBang hội", "Kho báu\ndưới biển", "Reset BDKB", "Nâng cấp cải trang", "Tẩy sao \npha lê");
 //                        break;
+//                        this.createOtherMenu(player, ConstNpc.NOI_CHUYEN,
+//                                "Chào con, ta rất vui khi gặp con\nCon muốn làm gì nào?",
+//                                "Nhiệm vụ",
+//                                "Giản tán\nBang hội",
+//                                "Kho báu\ndưới biển",
+//                                "Reset BDKB",
+//                                "Vào Lãnh địa bang hội",
+//                                "Mở giới hạn bang hội"
+//                        );
                         this.createOtherMenu(player, ConstNpc.NOI_CHUYEN,
                                 "Chào con, ta rất vui khi gặp con\nCon muốn làm gì nào?",
                                 "Nhiệm vụ",
                                 "Giản tán\nBang hội",
                                 "Kho báu\ndưới biển",
-                                "Reset BDKB",
-                                "Vào Lãnh địa bang hội",
-                                "Mở giới hạn bang hội"
+                                "Reset BDKB"
                         );
                         break;
                     // ekko
@@ -327,60 +334,60 @@ public class QuyLaoKame extends Npc {
                             NpcService.gI().createTutorial(player, 564, "bang hội của con đâu");
                         }
                         break;
-                    case 4: {
-                        if (player.clan == null) {
-                            Service.getInstance().sendThongBao(player, "Chưa có bang hội");
-                            return;
-                        }
-                        ChangeMapService.gI().changeMap(player, player.clan.getClanArea(), 910,
-                                190);
-                        break;
-                    }
-                    case 5: {
-                        if (player.clan == null) {
-                            Service.getInstance().sendThongBao(player, "Chưa có bang hội");
-                            return;
-                        }
-
-                        Clan clanNe = player.clan;
-                        ClanMember cm = player.clanMember;
-                        if (cm == null) {
-                            this.npcChat(player, "@@");
-                            return;
-                        }
-
-                        if (cm.role == Clan.LEADER) {
-                            Item item = InventoryService.gI().findItemBagByTemp(player, ConstItem.CAPSULE_BANG_HOI);
-
-                            if (clanNe.maxMember >= 20) {
-                                Service.getInstance().sendThongBao(player, "Bang hội chỉ có thể mở tối đa 20 thành viên");
-                                return;
-                            }
-
-                            if (item == null || item.quantity < 99) {
-                                Service.getInstance().sendThongBao(player, "Bạn không có đủ 99 Capsule bang hội");
-                                return;
-                            }
-
-                            boolean isSuccess = Util.isTrue(30, 100);
-
-                            if (isSuccess) {
-                                clanNe.level++;
-                                clanNe.maxMember++;
-                                ClanService.gI().sendMyClan(player);
-                                Service.getInstance().sendThongBao(player, "Nâng cấp bang hội thành công");
-                            } else {
-                                Service.getInstance().sendThongBao(player, "Con xui như chó vậy, hẹn lần sau");
-                            }
-
-                            InventoryService.gI().subQuantityItemsBag(player, item, 99);
-                            InventoryService.gI().sendItemBags(player);
-                        } else {
-                            Service.getInstance().sendThongBao(player, "Chỉ bang chủ mới có thể mở giới hạn bang hội");
-                            return;
-                        }
-                        break;
-                    }
+//                    case 4: {
+//                        if (player.clan == null) {
+//                            Service.getInstance().sendThongBao(player, "Chưa có bang hội");
+//                            return;
+//                        }
+//                        ChangeMapService.gI().changeMap(player, player.clan.getClanArea(), 910,
+//                                190);
+//                        break;
+//                    }
+//                    case 5: {
+//                        if (player.clan == null) {
+//                            Service.getInstance().sendThongBao(player, "Chưa có bang hội");
+//                            return;
+//                        }
+//
+//                        Clan clanNe = player.clan;
+//                        ClanMember cm = player.clanMember;
+//                        if (cm == null) {
+//                            this.npcChat(player, "@@");
+//                            return;
+//                        }
+//
+//                        if (cm.role == Clan.LEADER) {
+//                            Item item = InventoryService.gI().findItemBagByTemp(player, ConstItem.CAPSULE_BANG_HOI);
+//
+//                            if (clanNe.maxMember >= 20) {
+//                                Service.getInstance().sendThongBao(player, "Bang hội chỉ có thể mở tối đa 20 thành viên");
+//                                return;
+//                            }
+//
+//                            if (item == null || item.quantity < 99) {
+//                                Service.getInstance().sendThongBao(player, "Bạn không có đủ 99 Capsule bang hội");
+//                                return;
+//                            }
+//
+//                            boolean isSuccess = Util.isTrue(30, 100);
+//
+//                            if (isSuccess) {
+//                                clanNe.level++;
+//                                clanNe.maxMember++;
+//                                ClanService.gI().sendMyClan(player);
+//                                Service.getInstance().sendThongBao(player, "Nâng cấp bang hội thành công");
+//                            } else {
+//                                Service.getInstance().sendThongBao(player, "Con xui như chó vậy, hẹn lần sau");
+//                            }
+//
+//                            InventoryService.gI().subQuantityItemsBag(player, item, 99);
+//                            InventoryService.gI().sendItemBags(player);
+//                        } else {
+//                            Service.getInstance().sendThongBao(player, "Chỉ bang chủ mới có thể mở giới hạn bang hội");
+//                            return;
+//                        }
+//                        break;
+//                    }
 //                    case 5:
 //                        this.createOtherMenu(player, ConstItem.LINH_HON_CAI_TRANG,
 //                                "Ngươi muốn nâng cấp cải trang không ? Cần x99 linh hồn cải trang, 1 cải trang và 50k ngọc", "Có", "Từ chối");
