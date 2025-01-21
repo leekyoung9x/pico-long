@@ -836,16 +836,16 @@ public class GodGK {
                         dataObject = (JSONObject) jv.parse(rs.getString("pet_point"));
                         pet.nPoint.stamina = Short.parseShort(String.valueOf(dataObject.get("stamina")));
                         pet.nPoint.maxStamina = Short.parseShort(String.valueOf(dataObject.get("max_stamina")));
-                        pet.nPoint.hpg = Integer.parseInt(String.valueOf(dataObject.get("hpg")));
-                        pet.nPoint.mpg = Integer.parseInt(String.valueOf(dataObject.get("mpg")));
-                        pet.nPoint.dameg = Integer.parseInt(String.valueOf(dataObject.get("damg")));
-                        pet.nPoint.defg = Integer.parseInt(String.valueOf(dataObject.get("defg")));
+                        pet.nPoint.hpg = Long.parseLong(String.valueOf(dataObject.get("hpg")));
+                        pet.nPoint.mpg = Long.parseLong(String.valueOf(dataObject.get("mpg")));
+                        pet.nPoint.dameg = Long.parseLong(String.valueOf(dataObject.get("damg")));
+                        pet.nPoint.defg = Long.parseLong(String.valueOf(dataObject.get("defg")));
                         pet.nPoint.critg = Integer.parseInt(String.valueOf(dataObject.get("critg")));
                         pet.nPoint.power = Long.parseLong(String.valueOf(dataObject.get("power")));
                         pet.nPoint.tiemNang = Long.parseLong(String.valueOf(dataObject.get("tiem_nang")));
                         pet.nPoint.limitPower = Byte.parseByte(String.valueOf(dataObject.get("limit_power")));
-                        int hp = Integer.parseInt(String.valueOf(dataObject.get("hp")));
-                        int mp = Integer.parseInt(String.valueOf(dataObject.get("mp")));
+                        Long hp = Long.parseLong(String.valueOf(dataObject.get("hp")));
+                        Long mp = Long.parseLong(String.valueOf(dataObject.get("mp")));
 
                         //data body
                         dataArray = (JSONArray) jv.parse(rs.getString("pet_body"));
