@@ -99,7 +99,7 @@ public class Clan {
         this.id = NEXT_ID++;
         this.name = "";
         this.slogan = "";
-        this.maxMember = 10;
+        this.maxMember = 15;
         this.createTime = (int) (System.currentTimeMillis() / 1000);
         this.members = new ArrayList<>();
         this.membersInGame = new ArrayList<>();
