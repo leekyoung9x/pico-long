@@ -47,16 +47,23 @@ public class BaHatMit extends Npc {
 //                            "Nâng cấp\nđá sức mạnh",
 //                            "Nâng cấp\n Hủy Diệt"
 //                    );
+//                    this.createOtherMenu(player, ConstNpc.BASE_MENU,
+//                            "Ngươi tìm ta có việc gì?",
+//                            "Ép sao\ntrang bị",
+//                            "Pha lê\nhóa\ntrang bị",
+//                            "Tẩy sao \npha lê",
+//                            "Pha lê\nhóa\ncải trang",
+//                            "Nâng cấp\n chân quang",
+//                            "Khảm bùa",
+//                            "Ép ngọc\n hắc ám"
+////                            "Chuyển hoá\nSKH\nHUỶ DIỆT"
+//                    );
                     this.createOtherMenu(player, ConstNpc.BASE_MENU,
                             "Ngươi tìm ta có việc gì?",
                             "Ép sao\ntrang bị",
                             "Pha lê\nhóa\ntrang bị",
                             "Tẩy sao \npha lê",
-                            "Pha lê\nhóa\ncải trang",
-                            "Nâng cấp\n chân quang",
-                            "Khảm bùa",
-                            "Ép ngọc\n hắc ám"
-//                            "Chuyển hoá\nSKH\nHUỶ DIỆT"
+                            "Pha lê\nhóa\ncải trang"
                     );
                     break;
                 case 121:
@@ -116,17 +123,17 @@ public class BaHatMit extends Npc {
                                 this.createOtherMenu(player, ConstNpc.MENU_PHA_LE_HOA_CAI_TRANG,
                                         "Ngươi muốn pha lê hóa cải trang bằng cách nào?", "Một Lần", "Từ chối");
                                 break;
-                            case 4:
-                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CHAN_MENH);
-                                break;
-                            case 5:
-                                this.createOtherMenu(player, ConstNpc.KHAM_BUA,
-                                        "Ngươi có muốn khảm bùa không?\n Để có thể khảm bùa yêu cầu tối thiểu phải có bùa để khảm\n Mỗi lần khảm bùa tốn x10 bùa cùng loại với tỷ lệ thành công là 10%.", "Đồng ý", "Từ chối");
-                                break;
-                            case 6:
-                                CombineServiceNew.gI().openTabCombine(player,
-                                        CombineServiceNew.EP_NGOC_HAC_AM);
-                                break;
+//                            case 4:
+//                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CHAN_MENH);
+//                                break;
+//                            case 5:
+//                                this.createOtherMenu(player, ConstNpc.KHAM_BUA,
+//                                        "Ngươi có muốn khảm bùa không?\n Để có thể khảm bùa yêu cầu tối thiểu phải có bùa để khảm\n Mỗi lần khảm bùa tốn x10 bùa cùng loại với tỷ lệ thành công là 10%.", "Đồng ý", "Từ chối");
+//                                break;
+//                            case 6:
+//                                CombineServiceNew.gI().openTabCombine(player,
+//                                        CombineServiceNew.EP_NGOC_HAC_AM);
+//                                break;
 //                            case 5:
 //                                this.createOtherMenu(player, ConstNpc.CHUYEN_HOA_SKH_HUY_DIET,
 //                                        "Ngươi có muốn chuyển hóa SKH Thần thành SKH Hủy Diệt không ?\n Để có thể chuyển hoá yêu cầu tối thiểu phải có SKH thần\n Mỗi lần chuyển hoá tốn 10k thỏi vàng VIP với tỷ lệ thành công là 5%.", "Đồng ý", "Từ chối");
