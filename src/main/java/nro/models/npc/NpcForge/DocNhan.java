@@ -1,7 +1,9 @@
 package nro.models.npc.NpcForge;
 
+import nro.consts.ConstItem;
 import nro.consts.ConstNpc;
 import nro.models.item.Item;
+import nro.models.item.ItemOption;
 import nro.models.npc.Npc;
 import nro.models.player.Player;
 import nro.server.Manager;
@@ -54,13 +56,27 @@ public class DocNhan extends Npc {
 //                            InventoryService.gI().sendItemBags(player);
 //                            Service.getInstance().sendThongBao(player, "Bạn nhận được " + item.getName());
 
-                            player.inventory.addGem(100_000);
-                            int oldRuby = player.inventory.ruby;
-                            player.inventory.addRuby(100_000);
-                            // ekko ghi log add ruby
-                            Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "DocNhan-confirmMenu");
-                            Service.getInstance().sendMoney(player);
-                            Service.getInstance().sendThongBao(player, "Bạn nhận được 100k ngọc xanh và hồng ngọc");
+                            Item reward = ItemService.gI().createNewItem((short) ConstItem.BAN_DO_KHO_BAU);
+                            InventoryService.gI().addItemBag(player, reward, 1);
+
+                            Service.getInstance().sendThongBao(player, "Bạn nhận được " + reward.template.name);
+
+                            if (Util.isTrue(45, 100)) {
+                                reward = ItemService.gI().createNewItem((short) ConstItem.NGOC_RONG_4_SAO);
+                                InventoryService.gI().addItemBag(player, reward, 2);
+                            } else if (Util.isTrue(25, 100)) {
+                                reward = ItemService.gI().createNewItem((short) ConstItem.NGOC_RONG_3_SAO);
+                                InventoryService.gI().addItemBag(player, reward, 1);
+                            } else if (Util.isTrue(20, 100)) {
+                                reward = ItemService.gI().createNewItem((short) ConstItem.NGOC_RONG_3_SAO);
+                                InventoryService.gI().addItemBag(player, reward, 2);
+                            } else if (Util.isTrue(10, 100)) {
+                                reward = ItemService.gI().createNewItem((short) ConstItem.SKH_VIP);
+                                InventoryService.gI().addItemBag(player, reward, 2);
+                            }
+
+                            InventoryService.gI().sendItemBags(player);
+                            Service.getInstance().sendThongBao(player, "Bạn nhận được " + reward.template.name);
 
                             player.clan.doanhTrai.addPlayerHaveGotReward((int) player.id);
 //                            player.clan.doanhTrai.finish();
