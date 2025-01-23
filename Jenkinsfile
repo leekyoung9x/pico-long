@@ -85,9 +85,9 @@ pipeline {
                 script {
                     // Cấu hình thông tin FTP
                     def ftpDetails = [
-                        url      : 'ftp://14.225.209.84:21',  // URL của server FTP
+                        url      : 'ftp://128.199.252.137:21',  // URL của server FTP
                         username : 'administrator',                // Tên người dùng FTP
-                        password : 'fe64be2a-6e65-11ef-8417-00505690ef05',                // Mật khẩu của FTP
+                        password : '12345678@Abc',                // Mật khẩu của FTP
                         remoteDir: ''             // Đường dẫn thư mục trên FTP
                     ]
                     // Sử dụng lệnh curl để đẩy file 'build.zip' lên server FTP
