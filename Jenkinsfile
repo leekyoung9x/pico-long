@@ -85,7 +85,7 @@ pipeline {
                 script {
                     // Cấu hình thông tin FTP
                     def ftpDetails = [
-                        url      : 'ftp://128.199.252.137:21',  // URL của server FTP
+                        url      : 'ftp://188.166.248.61:21',  // URL của server FTP
                         username : 'administrator',                // Tên người dùng FTP
                         password : '12345678@Abc',                // Mật khẩu của FTP
                         remoteDir: ''             // Đường dẫn thư mục trên FTP
