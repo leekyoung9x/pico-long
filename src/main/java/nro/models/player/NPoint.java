@@ -784,7 +784,7 @@ public class NPoint {
                         this.hpMax += calPercent(this.hpMax, 10);
                         break;
                     case ConstPet.FIDE_NHI:
-                        this.hpMax += calPercent(this.hpMax, 5);
+                        this.hpMax += calPercent(this.hpMax, 10);
                         break;
                     case ConstPet.VIDEL:
                         this.hpMax += calPercent(this.hpMax, percent);
@@ -810,9 +810,9 @@ public class NPoint {
                     // ekko bill nhí tăng 15% chỉ số cộng thêm
                     case ConstPet.BILL_CON:
                         // chỉ số cộng thêm
-                        int perAdd = 15;
+                        int perAdd = 10;
                         if(level >= 7) {
-                            perAdd = 35;
+                            perAdd = 20;
                         }
                         this.hpMax += calPercent(this.hpMax, perAdd);
                         break;
@@ -1057,7 +1057,7 @@ public class NPoint {
                         this.mpMax += calPercent(this.mpMax, 10);
                         break;
                     case ConstPet.FIDE_NHI:
-                        this.mpMax += calPercent(this.mpMax, 5);
+                        this.mpMax += calPercent(this.mpMax, 10);
                         break;
                     case ConstPet.VIDEL:
                         this.mpMax += calPercent(this.mpMax, percent);
@@ -1080,9 +1080,9 @@ public class NPoint {
                     // ekko bill nhí tăng 15% chỉ số cộng thêm
                     case ConstPet.BILL_CON:
                         // chỉ số cộng thêm
-                        int perAdd = 15;
+                        int perAdd = 10;
                         if(level >= 7) {
-                            perAdd = 35;
+                            perAdd = 20;
                         }
                         this.mpMax += calPercent(this.mpMax, perAdd);
                         break;
@@ -1288,7 +1288,7 @@ public class NPoint {
                         this.dame += calPercent(this.dame, 10);
                         break;
                     case ConstPet.FIDE_NHI:
-                        this.dame += calPercent(this.dame, 5);
+                        this.dame += calPercent(this.dame, 10);
                         break;
                     case ConstPet.WHIS:
                         // tăng 40% chỉ số khi hợp thể
@@ -1308,9 +1308,9 @@ public class NPoint {
                     // ekko bill nhí tăng 15% chỉ số cộng thêm
                     case ConstPet.BILL_CON:
                         // chỉ số cộng thêm
-                        int perAdd = 15;
+                        int perAdd = 10;
                         if(level >= 7) {
-                            perAdd = 35;
+                            perAdd = 20;
                         }
                         this.dame += calPercent(this.dame, perAdd);
                         break;
@@ -1961,7 +1961,7 @@ public class NPoint {
 //
 //            }}
             if (MapService.gI().isMapCold(this.player.zone.map)) {
-                tn /= 7;
+//                tn /= 7;
             }
 //            if (MapService.gI().ismapnew(this.player.zone.map)) {
 //                tn *=10000;
@@ -1987,9 +1987,8 @@ public class NPoint {
             // giảm TNSM map ngũ hành sơn
             if (this.player.itemTime != null && this.player.itemTime.isUsebinhtangluc && mapid >= 122 && mapid <= 124) {
 //                tiemNang += tn * 2;
-                tiemNang += tn;
                 // ekko NHS giảm /2 so với hiện tại
-                tiemNang /= 2;
+                tiemNang /= 3;
             }
             if (this.player.actived) {
                 int turn = EventTurnManager.ManageEventShiba(ConstAction.GET_BY_ID, player.id);

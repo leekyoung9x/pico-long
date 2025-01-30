@@ -219,8 +219,8 @@ public class SetClothes {
                             isActSet = true;
                             setDende++;
                             break;
-                        case 132:
-                        case 252:
+                        case ConstOption.SET_DAIMAO:
+                        case ConstOption.SET_X2_THOI_GIAN_DE_TRUNG:
                             isActSet = true;
                             setDaimao++;
                             break;

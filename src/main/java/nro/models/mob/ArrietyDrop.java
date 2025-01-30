@@ -528,7 +528,29 @@ public class ArrietyDrop {
     }
 
     public static ItemMap DropItemReWardDoTL(Player player, int soluong, int x, int y) {
-        Item itemHuyDiet = RewardService.randomCS_DHD(ArrietyDrop.list_do_than_linh[player.gender][Util.nextInt(0, 4)],
+        int typeItem = 0;
+        int genderItem = Util.nextInt(0, 2);
+        // áo
+        if(Util.isTrue(30, 100)) {
+            typeItem = 0;
+        }
+        // quần
+        else if(Util.isTrue(20, 100)) {
+            typeItem = 1;
+        }
+        // nhẫn
+        else if(Util.isTrue(15, 100)) {
+            typeItem = 2;
+        }
+        // găng
+        else if(Util.isTrue(15, 100)) {
+            typeItem = 3;
+        }
+        // giày
+        else if(Util.isTrue(20, 100)) {
+            typeItem = 4;
+        }
+        Item itemHuyDiet = RewardService.randomCS_DHD(ArrietyDrop.list_do_than_linh[genderItem][typeItem],
                 player.gender);
         ItemMap item = new ItemMap(player.zone, itemHuyDiet.template.id, soluong, Util.nextInt((x - 50), (x + 50)), y, player.id);
         item.options = itemHuyDiet.itemOptions;

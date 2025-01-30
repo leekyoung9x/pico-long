@@ -54,7 +54,7 @@ public class QuyLaoKame extends Npc {
 //                        "Nói chuyện", "Tiến đến\n thung lũng đá ", "Tiến tới\nĐịa ngục", "Từ chối");
                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
                         "Chào con, con muốn ta giúp gì nào?",
-                        "Nói chuyện", "Phân rã\nSKH VIP", "Tuần lộc ở đâu ?", "Từ chối");
+                        "Nói chuyện", "Phân rã\nSKH VIP", "Tuần lộc ở đâu ?", "Chế tạo SKH", "Từ chối");
 //                this.createOtherMenu(player, ConstNpc.BASE_MENU,
 //                        "Chào con, con muốn ta giúp gì nào?",
 //                        "Nói chuyện", "Từ chối");
@@ -98,6 +98,10 @@ public class QuyLaoKame extends Npc {
                         break;
                     case 2:
                         BossManager.gI().showListBossTuanLoc(player);
+                        break;
+                    case 3:
+                        this.createOtherMenu(player, ConstNpc.NANG_CAP_SKH,
+                                "Con có muốn nâng cấp SKH không ?\nVí dụ 1: với 2 áo thần linh, x10 đá thần linh sau khi nâng cấp con sẽ nhận được x1 \"Áo vải thô kích hoạt (Random SKH)\" đó.\n Ví dụ 2: Ví dụ từ 2 áo vải thô set Nappa và x10 \"Đá thần linh\" sẽ lên 1 áo thun thô set Nappa.", "Đồng ý", "Từ chối");
                         break;
 //                    case 1:
 //                        ChangeMapService.gI().changeMap(player, 208, -1, 705, 432);
@@ -415,6 +419,7 @@ public class QuyLaoKame extends Npc {
                 switch (player.combineNew.typeCombine) {
                     case CombineServiceNew.NANG_CAP_CAI_TRANG:
                     case ConstCombine.REMOVE_OPTION:
+                    case CombineServiceNew.NANG_CAP_SKH:
                         if (select == 0) {
                             CombineServiceNew.gI().startCombine(player);
                         }
@@ -524,6 +529,15 @@ public class QuyLaoKame extends Npc {
                     case 0:
                         CombineServiceNew.gI().openTabCombine(player,
                                 CombineServiceNew.PHAN_RA_SKH_VIP);
+                        break;
+                    case 1:
+                        break;
+                }
+            } else if (player.iDMark.getIndexMenu() == ConstNpc.NANG_CAP_SKH) {
+                switch (select) {
+                    case 0:
+                        CombineServiceNew.gI().openTabCombine(player,
+                                CombineServiceNew.NANG_CAP_SKH);
                         break;
                     case 1:
                         break;

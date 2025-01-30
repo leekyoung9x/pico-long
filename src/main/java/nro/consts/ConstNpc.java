@@ -173,6 +173,7 @@ public class ConstNpc {
     public static final int NOI_CHUYEN = 600;
     public static final int NAP_VIP_2 = 601;
     public static final int PHAN_RA_SKH_VIP = 602;
+    public static final int NANG_CAP_SKH = 603;
 
     //index menu santa
     public static final int SANTA_PGG = 601;

@@ -63,9 +63,9 @@ public class Hit extends Boss {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
             } else {
                 if (Util.isTrue(10, 70)) {
-                    Item skh = ItemService.gI().createNewItem((short) 2013);
-                    InventoryService.gI().addItemBag(plKill, skh, 9999);
-                    InventoryService.gI().sendItemBags(plKill);
+//                    Item skh = ItemService.gI().createNewItem((short) 2013);
+//                    InventoryService.gI().addItemBag(plKill, skh, 9999);
+//                    InventoryService.gI().sendItemBags(plKill);
                 } else {
                     int rubyAdd = Util.nextInt(1, 10_000);
                     int oldRuby = plKill.inventory.ruby;

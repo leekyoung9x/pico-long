@@ -1,10 +1,7 @@
 package nro.services;
 
 import nro.attr.Attribute;
-import nro.consts.ConstAttribute;
-import nro.consts.ConstItem;
-import nro.consts.ConstMap;
-import nro.consts.ConstMob;
+import nro.consts.*;
 import nro.lib.RandomCollection;
 import nro.models.item.ItemLuckyRound;
 import nro.models.item.ItemOptionLuckyRound;
@@ -252,7 +249,17 @@ public class RewardService {
                 Item item = ItemService.gI().createNewItem((short) Util.nextInt(16, 20));// nr
                 list.add(item);
             } else if (Util.isTrue(20, 100)) {
-                Item item = ItemService.gI().createNewItem((short) Util.nextInt(441, 447));// cac loai sao pha le
+                List<Short> lstSPL = new ArrayList<>();
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_441);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_442);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_443);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_444);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_445);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_446);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_447);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_964);
+                int indexItem = Util.nextInt(lstSPL.size() - 1);
+                Item item = ItemService.gI().createNewItem(lstSPL.get(indexItem));// cac loai sao pha le
                 initBaseOptionSaoPhaLeLucky(item);
                 list.add(item);
             } else if (Util.isTrue(20, 100)) {
@@ -261,10 +268,18 @@ public class RewardService {
             } else if (Util.isTrue(20, 100)) {
                 Item item = ItemService.gI().createNewItem((short) Util.nextInt(2045, 2051));//nrsc
                 list.add(item);
-            } else if (Util.isTrue(20, 100)) {
-                Item item = ItemService.gI().createNewItem((short) Util.nextInt(1150, 1153));//item c2
+            }
+            // 5% ra đệ fide nhí
+            else if (Util.isTrue(5, 100)) {
+                Item item = ItemService.gI().createNewItem((short) ConstItem.DE_FIDE_NHI);//nrsc
                 list.add(item);
-            } else if (Util.isTrue(0.05f, 100)) {
+            }
+            // ekko bỏ item c2
+//            else if (Util.isTrue(20, 100)) {
+//                Item item = ItemService.gI().createNewItem((short) Util.nextInt(1150, 1153));//item c2
+//                list.add(item);
+//            }
+            else if (Util.isTrue(0.05f, 100)) {
                 Item item = ItemService.gI().createNewItem((short) 2053);
                 item.itemOptions.add(new ItemOption(50,  Util.nextInt(1, 25)));
                 list.add(item);
@@ -293,28 +308,38 @@ public class RewardService {
 
     private void initBaseOptionSaoPhaLeLucky(Item item) {
         int optionId = 73;
+        int optionVal = 0;
         switch (item.template.id) {
-            case 441: //hút máu
-                optionId = 95;
+            case (short) ConstItem.SAO_PHA_LE_441: // Biến 5% tấn công thành HP ( 441 )
+                optionId = ConstOption.OPTION_SPL_441;
+                optionVal = ConstOption.VAL_SPL_441;
                 break;
-            case 442: //hút ki
-                optionId = 96;
+            case (short) ConstItem.SAO_PHA_LE_442: //hút ki
+                optionId = ConstOption.OPTION_SPL_442;
+                optionVal = ConstOption.VAL_SPL_442;
                 break;
-            case 443: //phản sát thương
-                optionId = 97;
+            case (short) ConstItem.SAO_PHA_LE_443: //phản sát thương
+                optionId = ConstOption.OPTION_SPL_443;
+                optionVal = ConstOption.VAL_SPL_443;
                 break;
-            case 444:
+//            case (short) ConstItem.SAO_PHA_LE_444:
+//                optionId = ConstOption.OPTION_SPL_444;
+//                optionVal = ConstOption.VAL_SPL_444;
+//                break;
+//            case (short) ConstItem.SAO_PHA_LE_445:
+//                optionId = ConstOption.OPTION_SPL_445;
+//                optionVal = ConstOption.VAL_SPL_445;
+//                break;
+            case (short) ConstItem.SAO_PHA_LE_446: //vàng
+                optionId = ConstOption.OPTION_SPL_446;
+                optionVal = ConstOption.VAL_SPL_446;
                 break;
-            case 445:
-                break;
-            case 446: //vàng
-                optionId = 100;
-                break;
-            case 447: //tnsm
-                optionId = 101;
+            case (short) ConstItem.SAO_PHA_LE_447: //tnsm
+                optionId = ConstOption.OPTION_SPL_447;
+                optionVal = ConstOption.VAL_SPL_447;
                 break;
         }
-        item.itemOptions.add(new ItemOption(optionId, 5));
+        item.itemOptions.add(new ItemOption(optionId, optionVal));
     }
 
 //    public List<Item> getListItemLuckyRound(Player player, int num) {
@@ -1024,62 +1049,76 @@ public class RewardService {
 
     private void initBaseOptionSaoPhaLe(ItemMap item) {
         int optionId = -1;
+        int optionValue = 0;
         switch (item.itemTemplate.id) {
-            case 441: //hút máu
-                optionId = 95;
+            case (short) ConstItem.SAO_PHA_LE_441: // Biến 5% tấn công thành HP ( 441 )
+                optionId = ConstOption.OPTION_SPL_441;
+                optionValue = ConstOption.VAL_SPL_441;
                 break;
-            case 442: //hút ki
-                optionId = 96;
+            case (short) ConstItem.SAO_PHA_LE_442: // Biến 5% tấn công thành KI ( 442 )
+                optionId = ConstOption.OPTION_SPL_442;
+                optionValue = ConstOption.VAL_SPL_442;
                 break;
-            case 443: //phản sát thương
-                optionId = 97;
+            case (short) ConstItem.SAO_PHA_LE_443: // Phản 5% sát thương ( 443 )
+                optionId = ConstOption.OPTION_SPL_443;
+                optionValue = ConstOption.VAL_SPL_443;
                 break;
-            case 444:
+//            case (short) ConstItem.SAO_PHA_LE_444: // Xuyên giáp 3% chưởng ( 444 )
+//                optionId = ConstOption.OPTION_SPL_444;
+//                optionValue = ConstOption.VAL_SPL_444;
+//                break;
+//            case (short) ConstItem.SAO_PHA_LE_445: // Xuyên giáp 3% cận chiến ( 445 )
+//                optionId = ConstOption.OPTION_SPL_445;
+//                optionValue = ConstOption.VAL_SPL_445;
+//                break;
+            case (short) ConstItem.SAO_PHA_LE_446: // +3% vàng từ quái (446 )
+                optionId = ConstOption.OPTION_SPL_446;
+                optionValue = ConstOption.VAL_SPL_446;
                 break;
-            case 445:
+            case (short) ConstItem.SAO_PHA_LE_447: // +5% TN,SM ( 447 )
+                optionId = ConstOption.OPTION_SPL_447;
+                optionValue = ConstOption.VAL_SPL_447;
                 break;
-            case 446: //vàng
-                optionId = 100;
-                break;
-            case 447: //tnsm
-                optionId = 101;
+            case (short) ConstItem.SAO_PHA_LE_964: // + 2% sức đánh ( spl id 964 )
+                optionId = ConstOption.OPTION_SPL_964;
+                optionValue = ConstOption.VAL_SPL_964;
                 break;
         }
-        item.options.add(new ItemOption(optionId, 5));
+        item.options.add(new ItemOption(optionId, optionValue));
     }
 
-    public void initBaseOptionSaoPhaLe(Item item) {
-        int optionId = -1;
-        int param = 5;
-        switch (item.template.id) {
-            case 441: //hút máu
-                optionId = 95;
-                break;
-            case 442: //hút ki
-                optionId = 96;
-                break;
-            case 443: //phản sát thương
-                optionId = 97;
-                break;
-            case 444:
-                param = 3;
-                optionId = 98;
-                break;
-            case 445:
-                param = 3;
-                optionId = 99;
-                break;
-            case 446: //vàng
-                optionId = 100;
-                break;
-            case 447: //tnsm
-                optionId = 101;
-                break;
-        }
-        if (optionId != -1) {
-            item.itemOptions.add(new ItemOption(optionId, param));
-        }
-    }
+//    public void initBaseOptionSaoPhaLe(Item item) {
+//        int optionId = -1;
+//        int param = 5;
+//        switch (item.template.id) {
+//            case 441: //hút máu
+//                optionId = 95;
+//                break;
+//            case 442: //hút ki
+//                optionId = 96;
+//                break;
+//            case 443: //phản sát thương
+//                optionId = 97;
+//                break;
+//            case 444:
+//                param = 3;
+//                optionId = 98;
+//                break;
+//            case 445:
+//                param = 3;
+//                optionId = 99;
+//                break;
+//            case 446: //vàng
+//                optionId = 100;
+//                break;
+//            case 447: //tnsm
+//                optionId = 101;
+//                break;
+//        }
+//        if (optionId != -1) {
+//            item.itemOptions.add(new ItemOption(optionId, param));
+//        }
+//    }
 
     //sao pha lê
     public void initStarOption(ItemMap item, RatioStar[] ratioStars) {

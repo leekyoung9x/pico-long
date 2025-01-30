@@ -48,9 +48,9 @@ public class ThanMeoKarinV2 extends Boss {
             }
             else if (Util.isTrue(50, 100)) {
                 // 50% Tỷ lệ nhận được 1 Hộp SKH VIP
-                slDrop = 1;
-                itemMap = new ItemMap(this.zone, ConstItem.SKH_VIP, slDrop, this.location.x, this.location.y, plKill.id);
-                Service.getInstance().dropItemMap(plKill.zone, itemMap);
+//                slDrop = 1;
+//                itemMap = new ItemMap(this.zone, ConstItem.SKH_VIP, slDrop, this.location.x, this.location.y, plKill.id);
+//                Service.getInstance().dropItemMap(plKill.zone, itemMap);
             }
             else if (Util.isTrue(35, 100)) {
                 // 35% Tỷ lệ nhận được x1 Hộp Kẹo ma quái
@@ -61,9 +61,9 @@ public class ThanMeoKarinV2 extends Boss {
             else {
                 // xịt thì ra SKH VIP
                 // 50% Tỷ lệ nhận được 1 Hộp SKH VIP
-                slDrop = 1;
-                itemMap = new ItemMap(this.zone, ConstItem.SKH_VIP, slDrop, this.location.x, this.location.y, plKill.id);
-                Service.getInstance().dropItemMap(plKill.zone, itemMap);
+//                slDrop = 1;
+//                itemMap = new ItemMap(this.zone, ConstItem.SKH_VIP, slDrop, this.location.x, this.location.y, plKill.id);
+//                Service.getInstance().dropItemMap(plKill.zone, itemMap);
             }
         }
     }

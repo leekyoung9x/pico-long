@@ -71,8 +71,8 @@ public class DocNhan extends Npc {
                                 reward = ItemService.gI().createNewItem((short) ConstItem.NGOC_RONG_3_SAO);
                                 InventoryService.gI().addItemBag(player, reward, 2);
                             } else if (Util.isTrue(10, 100)) {
-                                reward = ItemService.gI().createNewItem((short) ConstItem.SKH_VIP);
-                                InventoryService.gI().addItemBag(player, reward, 2);
+//                                reward = ItemService.gI().createNewItem((short) ConstItem.SKH_VIP);
+//                                InventoryService.gI().addItemBag(player, reward, 2);
                             }
 
                             InventoryService.gI().sendItemBags(player);

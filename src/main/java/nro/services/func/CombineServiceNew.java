@@ -105,6 +105,7 @@ public class CombineServiceNew {
     public static final int CHE_TAO_BANH_QUY = 546;
     public static final int CHE_TAO_KEO_GIANG_SINH = 547;
     public static final int NANG_CAP_CAI_TRANG_HOA_XUONG = 548;
+    public static final int NANG_CAP_SKH = 549;
     private static final int GOLD_MOCS_BONG_TAI = 500_000_000;
 
     private static final int RUBY_MOCS_BONG_TAI = 10_000;
@@ -2065,6 +2066,157 @@ public class CombineServiceNew {
                     this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy hãy chọn 1 SKH Thần để chuyển hóa", "Đóng");
                 }
                 break;
+            case NANG_CAP_SKH:
+                if (player.combineNew.itemsCombine.size() == 2) {
+                    if (InventoryService.gI().getCountEmptyBag(player) > 0) {
+                        // số lượng đá TL
+                        int slDaTLNeed = 10;
+                        // số lượng đá TL
+                        int totalSlDaTL = 0;
+                        // hợp lệ
+                        boolean isValid = false;
+                        // số item thần linh
+                        int totalItemTL = 0;
+                        // số item SKH
+                        int totalItemSKH = 0;
+                        // đồ SKH 1
+                        Item skhOne = null;
+                        // id option skh
+                        int skhOneOptionSKHID = -1;
+                        // đồ skh trong bag
+                        Item skhOneInbag = null;
+                        // đồ skh trong bag
+                        Item skhTwoInbag = null;
+                        // đồ TL 1 khi trong nâng cấp
+                        Item tlOne = null;
+                        // đồ thần linh trong túi
+                        Item tlOneInBag = null;
+                        // đồ thần linh trong túi
+                        Item tlTwoInBag = null;
+                        // đá TL dùng để nâng cấp
+                        Item daThanLinhParam = null;
+                        // id của đồ nâng cấp tiếp theo
+                        int nextID = -1;
+                        boolean isFromTL = false;
+                        int skhOneOptionID = -1;
+                        int skhTwoOptionID = -1;
+                        int totalLoop = player.combineNew.itemsCombine.size();
+                        for (int i = 0; i < totalLoop; i++) {
+                            Item currentItem = player.combineNew.itemsCombine.get(i);
+                            if (currentItem.isNotNullItem()) {
+                                // nâng cấp 2 món thần linh lên SKH
+                                if(currentItem.isItemThanLinh()) {
+                                    totalItemTL += 1;
+                                    tlOne = currentItem;
+                                } else if (currentItem.template.id == ConstItem.DA_NGU_SAC){
+                                    totalSlDaTL = currentItem.quantity;
+                                    daThanLinhParam = currentItem;
+                                }
+                                for (ItemOption io : currentItem.itemOptions) {
+                                    if (io.optionTemplate.id == ConstOption.SET_SONGOKU || io.optionTemplate.id == ConstOption.SET_TENSHINHAN || io.optionTemplate.id == ConstOption.SET_KRILLIN || io.optionTemplate.id == ConstOption.SET_NAPPA || io.optionTemplate.id == ConstOption.SET_CADIC || io.optionTemplate.id == ConstOption.SET_KAKAROT || io.optionTemplate.id == ConstOption.SET_PICOLO || io.optionTemplate.id == ConstOption.SET_DENDE || io.optionTemplate.id == ConstOption.SET_DAIMAO) {
+                                        totalItemSKH += 1;
+                                        skhOne = currentItem;
+                                        skhOneOptionSKHID = io.optionTemplate.id;
+                                    }
+                                }
+                            }
+                        }
+
+                        // nâng cấp từ 2 món thần linh
+                        if(totalSlDaTL >= slDaTLNeed) {
+                            if(totalItemTL == 1) {
+                                // kiểm tra trong túi còn có món thần linh nữa không
+                                int totalTLInBag = 0;
+                                // lặp qua bag
+                                for (Item item : player.inventory.itemsBag) {
+                                    if (item.isNotNullItem() && item.template.id == tlOne.template.id) {
+                                        if(totalTLInBag == 0) {
+                                            tlOneInBag = item;
+                                        } else if(totalTLInBag == 1) {
+                                            tlTwoInBag = item;
+                                        }
+                                        if(totalTLInBag < 2) {
+                                            totalTLInBag += 1;
+                                        } else {
+                                            break;
+                                        }
+                                    }
+                                }
+                                if (totalTLInBag >= 2) {
+                                    isValid = true;
+                                    isFromTL = true;
+                                    // nếu là nhẫn thần linh thì lấy theo gender của player
+                                    int nextItemGender = tlOne.template.gender;
+                                    if(tlOne.template.gender == 3) {
+                                        nextItemGender = player.gender;
+                                    }
+                                    nextID = getFirstItemByPlanetAndType(nextItemGender, tlOne.template.type);
+                                }
+                            }
+                            // nâng cấp từ SKH
+                            else if(totalItemSKH == 1) {
+                                if(skhOne != null && skhOne.template != null) {
+                                    // check xem trong bag còn skh nào thì mới hợp lệ
+                                    int totalSKHInBag = 0;
+                                    // lặp qua bag
+                                    for (Item item : player.inventory.itemsBag) {
+                                        if (item.isNotNullItem() && item.template.id == skhOne.template.id) {
+                                            // kiểm tra option của đồ
+                                            for (ItemOption ioSKH : item.itemOptions) {
+                                                if(ioSKH.optionTemplate.id == ConstOption.SET_SONGOKU || ioSKH.optionTemplate.id == ConstOption.SET_TENSHINHAN || ioSKH.optionTemplate.id == ConstOption.SET_KRILLIN || ioSKH.optionTemplate.id == ConstOption.SET_PICOLO || ioSKH.optionTemplate.id == ConstOption.SET_DENDE || ioSKH.optionTemplate.id == ConstOption.SET_DAIMAO || ioSKH.optionTemplate.id == ConstOption.SET_NAPPA || ioSKH.optionTemplate.id == ConstOption.SET_KAKAROT || ioSKH.optionTemplate.id == ConstOption.SET_CADIC) {
+                                                    if(totalSKHInBag < 2) {
+                                                        totalSKHInBag += 1;
+                                                    } else {
+                                                        break;
+                                                    }
+                                                    if(ioSKH.optionTemplate.id == skhOneOptionSKHID) {
+                                                        skhOneInbag = item;
+                                                        skhOneOptionID = ioSKH.optionTemplate.id;
+                                                    } else {
+                                                        skhTwoInbag = item;
+                                                        skhTwoOptionID = ioSKH.optionTemplate.id;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // có skh trong bag thì hợp lệ
+                                    if(totalSKHInBag >= 2) {
+                                        // và 2 món skh phải nằm trong danh sách đồ nâng skh
+                                        nextID = getNextIdInList(skhOne.template.id);
+                                        if(nextID != -1) {
+                                            isValid = true;
+                                            isFromTL = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // check hợp lệ
+                        if(!isValid) {
+                            this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Con cần 2 món thần linh hoặc 2 món SKH và x10 đá thần linh", "Đóng");
+                        } else {
+                            if(nextID != -1) {
+                                Item nextSKH = ItemService.gI().createNewItem((short) nextID);
+                                if(isFromTL) {
+                                    this.quyLaoKame.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
+                                            "Con có muốn nâng cấp " + tlOne.template.name + "\n" + " và 10 đá thần linh thành " + nextSKH.template.name + " SKH không ?", "Nâng cấp\n", "Từ chối");
+                                } else {
+                                    this.quyLaoKame.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
+                                            "Con có muốn nâng cấp SKH " + skhOne.template.name + "\n" + " và 10 đá thần linh thành " + nextSKH.template.name + " SKH không ?", "Nâng cấp\n", "Từ chối");
+                                }
+                                break;
+                            }
+                        }
+                    } else {
+                        this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                "Hàng trang đã đầy", "Đóng");
+                    }
+                } else {
+                    this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 2 món thần linh hoặc 2 món SKH và x10 đá thần linh", "Đóng");
+                }
+                break;
             case CHUYEN_HOA_SKH_HUY_DIET:
                 if (player.combineNew.itemsCombine.size() == 2) {
                     if (InventoryService.gI().getCountEmptyBag(player) > 0) {
@@ -2540,6 +2692,9 @@ public class CombineServiceNew {
                     break;
                 case NANG_CAP_CAI_TRANG_HOA_XUONG:
                     nangCapCaiTrangHoaXuong(player);
+                    break;
+                case NANG_CAP_SKH:
+                    nangCapSKH(player);
                     break;
             }
             player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
@@ -3588,6 +3743,304 @@ public class CombineServiceNew {
             }
         } else {
             this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy hãy chọn 1 trang bị và 10 bùa pháp sư để khảm bùa", "Đóng");
+        }
+    }
+
+    // ekko nâng cấp SKH
+    private void nangCapSKH(Player player) {
+        if (player.combineNew.itemsCombine.size() == 2) {
+            if (InventoryService.gI().getCountEmptyBag(player) > 0) {
+                // số lượng đá TL
+                int slDaTLNeed = 10;
+                // số lượng đá TL
+                int totalSlDaTL = 0;
+                // hợp lệ
+                boolean isValid = false;
+                // số item thần linh
+                int totalItemTL = 0;
+                // số item SKH
+                int totalItemSKH = 0;
+                // đồ SKH 1
+                Item skhOne = null;
+                // id option skh
+                int skhOneOptionSKHID = -1;
+                // đồ skh trong bag
+                Item skhOneInbag = null;
+                // đồ skh trong bag
+                Item skhTwoInbag = null;
+                // đồ TL 1 khi trong nâng cấp
+                Item tlOne = null;
+                // đồ thần linh trong túi
+                Item tlOneInBag = null;
+                // đồ thần linh trong túi
+                Item tlTwoInBag = null;
+                // đá TL dùng để nâng cấp
+                Item daThanLinhParam = null;
+                // id của đồ nâng cấp tiếp theo
+                int nextID = -1;
+                boolean isFromTL = false;
+                int skhOneOptionID = -1;
+                int skhTwoOptionID = -1;
+                int totalLoop = player.combineNew.itemsCombine.size();
+                for (int i = 0; i < totalLoop; i++) {
+                    Item currentItem = player.combineNew.itemsCombine.get(i);
+                    if (currentItem.isNotNullItem()) {
+                        // nâng cấp 2 món thần linh lên SKH
+                        if(currentItem.isItemThanLinh()) {
+                            totalItemTL += 1;
+                            tlOne = currentItem;
+                        } else if (currentItem.template.id == ConstItem.DA_NGU_SAC){
+                            totalSlDaTL = currentItem.quantity;
+                            daThanLinhParam = currentItem;
+                        }
+                        for (ItemOption io : currentItem.itemOptions) {
+                            if (io.optionTemplate.id == ConstOption.SET_SONGOKU || io.optionTemplate.id == ConstOption.SET_TENSHINHAN || io.optionTemplate.id == ConstOption.SET_KRILLIN || io.optionTemplate.id == ConstOption.SET_NAPPA || io.optionTemplate.id == ConstOption.SET_CADIC || io.optionTemplate.id == ConstOption.SET_KAKAROT || io.optionTemplate.id == ConstOption.SET_PICOLO || io.optionTemplate.id == ConstOption.SET_DENDE || io.optionTemplate.id == ConstOption.SET_DAIMAO) {
+                                totalItemSKH += 1;
+                                skhOne = currentItem;
+                                skhOneOptionSKHID = io.optionTemplate.id;
+                            }
+                        }
+                    }
+                }
+
+                // nâng cấp từ 2 món thần linh
+                if(totalSlDaTL >= slDaTLNeed) {
+                    if(totalItemTL == 1) {
+                        // kiểm tra trong túi còn có món thần linh nữa không
+                        int totalTLInBag = 0;
+                        // lặp qua bag
+                        for (Item item : player.inventory.itemsBag) {
+                            if (item.isNotNullItem() && item.template.id == tlOne.template.id) {
+                                if(totalTLInBag == 0) {
+                                    tlOneInBag = item;
+                                } else if(totalTLInBag == 1) {
+                                    tlTwoInBag = item;
+                                }
+                                if(totalTLInBag < 2) {
+                                    totalTLInBag += 1;
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                        if (totalTLInBag >= 2) {
+                            isValid = true;
+                            isFromTL = true;
+                            // nếu là nhẫn thần linh thì lấy theo gender của player
+                            int nextItemGender = tlOne.template.gender;
+                            if(tlOne.template.gender == 3) {
+                                nextItemGender = player.gender;
+                            }
+                            nextID = getFirstItemByPlanetAndType(nextItemGender, tlOne.template.type);
+                        }
+                    }
+                    // nâng cấp từ SKH
+                    else if(totalItemSKH == 1) {
+                        if(skhOne != null && skhOne.template != null) {
+                            // check xem trong bag còn skh nào thì mới hợp lệ
+                            int totalSKHInBag = 0;
+                            // lặp qua bag
+                            for (Item item : player.inventory.itemsBag) {
+                                if (item.isNotNullItem() && item.template.id == skhOne.template.id) {
+                                    // kiểm tra option của đồ
+                                    for (ItemOption ioSKH : item.itemOptions) {
+                                        if(ioSKH.optionTemplate.id == ConstOption.SET_SONGOKU || ioSKH.optionTemplate.id == ConstOption.SET_TENSHINHAN || ioSKH.optionTemplate.id == ConstOption.SET_KRILLIN || ioSKH.optionTemplate.id == ConstOption.SET_PICOLO || ioSKH.optionTemplate.id == ConstOption.SET_DENDE || ioSKH.optionTemplate.id == ConstOption.SET_DAIMAO || ioSKH.optionTemplate.id == ConstOption.SET_NAPPA || ioSKH.optionTemplate.id == ConstOption.SET_KAKAROT || ioSKH.optionTemplate.id == ConstOption.SET_CADIC) {
+                                            if(totalSKHInBag < 2) {
+                                                totalSKHInBag += 1;
+                                            } else {
+                                                break;
+                                            }
+                                            if(ioSKH.optionTemplate.id == skhOneOptionSKHID) {
+                                                skhOneInbag = item;
+                                                skhOneOptionID = ioSKH.optionTemplate.id;
+                                            } else {
+                                                skhTwoInbag = item;
+                                                skhTwoOptionID = ioSKH.optionTemplate.id;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            // có skh trong bag thì hợp lệ
+                            if(totalSKHInBag >= 2) {
+                                // và 2 món skh phải nằm trong danh sách đồ nâng skh
+                                nextID = getNextIdInList(skhOne.template.id);
+                                if(nextID != -1) {
+                                    isValid = true;
+                                    isFromTL = false;
+                                }
+                            }
+                        }
+                    }
+                }
+                // check hợp lệ
+                if(!isValid) {
+                    this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                            "Con cần 2 món thần linh hoặc 2 món SKH và x10 đá thần linh", "Đóng");
+                } else {
+                    // nâng cấp từ đồ thần linh
+                    if(isFromTL) {
+                        // trừ đồ thần linh và 10 đá thần linh
+                        InventoryService.gI().subQuantityItemsBag(player, tlOneInBag, 1);
+                        InventoryService.gI().subQuantityItemsBag(player, tlTwoInBag, 1);
+                        InventoryService.gI().subQuantityItemsBag(player, daThanLinhParam, 10);
+                        // id của skh sau khi nâng cấp
+                        // nếu là nhẫn thần linh thì lấy theo gender của player
+                        int nextItemGender = tlOne.template.gender;
+                        if(tlOne.template.gender == 3) {
+                            nextItemGender = player.gender;
+                        }
+                        int firstSKHID = getFirstItemByPlanetAndType(nextItemGender, tlOne.template.type);
+                        if(firstSKHID != -1) {
+                            List<ItemOption> lstOption = new ArrayList<>();
+                            int optionSKHID = -1;
+                            int optionSetID = -1;
+                            int optionSetVal = 0;
+                            Item firstSKH = ItemService.gI().createNewItem((short) firstSKHID);
+                            switch (nextItemGender) {
+                                // td
+                                case 0:
+                                    optionSKHID = ConstOption.SET_KRILLIN;
+                                    optionSetID = ConstOption.SET_QCKK;
+                                    optionSetVal = 0;
+                                    if(Util.isTrue(25, 100)) {
+                                        optionSKHID = ConstOption.SET_SONGOKU;
+                                        optionSetID = ConstOption.OPTION_PERCENT_KAMEJOKO;
+                                        optionSetVal = 100;
+                                    }
+                                    else if(Util.isTrue(35, 100)) {
+                                        optionSKHID = ConstOption.SET_TENSHINHAN;
+                                        optionSetID = ConstOption.SET_SAT_THUONG_KAIOKEN;
+                                        optionSetVal = 0;
+                                    }
+                                    break;
+                                    // nm
+                                case 1:
+                                    optionSKHID = ConstOption.SET_DAIMAO;
+                                    optionSetID = ConstOption.SET_X2_THOI_GIAN_DE_TRUNG;
+                                    optionSetVal = 0;
+                                    if(Util.isTrue(25, 100)) {
+                                        optionSKHID = ConstOption.SET_PICOLO;
+                                        optionSetID = ConstOption.OPTION_PERCENT_KI;
+                                        optionSetVal = 100;
+                                    }
+                                    else if(Util.isTrue(35, 100)) {
+                                        optionSKHID = ConstOption.SET_DENDE;
+                                        optionSetID = ConstOption.OPTION_PERCENT_LIEN_HOAN;
+                                        optionSetVal = 100;
+                                    }
+                                    break;
+                                    // xd
+                                case 2:
+                                    optionSKHID = ConstOption.SET_CADIC;
+                                    optionSetID = ConstOption.SET_X5_THOI_GIAN_HOA_KHI;
+                                    optionSetVal = 0;
+                                    if(Util.isTrue(25, 100)) {
+                                        optionSKHID = ConstOption.SET_NAPPA;
+                                        optionSetID = ConstOption.OPTION_PERCENT_HP;
+                                        optionSetVal = 100;
+                                    }
+                                    if(Util.isTrue(35, 100)) {
+                                        optionSKHID = ConstOption.SET_KAKAROT;
+                                        optionSetID = ConstOption.SET_DAM_GALICK;
+                                        optionSetVal = 0;
+                                    }
+                                    break;
+                            }
+                            // thêm option cho skh
+                            if(optionSKHID != -1 && optionSetID != -1) {
+                                lstOption.add(new ItemOption(optionSKHID, 0));
+                                lstOption.add(new ItemOption(optionSetID, optionSetVal));
+                                firstSKH.itemOptions = lstOption;
+                                // gửi đồ cho pl
+                                InventoryService.gI().addItemBag(player, firstSKH, 1);
+                                sendEffectSuccessCombine(player);
+                                InventoryService.gI().sendItemBags(player);
+                                Service.getInstance().sendMoney(player);
+                                reOpenItemCombine(player);
+                            }
+                        }
+                    }
+                    // nâng cấp từ SKH
+                    else {
+                        if(nextID != -1) {
+                            // trừ đồ skh và 10 đá thần linh
+                            InventoryService.gI().subQuantityItemsBag(player, skhOneInbag, 1);
+                            InventoryService.gI().subQuantityItemsBag(player, skhTwoInbag, 1);
+                            InventoryService.gI().subQuantityItemsBag(player, daThanLinhParam, 10);
+                            Item nextSKH = ItemService.gI().createNewItem((short) nextID);
+                            List<ItemOption> lstOption = new ArrayList<>();
+                            int optionSKHID = skhOneOptionSKHID;
+                            int optionSetID = -1;
+                            int optionSetVal = 0;
+                            if(Util.isTrue(50, 100)) {
+                                optionSKHID = skhOneOptionID;
+                            } else {
+                                optionSKHID = skhTwoOptionID;
+                            }
+
+                            switch (optionSKHID) {
+                                // td
+                                case ConstOption.SET_KRILLIN:
+                                    optionSetID = ConstOption.SET_QCKK;
+                                    optionSetVal = 0;
+                                    break;
+                                case ConstOption.SET_SONGOKU:
+                                    optionSetID = ConstOption.OPTION_PERCENT_KAMEJOKO;
+                                    optionSetVal = 100;
+                                    break;
+                                case ConstOption.SET_TENSHINHAN:
+                                    optionSetID = ConstOption.SET_SAT_THUONG_KAIOKEN;
+                                    optionSetVal = 0;
+                                    break;
+                                // nm
+                                case ConstOption.SET_DAIMAO:
+                                    optionSetID = ConstOption.SET_X2_THOI_GIAN_DE_TRUNG;
+                                    optionSetVal = 0;
+                                    break;
+                                case ConstOption.SET_PICOLO:
+                                    optionSetID = ConstOption.OPTION_PERCENT_KI;
+                                    optionSetVal = 100;
+                                    break;
+                                case ConstOption.SET_DENDE:
+                                    optionSetID = ConstOption.OPTION_PERCENT_LIEN_HOAN;
+                                    optionSetVal = 100;
+                                    break;
+                                // xd
+                                case ConstOption.SET_CADIC:
+                                    optionSetID = ConstOption.SET_X5_THOI_GIAN_HOA_KHI;
+                                    optionSetVal = 0;
+                                    break;
+                                case ConstOption.SET_NAPPA:
+                                    optionSetID = ConstOption.OPTION_PERCENT_HP;
+                                    optionSetVal = 100;
+                                    break;
+                                case ConstOption.SET_KAKAROT:
+                                    optionSetID = ConstOption.SET_DAM_GALICK;
+                                    optionSetVal = 0;
+                                    break;
+                            }
+                            // thêm option cho skh
+                            if(optionSKHID != -1 && optionSetID != -1) {
+                                lstOption.add(new ItemOption(optionSKHID, 0));
+                                lstOption.add(new ItemOption(optionSetID, optionSetVal));
+                                nextSKH.itemOptions = lstOption;
+                                // gửi đồ cho pl
+                                InventoryService.gI().addItemBag(player, nextSKH, 1);
+                                sendEffectSuccessCombine(player);
+                                InventoryService.gI().sendItemBags(player);
+                                Service.getInstance().sendMoney(player);
+                                reOpenItemCombine(player);
+                            }
+                        }
+                    }
+                }
+            } else {
+                this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                        "Hàng trang đã đầy", "Đóng");
+            }
+        } else {
+            this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 2 món thần linh hoặc 2 món SKH và x10 đá thần linh", "Đóng");
         }
     }
 
@@ -5961,6 +6414,8 @@ public class CombineServiceNew {
                 return "Ta sẽ giúp ngươi\nchế tạo kẹo giáng sinh\n";
             case NANG_CAP_CAI_TRANG_HOA_XUONG:
                 return "Ta sẽ giúp ngươi\nnâng cấp cải trang hóa xương\n";
+            case NANG_CAP_SKH:
+                return "Ta sẽ giúp ngươi\nnâng cấp SKH\n";
             default:
                 return "";
         }
@@ -6087,6 +6542,8 @@ public class CombineServiceNew {
                 return "Chọn \nGậy gỗ\nChọn kẹo đường để chế tạo\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_CAI_TRANG_HOA_XUONG:
                 return "Chọn trang bị\nCải trang Ngộ Không hoặc Đường Tăng\nChọn 200k Thỏi Vàng VIP để nâng cấp\nSau đó chọn 'Nâng cấp'";
+            case NANG_CAP_SKH:
+                return "Chọn trang bị\n2 món thần linh\nHoặc 2 món SKH\n và x10 đá thần linh\nSau đó chọn 'Nâng cấp'";
             default:
                 return "";
         }
@@ -6120,4 +6577,39 @@ public class CombineServiceNew {
             e.printStackTrace();
         }
     }
+
+    // ekko kiểm tra đồ có nằm trong danh sách SKH nâng cấp không
+    public static int getNextIdInList(int id) {
+        for (int[][] itemType : ConstItem.LIST_ITEM_SKH) { // Lặp qua từng loại trang bị (áo, quần, ...)
+            for (int[] upgradeLevel : itemType) { // Lặp qua từng cấp độ nâng cấp (td, nm, xd)
+                for (int i = 0; i < upgradeLevel.length - 1; i++) { // Duyệt qua các phần tử, trừ phần tử cuối
+                    if (upgradeLevel[i] == id) { // Nếu tìm thấy ID cần kiểm tra
+                        return upgradeLevel[i + 1]; // Trả về phần tử tiếp theo liền kề
+                    }
+                }
+            }
+        }
+        return -1; // Không tìm thấy ID
+    }
+
+    public static int getFirstItemByPlanetAndType(int planetIndex, int itemTypeIndex) {
+        // Kiểm tra hành tinh hợp lệ
+        if (planetIndex < 0 || planetIndex >= ConstItem.LIST_ITEM_SKH.length) {
+//            throw new IllegalArgumentException("Hành tinh không hợp lệ (planetIndex không nằm trong phạm vi).");
+            return -1;
+        }
+
+        // Kiểm tra loại đồ hợp lệ
+        if (itemTypeIndex < 0 || itemTypeIndex >= ConstItem.LIST_ITEM_SKH[planetIndex].length) {
+//            throw new IllegalArgumentException("Loại đồ không hợp lệ (itemTypeIndex không nằm trong phạm vi).");\
+            return -1;
+        }
+
+        // Lấy danh sách đồ của loại đồ được chỉ định
+        int[] upgradeLevel = ConstItem.LIST_ITEM_SKH[planetIndex][itemTypeIndex];
+
+        // Trả về phần tử đầu tiên nếu danh sách không rỗng
+        return upgradeLevel.length > 0 ? upgradeLevel[0] : -1;
+    }
+
 }

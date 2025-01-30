@@ -58,10 +58,10 @@ public class Yacon extends Boss {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
             } else {
                 if (Util.isTrue(10, 70)) {
-                    Item skh = ItemService.gI().createNewItem((short) 2013);
-                    InventoryService.gI().addItemBag(plKill, skh, 9999);
-                    InventoryService.gI().sendItemBags(plKill);
-                    Service.getInstance().sendThongBao(plKill, "Bạn đã nhận được " + skh.template.name);
+//                    Item skh = ItemService.gI().createNewItem((short) 2013);
+//                    InventoryService.gI().addItemBag(plKill, skh, 9999);
+//                    InventoryService.gI().sendItemBags(plKill);
+//                    Service.getInstance().sendThongBao(plKill, "Bạn đã nhận được " + skh.template.name);
                 } else {
                     Item nr = ItemService.gI().createNewItem((short) Util.nextInt(2045, 2051));
                     InventoryService.gI().addItemBag(plKill, nr, 9999);

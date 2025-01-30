@@ -848,9 +848,9 @@ public class UseItem {
             }
             // 20% Tỷ lệ nhận được 1 hộp SKH VIP
             else if (Util.isTrue(20, 100)) {
-                Item skhVip = ItemService.gI().createNewItem((short) 2013, 1);
-                InventoryService.gI().addItemBag(pl, skhVip, 0);
-                noti += skhVip.template.name + " số lượng " + 1 + ", ";
+//                Item skhVip = ItemService.gI().createNewItem((short) 2013, 1);
+//                InventoryService.gI().addItemBag(pl, skhVip, 0);
+//                noti += skhVip.template.name + " số lượng " + 1 + ", ";
             }
             // 5% Tỷ lệ nhận được random 1-> 10 đá bảo vệ
             else if (Util.isTrue(5, 100)) {
@@ -969,9 +969,9 @@ public class UseItem {
             }
             // 20% Tỷ lệ nhận được 1 Hộp SKH VIP
             else if (Util.isTrue(20, 100)) {
-                Item skhVip = ItemService.gI().createNewItem((short) ConstItem.SKH_VIP, 1);
-                InventoryService.gI().addItemBag(pl, skhVip, 0);
-                noti += skhVip.template.name + " số lượng " + 1 + ", ";
+//                Item skhVip = ItemService.gI().createNewItem((short) ConstItem.SKH_VIP, 1);
+//                InventoryService.gI().addItemBag(pl, skhVip, 0);
+//                noti += skhVip.template.name + " số lượng " + 1 + ", ";
             }
             // 10% Tỷ lệ nhận được item "Não chó"
             else if (Util.isTrue(10, 100)) {
@@ -2945,7 +2945,7 @@ public class UseItem {
                 case ConstEvent.SU_KIEN_NOEL:
                     if (Manager.EVENT_SEVER == idsukien) {
                         if (InventoryService.gI().getCountEmptyBag(pl) > 0) {
-                            int spl = Util.nextInt(441, 445);
+//                            int spl = Util.nextInt(441, 445);
                             int dnc = Util.nextInt(220, 224);
                             int nr = Util.nextInt(16, 18);
                             int nrBang = Util.nextInt(926, 931);
@@ -2962,19 +2962,20 @@ public class UseItem {
                                 InventoryService.gI().sendItemBags(pl);
                                 Service.getInstance().sendThongBao(pl, "Bạn nhận được " + ruby + " Hồng Ngọc");
                             } else {
-                                int[] temp = {spl, dnc, nr, nrBang, 387, 390, 393, 821, 822, 746, 380, 999, 1000, 1001, 936, 2022};
+                                int[] temp = {dnc, nr, nrBang, 387, 390, 393, 821, 822, 746, 380, 999, 1000, 1001, 936, 2022};
                                 byte index = (byte) Util.nextInt(0, temp.length - 1);
                                 short[] icon = new short[2];
                                 icon[0] = item.template.iconID;
                                 Item it = ItemService.gI().createNewItem((short) temp[index]);
 
-                                if (temp[index] >= 441 && temp[index] <= 443) {// sao pha le
-                                    it.itemOptions.add(new ItemOption(temp[index] - 346, 5));
-                                    it.quantity = 10;
-                                } else if (temp[index] >= 444 && temp[index] <= 445) {
-                                    it.itemOptions.add(new ItemOption(temp[index] - 346, 3));
-                                    it.quantity = 10;
-                                } else if (temp[index] >= 220 && temp[index] <= 224) { // da nang cap
+//                                if (temp[index] >= 441 && temp[index] <= 443) {// sao pha le
+//                                    it.itemOptions.add(new ItemOption(temp[index] - 346, 5));
+//                                    it.quantity = 10;
+//                                } else if (temp[index] >= 444 && temp[index] <= 445) {
+//                                    it.itemOptions.add(new ItemOption(temp[index] - 346, 3));
+//                                    it.quantity = 10;
+//                                } else
+                                if (temp[index] >= 220 && temp[index] <= 224) { // da nang cap
                                     it.quantity = 10;
                                 } else if (temp[index] >= 387 && temp[index] <= 393) { // mu noel do
                                     it.itemOptions.add(new ItemOption(50, Util.nextInt(30, 40)));
@@ -3759,13 +3760,14 @@ public class UseItem {
             } else {
 
                 Item it = ItemService.gI().createNewItem(temp[index]);
-                if (temp[index] == 441) {
-                    it.itemOptions.add(new ItemOption(95, 5));
-                } else if (temp[index] == 442) {
-                    it.itemOptions.add(new ItemOption(96, 5));
-                } else if (temp[index] == 447) {
-                    it.itemOptions.add(new ItemOption(101, 5));
-                } else if (temp[index] >= 2009 && temp[index] <= 2010) {
+//                if (temp[index] == 441) {
+//                    it.itemOptions.add(new ItemOption(95, 5));
+//                } else if (temp[index] == 442) {
+//                    it.itemOptions.add(new ItemOption(96, 5));
+//                } else if (temp[index] == 447) {
+//                    it.itemOptions.add(new ItemOption(101, 5));
+//                } else
+                if (temp[index] >= 2009 && temp[index] <= 2010) {
                     it.itemOptions.add(new ItemOption(30, 0));
                 } else if (temp[index] == 865) {
                     it.itemOptions.add(new ItemOption(30, 0));

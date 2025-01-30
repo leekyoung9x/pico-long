@@ -90,7 +90,8 @@ public class Osin extends Npc {
                 if (player.iDMark.isBaseMenu()) {
                     switch (select) {
                         case 0:
-                            ChangeMapService.gI().changeMap(player, 114, Util.nextInt(0, 5), 354, 240);
+                            // ekko sau nâng zone nhớ random zone
+                            ChangeMapService.gI().changeMap(player, 114, 0, 354, 240);
                             break;
                     }
                 }

@@ -8,9 +8,11 @@ import nro.consts.ConstPet;
 import nro.consts.ConstRatio;
 import nro.models.boss.BossData;
 import nro.models.boss.BossFactory;
+import nro.models.item.Item;
 import nro.models.item.ItemOption;
 import nro.models.map.ItemMap;
 import nro.models.map.Zone;
+import nro.models.mob.ArrietyDrop;
 import nro.models.player.Player;
 import nro.models.skill.Skill;
 import nro.services.*;
@@ -197,50 +199,47 @@ public class Mabu_14H extends BossMabuWar {
             }
         }
         try {
-            int[] splSuper = new int[]{2118, 2119, 2120};
-            int optionId = 0, optionValue = 0;
+            // 90% ra ngọc rồng
+            if(Util.isTrue(90, 100)) {
+                int[] lstNgocRong = new int[]{ConstItem.NGOC_RONG_5_SAO, ConstItem.NGOC_RONG_6_SAO, ConstItem.NGOC_RONG_7_SAO};
 
-            // Tạo đối tượng Random
-            Random random = new Random();
+                // Tạo đối tượng Random
+                Random random = new Random();
 
-            // Sinh chỉ số ngẫu nhiên từ 0 đến (array.length - 1)
-            int randomIndex = random.nextInt(splSuper.length);
+                // Sinh chỉ số ngẫu nhiên từ 0 đến (array.length - 1)
+                int totalIndex = lstNgocRong.length - 1;
+                int randomIndex = random.nextInt(totalIndex);
 
-            // Lấy phần tử ngẫu nhiên từ mảng
-            int randomElement = splSuper[randomIndex];
-
-            switch (randomElement) {
-                case 2118: {
-                    optionId = 77;
-                    optionValue = 8;
-                    break;
-                }
-                case 2119: {
-                    optionId = 103;
-                    optionValue = 8;
-                    break;
-                }
-                case 2120: {
-                    optionId = 50;
-                    optionValue = 4;
-                    break;
+                // Lấy phần tử ngẫu nhiên từ mảng
+                int randomElement = lstNgocRong[randomIndex];
+                ItemMap itemMap = new ItemMap(this.zone, randomElement, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
+                Service.getInstance().dropItemMap(this.zone, itemMap);
+            } else {
+                int slDrop = Util.nextInt(1, 5);
+                ItemMap itemMap = null;
+                for (int i = 0; i < slDrop; i++) {
+                    itemMap = ArrietyDrop.DropItemReWardDoTL(pl, 1, pl.location.x, pl.location.y);
+                    if(itemMap != null) {
+                        Service.getInstance().dropItemMap(this.zone, itemMap);
+                    }
                 }
             }
+
             //tạo spl siêu cấp
 //            Item spl = ItemService.gI().createNewItem((short) randomElement, 1);
 //            spl.itemOptions.add(new ItemOption(optionId, optionValue));
 //            InventoryService.gI().addItemBag(pl, spl, 999);
 //            InventoryService.gI().sendItemBags(pl);
 //            Service.getInstance().sendThongBao(pl, "Bạn đã nhận được " + spl.template.name);
-            ItemMap itemMap = new ItemMap(this.zone, randomElement, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
-            itemMap.options.add(new ItemOption(optionId, optionValue));
-            Service.getInstance().dropItemMap(this.zone, itemMap);
+//            ItemMap itemMap = new ItemMap(this.zone, randomElement, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
+//            itemMap.options.add(new ItemOption(optionId, optionValue));
+//            Service.getInstance().dropItemMap(this.zone, itemMap);
 
-            ItemMap skh = new ItemMap(this.zone, 2013, 3, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
-            skh.options.add(new ItemOption(30, 1));
-            Service.getInstance().dropItemMap(this.zone, skh);
-            ItemMap dauThan = new ItemMap(this.zone, ConstItem.DAU_THAN_CAP_11, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
-            Service.getInstance().dropItemMap(this.zone, dauThan);
+//            ItemMap skh = new ItemMap(this.zone, 2013, 3, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
+//            skh.options.add(new ItemOption(30, 1));
+//            Service.getInstance().dropItemMap(this.zone, skh);
+//            ItemMap dauThan = new ItemMap(this.zone, ConstItem.DAU_THAN_CAP_11, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
+//            Service.getInstance().dropItemMap(this.zone, dauThan);
         } catch (Exception ex) {
             Logger.getLogger(Mabu_14H.class.getName()).log(Level.SEVERE, null, ex);
         }

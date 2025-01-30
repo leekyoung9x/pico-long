@@ -104,7 +104,7 @@ public class PetService {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
                 Thread.sleep(1000);
-//                Service.getInstance().chatJustForMe(player, player.pet, "Bruuuuuuuu");
+                Service.getInstance().chatJustForMe(player, player.pet, "Oa oa oa ...");
             } catch (Exception e) {
                 e.printStackTrace();
             }

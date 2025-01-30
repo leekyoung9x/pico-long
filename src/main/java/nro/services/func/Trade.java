@@ -285,12 +285,11 @@ public class Trade {
         }
         switch (item.template.type) {
             case 27:
-                // ekko cho phép thỏi vàng vip, SKH VIP được giao dịch
+                // ekko cho phép thỏi vàng vip
                 return item.template.id != 590 &&
                         item.template.id != 1969 &&
                         item.template.id != 1143 &&
                         item.template.id != 1288 &&
-                        item.template.id != 2013 &&
                         item.template.id != ConstItem.BINH_NUOC &&
                         item.template.id != ConstItem.CAPSULE_BANG_HOI &&
                         item.template.id != ConstItem.RUONG_NGOC_HAC_AM &&
