@@ -63,7 +63,8 @@ public class BaHatMit extends Npc {
                             "Ép sao\ntrang bị",
                             "Pha lê\nhóa\ntrang bị",
                             "Tẩy sao \npha lê",
-                            "Pha lê\nhóa\ncải trang"
+                            "Pha lê\nhóa\ncải trang",
+                            "Nâng cấp\nPet"
                     );
                     break;
                 case 121:
@@ -84,14 +85,23 @@ public class BaHatMit extends Npc {
 //                            "Nhập\nNgọc Rồng",
 //                            "Sách\nTuyệt kỹ"
 //                    );
+//                    this.createOtherMenu(player, ConstNpc.BASE_MENU,
+//                            "Ngươi tìm ta có việc gì?",
+//                            "Cửa hàng\nBùa",
+//                            "Nâng cấp\nVật phẩm",
+//                            "Nâng cấp\nBông tai\nPorata",
+//                            "Nâng cấp\nChỉ số\nBông tai",
+//                            "Nâng cấp\nBông tai\nPorata 3",
+//                            "Nâng cấp\nChỉ số\nBông tai 3",
+//                            "Nhập\nNgọc Rồng",
+//                            "Sách\nTuyệt kỹ"
+//                    );
                     this.createOtherMenu(player, ConstNpc.BASE_MENU,
                             "Ngươi tìm ta có việc gì?",
                             "Cửa hàng\nBùa",
                             "Nâng cấp\nVật phẩm",
                             "Nâng cấp\nBông tai\nPorata",
                             "Nâng cấp\nChỉ số\nBông tai",
-                            "Nâng cấp\nBông tai\nPorata 3",
-                            "Nâng cấp\nChỉ số\nBông tai 3",
                             "Nhập\nNgọc Rồng",
                             "Sách\nTuyệt kỹ"
                     );
@@ -122,6 +132,10 @@ public class BaHatMit extends Npc {
                             case 3:
                                 this.createOtherMenu(player, ConstNpc.MENU_PHA_LE_HOA_CAI_TRANG,
                                         "Ngươi muốn pha lê hóa cải trang bằng cách nào?", "Một Lần", "Từ chối");
+                                break;
+                            case 4:
+                                this.createOtherMenu(player, ConstNpc.NANG_CAP_PET,
+                                        "Ngươi có muốn nâng cấp Pet không?\n Để có thể nâng cấp pet yêu cầu tối thiểu phải có\n1 pet, x3 Đá Nguyệt Tử, 1k TVV\n Hoặc tẩy cấp cần có 1 pet, x1 Đá Thanh Tẩy, 1k TVV\n với tỷ lệ thành công là 20%.", "Đồng ý", "Từ chối");
                                 break;
 //                            case 4:
 //                                CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CHAN_MENH);
@@ -234,6 +248,13 @@ public class BaHatMit extends Npc {
                                         CombineServiceNew.KHAM_BUA);
                                 break;
                         }
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.NANG_CAP_PET) {
+                        switch (select) {
+                            case 0:
+                                CombineServiceNew.gI().openTabCombine(player,
+                                        CombineServiceNew.NANG_CAP_PET);
+                                break;
+                        }
                     }
                     else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
                         switch (player.combineNew.typeCombine) {
@@ -250,6 +271,7 @@ public class BaHatMit extends Npc {
                             case CombineServiceNew.CHUYEN_HOA_SKH_HUY_DIET:
                             case CombineServiceNew.KHAM_BUA:
                             case CombineServiceNew.EP_NGOC_HAC_AM:
+                            case CombineServiceNew.NANG_CAP_PET:
                                 if (select == 0) {
                                     CombineServiceNew.gI().startCombine(player);
                                 }
@@ -297,19 +319,19 @@ public class BaHatMit extends Npc {
                                 CombineServiceNew.gI().openTabCombine(player,
                                         CombineServiceNew.MO_CHI_SO_BONG_TAI);
                                 break;
-                            case 4: // nâng cấp bông tai 3
-                                CombineServiceNew.gI().openTabCombine(player,
-                                        CombineServiceNew.NANG_CAP_BONG_TAI_CAP3);
-                                break;
-                            case 5: // Nâng cấp Chỉ số bông tai 3
-                                CombineServiceNew.gI().openTabCombine(player,
-                                        CombineServiceNew.DAP_BONG_TAI_CAP_3);
-                                break;
-                            case 6:
+//                            case 4: // nâng cấp bông tai 3
+//                                CombineServiceNew.gI().openTabCombine(player,
+//                                        CombineServiceNew.NANG_CAP_BONG_TAI_CAP3);
+//                                break;
+//                            case 5: // Nâng cấp Chỉ số bông tai 3
+//                                CombineServiceNew.gI().openTabCombine(player,
+//                                        CombineServiceNew.DAP_BONG_TAI_CAP_3);
+//                                break;
+                            case 4:
                                 CombineServiceNew.gI().openTabCombine(player,
                                         CombineServiceNew.NHAP_NGOC_RONG);
                                 break;
-                            case 7:
+                            case 5:
                                 createOtherMenu(player, ConstNpc.INDEX_MENU_SACH_TUYET_KY,
                                         "Ta có thể giúp gì cho ngươi",
                                         "Đóng thành\nSách cũ", "Đổi sách\nTuyệt kỹ", "Giám định\nSách", "Tẩy\nSách", "Nâng cấp\nSách\nTuyệt kỹ", "Hồi phục\nSách", "Phân rã\nSách");

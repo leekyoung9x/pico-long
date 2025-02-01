@@ -432,4 +432,16 @@ public class Item {
         }
         return  result;
     }
+    // Ekko check xem item có phải pet không
+    public boolean itemIsPet() {
+        boolean result = false;
+        switch (this.template.type) {
+            case 21:
+                result = true;
+                break;
+            default:
+                break;
+        }
+        return  result;
+    }
 }

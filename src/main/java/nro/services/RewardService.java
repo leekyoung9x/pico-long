@@ -269,8 +269,8 @@ public class RewardService {
                 Item item = ItemService.gI().createNewItem((short) Util.nextInt(2045, 2051));//nrsc
                 list.add(item);
             }
-            // 5% ra đệ fide nhí
-            else if (Util.isTrue(5, 100)) {
+            // 3% ra đệ fide nhí
+            else if (Util.isTrue(3, 100)) {
                 Item item = ItemService.gI().createNewItem((short) ConstItem.DE_FIDE_NHI);//nrsc
                 list.add(item);
             }

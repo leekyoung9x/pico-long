@@ -63,7 +63,7 @@ public class IntrinsicService {
 
     public void sattd(Player player) {
         NpcService.gI().createMenuConMeo(player, ConstNpc.menutd, -1,
-                "Chọn đi ku", "Set\nSongoku", "Set\nGohan", "Set\nKrillin", "Từ chối");
+                "Chọn đi ku", "Set\nSongoku", "Set\nTenshinhan", "Set\nKrillin", "Từ chối");
     }
 
     public void satnm(Player player) {

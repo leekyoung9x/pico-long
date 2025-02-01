@@ -27,12 +27,18 @@ public class MabuWar14h {
     public static long TIME_OPEN;
 
     public static long TIME_CLOSE;
-    public static final byte HOUR_OPEN = 12;
+//    public static final byte HOUR_OPEN = 12;
+//    public static final byte MIN_OPEN = 0;
+//    public static final byte SECOND_OPEN = 0;
+//    public static final byte HOUR_CLOSE = 12;
+//    public static final byte MIN_CLOSE = 30;
+//    public static final byte SECOND_CLOSE = 0;
+public static final byte HOUR_OPEN = 0;
     public static final byte MIN_OPEN = 0;
     public static final byte SECOND_OPEN = 0;
-    public static final byte HOUR_CLOSE = 12;
-    public static final byte MIN_CLOSE = 30;
-    public static final byte SECOND_CLOSE = 0;
+    public static final byte HOUR_CLOSE = 23;
+    public static final byte MIN_CLOSE = 59;
+    public static final byte SECOND_CLOSE = 59;
     private int day = -1;
     public boolean initBoss;
     public boolean clearBoss;

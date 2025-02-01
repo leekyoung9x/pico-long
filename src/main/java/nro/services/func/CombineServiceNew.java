@@ -43,7 +43,7 @@ public class CombineServiceNew {
 
     private static final int TIME_COMBINE = 500;
 
-    private static final byte MAX_STAR_ITEM = 12;
+    private static final byte MAX_STAR_ITEM = 9;
     public static final int UPGRADE_HUY_DIET = 5401;
     private static final byte MAX_SAO_FLAG_BAG = 5;
 
@@ -106,6 +106,7 @@ public class CombineServiceNew {
     public static final int CHE_TAO_KEO_GIANG_SINH = 547;
     public static final int NANG_CAP_CAI_TRANG_HOA_XUONG = 548;
     public static final int NANG_CAP_SKH = 549;
+    public static final int NANG_CAP_PET = 550;
     private static final int GOLD_MOCS_BONG_TAI = 500_000_000;
 
     private static final int RUBY_MOCS_BONG_TAI = 10_000;
@@ -2217,6 +2218,98 @@ public class CombineServiceNew {
                     this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 2 món thần linh hoặc 2 món SKH và x10 đá thần linh", "Đóng");
                 }
                 break;
+            case NANG_CAP_PET:
+                if (player.combineNew.itemsCombine.size() == 3) {
+                    if (InventoryService.gI().getCountEmptyBag(player) > 0) {
+                        Item pet = null;
+                        Item daNguyetTu = null;
+                        Item tvv = null;
+                        Item daThanhTay = null;
+                        boolean isNangCap = false;
+                        boolean isTay = false;
+                        int maxLevel = 8;
+                        int slTVV = 1000;
+                        int slDaNguyetTu = 3;
+                        int slDaThanhTay = 1;
+                        int currentLevel = -1;
+                        int sdNguyetTu = -1;
+                        int kiNguyetTu = -1;
+                        int hpNguyetTu = -1;
+                        for (Item item : player.combineNew.itemsCombine) {
+                            if (item.isNotNullItem()) {
+                                // là pet
+                                if(item.itemIsPet()) {
+                                    // kiểm tra cấp của pet
+                                    for (ItemOption option : item.itemOptions) {
+                                        if(option.optionTemplate.id == ConstOption.CAP) {
+                                            currentLevel = option.param;
+                                        } else if(option.optionTemplate.id == ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM) {
+                                            sdNguyetTu = option.param;
+                                        } else if(option.optionTemplate.id == ConstOption.HP_NGUYET_TU_TANG_PHAN_TRAM) {
+                                            hpNguyetTu = option.param;
+                                        } else if(option.optionTemplate.id == ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM) {
+                                            kiNguyetTu = option.param;
+                                        }
+                                    }
+                                    pet = item;
+                                } else if(item.template.id == ConstItem.DA_THANH_TAY) {
+                                    daThanhTay = item;
+                                } else if(item.template.id == ConstItem.DA_NGUYET_TU) {
+                                    daNguyetTu = item;
+                                } else if(item.template.id == ConstItem.THOI_VANG_VIP) {
+                                    tvv = item;
+                                }
+                            }
+                        }
+                        // nâng cấp
+                        if(daNguyetTu != null) {
+                            isNangCap = true;
+                            isTay = false;
+                        }
+                        // tẩy
+                        else if(daThanhTay != null) {
+                            isNangCap = false;
+                            isTay = true;
+                        }
+                        // mặc định là nâng cấp
+                        else {
+                            isNangCap = true;
+                            isTay = false;
+                        }
+                        if (currentLevel >= maxLevel && isNangCap) {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Pet đã đạt cấp độ tối đa", "Đóng");
+                        }
+                        else if (pet == null) {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Con cần có 1 pet", "Đóng");
+                        }
+                        else if (tvv == null || tvv.quantity < slTVV) {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Con cần có 1k TVV", "Đóng");
+                        } else if(isNangCap && (daNguyetTu == null || daNguyetTu.quantity < slDaNguyetTu)) {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Con cần có x3 Đá Nguyệt Tử", "Đóng");
+                        } else if(isTay && (daThanhTay == null || daThanhTay.quantity < slDaThanhTay)) {
+                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Con cần có x1 Đá Thanh Tẩy", "Đóng");
+                        } else {
+                            if(isNangCap) {
+                                this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
+                                        "Bạn có muốn nâng cấp " + pet.template.name + " không ?", "Nâng cấp\n", "Từ chối");
+                            } else if(isTay) {
+                                this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
+                                        "Bạn có muốn tẩy cấp " + pet.template.name + " không ?", "Tẩy cấp\n", "Từ chối");
+                            }
+                        }
+                    } else {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                "Hàng trang đã đầy", "Đóng");
+                    }
+                } else {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 1 pet, x3 Đá Nguyệt Tử, 1k TVV để nâng cấp\nHoặc 1 pet, x1 Đá Thanh Tẩy, 1k TVV để tẩy cấp", "Đóng");
+                }
+                break;
             case CHUYEN_HOA_SKH_HUY_DIET:
                 if (player.combineNew.itemsCombine.size() == 2) {
                     if (InventoryService.gI().getCountEmptyBag(player) > 0) {
@@ -2695,6 +2788,9 @@ public class CombineServiceNew {
                     break;
                 case NANG_CAP_SKH:
                     nangCapSKH(player);
+                    break;
+                case NANG_CAP_PET:
+                    nangCapPet(player);
                     break;
             }
             player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
@@ -6416,6 +6512,8 @@ public class CombineServiceNew {
                 return "Ta sẽ giúp ngươi\nnâng cấp cải trang hóa xương\n";
             case NANG_CAP_SKH:
                 return "Ta sẽ giúp ngươi\nnâng cấp SKH\n";
+            case NANG_CAP_PET:
+                return "Ta sẽ giúp ngươi\nnâng cấp hoặc\ntẩy cấp Pet";
             default:
                 return "";
         }
@@ -6544,6 +6642,8 @@ public class CombineServiceNew {
                 return "Chọn trang bị\nCải trang Ngộ Không hoặc Đường Tăng\nChọn 200k Thỏi Vàng VIP để nâng cấp\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_SKH:
                 return "Chọn trang bị\n2 món thần linh\nHoặc 2 món SKH\n và x10 đá thần linh\nSau đó chọn 'Nâng cấp'";
+            case NANG_CAP_PET:
+                return "Chọn Pet\nx3 Đá Nguyệt Tử\n1k TVV\nđể nâng cấp\nHoặc Pet\nx1 Đá Thanh Tẩy\n1k TVV\nSau đó chọn 'Nâng cấp'";
             default:
                 return "";
         }
@@ -6610,6 +6710,159 @@ public class CombineServiceNew {
 
         // Trả về phần tử đầu tiên nếu danh sách không rỗng
         return upgradeLevel.length > 0 ? upgradeLevel[0] : -1;
+    }
+
+    // ekko
+    private void nangCapPet(Player player) {
+        if (player.combineNew.itemsCombine.size() == 3) {
+            if (InventoryService.gI().getCountEmptyBag(player) > 0) {
+                Item pet = null;
+                Item daNguyetTu = null;
+                Item tvv = null;
+                Item daThanhTay = null;
+                boolean isNangCap = false;
+                boolean isTay = false;
+                int maxLevel = 8;
+                int slTVV = 1000;
+                int slDaNguyetTu = 3;
+                int slDaThanhTay = 1;
+                int chiSoCongThem = 2;
+                int currentLevel = -1;
+                int sdNguyetTu = -1;
+                int kiNguyetTu = -1;
+                int hpNguyetTu = -1;
+                for (Item item : player.combineNew.itemsCombine) {
+                    if (item.isNotNullItem()) {
+                        // là pet
+                        if(item.itemIsPet()) {
+                            // kiểm tra cấp của pet
+                            for (ItemOption option : item.itemOptions) {
+                                if(option.optionTemplate.id == ConstOption.CAP) {
+                                    currentLevel = option.param;
+                                } else if(option.optionTemplate.id == ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM) {
+                                    sdNguyetTu = option.param;
+                                } else if(option.optionTemplate.id == ConstOption.HP_NGUYET_TU_TANG_PHAN_TRAM) {
+                                    hpNguyetTu = option.param;
+                                } else if(option.optionTemplate.id == ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM) {
+                                    kiNguyetTu = option.param;
+                                }
+                            }
+                            pet = item;
+                        } else if(item.template.id == ConstItem.DA_THANH_TAY) {
+                            daThanhTay = item;
+                        } else if(item.template.id == ConstItem.DA_NGUYET_TU) {
+                            daNguyetTu = item;
+                        } else if(item.template.id == ConstItem.THOI_VANG_VIP) {
+                            tvv = item;
+                        }
+                    }
+                }
+                // nâng cấp
+                if(daNguyetTu != null) {
+                    isNangCap = true;
+                    isTay = false;
+                }
+                // tẩy
+                else if(daThanhTay != null) {
+                    isNangCap = false;
+                    isTay = true;
+                }
+                // mặc định là nâng cấp
+                else {
+                    isNangCap = true;
+                    isTay = false;
+                }
+                if (currentLevel >= maxLevel && isNangCap) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                            "Pet đã đạt cấp độ tối đa", "Đóng");
+                }
+                else if (pet == null) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                            "Con cần có 1 pet", "Đóng");
+                }
+                else if (tvv == null || tvv.quantity < slTVV) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                            "Con cần có 1k TVV", "Đóng");
+                } else if(isNangCap && (daNguyetTu == null || daNguyetTu.quantity < slDaNguyetTu)) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                            "Con cần có x3 Đá Nguyệt Tử", "Đóng");
+                } else if(isTay && (daThanhTay == null || daThanhTay.quantity < slDaThanhTay)) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                            "Con cần có x1 Đá Thanh Tẩy", "Đóng");
+                } else {
+                    // nâng cấp thì trừ đá nguyệt tử
+                    if(isNangCap) {
+                        InventoryService.gI().subQuantityItemsBag(player, daNguyetTu, slDaNguyetTu);
+                    } else if (isTay) {
+                        InventoryService.gI().subQuantityItemsBag(player, daThanhTay, slDaThanhTay);
+                    }
+                    // trừ 1k TVV
+                    InventoryService.gI().subQuantityItemsBag(player, tvv, slTVV);
+                    // 20% thành công
+                    if (Util.isTrue(20, 100)) {
+                        InventoryService.gI().subQuantityItemsBag(player, pet, 1);
+                        // random chỉ số tăng
+                        int rdOption = Util.nextInt(ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM, ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM);
+                        ItemOption newIo = null;
+                        // pet chưa có chỉ số thì thêm mới
+                        if((rdOption == ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM && sdNguyetTu == -1) || (rdOption == ConstOption.HP_NGUYET_TU_TANG_PHAN_TRAM && hpNguyetTu == -1) || (rdOption == ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM && kiNguyetTu == -1)) {
+                            newIo = new ItemOption(rdOption, chiSoCongThem);
+                        }
+                        // nâng cấp
+                        if(isNangCap) {
+                            // nếu chưa có cấp thì thêm option cấp
+                            if(currentLevel == -1) {
+                                pet.itemOptions.add(new ItemOption(ConstOption.CAP, 0));
+                            }
+                            if(newIo != null) {
+                                pet.itemOptions.add(newIo);
+                                // cộng cấp
+                                for (ItemOption io : pet.itemOptions) {
+                                    if(io.optionTemplate.id == ConstOption.CAP) {
+                                        io.param += 1;
+                                    }
+                                }
+                            }
+                            // đã có chỉ số trước đó thì cộng thêm chỉ số
+                            else {
+                                for (ItemOption io : pet.itemOptions) {
+                                    if(io.optionTemplate.id == rdOption) {
+                                        io.param += chiSoCongThem;
+                                    } else if(io.optionTemplate.id == ConstOption.CAP) {
+                                        io.param += 1;
+                                    }
+                                }
+                            }
+                        } else if(isTay) {
+                            if (currentLevel > -1) {
+                                for (ItemOption io : pet.itemOptions) {
+                                    if(io.optionTemplate.id == ConstOption.CAP) {
+                                        io.param = 0;
+                                    }
+                                }
+                                // xóa hết option nguyệt tử
+                                pet.itemOptions.removeIf(item -> item.optionTemplate.id == ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM || item.optionTemplate.id == ConstOption.HP_NGUYET_TU_TANG_PHAN_TRAM || item.optionTemplate.id == ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM);
+                            }
+                        }
+                        InventoryService.gI().addItemBag(player, pet, 1);
+                        sendEffectSuccessCombine(player);
+                        InventoryService.gI().sendItemBags(player);
+                        Service.getInstance().sendMoney(player);
+                        reOpenItemCombine(player);
+                    } else {
+                        sendEffectFailCombine(player);
+                        InventoryService.gI().sendItemBags(player);
+                        Service.getInstance().sendMoney(player);
+                        reOpenItemCombine(player);
+                    }
+                }
+            } else {
+                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                        "Hàng trang đã đầy", "Đóng");
+            }
+        } else {
+            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 1 pet, x3 Đá Nguyệt Tử, 1k TVV để nâng cấp\nHoặc 1 pet, x1 Đá Thanh Tẩy, 1k TVV để tẩy cấp", "Đóng");
+        }
     }
 
 }

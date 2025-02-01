@@ -34,7 +34,7 @@ public class RongOmega extends Npc {
                         this.createOtherMenu(player, ConstNpc.MENU_OPEN_BDW,
                                 "Đường đến với ngọc rồng sao đen đã mở, "
                                 + "ngươi có muốn tham gia không?",
-                                "Hướng dẫn\nthêm", "Tham gia", "Từ chối");
+                                "Hướng dẫn\nthêm", "Đến \nPotaufeu", "Tham gia", "Từ chối");
                     } else {
                         String[] optionRewards = new String[7];
                         int index = 0;
@@ -56,7 +56,7 @@ public class RongOmega extends Npc {
                                     options);
                         } else {
                             this.createOtherMenu(player, ConstNpc.MENU_NOT_OPEN_BDW,
-                                    "Ta có thể giúp gì cho ngươi?", "Hướng dẫn", "Từ chối");
+                                    "Ta có thể giúp gì cho ngươi?", "Hướng dẫn", "Đến \nPotaufeu", "Từ chối");
                         }
                     }
                 } catch (Exception ex) {
@@ -77,7 +77,10 @@ public class RongOmega extends Npc {
                     if (select == 0) {
                         NpcService.gI().createTutorial(player, this.avartar,
                                 ConstNpc.HUONG_DAN_BLACK_BALL_WAR);
-                    } else if (select == 1) {
+                    }
+                    else if (select == 1) {
+                        ChangeMapService.gI().goToPotaufeu(player);
+                    } else if (select == 2) {
                         player.iDMark.setTypeChangeMap(ConstMap.CHANGE_BLACK_BALL);
                         ChangeMapService.gI().openChangeMapTab(player);
                     }
@@ -86,6 +89,8 @@ public class RongOmega extends Npc {
                     if (select == 0) {
                         NpcService.gI().createTutorial(player, this.avartar,
                                 ConstNpc.HUONG_DAN_BLACK_BALL_WAR);
+                    } else if(select == 1) {
+                        ChangeMapService.gI().goToPotaufeu(player);
                     }
                     break;
             }

@@ -1,12 +1,15 @@
 package nro.models.mob;
 
 import nro.consts.Cmd;
+import nro.consts.ConstOption;
 import nro.models.map.Zone;
 import nro.models.player.Player;
 import nro.utils.SkillUtil;
 import nro.services.Service;
 import nro.utils.Util;
 import nro.server.io.Message;
+
+import java.util.Objects;
 
 /**
  *
@@ -30,15 +33,22 @@ public final class MobMe extends Mob {
         if (this.player.setClothes.pikkoroDaimao1 == 5) {
             this.point.dame += ((long) this.point.dame * 50 / 100);
         }
+        // x2 sát thương đẻ trứng
+        if(this.player.setClothes.setDaimao == 5) {
+            byte setClothes = this.player.setClothes.setDaimao;
+            //System.out.println("OPTION_PERCENT_Kamejoko" + getPercentNewSKH(this.player, setClothes, OPTION_PERCENT_Kamejoko));
+            int percentXDame = getPercentNewSKH(this.player, setClothes, ConstOption.SET_SAT_THUONG_DE_TRUNG);
+            this.point.dame += (this.point.dame * percentXDame) / 100;
+        }
         this.point.hp = this.point.maxHp;
         this.zone = player.zone;
         this.lastTimeSpawn = System.currentTimeMillis();
 
         int timeSurvive = SkillUtil.getTimeSurviveMobMe(level);
         // x2 thời gian đẻ trứng
-        if (this.player.setClothes.setDaimao == 5) {
-            timeSurvive *= 2;
-        }
+//        if (this.player.setClothes.setDaimao == 5) {
+//            timeSurvive *= 2;
+//        }
         this.timeSurvive = timeSurvive;
         spawn();
     }
@@ -143,5 +153,18 @@ public final class MobMe extends Mob {
     public void dispose() {
         player.mobMe = null;
         this.player = null;
+    }
+
+    public int getPercentNewSKH(Player player, byte setClothes, int optionId) {
+        if (setClothes != 5) {
+            return 0;
+        }
+
+        return player.inventory.itemsBody.stream()
+                .filter(Objects::nonNull) // Lọc các item không null
+                .limit(5) // Giới hạn số lượng item xét đến là 5
+                .map(item -> item.getParams(optionId)) // Lấy giá trị param từ mỗi item
+                .min(Integer::compare) // Tìm giá trị nhỏ nhất
+                .orElse(0); // Trả về 0 nếu không có giá trị nào
     }
 }

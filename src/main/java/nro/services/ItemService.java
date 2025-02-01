@@ -1,6 +1,7 @@
 package nro.services;
 
 import nro.consts.ConstItem;
+import nro.consts.ConstOption;
 import nro.consts.ConstOptionSelect;
 import nro.models.item.ItemOptionTemplate;
 import nro.models.item.ItemTemplate;
@@ -254,21 +255,21 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 21);
         Item giay = ItemService.gI().otpKH((short) 27);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(129, 0));//129
-        quan.itemOptions.add(new ItemOption(129, 0));
-        gang.itemOptions.add(new ItemOption(129, 0));
-        giay.itemOptions.add(new ItemOption(129, 0));
-        rd.itemOptions.add(new ItemOption(129, 0));
-        ao.itemOptions.add(new ItemOption(141, 100));
-        quan.itemOptions.add(new ItemOption(141, 100));
-        gang.itemOptions.add(new ItemOption(141, 100));
-        giay.itemOptions.add(new ItemOption(141, 100));
-        rd.itemOptions.add(new ItemOption(141, 100));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_SONGOKU, 0));//129
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_SONGOKU, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_SONGOKU, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_SONGOKU, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_SONGOKU, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KAMEJOKO, 100));
+        quan.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KAMEJOKO, 100));
+        gang.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KAMEJOKO, 100));
+        giay.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KAMEJOKO, 100));
+        rd.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KAMEJOKO, 100));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -325,21 +326,21 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 21);
         Item giay = ItemService.gI().otpKH((short) 27);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(128, 0));
-        quan.itemOptions.add(new ItemOption(128, 0));
-        gang.itemOptions.add(new ItemOption(128, 0));
-        giay.itemOptions.add(new ItemOption(128, 0));
-        rd.itemOptions.add(new ItemOption(128, 0));
-        ao.itemOptions.add(new ItemOption(140, 0));
-        quan.itemOptions.add(new ItemOption(140, 0));
-        gang.itemOptions.add(new ItemOption(140, 0));
-        giay.itemOptions.add(new ItemOption(140, 0));
-        rd.itemOptions.add(new ItemOption(140, 0));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_KRILLIN, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_KRILLIN, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_KRILLIN, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_KRILLIN, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_KRILLIN, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_QCKK, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_QCKK, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_QCKK, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_QCKK, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_QCKK, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -387,30 +388,30 @@ public class ItemService {
         }
     }
 
-    public void setGohan(Player player) throws Exception {
+    public void setTenshinhan(Player player) throws Exception {
         Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1227);
         Item ao = ItemService.gI().otpKH((short) 0);
         Item quan = ItemService.gI().otpKH((short) 6);
         Item gang = ItemService.gI().otpKH((short) 21);
         Item giay = ItemService.gI().otpKH((short) 27);
         Item rd = ItemService.gI().otpKH((short) 12);
-        // set gohan
-        ao.itemOptions.add(new ItemOption(248, 0));
-        quan.itemOptions.add(new ItemOption(248, 0));
-        gang.itemOptions.add(new ItemOption(248, 0));
-        giay.itemOptions.add(new ItemOption(248, 0));
-        rd.itemOptions.add(new ItemOption(248, 0));
-        // x3 tnsm
-        ao.itemOptions.add(new ItemOption(250, 3));
-        quan.itemOptions.add(new ItemOption(250, 3));
-        gang.itemOptions.add(new ItemOption(250, 3));
-        giay.itemOptions.add(new ItemOption(250, 3));
-        rd.itemOptions.add(new ItemOption(250, 3));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        // set Tenshinhan
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_TENSHINHAN, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_TENSHINHAN, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_TENSHINHAN, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_TENSHINHAN, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_TENSHINHAN, 0));
+        // x1.5 sát thương kaioken
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_KAIOKEN, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_KAIOKEN, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_KAIOKEN, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_KAIOKEN, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_KAIOKEN, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -418,7 +419,7 @@ public class ItemService {
             InventoryService.gI().addItemBag(player, giay, 0);
             InventoryService.gI().addItemBag(player, rd, 0);
             InventoryService.gI().sendItemBags(player);
-            Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt Gohan");
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt Tenshinhan");
             InventoryService.gI().subQuantityItemsBag(player, hq, 1);
             InventoryService.gI().sendItemBags(player);
         } else {
@@ -467,22 +468,22 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 22);
         Item giay = ItemService.gI().otpKH((short) 28);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(131, 0));
-        quan.itemOptions.add(new ItemOption(131, 0));
-        gang.itemOptions.add(new ItemOption(131, 0));
-        giay.itemOptions.add(new ItemOption(131, 0));
-        rd.itemOptions.add(new ItemOption(131, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_DENDE, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_DENDE, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_DENDE, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_DENDE, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_DENDE, 0));
 
-        ao.itemOptions.add(new ItemOption(143, 100));
-        quan.itemOptions.add(new ItemOption(143, 100));
-        gang.itemOptions.add(new ItemOption(143, 100));
-        giay.itemOptions.add(new ItemOption(143, 100));
-        rd.itemOptions.add(new ItemOption(143, 100));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_LIEN_HOAN, 100));
+        quan.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_LIEN_HOAN, 100));
+        gang.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_LIEN_HOAN, 100));
+        giay.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_LIEN_HOAN, 100));
+        rd.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_LIEN_HOAN, 100));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -538,22 +539,22 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 22);
         Item giay = ItemService.gI().otpKH((short) 28);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(130, 0));
-        quan.itemOptions.add(new ItemOption(130, 0));
-        gang.itemOptions.add(new ItemOption(130, 0));
-        giay.itemOptions.add(new ItemOption(130, 0));
-        rd.itemOptions.add(new ItemOption(130, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_PICOLO, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_PICOLO, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_PICOLO, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_PICOLO, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_PICOLO, 0));
 
-        ao.itemOptions.add(new ItemOption(142, 100));
-        quan.itemOptions.add(new ItemOption(142, 100));
-        gang.itemOptions.add(new ItemOption(142, 100));
-        giay.itemOptions.add(new ItemOption(142, 100));
-        rd.itemOptions.add(new ItemOption(142, 100));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KI, 100));
+        quan.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KI, 100));
+        gang.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KI, 100));
+        giay.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KI, 100));
+        rd.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_KI, 100));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -610,23 +611,23 @@ public class ItemService {
         Item giay = ItemService.gI().otpKH((short) 28);
         Item rd = ItemService.gI().otpKH((short) 12);
         // daimao
-        ao.itemOptions.add(new ItemOption(132, 0));
-        quan.itemOptions.add(new ItemOption(132, 0));
-        gang.itemOptions.add(new ItemOption(132, 0));
-        giay.itemOptions.add(new ItemOption(132, 0));
-        rd.itemOptions.add(new ItemOption(132, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_DAIMAO, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_DAIMAO, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_DAIMAO, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_DAIMAO, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_DAIMAO, 0));
 
-        // x3 TNSM khi danh quai
-        ao.itemOptions.add(new ItemOption(252, 3));
-        quan.itemOptions.add(new ItemOption(252, 3));
-        gang.itemOptions.add(new ItemOption(252, 3));
-        giay.itemOptions.add(new ItemOption(252, 3));
-        rd.itemOptions.add(new ItemOption(252, 3));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        // 100% sát thương đẻ trứng
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_DE_TRUNG, 100));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_DE_TRUNG, 100));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_DE_TRUNG, 100));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_DE_TRUNG, 100));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_SAT_THUONG_DE_TRUNG, 100));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -684,22 +685,22 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 23);
         Item giay = ItemService.gI().otpKH((short) 29);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(133, 0));
-        quan.itemOptions.add(new ItemOption(133, 0));
-        gang.itemOptions.add(new ItemOption(133, 0));
-        giay.itemOptions.add(new ItemOption(133, 0));
-        rd.itemOptions.add(new ItemOption(133, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_KAKAROT, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_KAKAROT, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_KAKAROT, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_KAKAROT, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_KAKAROT, 0));
 
-        ao.itemOptions.add(new ItemOption(136, 0));
-        quan.itemOptions.add(new ItemOption(136, 0));
-        gang.itemOptions.add(new ItemOption(136, 0));
-        giay.itemOptions.add(new ItemOption(136, 0));
-        rd.itemOptions.add(new ItemOption(136, 0));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_DAM_GALICK, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_DAM_GALICK, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_DAM_GALICK, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_DAM_GALICK, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_DAM_GALICK, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -755,22 +756,22 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 23);
         Item giay = ItemService.gI().otpKH((short) 29);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(134, 0));
-        quan.itemOptions.add(new ItemOption(134, 0));
-        gang.itemOptions.add(new ItemOption(134, 0));
-        giay.itemOptions.add(new ItemOption(134, 0));
-        rd.itemOptions.add(new ItemOption(134, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_CADIC, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_CADIC, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_CADIC, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_CADIC, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_CADIC, 0));
 
-        ao.itemOptions.add(new ItemOption(251, 3));
-        quan.itemOptions.add(new ItemOption(251, 3));
-        gang.itemOptions.add(new ItemOption(251, 3));
-        giay.itemOptions.add(new ItemOption(251, 3));
-        rd.itemOptions.add(new ItemOption(251, 3));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_X5_THOI_GIAN_HOA_KHI, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_X5_THOI_GIAN_HOA_KHI, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_X5_THOI_GIAN_HOA_KHI, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_X5_THOI_GIAN_HOA_KHI, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_X5_THOI_GIAN_HOA_KHI, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);
@@ -826,22 +827,22 @@ public class ItemService {
         Item gang = ItemService.gI().otpKH((short) 23);
         Item giay = ItemService.gI().otpKH((short) 29);
         Item rd = ItemService.gI().otpKH((short) 12);
-        ao.itemOptions.add(new ItemOption(135, 0));
-        quan.itemOptions.add(new ItemOption(135, 0));
-        gang.itemOptions.add(new ItemOption(135, 0));
-        giay.itemOptions.add(new ItemOption(135, 0));
-        rd.itemOptions.add(new ItemOption(135, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_NAPPA, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_NAPPA, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_NAPPA, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_NAPPA, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_NAPPA, 0));
 
-        ao.itemOptions.add(new ItemOption(138, 100));
-        quan.itemOptions.add(new ItemOption(138, 100));
-        gang.itemOptions.add(new ItemOption(138, 100));
-        giay.itemOptions.add(new ItemOption(138, 100));
-        rd.itemOptions.add(new ItemOption(138, 100));
-        ao.itemOptions.add(new ItemOption(30, 0));
-        quan.itemOptions.add(new ItemOption(30, 0));
-        gang.itemOptions.add(new ItemOption(30, 0));
-        giay.itemOptions.add(new ItemOption(30, 0));
-        rd.itemOptions.add(new ItemOption(30, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_HP, 100));
+        quan.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_HP, 100));
+        gang.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_HP, 100));
+        giay.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_HP, 100));
+        rd.itemOptions.add(new ItemOption(ConstOption.OPTION_PERCENT_HP, 100));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
         if (InventoryService.gI().getCountEmptyBag(player) > 4) {
             InventoryService.gI().addItemBag(player, ao, 0);
             InventoryService.gI().addItemBag(player, quan, 0);

@@ -531,9 +531,9 @@ public class NpcFactory {
                                 }
                             }
                             break;
-                            case 1:// set Gohan
+                            case 1:// set tenshinhan
                                 try {
-                                ItemService.gI().setGohan(player);
+                                ItemService.gI().setTenshinhan(player);
                             } catch (Exception e) {
                             }
                             break;

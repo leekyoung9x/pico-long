@@ -38,8 +38,11 @@ public class Whis extends Npc {
         if (canOpenNpc(player)) {
             switch (this.mapId) {
                 case 48:
+//                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chưa tới giờ thi đấu, xem hướng dẫn để biết thêm chi tiết",
+//                            "Hướng\ndẫn\nthêm", "Shop đồ thiên sứ VIP", "Từ chối");
+//                    break;
                     this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chưa tới giờ thi đấu, xem hướng dẫn để biết thêm chi tiết",
-                            "Hướng\ndẫn\nthêm", "Shop đồ thiên sứ VIP", "Từ chối");
+                            "Hướng\ndẫn\nthêm", "Từ chối");
                     break;
                 case 154:
 //                    int level = TopWhis.GetLevel(player.id);
@@ -106,9 +109,9 @@ public class Whis extends Npc {
                             switch (select) {
                                 case 0:
                                     break;
-                                case 1:
-                                    ShopService.gI().openShopNormal(player, this, ConstNpc.SHOP_WHIS_DO_THIEN_SU_VIP, 1, -1);
-                                    break;
+//                                case 1:
+//                                    ShopService.gI().openShopNormal(player, this, ConstNpc.SHOP_WHIS_DO_THIEN_SU_VIP, 1, -1);
+//                                    break;
                             }
                             break;
                     }

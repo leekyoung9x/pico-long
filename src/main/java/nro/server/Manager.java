@@ -187,9 +187,9 @@ public class Manager {
         HOP_QUA_TET.add(7, ConstItem.NOEL_2022_GOKU);
         HOP_QUA_TET.add(7, ConstItem.NOEL_2022_CADIC);
         HOP_QUA_TET.add(7, ConstItem.NOEL_2022_POCOLO);
-        HOP_QUA_TET.add(20, ConstItem.CUONG_NO_2);
-        HOP_QUA_TET.add(20, ConstItem.BO_HUYET_2);
-        HOP_QUA_TET.add(20, ConstItem.BO_KHI_2);
+        HOP_QUA_TET.add(20, ConstItem.AN_DANH_3);
+        HOP_QUA_TET.add(20, ConstItem.BO_HUYET_3);
+        HOP_QUA_TET.add(20, ConstItem.BO_KHI_3);
     }
 
     private void initMap() {

@@ -163,6 +163,7 @@ public class ConstNpc {
     public static final int CHE_TAO_BANH_QUY = 31073112;
     public static final int CHE_TAO_KEO_GIANG_SINH = 31073113;
     public static final int NANG_CAP_CAI_TRANG_HOA_XUONG = 31073114;
+    public static final int NANG_CAP_PET = 31073115;
 
     //index menu linh canh
     public static final int MENU_KHONG_CHO_VAO_DT = 500;

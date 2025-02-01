@@ -58,18 +58,21 @@ public class LyTieuNuong extends Npc {
 //                    "Quy đổi\nPoint nạp[MỚI]",
 //                    "Đổi danh hiệu\n[5000 đá ngũ sắc]",
 //                    "Đổi danh hiệu\n[30 điểm point]","CSMM");
+//            createOtherMenu(player, ConstNpc.BASE_MENU,
+//                    "Bạn có muốn mở VIP không - điều này góp phần duy trì sever đếy!\n" +
+//                            "Với 50k vnđ bạn có thể sỡ hữu các đặc quyền sau:\n" +
+//                            "- Hào quang goku vô cực\n" +
+//                            "- Capsule nhiệm vụ (có thể next đến nhiệm vụ nappa)\n" +
+//                            "- 2 Hộp SKH (Chọn 1 set kích hoạt tùy thích mỗi hộp\n" +
+//                            "- Giao dịch được ngay mà không cần đạt 80 tỷ sức mạnh\n" +
+//                            "- 500k Hồng ngọc & 500k ngọc xanh\n" +
+//                            "- Nhận được x2 tiềm năng sức mạnh khi up quái\n" +
+//                            "|7|Lưu ý bạn có thể mở VIP nhiều lần!\n" +
+//                            "|7|Số point nạp bạn có là: [" + player.getSession().poinCharging + "]",
+//                    "Mở VIP 1 (Tốn 50k vnđ)", "Mở VIP 2 (Tốn 50k vnđ)", "Quy Đổi Thỏi vàng\n[VIP]", "Cửa hàng", "Đổi\nhộp quà\nNoel", "Đổi điểm tích lũy", "Đổi\nBóng tuyết\n10-1", "Đổi\nBóng tuyết\n100-12");
             createOtherMenu(player, ConstNpc.BASE_MENU,
-                    "Bạn có muốn mở VIP không - điều này góp phần duy trì sever đếy!\n" +
-                            "Với 50k vnđ bạn có thể sỡ hữu các đặc quyền sau:\n" +
-                            "- Hào quang goku vô cực\n" +
-                            "- Capsule nhiệm vụ (có thể next đến nhiệm vụ nappa)\n" +
-                            "- 2 Hộp SKH (Chọn 1 set kích hoạt tùy thích mỗi hộp\n" +
-                            "- Giao dịch được ngay mà không cần đạt 80 tỷ sức mạnh\n" +
-                            "- 500k Hồng ngọc & 500k ngọc xanh\n" +
-                            "- Nhận được x2 tiềm năng sức mạnh khi up quái\n" +
-                            "|7|Lưu ý bạn có thể mở VIP nhiều lần!\n" +
-                            "|7|Số point nạp bạn có là: [" + player.getSession().poinCharging + "]",
-                    "Mở VIP 1 (Tốn 50k vnđ)", "Mở VIP 2 (Tốn 50k vnđ)", "Quy Đổi Thỏi vàng\n[VIP]", "Cửa hàng", "Đổi\nhộp quà\nNoel", "Đổi điểm tích lũy", "Đổi\nBóng tuyết\n10-1", "Đổi\nBóng tuyết\n100-12");
+                    "Ngươi muốn làm gì ?",
+                     "Quy Đổi Thỏi vàng\n[VIP]");
         }
     }
 
@@ -80,220 +83,220 @@ public class LyTieuNuong extends Npc {
             if (this.mapId == 5 || this.mapId == 0 || this.mapId == 7 || this.mapId == 14) {
                 if (player.iDMark.isBaseMenu()) {
                     switch (select) {
+//                        case 0:
+//                            if (player.getSession().vnd >= 50000) {
+//                                if (InventoryService.gI().getCountEmptyBag(player) > 1) {
+//                                    if (PlayerDAO.active(player, 50000)) {
+//                                        // Capsule nhiệm vụ
+//                                        Item item = ItemService.gI().createNewItem((short) 2137, 1);
+//                                        item.itemOptions.add(new ItemOption(30, 0));
+//                                        InventoryService.gI().addItemBag(player, item, 1);
+//
+//                                        // 2 hộp SKH
+//                                        item = ItemService.gI().createNewItem((short) ConstItem.HOP_QUA_THUONG, 2);
+//                                        item.itemOptions.add(new ItemOption(30, 0));
+//                                        InventoryService.gI().addItemBag(player, item, 2);
+//
+//                                        // 500k ruby and ngọc xanh
+//                                        item = ItemService.gI().createNewItem((short) ConstItem.HONG_NGOC, 500_000);
+//                                        // ekko ghi log add ruby
+//                                        Manager.addPlayerRubyHistory(player.id, player.inventory.ruby, player.inventory.ruby + 500_000, "LyTieuNuong-confirmMenu");
+//                                        InventoryService.gI().addItemBag(player, item, 0);
+//                                        item = ItemService.gI().createNewItem((short) ConstItem.NGOC, 500_000);
+//                                        InventoryService.gI().addItemBag(player, item, 0);
+//
+//                                        Service.getInstance().sendMoney(player);
+//                                        Service.getInstance().player(player);
+//                                        Service.getInstance().Send_Caitrang(player);
+//                                        InventoryService.gI().sendItemBags(player);
+//                                        Service.getInstance().sendThongBao(player, "Bạn đã kích hoạt víp thành công");
+//                                    } else {
+//                                        this.npcChat(player, "Lỗi vui lòng báo admin...");
+//                                    }
+//                                } else {
+//                                    Service.getInstance().sendThongBao(player, "Hàng trang đã đầy");
+//                                }
+//                            } else {
+//                                Service.getInstance().sendThongBao(player, "Số dư vnd không đủ vui lòng nạp thêm năm chục :D");
+//                            }
+//                            break;
+//                        case 1:
+//                            if (player.getSession().actived == 1) {
+//                                MenuDialog menu = new MenuDialog("Bạn có chắc chắn muốn mở VIP lần 2 \n" +
+//                                        "Chỉ với 50k bạn sẽ nhận được các phần quà cực hấp dẫn như sau:\n" +
+//                                        " -Nhận được 30k Thỏi vàng VIP\n" +
+//                                        " -x2 Tnsm ở Map thung lũng đá\n" +
+//                                        " -x1 Đệ tử Whis\n" +
+//                                        " -Danh hiệu: Đệ tứ (40% SĐ,HP,KI)\n" +
+//                                        " -10tr ngọc xanh &10tr Hồng ngọc\n" +
+//                                        " -x300 Bùa sức đánh,x300 bùa Hp,x300 bùa Ki\n" +
+//                                        "|7|Bạn chỉ có thể mở VIP 2 khi bạn đã mở VIP 1", new String[]{"Có mở", "Đéo mở"}, new MenuRunable() {
+//                                    @Override
+//                                    public void run() {
+//                                        switch (getIndexSelected()) {
+//                                            case 0: {
+//                                                if (!(InventoryService.gI().getCountEmptyBag(player) > 1)) {
+//                                                    Service.getInstance().sendThongBao(player, "Hàng trang đã đầy");
+//                                                    return;
+//                                                }
+//
+//                                                if (player.getSession().vnd >= 50_000) {
+////                                                    player.getSession().vnd -= 50_000;
+////                                                    PlayerDAO.subVND(player, 50_000);
+//                                                    PlayerDAO.activeVipTwo(player, 50_000);
+//
+//                                                    // 30k Thỏi vàng VIP
+//                                                    Item item = ItemService.gI().createNewItem((short) ConstItem.THOI_VANG_VIP, 30_000);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//
+//                                                    // Đệ tử Whis
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.DE_TU_WHIS, 1);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//
+//                                                    // Danh hiệu: Đệ tứ (40% SĐ,HP,KI)
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.DANH_HIEU_DE_TU, 1);
+//                                                    item.itemOptions.add(new ItemOption(50, 40));
+//                                                    item.itemOptions.add(new ItemOption(77, 40));
+//                                                    item.itemOptions.add(new ItemOption(103, 40));
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//
+//                                                    // 10tr ngọc xanh &10tr Hồng ngọc
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.NGOC, 10_000_000);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.HONG_NGOC, 10_000_000);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//
+//                                                    // x300 Bùa sức đánh,x300 bùa Hp,x300 bùa Ki
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.BUA_PHAP_SU_HP, 300);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.BUA_PHAP_SU_KI, 300);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//                                                    item = ItemService.gI().createNewItem((short) ConstItem.BUA_PHAP_SU_SD, 300);
+//                                                    InventoryService.gI().addItemBag(player, item, 0);
+//
+//                                                    // ekko ghi log add ruby
+//                                                    Manager.addPlayerRubyHistory(player.id, player.inventory.ruby, player.inventory.ruby + 10_000_000, "LyTieuNuong-confirmMenu");
+//
+//                                                    Service.getInstance().sendMoney(player);
+//                                                    InventoryService.gI().sendItemBags(player);
+//                                                    Service.getInstance().sendThongBao(player, "Bạn đã kích hoạt víp thành công và nhận được 30k Thỏi vàng VIP, 1 Đệ tử Whis, 1 Danh hiệu Đệ tứ (40% SĐ,HP,KI), 10tr ngọc xanh, 10tr Hồng ngọc, 300 Bùa sức đánh, 300 Bùa Hp, 300 Bùa Ki");
+//                                                } else {
+//                                                    Service.getInstance().sendThongBao(player, "Số dư vnd không đủ vui lòng nạp thêm năm chục :D");
+//                                                }
+//                                                break;
+//                                            }
+//                                            case 1:
+//                                                break;
+//                                        }
+//                                    }
+//                                });
+//                                menu.show(player);
+//                                return;
+//                            } else if(player.getSession().actived == 0) {
+//                                Service.getInstance().sendThongBao(player, "Bạn chưa mở VIP 1");
+//                            } else if(player.getSession().actived == 2) {
+//                                Service.getInstance().sendThongBao(player, "Bạn đã mở VIP 2 rồi");
+//                            }
+//                            break;
                         case 0:
-                            if (player.getSession().vnd >= 50000) {
-                                if (InventoryService.gI().getCountEmptyBag(player) > 1) {
-                                    if (PlayerDAO.active(player, 50000)) {
-                                        // Capsule nhiệm vụ
-                                        Item item = ItemService.gI().createNewItem((short) 2137, 1);
-                                        item.itemOptions.add(new ItemOption(30, 0));
-                                        InventoryService.gI().addItemBag(player, item, 1);
-
-                                        // 2 hộp SKH
-                                        item = ItemService.gI().createNewItem((short) ConstItem.HOP_QUA_THUONG, 2);
-                                        item.itemOptions.add(new ItemOption(30, 0));
-                                        InventoryService.gI().addItemBag(player, item, 2);
-
-                                        // 500k ruby and ngọc xanh
-                                        item = ItemService.gI().createNewItem((short) ConstItem.HONG_NGOC, 500_000);
-                                        // ekko ghi log add ruby
-                                        Manager.addPlayerRubyHistory(player.id, player.inventory.ruby, player.inventory.ruby + 500_000, "LyTieuNuong-confirmMenu");
-                                        InventoryService.gI().addItemBag(player, item, 0);
-                                        item = ItemService.gI().createNewItem((short) ConstItem.NGOC, 500_000);
-                                        InventoryService.gI().addItemBag(player, item, 0);
-
-                                        Service.getInstance().sendMoney(player);
-                                        Service.getInstance().player(player);
-                                        Service.getInstance().Send_Caitrang(player);
-                                        InventoryService.gI().sendItemBags(player);
-                                        Service.getInstance().sendThongBao(player, "Bạn đã kích hoạt víp thành công");
-                                    } else {
-                                        this.npcChat(player, "Lỗi vui lòng báo admin...");
-                                    }
-                                } else {
-                                    Service.getInstance().sendThongBao(player, "Hàng trang đã đầy");
-                                }
-                            } else {
-                                Service.getInstance().sendThongBao(player, "Số dư vnd không đủ vui lòng nạp thêm năm chục :D");
-                            }
-                            break;
-                        case 1:
-                            if (player.getSession().actived == 1) {
-                                MenuDialog menu = new MenuDialog("Bạn có chắc chắn muốn mở VIP lần 2 \n" +
-                                        "Chỉ với 50k bạn sẽ nhận được các phần quà cực hấp dẫn như sau:\n" +
-                                        " -Nhận được 30k Thỏi vàng VIP\n" +
-                                        " -x2 Tnsm ở Map thung lũng đá\n" +
-                                        " -x1 Đệ tử Whis\n" +
-                                        " -Danh hiệu: Đệ tứ (40% SĐ,HP,KI)\n" +
-                                        " -10tr ngọc xanh &10tr Hồng ngọc\n" +
-                                        " -x300 Bùa sức đánh,x300 bùa Hp,x300 bùa Ki\n" +
-                                        "|7|Bạn chỉ có thể mở VIP 2 khi bạn đã mở VIP 1", new String[]{"Có mở", "Đéo mở"}, new MenuRunable() {
-                                    @Override
-                                    public void run() {
-                                        switch (getIndexSelected()) {
-                                            case 0: {
-                                                if (!(InventoryService.gI().getCountEmptyBag(player) > 1)) {
-                                                    Service.getInstance().sendThongBao(player, "Hàng trang đã đầy");
-                                                    return;
-                                                }
-
-                                                if (player.getSession().vnd >= 50_000) {
-//                                                    player.getSession().vnd -= 50_000;
-//                                                    PlayerDAO.subVND(player, 50_000);
-                                                    PlayerDAO.activeVipTwo(player, 50_000);
-
-                                                    // 30k Thỏi vàng VIP
-                                                    Item item = ItemService.gI().createNewItem((short) ConstItem.THOI_VANG_VIP, 30_000);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-
-                                                    // Đệ tử Whis
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.DE_TU_WHIS, 1);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-
-                                                    // Danh hiệu: Đệ tứ (40% SĐ,HP,KI)
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.DANH_HIEU_DE_TU, 1);
-                                                    item.itemOptions.add(new ItemOption(50, 40));
-                                                    item.itemOptions.add(new ItemOption(77, 40));
-                                                    item.itemOptions.add(new ItemOption(103, 40));
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-
-                                                    // 10tr ngọc xanh &10tr Hồng ngọc
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.NGOC, 10_000_000);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.HONG_NGOC, 10_000_000);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-
-                                                    // x300 Bùa sức đánh,x300 bùa Hp,x300 bùa Ki
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.BUA_PHAP_SU_HP, 300);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.BUA_PHAP_SU_KI, 300);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-                                                    item = ItemService.gI().createNewItem((short) ConstItem.BUA_PHAP_SU_SD, 300);
-                                                    InventoryService.gI().addItemBag(player, item, 0);
-
-                                                    // ekko ghi log add ruby
-                                                    Manager.addPlayerRubyHistory(player.id, player.inventory.ruby, player.inventory.ruby + 10_000_000, "LyTieuNuong-confirmMenu");
-
-                                                    Service.getInstance().sendMoney(player);
-                                                    InventoryService.gI().sendItemBags(player);
-                                                    Service.getInstance().sendThongBao(player, "Bạn đã kích hoạt víp thành công và nhận được 30k Thỏi vàng VIP, 1 Đệ tử Whis, 1 Danh hiệu Đệ tứ (40% SĐ,HP,KI), 10tr ngọc xanh, 10tr Hồng ngọc, 300 Bùa sức đánh, 300 Bùa Hp, 300 Bùa Ki");
-                                                } else {
-                                                    Service.getInstance().sendThongBao(player, "Số dư vnd không đủ vui lòng nạp thêm năm chục :D");
-                                                }
-                                                break;
-                                            }
-                                            case 1:
-                                                break;
-                                        }
-                                    }
-                                });
-                                menu.show(player);
-                                return;
-                            } else if(player.getSession().actived == 0) {
-                                Service.getInstance().sendThongBao(player, "Bạn chưa mở VIP 1");
-                            } else if(player.getSession().actived == 2) {
-                                Service.getInstance().sendThongBao(player, "Bạn đã mở VIP 2 rồi");
-                            }
-                            break;
-                        case 2:
                             Input.gI().createFormTradeRuby(player);
                             break;
-                        case 3: {
-//                            ShopService.gI().openShopSpecial(player, this, ConstNpc.SHOP_LTN_SPEC, 1, -1);
-                            Shop shop = ShopService.gI().getShop(this.tempId, 1, -1);
-
-                            for (int i = 0; i < shop.tabShops.size(); i++) {
-                                if (shop.tabShops.get(i).name.contains("VIP")) {
-                                    for (int j = 0; j < shop.tabShops.get(i).itemShops.size(); j++) {
-                                        ItemShop itemShop = shop.tabShops.get(i).itemShops.get(j);
-
-                                        if (itemShop.temp.id == 555 || itemShop.temp.id == 557 || itemShop.temp.id == 559) {
-                                            switch (player.gender) {
-                                                case (byte) ConstPlayer.TRAI_DAT:
-                                                    itemShop.temp = ItemService.gI().getTemplate(555);
-                                                    break;
-                                                case (byte) ConstPlayer.NAMEC:
-                                                    itemShop.temp = ItemService.gI().getTemplate(557);
-                                                    break;
-                                                case (byte) ConstPlayer.XAYDA:
-                                                    itemShop.temp = ItemService.gI().getTemplate(559);
-                                                    break;
-                                            }
-                                        }
-
-                                        if (itemShop.temp.id == 562 || itemShop.temp.id == 564 || itemShop.temp.id == 566) {
-                                            switch (player.gender) {
-                                                case (byte) ConstPlayer.TRAI_DAT:
-                                                    itemShop.temp = ItemService.gI().getTemplate(562);
-                                                    break;
-                                                case (byte) ConstPlayer.NAMEC:
-                                                    itemShop.temp = ItemService.gI().getTemplate(564);
-                                                    break;
-                                                case (byte) ConstPlayer.XAYDA:
-                                                    itemShop.temp = ItemService.gI().getTemplate(566);
-                                                    break;
-                                            }
-                                        }
-
-                                        if (itemShop.temp.id == 563 || itemShop.temp.id == 565 || itemShop.temp.id == 567) {
-                                            switch (player.gender) {
-                                                case (byte) ConstPlayer.TRAI_DAT:
-                                                    itemShop.temp = ItemService.gI().getTemplate(563);
-                                                    break;
-                                                case (byte) ConstPlayer.NAMEC:
-                                                    itemShop.temp = ItemService.gI().getTemplate(565);
-                                                    break;
-                                                case (byte) ConstPlayer.XAYDA:
-                                                    itemShop.temp = ItemService.gI().getTemplate(567);
-                                                    break;
-                                            }
-                                        }
-
-                                        if (itemShop.temp.id == 556 || itemShop.temp.id == 558 || itemShop.temp.id == 560) {
-                                            switch (player.gender) {
-                                                case (byte) ConstPlayer.TRAI_DAT:
-                                                    itemShop.temp = ItemService.gI().getTemplate(556);
-                                                    break;
-                                                case (byte) ConstPlayer.NAMEC:
-                                                    itemShop.temp = ItemService.gI().getTemplate(558);
-                                                    break;
-                                                case (byte) ConstPlayer.XAYDA:
-                                                    itemShop.temp = ItemService.gI().getTemplate(560);
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                            ShopService.gI().openShopType3(player, shop, ConstNpc.SHOP_LTN_SPEC);
-                            break;
-                        }
-                        case 4: {
-                            int point = 10, quantity = 1, itemID = ConstItem.HOP_QUA_NOEL;
-
-                            ChangeGift(player, point, (short) itemID, quantity);
-                            break;
-                        }
-                        case 5: {
-                            if(player != null && player.getSession() != null) {
-                                String npcSaid = "Con đang có " + player.getSession().poinCharging + " điểm tích lũy. Nếu đổi 50 điểm con sẽ nhận được 1 rương ngọc hắc ám.";
-                                createOtherMenu(player, ConstNpc.DOI_QUA_TICH_LUY, npcSaid, "50 điểm", "Hủy");
-                            }
-                            break;
-                        }
-                        case 6: {
-                            int point = 10, quantity = 1, itemID = ConstItem.HOP_QUA_BONG_TUYET;
-
-                            ChangeGift(player, point, (short) itemID, quantity);
-                            break;
-                        }
-                        case 7: {
-                            int point = 100, quantity = 12, itemID = ConstItem.HOP_QUA_BONG_TUYET;
-
-                            ChangeGift(player, point, (short) itemID, quantity);
-                            break;
-                        }
+//                        case 1: {
+////                            ShopService.gI().openShopSpecial(player, this, ConstNpc.SHOP_LTN_SPEC, 1, -1);
+//                            Shop shop = ShopService.gI().getShop(this.tempId, 1, -1);
+//
+//                            for (int i = 0; i < shop.tabShops.size(); i++) {
+//                                if (shop.tabShops.get(i).name.contains("VIP")) {
+//                                    for (int j = 0; j < shop.tabShops.get(i).itemShops.size(); j++) {
+//                                        ItemShop itemShop = shop.tabShops.get(i).itemShops.get(j);
+//
+//                                        if (itemShop.temp.id == 555 || itemShop.temp.id == 557 || itemShop.temp.id == 559) {
+//                                            switch (player.gender) {
+//                                                case (byte) ConstPlayer.TRAI_DAT:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(555);
+//                                                    break;
+//                                                case (byte) ConstPlayer.NAMEC:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(557);
+//                                                    break;
+//                                                case (byte) ConstPlayer.XAYDA:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(559);
+//                                                    break;
+//                                            }
+//                                        }
+//
+//                                        if (itemShop.temp.id == 562 || itemShop.temp.id == 564 || itemShop.temp.id == 566) {
+//                                            switch (player.gender) {
+//                                                case (byte) ConstPlayer.TRAI_DAT:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(562);
+//                                                    break;
+//                                                case (byte) ConstPlayer.NAMEC:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(564);
+//                                                    break;
+//                                                case (byte) ConstPlayer.XAYDA:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(566);
+//                                                    break;
+//                                            }
+//                                        }
+//
+//                                        if (itemShop.temp.id == 563 || itemShop.temp.id == 565 || itemShop.temp.id == 567) {
+//                                            switch (player.gender) {
+//                                                case (byte) ConstPlayer.TRAI_DAT:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(563);
+//                                                    break;
+//                                                case (byte) ConstPlayer.NAMEC:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(565);
+//                                                    break;
+//                                                case (byte) ConstPlayer.XAYDA:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(567);
+//                                                    break;
+//                                            }
+//                                        }
+//
+//                                        if (itemShop.temp.id == 556 || itemShop.temp.id == 558 || itemShop.temp.id == 560) {
+//                                            switch (player.gender) {
+//                                                case (byte) ConstPlayer.TRAI_DAT:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(556);
+//                                                    break;
+//                                                case (byte) ConstPlayer.NAMEC:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(558);
+//                                                    break;
+//                                                case (byte) ConstPlayer.XAYDA:
+//                                                    itemShop.temp = ItemService.gI().getTemplate(560);
+//                                                    break;
+//                                            }
+//                                        }
+//                                    }
+//                                    break;
+//                                }
+//                            }
+//                            ShopService.gI().openShopType3(player, shop, ConstNpc.SHOP_LTN_SPEC);
+//                            break;
+//                        }
+//                        case 4: {
+//                            int point = 10, quantity = 1, itemID = ConstItem.HOP_QUA_NOEL;
+//
+//                            ChangeGift(player, point, (short) itemID, quantity);
+//                            break;
+//                        }
+//                        case 5: {
+//                            if(player != null && player.getSession() != null) {
+//                                String npcSaid = "Con đang có " + player.getSession().poinCharging + " điểm tích lũy. Nếu đổi 50 điểm con sẽ nhận được 1 rương ngọc hắc ám.";
+//                                createOtherMenu(player, ConstNpc.DOI_QUA_TICH_LUY, npcSaid, "50 điểm", "Hủy");
+//                            }
+//                            break;
+//                        }
+//                        case 6: {
+//                            int point = 10, quantity = 1, itemID = ConstItem.HOP_QUA_BONG_TUYET;
+//
+//                            ChangeGift(player, point, (short) itemID, quantity);
+//                            break;
+//                        }
+//                        case 7: {
+//                            int point = 100, quantity = 12, itemID = ConstItem.HOP_QUA_BONG_TUYET;
+//
+//                            ChangeGift(player, point, (short) itemID, quantity);
+//                            break;
+//                        }
 
                         // ekko
 //                        case 1:

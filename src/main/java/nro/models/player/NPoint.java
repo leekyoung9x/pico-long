@@ -775,7 +775,7 @@ public class NPoint {
                     || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {
                 switch (((Pet) this.player).typePet) {
                     case ConstPet.MABU:
-                        this.hpMax += calPercent(this.hpMax, 10);
+                        this.hpMax += calPercent(this.hpMax, 5);
                         break;
                     case ConstPet.BILL:
                         this.hpMax += calPercent(this.hpMax, 20);
@@ -1045,7 +1045,7 @@ public class NPoint {
                 }
                 switch (((Pet) this.player).typePet) {
                     case ConstPet.MABU:
-                        this.mpMax += calPercent(this.mpMax, 10);
+                        this.mpMax += calPercent(this.mpMax, 5);
                         break;
                     case ConstPet.SUPER:
                         this.mpMax += calPercent(this.mpMax, 10);
@@ -1276,7 +1276,7 @@ public class NPoint {
                     || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4) {
                 switch (((Pet) this.player).typePet) {
                     case ConstPet.MABU:
-                        this.dame += calPercent(this.dame, 10);
+                        this.dame += calPercent(this.dame, 5);
                         break;
                     case ConstPet.SUPER:
                         this.dame += calPercent(this.dame, 10);

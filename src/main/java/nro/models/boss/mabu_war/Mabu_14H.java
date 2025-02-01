@@ -214,6 +214,18 @@ public class Mabu_14H extends BossMabuWar {
                 int randomElement = lstNgocRong[randomIndex];
                 ItemMap itemMap = new ItemMap(this.zone, randomElement, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
                 Service.getInstance().dropItemMap(this.zone, itemMap);
+
+                // rơi ra item cấp 2
+                int cnRandom = ConstItem.BO_KHI_2;
+                if(Util.isTrue(35, 100)) {
+                    cnRandom = ConstItem.GIAP_XEN_BO_HUNG_2;
+                } else if(Util.isTrue(15, 100)) {
+                    cnRandom = ConstItem.BO_HUYET_2;
+                } else if(Util.isTrue(15, 100)) {
+                    cnRandom = ConstItem.CUONG_NO_2;
+                }
+                ItemMap itemMapCN = new ItemMap(this.zone, cnRandom, 1, pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
+                Service.getInstance().dropItemMap(this.zone, itemMapCN);
             } else {
                 int slDrop = Util.nextInt(1, 5);
                 ItemMap itemMap = null;

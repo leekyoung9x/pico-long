@@ -220,7 +220,7 @@ public class SetClothes {
                             setDende++;
                             break;
                         case ConstOption.SET_DAIMAO:
-                        case ConstOption.SET_X2_THOI_GIAN_DE_TRUNG:
+                        case ConstOption.SET_SAT_THUONG_DE_TRUNG:
                             isActSet = true;
                             setDaimao++;
                             break;

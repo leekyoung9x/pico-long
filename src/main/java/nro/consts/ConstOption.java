@@ -4,6 +4,7 @@ public class ConstOption {
     public static final short PHAN_TRAM_SUC_DANH_CHI_MANG = 5;
     public static final short KHONG_THE_GIAO_DICH = 30;
     public static final short SUC_DANH_CONG_PHAN_TRAM = 50;
+    public static final short CAP = 72;
     public static final short HP_CONG_PHAN_TRAM = 77;
     public static final short KI_CONG_PHAN_TRAM = 103;
     public static final int SET_TENSHINHAN = 127;
@@ -23,7 +24,11 @@ public class ConstOption {
     public static final int OPTION_PERCENT_KAMEJOKO = 141;
     public static final int OPTION_PERCENT_KI = 142;
     public static final int OPTION_PERCENT_LIEN_HOAN = 143;
+    public static final int SET_SAT_THUONG_DE_TRUNG = 144;
     public static final short KI_MA_THUAT_TANG_PHAN_TRAM = 163;
+    public static final short SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM = 165;
+    public static final short HP_NGUYET_TU_TANG_PHAN_TRAM = 166;
+    public static final short KI_NGUYET_TU_TANG_PHAN_TRAM = 167;
     public static final short KHONG_THANH_BO_XUONG = 168;
     public static final short BIEN_THANH_BO_XUONG = 174;
     public static final short HP_MA_THUAT_TANG_PHAN_TRAM = 186;

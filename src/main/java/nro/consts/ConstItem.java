@@ -1133,13 +1133,17 @@ public class ConstItem {
     public static final int THIEP_HALLOWEEN = 1117;
     public static final int PHUONG_HOANG_LUA = 1148;
     public static final int CAI_TRANG_SSJ_3_WHITE = 1149;
+    public static final int CUONG_NO_2 = 1150;
+    public static final int BO_KHI_2 = 1151;
+    public static final int BO_HUYET_2 = 1152;
+    public static final int GIAP_XEN_BO_HUNG_2 = 1153;
     public static final int NOEL_2022_GOKU = 1159;
     public static final int NOEL_2022_CADIC = 1160;
     public static final int NOEL_2022_POCOLO = 1161;
-    public static final int CUONG_NO_2 = 1154;
-    public static final int BO_KHI_2 = 1155;
-    public static final int BO_HUYET_2 = 1156;
-    public static final int GIAP_XEN_BO_HUNG_2 = 1157;
+    public static final int AN_DANH_3 = 1154;
+    public static final int BO_KHI_3 = 1155;
+    public static final int BO_HUYET_3 = 1156;
+    public static final int GIAP_XEN_BO_HUNG_3 = 1157;
     public static final int AN_DANH_2 = 1158;
     public static final int DA_BAO_VE = 1143;
 
@@ -1238,7 +1242,8 @@ public class ConstItem {
     public static final int VE_SAU_XEN_TIEN_HOA = 1253;
 
     public static final int THOI_VANG_VIP = 1288;
-
+    public static final int DA_NGUYET_TU = 1917;
+    public static final int DA_THANH_TAY = 1918;
     public static final int CAI_TRANG_DUONG_TANG = 1931;
     public static final int GAY_GO = 1932;
     public static final int DA_TRI_TUE = 1954;
