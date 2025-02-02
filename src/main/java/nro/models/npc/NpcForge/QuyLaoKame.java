@@ -298,36 +298,36 @@ public class QuyLaoKame extends Npc {
                         Service.getInstance().sendThongBao(player, "Có bang hội đâu ba!!!");
                         break;
                     case 2: {
-                        NpcService.gI().createTutorial(player, avartar,
-                                "Bảo trì (Tạm đóng sau update sau)");
-//                        Clan c = player.clan;
-//                        if (c != null) {
-//                            ClanMember clanMember = player.clan.getClanMember((int) player.id);
-//                            int days = (int) (((System.currentTimeMillis() / 1000) - clanMember.joinTime) / 60 / 60 / 24);
-//                            if (days < 0) {
-//                                NpcService.gI().createTutorial(player, avartar,
-//                                        "Chỉ những thành viên gia nhập bang hội tối thiểu 1 ngày mới có thể tham gia");
-//                                return;
-//                            }
-//
-//                            if (player.clan != null) {
-//
-//                                if (player.clan.banDoKhoBau != null) {
-//                                    this.createOtherMenu(player, ConstNpc.MENU_OPENED_DBKB,
-//                                            "Bang hội của con đang đi tìm kho báu dưới biển cấp độ "
-//                                                    + player.clan.banDoKhoBau.level
-//                                                    + "\nCon có muốn đi theo không?",
-//                                            "Đồng ý", "Từ chối");
-//                                } else {
-//                                    this.createOtherMenu(player, ConstNpc.MENU_OPEN_DBKB,
-//                                            "Đây là bản đồ kho báu hải tặc tí hon\nCác con cứ yên tâm lên đường\n"
-//                                                    + "Ở đây có ta lo\nNhớ chọn cấp độ vừa sức mình nhé",
-//                                            "Chọn\ncấp độ", "Từ chối");
-//                                }
-//                            } else {
-//                                NpcService.gI().createTutorial(player, 564, "Con phải có bang hội ta mới có thể cho con đi");
-//                            }
-//                        }
+//                        NpcService.gI().createTutorial(player, avartar,
+//                                "Bảo trì (Tạm đóng sau update sau)");
+                        Clan c = player.clan;
+                        if (c != null) {
+                            ClanMember clanMember = player.clan.getClanMember((int) player.id);
+                            int days = (int) (((System.currentTimeMillis() / 1000) - clanMember.joinTime) / 60 / 60 / 24);
+                            if (days < 0) {
+                                NpcService.gI().createTutorial(player, avartar,
+                                        "Chỉ những thành viên gia nhập bang hội tối thiểu 1 ngày mới có thể tham gia");
+                                return;
+                            }
+
+                            if (player.clan != null) {
+
+                                if (player.clan.banDoKhoBau != null) {
+                                    this.createOtherMenu(player, ConstNpc.MENU_OPENED_DBKB,
+                                            "Bang hội của con đang đi tìm kho báu dưới biển cấp độ "
+                                                    + player.clan.banDoKhoBau.level
+                                                    + "\nCon có muốn đi theo không?",
+                                            "Đồng ý", "Từ chối");
+                                } else {
+                                    this.createOtherMenu(player, ConstNpc.MENU_OPEN_DBKB,
+                                            "Đây là bản đồ kho báu hải tặc tí hon\nCác con cứ yên tâm lên đường\n"
+                                                    + "Ở đây có ta lo\nNhớ chọn cấp độ vừa sức mình nhé",
+                                            "Chọn\ncấp độ", "Từ chối");
+                                }
+                            } else {
+                                NpcService.gI().createTutorial(player, 564, "Con phải có bang hội ta mới có thể cho con đi");
+                            }
+                        }
                         break;
                     }
                     case 3:
