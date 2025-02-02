@@ -69,15 +69,19 @@ public class KamiOren extends Boss {
 //                options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
 //            }
 //        }
-        if(Util.isTrue(5, 100)) {
+        if(Util.isTrue(10, 100)) {
             itemId = (short) ConstItem.DANH_HIEU_BAT_BAI;
             quantity = 1;
-            options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
-            options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
-            options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
+            options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
+            options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
+            options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
         } else {
-            itemId = (short) ConstItem.NGOC_RONG_4_SAO;
-            quantity = 3;
+            if(Util.isTrue(50, 100)) {
+                itemId = (short) ConstItem.NGOC_RONG_6_SAO;
+            } else {
+                itemId = (short) ConstItem.NGOC_RONG_7_SAO;
+            }
+            quantity = 1;
         }
 
         AddItemReward(pl, itemId, quantity, options);

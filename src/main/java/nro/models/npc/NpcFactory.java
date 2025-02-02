@@ -342,13 +342,13 @@ public class NpcFactory {
                                     SHENRON_1_STAR_WISHES_1);
                             break;
                         }
-//                    case ConstNpc.SHENRON_1_3:
-//                        if (player.iDMark.getIndexMenu() == ConstNpc.SHENRON_1_3
-//                                && select == SHENRON_1_STAR_WISHES_3.length - 1) {
-//                            NpcService.gI().createMenuRongThieng(player, ConstNpc.SHENRON_1_1, SHENRON_SAY,
-//                                    SHENRON_1_STAR_WISHES_1);
-//                            break;
-//                        }
+                    case ConstNpc.SHENRON_1_3:
+                        if (player.iDMark.getIndexMenu() == ConstNpc.SHENRON_1_3
+                                && select == SHENRON_1_STAR_WISHES_3.length - 1) {
+                            NpcService.gI().createMenuRongThieng(player, ConstNpc.SHENRON_1_1, SHENRON_SAY,
+                                    SHENRON_1_STAR_WISHES_1);
+                            break;
+                        }
                     case ConstNpc.BLACK_SHENRON:
                         if (player.iDMark.getIndexMenu() == ConstNpc.BLACK_SHENRON
                                 && select == BLACK_SHENRON_WISHES.length) {

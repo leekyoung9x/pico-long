@@ -4,6 +4,7 @@
  */
 package nro.models.boss.list_boss;
 
+import nro.consts.ConstItem;
 import nro.consts.ConstRatio;
 import nro.models.boss.Boss;
 import nro.models.boss.BossData;
@@ -38,14 +39,16 @@ public class NhanBan extends Boss {
 
     @Override
     public void rewards(Player pl) {
-        int quantity = Util.nextInt(1, 10); // Random từ 1 đến 10
-        for (int i = 0; i < quantity; i++) {
-            Item binh = ItemService.gI().createNewItem((short) 2090);
-            binh.itemOptions.add(new ItemOption(30, 1));
-            InventoryService.gI().addItemBag(pl, binh, 0);
-        }
+//        int quantity = Util.nextInt(1, 10); // Random từ 1 đến 10
+//        for (int i = 0; i < quantity; i++) {
+//            Item binh = ItemService.gI().createNewItem((short) 2090);
+//            binh.itemOptions.add(new ItemOption(30, 1));
+//            InventoryService.gI().addItemBag(pl, binh, 0);
+//        }
+        Item binh = ItemService.gI().createNewItem((short) ConstItem.BINH_CHUA_COMMESON);
+        InventoryService.gI().addItemBag(pl, binh, 0);
         InventoryService.gI().sendItemBags(pl);
-        Service.getInstance().sendThongBao(pl, "Bạn nhận được " + quantity + " đá nguyên thủy");
+        Service.getInstance().sendThongBao(pl, "Bạn nhận được " + binh.quantity + binh.template.name);
     }
 
 

@@ -1951,7 +1951,7 @@ public class NPoint {
             }
             long tn = tiemNang;
             if (MapService.gI().isMapTuongLai(mapid)) {
-                tn /= 5;
+                tiemNang /= 70;
             }
 
 //
@@ -1962,6 +1962,7 @@ public class NPoint {
 //            }}
             if (MapService.gI().isMapCold(this.player.zone.map)) {
 //                tn /= 7;
+                tiemNang *= 20;
             }
 //            if (MapService.gI().ismapnew(this.player.zone.map)) {
 //                tn *=10000;
@@ -1985,10 +1986,15 @@ public class NPoint {
                 tiemNang += tn * 3;
             }
             // giảm TNSM map ngũ hành sơn
-            if (this.player.itemTime != null && this.player.itemTime.isUsebinhtangluc && mapid >= 122 && mapid <= 124) {
+//            if (this.player.itemTime != null && this.player.itemTime.isUsebinhtangluc && mapid >= 122 && mapid <= 124) {
+////                tiemNang += tn * 2;
+//                // ekko NHS giảm /2 so với hiện tại
+//                tiemNang /= 3;
+//            }
+            if (MapService.gI().isMapNguhanhson(mapid)) {
 //                tiemNang += tn * 2;
                 // ekko NHS giảm /2 so với hiện tại
-                tiemNang /= 3;
+                tiemNang /= 60;
             }
             if (this.player.actived) {
                 int turn = EventTurnManager.ManageEventShiba(ConstAction.GET_BY_ID, player.id);

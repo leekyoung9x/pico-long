@@ -171,8 +171,10 @@ public class ConstMap {
 
     public static LocalTime now = LocalTime.now();
     // map ngũ hành sơn mở từ 17h -> 20h
-    public static LocalTime start = LocalTime.of(17, 0, 0); // 17:00:00
-    public static LocalTime end = LocalTime.of(21, 59, 59); // 21:59:59
+//    public static LocalTime start = LocalTime.of(17, 0, 0); // 17:00:00
+//    public static LocalTime end = LocalTime.of(21, 59, 59); // 21:59:59
+    public static LocalTime start = LocalTime.of(0, 0, 0); // 17:00:00
+    public static LocalTime end = LocalTime.of(23, 59, 59); // 21:59:59
 
     // thời gian check vào map có TĐST
     public static LocalTime startTDST = LocalTime.of(14, 0, 0); // 14:00:00

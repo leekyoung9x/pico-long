@@ -52,10 +52,10 @@ UPDATE item_option_template iot SET iot.NAME = '5 món +#% sát thương Đẻ T
 -- test
 select * FROM item_option_template iot WHERE iot.id IN (129, 141, 30, 139, 136, 137, 138, 141);
 SELECT * FROM item_option_template iot WHERE iot.NAME like '%$(5%';
-select * FROM item_template it WHERE it.NAME like '%kích hoạt%';
-SELECT * FROM item_template it where ID >= 1150 AND ID <= 1153;
+select * FROM item_template it WHERE it.NAME like '%bí kíp tuyệt kỹ%';
+SELECT * FROM item_template it where ID >= 14 AND ID <= 20;
 SELECT * FROM item_template it ORDER BY it.id DESC;
-select * from map_template mt where mt.NAME like '%đại hội%';
+select * from map_template mt where mt.NAME like '%thần điện%';
 SELECT * FROM item_option_template iot ORDER BY iot.id DESC;
 SELECT * FROM player p WHERE name like '%lì em%';
 SELECT * FROM account a where a.id = 2615;

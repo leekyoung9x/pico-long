@@ -246,15 +246,15 @@ public class RewardService {
         List<Item> list = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             if (Util.isTrue(10, 100)) {
-                Item item = ItemService.gI().createNewItem((short) Util.nextInt(16, 20));// nr
+                Item item = ItemService.gI().createNewItem((short) Util.nextInt(18, 20));// nr 5 -> 7 sao
                 list.add(item);
             } else if (Util.isTrue(20, 100)) {
                 List<Short> lstSPL = new ArrayList<>();
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_441);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_442);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_443);
-                lstSPL.add((short)ConstItem.SAO_PHA_LE_444);
-                lstSPL.add((short)ConstItem.SAO_PHA_LE_445);
+//                lstSPL.add((short)ConstItem.SAO_PHA_LE_444);
+//                lstSPL.add((short)ConstItem.SAO_PHA_LE_445);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_446);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_447);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_964);
@@ -337,6 +337,10 @@ public class RewardService {
             case (short) ConstItem.SAO_PHA_LE_447: //tnsm
                 optionId = ConstOption.OPTION_SPL_447;
                 optionVal = ConstOption.VAL_SPL_447;
+                break;
+            case (short) ConstItem.SAO_PHA_LE_964: // sức đánh
+                optionId = ConstOption.OPTION_SPL_964;
+                optionVal = ConstOption.VAL_SPL_964;
                 break;
         }
         item.itemOptions.add(new ItemOption(optionId, optionVal));
