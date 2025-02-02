@@ -60,6 +60,11 @@ public class LinhCanh extends Npc {
                             "Bạn phải đạt 10k sức đánh gốc");
                     return;
                 }
+                if (player.getSession().actived != 1) {
+                    NpcService.gI().createTutorial(player, avartar,
+                            "Bạn phải kích hoạt tài khoản mới có thể tham gia");
+                    return;
+                }
                 if (!player.clan.haveGoneDoanhTrai && player.clan.timeOpenDoanhTrai != 0) {
                     createOtherMenu(player, ConstNpc.MENU_VAO_DT,
                             "Bang hội của ngươi đang đánh trại độc nhãn\n" + "Thời gian còn lại là "
@@ -137,6 +142,12 @@ public class LinhCanh extends Npc {
                                                 return;
                                             }
 
+                                            if (player.getSession().actived != 1) {
+                                                NpcService.gI().createTutorial(player, avartar,
+                                                        "Bạn phải kích hoạt tài khoản mới có thể tham gia");
+                                                return;
+                                            }
+
                                             Item item = InventoryService.gI().findItemBagByTemp(player, ConstItem.THOI_VANG_VIP);
                                             if (item == null || item.quantity < 10_000) {
                                                 Service.getInstance().sendThongBao(player, "Bạn không có đủ 10k " + (item != null ? item.getName() : "Thỏi Vàng VIP") + " để hối lộ.");
@@ -165,6 +176,12 @@ public class LinhCanh extends Npc {
                                 if (clanMember.role != 0) {
                                     NpcService.gI().createTutorial(player, avartar,
                                             "Chỉ bang chủ mới có thể mở doanh trại");
+                                    return;
+                                }
+
+                                if (player.getSession().actived != 1) {
+                                    NpcService.gI().createTutorial(player, avartar,
+                                            "Bạn phải kích hoạt tài khoản mới có thể tham gia");
                                     return;
                                 }
 
