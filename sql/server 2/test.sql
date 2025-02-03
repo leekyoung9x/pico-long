@@ -50,12 +50,25 @@ UPDATE item_option_template iot SET iot.NAME = '5 món +#% sát thương Đẻ T
 
 
 -- test
-select * FROM item_option_template iot WHERE iot.id IN (129, 141, 30, 139, 136, 137, 138, 141);
+
+-- map nhs
+SELECT * FROM map_template mt WHERE ID >= 122 AND ID <= 124;
+-- map cold
+SELECT * FROM map_template mt WHERE ID >= 105 AND ID <= 110;
+
+SELECT * FROM item_template it WHERE it.id = 638;
+SELECT * FROM item_template it WHERE it.TYPE = 27;
+select * FROM account a WHERE a.username like '%tester1%';
+SELECT p.data_task, p.* FROM player p where p.account_id = 18128;
+SELECT * FROM task_sub_template tmt WHERE tmt.NAME LIKE '%sức đánh%';
+SELECT * FROM mob_reward_map mrm WHERE mrm.map_id IN (161, 162, 163);
+SELECT * FROM mob_reward mr WHERE mr.item_id = 1229;
+select * FROM item_option_template iot WHERE iot.id IN (129, 141, 30, 139, 136, 137, 138, 141, 249);
 SELECT * FROM item_option_template iot WHERE iot.NAME like '%$(5%';
 select * FROM item_template it WHERE it.NAME like '%bí kíp tuyệt kỹ%';
 SELECT * FROM item_template it where ID >= 14 AND ID <= 20;
 SELECT * FROM item_template it ORDER BY it.id DESC;
-select * from map_template mt where mt.NAME like '%thần điện%';
+select * from map_template mt where mt.NAME like '%hang động%';
 SELECT * FROM item_option_template iot ORDER BY iot.id DESC;
 SELECT * FROM player p WHERE name like '%lì em%';
 SELECT * FROM account a where a.id = 2615;

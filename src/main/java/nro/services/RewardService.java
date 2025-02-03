@@ -258,7 +258,7 @@ public class RewardService {
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_446);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_447);
                 lstSPL.add((short)ConstItem.SAO_PHA_LE_964);
-                int indexItem = Util.nextInt(lstSPL.size() - 1);
+                int indexItem = Util.nextInt(lstSPL.size());
                 Item item = ItemService.gI().createNewItem(lstSPL.get(indexItem));// cac loai sao pha le
                 initBaseOptionSaoPhaLeLucky(item);
                 list.add(item);

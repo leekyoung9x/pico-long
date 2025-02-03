@@ -1829,7 +1829,8 @@ public class NPoint {
                 default:
                     break;
             }
-            ServerLog.logDame(player.name, dameAttack);
+            // ekko rem
+//            ServerLog.logDame(player.name, dameAttack);
         }
         return dameAttack;
     }

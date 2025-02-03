@@ -1055,7 +1055,8 @@ public class CombineServiceNew {
                             }
                         }
                         if (star < MAX_STAR_ITEM) {
-                            player.combineNew.gemCombine = getGemPhaLeHoa(star);
+                            // ekko x2 ngọc cần để pha lê hóa
+                            player.combineNew.gemCombine = getGemPhaLeHoa(star) * 2;
                             player.combineNew.goldCombine = getGoldPhaLeHoa(star);
                             player.combineNew.ratioCombine = getRatioPhaLeHoa(star);
 
@@ -3993,6 +3994,8 @@ public class CombineServiceNew {
                             int optionSetID = -1;
                             int optionSetVal = 0;
                             Item firstSKH = ItemService.gI().createNewItem((short) firstSKHID);
+                            // khởi tạo option cho skh
+                            lstOption = initOptionSKH(firstSKHID);
                             switch (nextItemGender) {
                                 // td
                                 case 0:
@@ -4074,6 +4077,8 @@ public class CombineServiceNew {
                             } else {
                                 optionSKHID = skhTwoOptionID;
                             }
+                            // khởi tạo option cho skh
+                            lstOption = initOptionSKH(nextID);
 
                             switch (optionSKHID) {
                                 // td
@@ -6863,6 +6868,563 @@ public class CombineServiceNew {
         } else {
             this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 1 pet, x3 Đá Nguyệt Tử, 1k TVV để nâng cấp\nHoặc 1 pet, x1 Đá Thanh Tẩy, 1k TVV để tẩy cấp", "Đóng");
         }
+    }
+
+    // init option cho đồ skh
+    public static List<ItemOption> initOptionSKH(int itemID) {
+        List<ItemOption> lstOption = new ArrayList<>();
+        switch (itemID) {
+            // áo trái đất
+            case ConstItem.AO_VAI_3_LO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 2));
+                break;
+            case ConstItem.AO_THUN_3_LO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 4));
+                break;
+            case ConstItem.AO_VAI_DAY:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 8));
+                break;
+            case ConstItem.AO_THUN_DAY:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 16));
+                break;
+            case ConstItem.AO_VAI_KAME:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 24));
+                break;
+            case ConstItem.AO_THUN_KAME:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 40));
+                break;
+            case ConstItem.AO_VO_KAME:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 60));
+                break;
+            case ConstItem.AO_VO_GOKU:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 90));
+                break;
+            case ConstItem.AO_BAC_GOKU:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 200));
+                break;
+            case ConstItem.AO_VANG_GOKU:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 250));
+                break;
+            case ConstItem.AO_DA_CALIC:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 300));
+                break;
+            case ConstItem.AO_JEAN_CALIC:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 400));
+                break;
+            // quần trái đất
+            case ConstItem.QUAN_VAI_DEN:
+                lstOption.add(new ItemOption(ConstOption.HP, 30));
+                break;
+            case ConstItem.QUAN_THUN_DEN:
+                lstOption.add(new ItemOption(ConstOption.HP, 150));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 12));
+                break;
+            case ConstItem.QUAN_VAI_DAY:
+                lstOption.add(new ItemOption(ConstOption.HP, 300));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 40));
+                break;
+            case ConstItem.QUAN_THUN_DAY:
+                lstOption.add(new ItemOption(ConstOption.HP, 600));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 120));
+                break;
+            case ConstItem.QUAN_VAI_KAME:
+                lstOption.add(new ItemOption(ConstOption.HP, 1400));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 280));
+                break;
+            case ConstItem.QUAN_THUN_KAME:
+                lstOption.add(new ItemOption(ConstOption.HP, 3000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 600));
+                break;
+            case ConstItem.QUAN_VO_KAME:
+                lstOption.add(new ItemOption(ConstOption.HP, 6000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 1200));
+                break;
+            case ConstItem.QUAN_VO_GOKU:
+                lstOption.add(new ItemOption(ConstOption.HP, 10000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 2000));
+                break;
+            case ConstItem.QUAN_BAC_GOKU:
+                lstOption.add(new ItemOption(ConstOption.HP, 14000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 2500));
+                break;
+            case ConstItem.QUAN_VANG_GOKU:
+                lstOption.add(new ItemOption(ConstOption.HP, 18000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 3000));
+                break;
+            case ConstItem.QUAN_DA_CALIC:
+                lstOption.add(new ItemOption(ConstOption.HP, 22000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 3500));
+                break;
+            case ConstItem.QUAN_JEAN_CALIC:
+                lstOption.add(new ItemOption(ConstOption.HP, 26000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 4000));
+                break;
+            // găng trái đất
+            case ConstItem.GANG_VAI_DEN:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 4));
+                break;
+            case ConstItem.GANG_THUN_DEN:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 7));
+                break;
+            case ConstItem.GANG_VAI_DAY:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 14));
+                break;
+            case ConstItem.GANG_THUN_DAY:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 28));
+                break;
+            case ConstItem.GANG_VAI_KAME:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 55));
+                break;
+            case ConstItem.GANG_THUN_KAME:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 110));
+                break;
+            case ConstItem.GANG_VO_KAME:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 220));
+                break;
+            case ConstItem.GANG_VO_GOKU:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 530));
+                break;
+            case ConstItem.GANG_BAC_GOKU:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 680));
+                break;
+            case ConstItem.GANG_VANG_GOKU:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 1000));
+                break;
+            case ConstItem.GANG_DA_CALIC:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 1500));
+                break;
+            case ConstItem.GANG_JEAN_CALIC:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 2200));
+                break;
+            // giày trái đất
+            case ConstItem.GIAY_NHUA:
+                lstOption.add(new ItemOption(ConstOption.KI, 10));
+                break;
+            case ConstItem.GIAY_CAO_SU:
+                lstOption.add(new ItemOption(ConstOption.KI, 25));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 5));
+                break;
+            case ConstItem.GIAY_NHUA_DE_DAY:
+                lstOption.add(new ItemOption(ConstOption.KI, 120));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 24));
+                break;
+            case ConstItem.GIAY_CAO_SU_DE_DAY:
+                lstOption.add(new ItemOption(ConstOption.KI, 250));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 50));
+                break;
+            case ConstItem.GIAY_NHUA_KAME:
+                lstOption.add(new ItemOption(ConstOption.KI, 500));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 100));
+                break;
+            case ConstItem.GIAY_CAO_SU_KAME:
+                lstOption.add(new ItemOption(ConstOption.KI, 1200));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 240));
+                break;
+            case ConstItem.GIAY_VO_KAME:
+                lstOption.add(new ItemOption(ConstOption.KI, 2400));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 480));
+                break;
+            case ConstItem.GIAY_VO_GOKU:
+                lstOption.add(new ItemOption(ConstOption.KI, 5000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 1000));
+                break;
+            case ConstItem.GIAY_BAC_GOKU:
+                lstOption.add(new ItemOption(ConstOption.KI, 9000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 1500));
+                break;
+            case ConstItem.GIAY_VANG_GOKU:
+                lstOption.add(new ItemOption(ConstOption.KI, 14000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2000));
+                break;
+            case ConstItem.GIAY_DA_CALIC:
+                lstOption.add(new ItemOption(ConstOption.KI, 19000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2500));
+                break;
+            case ConstItem.GIAY_JEAN_CALIC:
+                lstOption.add(new ItemOption(ConstOption.KI, 24000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 3000));
+                break;
+            // ra đa trái đất
+            case ConstItem.RADA_CAP_1:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 1));
+                break;
+            case ConstItem.RADA_CAP_2:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 2));
+                break;
+            case ConstItem.RADA_CAP_3:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 3));
+                break;
+            case ConstItem.RADA_CAP_4:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 4));
+                break;
+            case ConstItem.RADA_CAP_5:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 5));
+                break;
+            case ConstItem.RADA_CAP_6:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 6));
+                break;
+            case ConstItem.RADA_CAP_7:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 7));
+                break;
+            case ConstItem.RADA_CAP_8:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 8));
+                break;
+            case ConstItem.RADA_CAP_9:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 9));
+                break;
+            case ConstItem.RADA_CAP_10:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 10));
+                break;
+            case ConstItem.RADA_CAP_11:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 11));
+                break;
+            case ConstItem.RADA_CAP_12:
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, 12));
+                break;
+            // áo namec
+            case ConstItem.AO_SOI_LEN:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 2));
+                break;
+            case ConstItem.AO_SOI_GAI:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 4));
+                break;
+            case ConstItem.AO_LEN_PICO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 8));
+                break;
+            case ConstItem.AO_THUN_PICO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 16));
+                break;
+            case ConstItem.AO_CHOANG_LEN:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 24));
+                break;
+            case ConstItem.AO_CHOANG_THUN:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 40));
+                break;
+            case ConstItem.AO_VAI_PICO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 60));
+                break;
+            case ConstItem.AO_DA_PICO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 90));
+                break;
+            case ConstItem.AO_SAT_TRON:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 200));
+                break;
+            case ConstItem.AO_DONG_TRON:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 250));
+                break;
+            case ConstItem.AO_BAC_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 300));
+                break;
+            case ConstItem.AO_VANG_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 400));
+                break;
+            // quần namec
+            case ConstItem.QUAN_SOI_LEN:
+                lstOption.add(new ItemOption(ConstOption.HP, 20));
+                break;
+            case ConstItem.QUAN_SOI_GAI:
+                lstOption.add(new ItemOption(ConstOption.HP, 25));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 10));
+                break;
+            case ConstItem.QUAN_VAI_THO_PICO:
+                lstOption.add(new ItemOption(ConstOption.HP, 120));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 28));
+                break;
+            case ConstItem.QUAN_THUN_PICO:
+                lstOption.add(new ItemOption(ConstOption.HP, 250));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 100));
+                break;
+            case ConstItem.QUAN_LEN_CUNG:
+                lstOption.add(new ItemOption(ConstOption.HP, 600));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 240));
+                break;
+            case ConstItem.QUAN_THUN_CUNG:
+                lstOption.add(new ItemOption(ConstOption.HP, 1200));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 480));
+                break;
+            case ConstItem.QUAN_VAI_CUNG_PICO:
+                lstOption.add(new ItemOption(ConstOption.HP, 2400));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 960));
+                break;
+            case ConstItem.QUAN_VAI_MEM_PICO:
+                lstOption.add(new ItemOption(ConstOption.HP, 4800));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 1800));
+                break;
+            case ConstItem.QUAN_SAT_TRON:
+                lstOption.add(new ItemOption(ConstOption.HP, 13000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 2200));
+                break;
+            case ConstItem.QUAN_DONG_TRON:
+                lstOption.add(new ItemOption(ConstOption.HP, 17000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 2700));
+                break;
+            case ConstItem.QUAN_BAC_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.HP, 21000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 32000));
+                break;
+            case ConstItem.QUAN_VANG_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.HP, 25000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 37000));
+                break;
+            // găng namec
+            case ConstItem.GANG_SOI_LEN:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 3));
+                break;
+            case ConstItem.GANG_SOI_GAI:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 6));
+                break;
+            case ConstItem.GANG_LEN_PICO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 12));
+                break;
+            case ConstItem.GANG_THUN_PICO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 24));
+                break;
+            case ConstItem.GANG_LEN_CUNG:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 50));
+                break;
+            case ConstItem.GANG_THUN_CUNG:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 100));
+                break;
+            case ConstItem.GANG_VAI_PICO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 200));
+                break;
+            case ConstItem.GANG_DA_PICO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 500));
+                break;
+            case ConstItem.GANG_SAT_TRON:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 630));
+                break;
+            case ConstItem.GANG_DONG_TRON:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 950));
+                break;
+            case ConstItem.GANG_BAC_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 1450));
+                break;
+            case ConstItem.GANG_VANG_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 2150));
+                break;
+            // giày namec
+            case ConstItem.GIAY_SOI_LEN:
+                lstOption.add(new ItemOption(ConstOption.KI, 15));
+                break;
+            case ConstItem.GIAY_SOI_GAI:
+                lstOption.add(new ItemOption(ConstOption.KI, 30));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 6));
+                break;
+            case ConstItem.GIAY_NHUA_PICO:
+                lstOption.add(new ItemOption(ConstOption.KI, 150));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 30));
+                break;
+            case ConstItem.GIAY_CAO_SU_PICO:
+                lstOption.add(new ItemOption(ConstOption.KI, 300));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 60));
+                break;
+            case ConstItem.GIAY_NHUA_CUNG:
+                lstOption.add(new ItemOption(ConstOption.KI, 600));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 120));
+                break;
+            case ConstItem.GIAY_CAO_SU_CUNG:
+                lstOption.add(new ItemOption(ConstOption.KI, 1500));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 300));
+                break;
+            case ConstItem.GIAY_DA_PICO:
+                lstOption.add(new ItemOption(ConstOption.KI, 3000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 600));
+                break;
+            case ConstItem.GIAY_SAT_PICO:
+                lstOption.add(new ItemOption(ConstOption.KI, 6000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 1200));
+                break;
+            case ConstItem.GIAY_SAT_TRON:
+                lstOption.add(new ItemOption(ConstOption.KI, 10000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 1700));
+                break;
+            case ConstItem.GIAY_DONG_TRON:
+                lstOption.add(new ItemOption(ConstOption.KI, 15000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2200));
+                break;
+            case ConstItem.GIAY_BAC_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.KI, 20000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2700));
+                break;
+            case ConstItem.GIAY_VANG_ZEALOT:
+                lstOption.add(new ItemOption(ConstOption.KI, 25000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 3200));
+                break;
+                // áo xayda
+            case ConstItem.AO_VAI_THO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 3));
+                break;
+            case ConstItem.AO_THUN_THO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 5));
+                break;
+            case ConstItem.AO_GIAP_SAT:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 10));
+                break;
+            case ConstItem.AO_GIAP_DONG:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 20));
+                break;
+            case ConstItem.AO_GIAP_BAC:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 30));
+                break;
+            case ConstItem.AO_GIAP_VANG:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 50));
+                break;
+            case ConstItem.AO_LONG_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 70));
+                break;
+            case ConstItem.AO_KHOAC_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 100));
+                break;
+            case ConstItem.AO_LONG_DO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 230));
+                break;
+            case ConstItem.AO_SIEU_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 280));
+                break;
+            case ConstItem.AO_KAIO:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 330));
+                break;
+            case ConstItem.AO_LUONG_LONG:
+                lstOption.add(new ItemOption(ConstOption.GIAP, 450));
+                break;
+                // quần xayda
+            case ConstItem.QUAN_VAI_THO:
+                lstOption.add(new ItemOption(ConstOption.HP, 20));
+                break;
+            case ConstItem.QUAN_THUN_THO:
+                lstOption.add(new ItemOption(ConstOption.HP, 20));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 8));
+                break;
+            case ConstItem.QUAN_GIAP_SAT:
+                lstOption.add(new ItemOption(ConstOption.HP, 100));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 20));
+                break;
+            case ConstItem.QUAN_GIAP_DONG:
+                lstOption.add(new ItemOption(ConstOption.HP, 200));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 80));
+                break;
+            case ConstItem.QUAN_GIAP_BAC:
+                lstOption.add(new ItemOption(ConstOption.HP, 500));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 200));
+                break;
+            case ConstItem.QUAN_GIAP_VANG:
+                lstOption.add(new ItemOption(ConstOption.HP, 1000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 400));
+                break;
+            case ConstItem.QUAN_LONG_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.HP, 2000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 800));
+                break;
+            case ConstItem.QUAN_DA_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.HP, 4000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 1600));
+                break;
+            case ConstItem.QUAN_LONG_DO:
+                lstOption.add(new ItemOption(ConstOption.HP, 12000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 2100));
+                break;
+            case ConstItem.QUAN_SIEU_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.HP, 16000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 2600));
+                break;
+            case ConstItem.QUAN_KAIO:
+                lstOption.add(new ItemOption(ConstOption.HP, 20000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 3100));
+                break;
+            case ConstItem.QUAN_LUONG_LONG:
+                lstOption.add(new ItemOption(ConstOption.HP, 24000));
+                lstOption.add(new ItemOption(ConstOption.CONG_HP_TREN_30_GIAY, 3600));
+                break;
+                // găng xayda
+            case ConstItem.GANG_VAI_THO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 5));
+                break;
+            case ConstItem.GANG_THUN_THO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 8));
+                break;
+            case ConstItem.GANG_SAT:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 16));
+                break;
+            case ConstItem.GANG_DONG:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 32));
+                break;
+            case ConstItem.GANG_BAC:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 60));
+                break;
+            case ConstItem.GANG_VANG:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 120));
+                break;
+            case ConstItem.GANG_LONG_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 240));
+                break;
+            case ConstItem.GANG_DA_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 560));
+                break;
+            case ConstItem.GANG_LONG_DO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 700));
+                break;
+            case ConstItem.GANG_SIEU_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 1050));
+                break;
+            case ConstItem.GANG_KAIO:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 1550));
+                break;
+            case ConstItem.GANG_LUONG_LONG:
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, 2250));
+                break;
+                // giày xayda
+            case ConstItem.GIAY_VAI_THO:
+                lstOption.add(new ItemOption(ConstOption.KI, 10));
+                break;
+            case ConstItem.GIAY_CAO_SU_THO:
+                lstOption.add(new ItemOption(ConstOption.KI, 20));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 4));
+                break;
+            case ConstItem.GIAY_SAT:
+                lstOption.add(new ItemOption(ConstOption.KI, 100));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 20));
+                break;
+            case ConstItem.GIAY_DONG:
+                lstOption.add(new ItemOption(ConstOption.KI, 200));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 40));
+                break;
+            case ConstItem.GIAY_BAC:
+                lstOption.add(new ItemOption(ConstOption.KI, 400));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 80));
+                break;
+            case ConstItem.GIAY_VANG:
+                lstOption.add(new ItemOption(ConstOption.KI, 1000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 200));
+                break;
+            case ConstItem.GIAY_LONG_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.KI, 2000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 400));
+                break;
+            case ConstItem.GIAY_DA_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.KI, 4000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 800));
+                break;
+            case ConstItem.GIAY_LONG_DO:
+                lstOption.add(new ItemOption(ConstOption.KI, 8000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 1300));
+                break;
+            case ConstItem.GIAY_SIEU_XAYDA:
+                lstOption.add(new ItemOption(ConstOption.KI, 13000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 1800));
+                break;
+            case ConstItem.GIAY_KAIO:
+                lstOption.add(new ItemOption(ConstOption.KI, 18000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2300));
+                break;
+            case ConstItem.GIAY_LUONG_LONG:
+                lstOption.add(new ItemOption(ConstOption.KI, 23000));
+                lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2800));
+                break;
+            default:
+                break;
+        }
+        return lstOption;
     }
 
 }
