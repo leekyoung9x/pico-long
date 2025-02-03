@@ -4016,8 +4016,8 @@ public class CombineServiceNew {
                                     // nm
                                 case 1:
                                     optionSKHID = ConstOption.SET_DAIMAO;
-                                    optionSetID = ConstOption.SET_X2_THOI_GIAN_DE_TRUNG;
-                                    optionSetVal = 0;
+                                    optionSetID = ConstOption.SET_SAT_THUONG_DE_TRUNG;
+                                    optionSetVal = 100;
                                     if(Util.isTrue(25, 100)) {
                                         optionSKHID = ConstOption.SET_PICOLO;
                                         optionSetID = ConstOption.OPTION_PERCENT_KI;
@@ -4096,8 +4096,8 @@ public class CombineServiceNew {
                                     break;
                                 // nm
                                 case ConstOption.SET_DAIMAO:
-                                    optionSetID = ConstOption.SET_X2_THOI_GIAN_DE_TRUNG;
-                                    optionSetVal = 0;
+                                    optionSetID = ConstOption.SET_SAT_THUONG_DE_TRUNG;
+                                    optionSetVal = 100;
                                     break;
                                 case ConstOption.SET_PICOLO:
                                     optionSetID = ConstOption.OPTION_PERCENT_KI;
