@@ -4,6 +4,7 @@
  */
 package nro.models.npc.specialnpc;
 
+import nro.consts.ConstPet;
 import nro.models.player.Player;
 import nro.server.io.Message;
 import nro.services.PetService;
@@ -58,7 +59,8 @@ public class BillEgg {
     }
 
     public void openEggBill(int gender) {
-        if (this.player.pet != null) {
+        // xài đệ bill cần
+        if (player != null && player.pet != null && player.pet.typePet == ConstPet.FIDE_NHI && player.pet.nPoint != null && player.pet.nPoint.power >= 100_000_000_000L) {
             try {
                 destroyEggBill();
                 Thread.sleep(4000);
@@ -68,7 +70,7 @@ public class BillEgg {
             } catch (Exception e) {
             }
         } else {
-            Service.getInstance().sendThongBao(player, "Yêu cầu phải có đệ tử");
+            Service.getInstance().sendThongBao(player, "Yêu cầu phải có đệ tử Fide Nhi và 100 tỷ sức mạnh để mở quả trứng");
         }
     }
 

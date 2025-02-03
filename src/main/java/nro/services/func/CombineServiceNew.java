@@ -2110,7 +2110,7 @@ public class CombineServiceNew {
                                 if(currentItem.isItemThanLinh()) {
                                     totalItemTL += 1;
                                     tlOne = currentItem;
-                                } else if (currentItem.template.id == ConstItem.DA_NGU_SAC){
+                                } else if (currentItem.template.id == ConstItem.DA_THAN_LINH){
                                     totalSlDaTL = currentItem.quantity;
                                     daThanLinhParam = currentItem;
                                 }
@@ -3886,7 +3886,7 @@ public class CombineServiceNew {
                         if(currentItem.isItemThanLinh()) {
                             totalItemTL += 1;
                             tlOne = currentItem;
-                        } else if (currentItem.template.id == ConstItem.DA_NGU_SAC){
+                        } else if (currentItem.template.id == ConstItem.DA_THAN_LINH){
                             totalSlDaTL = currentItem.quantity;
                             daThanLinhParam = currentItem;
                         }

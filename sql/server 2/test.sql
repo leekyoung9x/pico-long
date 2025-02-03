@@ -45,16 +45,138 @@ INSERT INTO item_option_template (id, NAME, TYPE) VALUES
 UPDATE item_option_template iot SET iot.NAME = '5 món +#% sát thương Đẻ Trứng' WHERE iot.id = 144;
 
 
+-- map 161: 80, 81
+DELETE FROM mob_reward WHERE ID = 46;
+INSERT INTO mob_reward (id, mob_id, item_id, ratio, type_ratio, for_all_gender) VALUES
+(46, 80, 1229, 1, 200, True);
+
+DELETE FROM mob_reward WHERE ID = 47;
+INSERT INTO mob_reward (id, mob_id, item_id, ratio, type_ratio, for_all_gender) VALUES
+(47, 81, 1229, 1, 200, True);
+
+
+delete FROM mob_reward_map WHERE ID = 110;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(110, 46, 161);
+
+delete FROM mob_reward_map WHERE ID = 111;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(111, 47, 161);
+
+
+-- map 162: 80, 81
+delete FROM mob_reward_map WHERE ID = 112;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(112, 46, 162);
+
+delete FROM mob_reward_map WHERE ID = 113;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(113, 47, 162);
+-- map 163: 80, 81
+delete FROM mob_reward_map WHERE ID = 114;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(114, 46, 163);
+
+delete FROM mob_reward_map WHERE ID = 115;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(115, 47, 163);
+
+
+-- đá thần linh
+
+UPDATE item_template SET TYPE = 27, gender = 3, NAME = 'Đá thần linh', description = 'Dùng để nâng cấp SKH', icon_id = 29994, part = -1, is_up_to_up = 0, power_require = 0 WHERE id = 1911;
+
+
+-- rơi đồ cold
+-- 66
+DELETE from mob_reward where ID = 48;
+INSERT INTO mob_reward (id, mob_id, item_id, ratio, type_ratio, for_all_gender) VALUES
+(48, 66, 1911, 1, 500, True);
+-- 67
+DELETE from mob_reward where ID = 49;
+INSERT INTO mob_reward (id, mob_id, item_id, ratio, type_ratio, for_all_gender) VALUES
+(49, 67, 1911, 1, 500, True);
+-- 68
+DELETE from mob_reward where ID = 50;
+INSERT INTO mob_reward (id, mob_id, item_id, ratio, type_ratio, for_all_gender) VALUES
+(50, 68, 1911, 1, 500, True);
+-- 69
+DELETE from mob_reward where ID = 51;
+INSERT INTO mob_reward (id, mob_id, item_id, ratio, type_ratio, for_all_gender) VALUES
+(51, 69, 1911, 1, 500, True);
+-- map 105: 66
+DELETE FROM mob_reward_map WHERE ID = 116;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(116, 48, 105);
+
+-- map 106: 66, 67
+DELETE FROM mob_reward_map WHERE ID = 117;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(117, 48, 106);
+DELETE FROM mob_reward_map WHERE ID = 118;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(118, 49, 106);
+
+-- map 107: 67
+DELETE FROM mob_reward_map WHERE ID = 119;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(119, 49, 107);
+
+-- map 108: 67, 68
+DELETE FROM mob_reward_map WHERE ID = 120;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(120, 49, 108);
+DELETE FROM mob_reward_map WHERE ID = 121;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(121, 50, 108);
+-- map 109: 68
+DELETE FROM mob_reward_map WHERE ID = 122;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(122, 50, 109);
+-- map 110: 68, 69
+DELETE FROM mob_reward_map WHERE ID = 123;
+INSERT INTO mob_reward_map (id, mob_reward_id, map_id) VALUES
+(123, 51, 110);
+
 
 
 
 
 -- test
+SELECT * FROM item_template it ORDER BY it.id DESC;
+SELECT * FROM map_template mt WHERE ID IN (161, 162, 163);
+
+SELECT * FROM mob_reward mr ORDER BY mr.id DESC;
+SELECT * FROM mob_reward_map mrm ORDER BY mrm.id DESC;
+SELECT * FROM mob_reward mr WHERE mr.mob_id IN (66, 67, 68, 69);
+SELECT * FROM mob_reward_map mrm WHERE mrm.map_id >= 105 AND mrm.map_id <= 110;
+
+
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%giáp+#%';
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%HP+#%';
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%HP/%';
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%tấn công+#%';
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%KI+#%';
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%KI/30s%';
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%chí mạng+#%%';
+
+SELECT * from item_option_template iot WHERE iot.id  = 144;
+
+SELECT * from item_option_template iot WHERE iot.id IN (5, 77, 103, 50, 107, 106, 30, 161);
+
 
 -- map nhs
 SELECT * FROM map_template mt WHERE ID >= 122 AND ID <= 124;
 -- map cold
-SELECT * FROM map_template mt WHERE ID >= 105 AND ID <= 110;
+SELECT id, mt.mobs, mt.* FROM map_template mt WHERE ID >= 105 AND ID <= 110;
+
+SELECT * FROM player WHERE name like '%thợ săn%';
+SELECT * FROM account a WHERE a.id = 3928;
+
+
+SELECT * FROM player WHERE name like '%daxanhle%';
+SELECT * FROM account a WHERE a.id = 4652;
+
 
 SELECT * FROM item_template it WHERE it.id = 638;
 SELECT * FROM item_template it WHERE it.TYPE = 27;
