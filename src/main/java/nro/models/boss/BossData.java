@@ -257,7 +257,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             500_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1311, 1312, 1313}, //outfit
             new short[]{208}, //map join
             new int[][]{ //skill
@@ -295,7 +295,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             1_000_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{745, 746, 747}, //outfit
             new short[]{14}, //map join
             new int[][]{ //skill
@@ -331,7 +331,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             1_000_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{751, 752, 753}, //outfit
             new short[]{14}, //map join
             new int[][]{ //skill
@@ -364,7 +364,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             1000_0000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{742, 743, 744}, //outfit
             new short[]{27}, //map join
             new int[][]{ //skill
@@ -379,7 +379,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             1000_0000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{639, 640, 641}, //outfit
             new short[]{27}, //map join
             new int[][]{ //skill
@@ -409,7 +409,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             10_000_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{520, 521, 522}, //outfit
             new short[]{20}, //map join
             new int[][]{ //skill
@@ -1150,7 +1150,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             150000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{320, 321, 322}, //outfit
             new short[]{105, 106, 107, 108, 109, 110}, //map join
             new int[][]{ //skill
@@ -1578,7 +1578,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             20000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1393, 1394, 1395}, //outfit
             new short[]{14}, //map join
             new int[][]{ //skill
@@ -1595,7 +1595,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             20000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1378, 1379, 1380}, //outfit
             new short[]{0}, //map join
             new int[][]{ //skill
@@ -1613,7 +1613,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             20000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1405, 1406, 1407}, //outfit
             new short[]{154}, //map join
             new int[][]{ //skill
@@ -1703,7 +1703,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             200000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{903, 904, 905}, //outfit
             new short[]{6}, //map join
             new int[][]{ //skill
@@ -1720,7 +1720,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             200000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1434, 1435, 1436}, //outfit
             new short[]{19}, //map join
             new int[][]{ //skill
@@ -1774,7 +1774,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             20000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1369, 1370, 1371}, //outfit
             new short[]{7}, //map join
             new int[][]{ //skill
@@ -2592,7 +2592,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             10_000_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1396, 1397, 1398}, //outfit
             new short[]{155}, //map join
             new int[][]{ //skill
@@ -2609,7 +2609,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             10_000_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1311, 1312, 1313}, //outfit
             new short[]{43}, //map join
             new int[][]{ //skill
@@ -2709,7 +2709,7 @@ public class BossData {
             Boss.DAME_NORMAL, //type dame
             Boss.HP_NORMAL, //type hp
             10_000_000, //dame
-            new long[][]{{700_000_000}}, //hp
+            new long[][]{{2_000_000_000}}, //hp
             new short[]{1381, 1382, 1383}, //outfit
             new short[]{42}, //map join
             new int[][]{ //skill
@@ -2801,7 +2801,7 @@ public class BossData {
             .typeDame(Boss.DAME_NORMAL)
             .typeHp(Boss.HP_NORMAL)
             .dame(1000)
-            .hp(new long[][]{{700_000_000}})
+            .hp(new long[][]{{2_000_000_000}})
             .outfit(new short[]{297, 298, 299})
             .mapJoin(new short[]{14})
             .skillTemp(new int[][]{
@@ -2821,7 +2821,7 @@ public class BossData {
             .typeDame(Boss.DAME_NORMAL)
             .typeHp(Boss.HP_NORMAL)
             .dame(1000)
-            .hp(new long[][]{{700_000_000}})
+            .hp(new long[][]{{2_000_000_000}})
             .outfit(new short[]{514, 515, 516})
             .mapJoin(new short[]{19})
             .skillTemp(new int[][]{

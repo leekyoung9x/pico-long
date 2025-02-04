@@ -223,17 +223,17 @@ public class Egg extends Npc {
                                 //thường hoặc đệ ma bư mập đạt 100 tỷ sức mạnh
                                 // chưa có pet thì hiện thông báo
                                 if(player.pet == null) {
-                                    Service.getInstance().sendThongBao(player, "Yêu cầu bạn phải có đệ tử thường hoặc đệ Ma Bư mập đạt 100 tỷ sức mạnh");
+                                    Service.getInstance().sendThongBao(player, "Yêu cầu bạn phải có đệ tử Fide Nhí đạt 100 tỷ sức mạnh");
                                     return;
                                 }
                                 else if(player.pet != null && player.pet.nPoint != null) {
                                     // phải có đệ mabu hoặc đệ thường
-                                    if(player.pet.typePet != ConstPet.NORMAL && player.pet.typePet != ConstPet.MABU) {
-                                        Service.getInstance().sendThongBao(player, "Yêu cầu bạn phải có đệ tử thường hoặc đệ Ma Bư mập đạt 100 tỷ sức mạnh");
+                                    if(player.pet.typePet != ConstPet.FIDE_NHI) {
+                                        Service.getInstance().sendThongBao(player, "Yêu cầu bạn phải có đệ tử Fide Nhí đạt 100 tỷ sức mạnh");
                                         return;
                                     }
                                     if(player.pet.nPoint.power < 100_000_000_000L) {
-                                        Service.getInstance().sendThongBao(player, "Yêu cầu bạn phải có đệ tử thường hoặc đệ Ma Bư mập đạt 100 tỷ sức mạnh");
+                                        Service.getInstance().sendThongBao(player, "Yêu cầu bạn phải có đệ tử Fide Nhí đạt 100 tỷ sức mạnh");
                                         return;
                                     }
                                     this.createOtherMenu(player, ConstNpc.CONFIRM_OPEN_EGG,

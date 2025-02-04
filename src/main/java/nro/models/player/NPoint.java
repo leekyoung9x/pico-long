@@ -956,9 +956,9 @@ public class NPoint {
             this.hpMax += calPercent(this.hpMax, 10);
         }
         // Map Mabu 6h Sửa lại vào Map chỉ số SĐ HP KI Bị chia 5 Lần
-        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
-            this.hpMax /= 5;
-        }
+//        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
+//            this.hpMax /= 5;
+//        }
         // bị hóa ma xương thì giảm 20% HP, KI, SD
         if (this.player.isPl() && this.player.effectSkin.isHoaXuong) {
             this.hpMax -= calPercent(this.hpMax, 20);
@@ -1221,9 +1221,9 @@ public class NPoint {
             this.mpMax += calPercent(this.mpMax, 10);
         }
         // Map Mabu 6h Sửa lại vào Map chỉ số SĐ HP KI Bị chia 5 Lần
-        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
-            this.mpMax /= 5;
-        }
+//        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
+//            this.mpMax /= 5;
+//        }
         // bị hóa ma xương thì giảm 20% HP, KI, SD
         if (this.player.isPl() && this.player.effectSkin.isHoaXuong) {
             this.mpMax -= calPercent(this.mpMax, 20);
@@ -1452,9 +1452,9 @@ public class NPoint {
             this.dame += calPercent(this.dame, 10);
         }
         // Map Mabu 6h Sửa lại vào Map chỉ số SĐ HP KI Bị chia 5 Lần
-        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
-            this.dame /= 5;
-        }
+//        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
+//            this.dame /= 5;
+//        }
         // bị hóa ma xương thì giảm 20% HP, KI, SD
         if (this.player.isPl() && this.player.effectSkin.isHoaXuong) {
             this.dame -= calPercent(this.dame, 20);
@@ -1492,9 +1492,9 @@ public class NPoint {
             this.def /= 2;
         }
         // ekko map ma bư giảm 5 lần giáp
-        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
-            this.def /= 5;
-        }
+//        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
+//            this.def /= 5;
+//        }
     }
 
     private void setCrit() {
@@ -1516,9 +1516,9 @@ public class NPoint {
             this.crit /= 2;
         }
         // ekko map ma bư giảm 5 lần chí mạng
-        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
-            this.crit /= 5;
-        }
+//        if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
+//            this.crit /= 5;
+//        }
     }
 
     private void setCritDame() {

@@ -3981,6 +3981,7 @@ public class CombineServiceNew {
                         InventoryService.gI().subQuantityItemsBag(player, tlOneInBag, 1);
                         InventoryService.gI().subQuantityItemsBag(player, tlTwoInBag, 1);
                         InventoryService.gI().subQuantityItemsBag(player, daThanLinhParam, 10);
+                        InventoryService.gI().sendItemBags(player);
                         // id của skh sau khi nâng cấp
                         // nếu là nhẫn thần linh thì lấy theo gender của player
                         int nextItemGender = tlOne.template.gender;
@@ -4067,6 +4068,7 @@ public class CombineServiceNew {
                             InventoryService.gI().subQuantityItemsBag(player, skhOneInbag, 1);
                             InventoryService.gI().subQuantityItemsBag(player, skhTwoInbag, 1);
                             InventoryService.gI().subQuantityItemsBag(player, daThanLinhParam, 10);
+                            InventoryService.gI().sendItemBags(player);
                             Item nextSKH = ItemService.gI().createNewItem((short) nextID);
                             List<ItemOption> lstOption = new ArrayList<>();
                             int optionSKHID = skhOneOptionSKHID;

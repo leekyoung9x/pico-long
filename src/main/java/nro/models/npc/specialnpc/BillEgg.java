@@ -59,8 +59,7 @@ public class BillEgg {
     }
 
     public void openEggBill(int gender) {
-        // xài đệ bill cần
-        if (player != null && player.pet != null && player.pet.typePet == ConstPet.FIDE_NHI && player.pet.nPoint != null && player.pet.nPoint.power >= 100_000_000_000L) {
+        if (this.player.pet != null) {
             try {
                 destroyEggBill();
                 Thread.sleep(4000);
@@ -70,7 +69,7 @@ public class BillEgg {
             } catch (Exception e) {
             }
         } else {
-            Service.getInstance().sendThongBao(player, "Yêu cầu phải có đệ tử Fide Nhi và 100 tỷ sức mạnh để mở quả trứng");
+            Service.getInstance().sendThongBao(player, "Yêu cầu phải có đệ tử");
         }
     }
 

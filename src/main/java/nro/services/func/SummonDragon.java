@@ -64,10 +64,14 @@ public class SummonDragon {
     public static final String[] SHENRON_1_STAR_WISHES_1
             = new String[]{"Giàu có\n+2 Tỏi\nVàng", "Găng tay\nđang mang\nlên 1 cấp", "Chí mạng\nGốc +2%",
                 "Thay\nChiêu 2-3\nĐệ tử", "Điều ước\nkhác"};
+//    public static final String[] SHENRON_1_STAR_WISHES_2
+//            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Nâng cấp \nbông tai cấp 4", "Giàu có\n+2tr\nHồng ngọc", "+200 Tr\nSức mạnh\nvà tiềm\nnăng",
+//                "Găng tay đệ\nđang mang\nlên 1 cấp",
+//                "Điều ước\nkhác"};
     public static final String[] SHENRON_1_STAR_WISHES_2
-            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Nâng cấp \nbông tai cấp 4", "Giàu có\n+2tr\nHồng ngọc", "+200 Tr\nSức mạnh\nvà tiềm\nnăng",
-                "Găng tay đệ\nđang mang\nlên 1 cấp",
-                "Điều ước\nkhác"};
+            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Giàu có\n+2tr\nHồng ngọc", "+200 Tr\nSức mạnh\nvà tiềm\nnăng",
+            "Găng tay đệ\nđang mang\nlên 1 cấp",
+            "Điều ước\nkhác"};
     public static final String[] SHENRON_1_STAR_WISHES_3
             = new String[]{"Nâng cấp \nbông tai\ncấp 4", "Găng tay\nđang mang\nlên 1 cấp", "Nâng quần\nđang mang\nlên cấp 8",
             "Nâng găng\nđang mang\nlên cấp 8", "Nâng giày\nđang mang\nlên cấp 8"};
@@ -691,61 +695,63 @@ public class SummonDragon {
                             return;
                         }
                         break;
-                    case 1: //+5k ngọc
-//                        this.playerSummonShenron.inventory.addGem(5_000);
-//                        PlayerService.gI().sendInfoHpMpMoney(this.playerSummonShenron);
+//                    case 1: //+5k ngọc
+////                        this.playerSummonShenron.inventory.addGem(5_000);
+////                        PlayerService.gI().sendInfoHpMpMoney(this.playerSummonShenron);
+////                        break;
+//                        if (this.playerSummonShenron != null) {
+//                            if (InventoryService.gI().getCountEmptyBag(playerSummonShenron) > 0) {
+//                                Item btc3 = InventoryService.gI().findItemBagByTemp(playerSummonShenron, ConstItem.BONG_TAI_CAP_3);
+//                                if (btc3 != null) {
+//                                    // tỉ lệ thành công 5%
+//                                    if(Util.isTrue(5, 100)) {
+//                                        Item btc4 = ItemService.gI().createNewItem((short) ConstItem.BONG_TAI_CAP_4, 1);
+//                                        // gán giữ nguyên option của btc3
+//                                        for(ItemOption io : btc3.itemOptions) {
+//                                            btc4.itemOptions.add(new ItemOption(io.optionTemplate.id, io.param));
+//                                        }
+//                                        // Sức mạnh rồng thiên tăng 10% SĐ,HP,KI
+//                                        btc4.itemOptions.add(new ItemOption(245, 10));
+//                                        InventoryService.gI().addItemBag(playerSummonShenron, btc4, 0);
+//                                        InventoryService.gI().subQuantityItemsBag(playerSummonShenron, btc3, 1);
+//                                        InventoryService.gI().sendItemBags(playerSummonShenron);
+//                                    } else {
+//                                        isWishSuccess = false;
+//                                        Service.getInstance().sendThongBao(playerSummonShenron, "Điều ước khó quá ta éo làm được");
+//                                    }
+//                                } else {
+//                                    Service.getInstance().sendThongBao(playerSummonShenron, "Ngươi phải sở hữu bông tai cấp 3 mới thực hiện được điều ước này");
+//                                    reOpenShenronWishes(playerSummonShenron);
+//                                    return;
+//                                }
+//                            } else {
+//                                Service.getInstance().sendThongBao(playerSummonShenron, "Hành trang đã đầy");
+//                                reOpenShenronWishes(playerSummonShenron);
+//                                return;
+//                            }
+//                        } else {
+//                            Service.getInstance().sendThongBao(playerSummonShenron, "Đã có lỗi xảy ra");
+//                        }
 //                        break;
-                        if (this.playerSummonShenron != null) {
-                            if (InventoryService.gI().getCountEmptyBag(playerSummonShenron) > 0) {
-                                Item btc3 = InventoryService.gI().findItemBagByTemp(playerSummonShenron, ConstItem.BONG_TAI_CAP_3);
-                                if (btc3 != null) {
-                                    // tỉ lệ thành công 5%
-                                    if(Util.isTrue(5, 100)) {
-                                        Item btc4 = ItemService.gI().createNewItem((short) ConstItem.BONG_TAI_CAP_4, 1);
-                                        // gán giữ nguyên option của btc3
-                                        for(ItemOption io : btc3.itemOptions) {
-                                            btc4.itemOptions.add(new ItemOption(io.optionTemplate.id, io.param));
-                                        }
-                                        // Sức mạnh rồng thiên tăng 10% SĐ,HP,KI
-                                        btc4.itemOptions.add(new ItemOption(245, 10));
-                                        InventoryService.gI().addItemBag(playerSummonShenron, btc4, 0);
-                                        InventoryService.gI().subQuantityItemsBag(playerSummonShenron, btc3, 1);
-                                        InventoryService.gI().sendItemBags(playerSummonShenron);
-                                    } else {
-                                        isWishSuccess = false;
-                                        Service.getInstance().sendThongBao(playerSummonShenron, "Điều ước khó quá ta éo làm được");
-                                    }
-                                } else {
-                                    Service.getInstance().sendThongBao(playerSummonShenron, "Ngươi phải sở hữu bông tai cấp 3 mới thực hiện được điều ước này");
-                                    reOpenShenronWishes(playerSummonShenron);
-                                    return;
-                                }
-                            } else {
-                                Service.getInstance().sendThongBao(playerSummonShenron, "Hành trang đã đầy");
-                                reOpenShenronWishes(playerSummonShenron);
-                                return;
-                            }
-                        } else {
-                            Service.getInstance().sendThongBao(playerSummonShenron, "Đã có lỗi xảy ra");
-                        }
-                        break;
-                    case 2: //+5k ruby
+                    case 1: //+5k ruby
                         int oldRuby = this.playerSummonShenron.inventory.ruby;
                         this.playerSummonShenron.inventory.addRuby(2_000_000);
                         // ekko ghi log add ruby
                         Manager.addPlayerRubyHistory(this.playerSummonShenron.id, oldRuby, this.playerSummonShenron.inventory.ruby, "SummonDragon-confirmWish");
                         PlayerService.gI().sendInfoHpMpMoney(this.playerSummonShenron);
                         break;
-                    case 3: //+200 tr smtn
-                        if (false) {
-                            Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 200000000, false);
-                        } else {
-                            Service.getInstance().sendThongBao(playerSummonShenron, "Xin lỗi, điều ước này khó quá, ta không thể thực hiện.");
-                            reOpenShenronWishes(playerSummonShenron);
-                            return;
-                        }
+                    case 2: //+200 tr smtn
+                        Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 200000000, false);
+//                        if (false) {
+//                            Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 200000000, false);
+//                        }
+//                        else {
+//                            Service.getInstance().sendThongBao(playerSummonShenron, "Xin lỗi, điều ước này khó quá, ta không thể thực hiện.");
+//                            reOpenShenronWishes(playerSummonShenron);
+//                            return;
+//                        }
                         break;
-                    case 4: //găng tay đệ lên 1 cấp
+                    case 3: //găng tay đệ lên 1 cấp
                         if (this.playerSummonShenron.pet != null) {
                             Item item = this.playerSummonShenron.pet.inventory.itemsBody.get(2);
                             if (item.isNotNullItem()) {

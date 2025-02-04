@@ -120,15 +120,17 @@ public class Mob {
 
                 if (MapService.isMapDiaNguc(mapid)) {
                     i = 0;
-                } else if (MapService.gI().isMapHTTV(mapid)) {
-
-                    if (plAtt.isPet) {
-                        i = plAtt.nPoint.isX3TnsmHTTV ? 300000 : 100000;
-                    } else {
-
-                        i = 500000;
-                    }
-                } else {
+                }
+//                else if (MapService.gI().isMapHTTV(mapid)) {
+//
+//                    if (plAtt.isPet) {
+//                        i = plAtt.nPoint.isX3TnsmHTTV ? 300000 : 100000;
+//                    } else {
+//
+//                        i = 500000;
+//                    }
+//                }
+                else {
                     i = plAtt.isPl() ? getTiemNangForPlayer(plAtt, damage) : getTiemNangForPet(plAtt, damage, this.tempId);
                 }
 
