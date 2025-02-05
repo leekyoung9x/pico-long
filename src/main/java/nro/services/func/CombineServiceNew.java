@@ -2168,15 +2168,15 @@ public class CombineServiceNew {
                                                 if(ioSKH.optionTemplate.id == ConstOption.SET_SONGOKU || ioSKH.optionTemplate.id == ConstOption.SET_TENSHINHAN || ioSKH.optionTemplate.id == ConstOption.SET_KRILLIN || ioSKH.optionTemplate.id == ConstOption.SET_PICOLO || ioSKH.optionTemplate.id == ConstOption.SET_DENDE || ioSKH.optionTemplate.id == ConstOption.SET_DAIMAO || ioSKH.optionTemplate.id == ConstOption.SET_NAPPA || ioSKH.optionTemplate.id == ConstOption.SET_KAKAROT || ioSKH.optionTemplate.id == ConstOption.SET_CADIC) {
                                                     if(totalSKHInBag < 2) {
                                                         totalSKHInBag += 1;
+                                                        if(totalSKHInBag == 1) {
+                                                            skhOneInbag = item;
+                                                            skhOneOptionID = ioSKH.optionTemplate.id;
+                                                        } else {
+                                                            skhTwoInbag = item;
+                                                            skhTwoOptionID = ioSKH.optionTemplate.id;
+                                                        }
                                                     } else {
                                                         break;
-                                                    }
-                                                    if(ioSKH.optionTemplate.id == skhOneOptionSKHID) {
-                                                        skhOneInbag = item;
-                                                        skhOneOptionID = ioSKH.optionTemplate.id;
-                                                    } else {
-                                                        skhTwoInbag = item;
-                                                        skhTwoOptionID = ioSKH.optionTemplate.id;
                                                     }
                                                 }
                                             }
@@ -3944,15 +3944,15 @@ public class CombineServiceNew {
                                         if(ioSKH.optionTemplate.id == ConstOption.SET_SONGOKU || ioSKH.optionTemplate.id == ConstOption.SET_TENSHINHAN || ioSKH.optionTemplate.id == ConstOption.SET_KRILLIN || ioSKH.optionTemplate.id == ConstOption.SET_PICOLO || ioSKH.optionTemplate.id == ConstOption.SET_DENDE || ioSKH.optionTemplate.id == ConstOption.SET_DAIMAO || ioSKH.optionTemplate.id == ConstOption.SET_NAPPA || ioSKH.optionTemplate.id == ConstOption.SET_KAKAROT || ioSKH.optionTemplate.id == ConstOption.SET_CADIC) {
                                             if(totalSKHInBag < 2) {
                                                 totalSKHInBag += 1;
+                                                if(totalSKHInBag == 1) {
+                                                    skhOneInbag = item;
+                                                    skhOneOptionID = ioSKH.optionTemplate.id;
+                                                } else {
+                                                    skhTwoInbag = item;
+                                                    skhTwoOptionID = ioSKH.optionTemplate.id;
+                                                }
                                             } else {
                                                 break;
-                                            }
-                                            if(ioSKH.optionTemplate.id == skhOneOptionSKHID) {
-                                                skhOneInbag = item;
-                                                skhOneOptionID = ioSKH.optionTemplate.id;
-                                            } else {
-                                                skhTwoInbag = item;
-                                                skhTwoOptionID = ioSKH.optionTemplate.id;
                                             }
                                         }
                                     }
@@ -3981,7 +3981,7 @@ public class CombineServiceNew {
                         InventoryService.gI().subQuantityItemsBag(player, tlOneInBag, 1);
                         InventoryService.gI().subQuantityItemsBag(player, tlTwoInBag, 1);
                         InventoryService.gI().subQuantityItemsBag(player, daThanLinhParam, 10);
-                        InventoryService.gI().sendItemBags(player);
+//                        InventoryService.gI().sendItemBags(player);
                         // id của skh sau khi nâng cấp
                         // nếu là nhẫn thần linh thì lấy theo gender của player
                         int nextItemGender = tlOne.template.gender;
@@ -4068,7 +4068,7 @@ public class CombineServiceNew {
                             InventoryService.gI().subQuantityItemsBag(player, skhOneInbag, 1);
                             InventoryService.gI().subQuantityItemsBag(player, skhTwoInbag, 1);
                             InventoryService.gI().subQuantityItemsBag(player, daThanLinhParam, 10);
-                            InventoryService.gI().sendItemBags(player);
+//                            InventoryService.gI().sendItemBags(player);
                             Item nextSKH = ItemService.gI().createNewItem((short) nextID);
                             List<ItemOption> lstOption = new ArrayList<>();
                             int optionSKHID = skhOneOptionSKHID;

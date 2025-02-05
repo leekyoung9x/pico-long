@@ -1965,6 +1965,11 @@ public class NPoint {
 //                tn /= 7;
                 tiemNang *= 20;
             }
+
+            if (MapService.gI().isMapHTTV(mapid)) {
+//                tn /= 7;
+                tiemNang *= 22;
+            }
 //            if (MapService.gI().ismapnew(this.player.zone.map)) {
 //                tn *=10000;
 //            }
