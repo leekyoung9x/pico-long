@@ -1565,15 +1565,15 @@ public class UseItem {
                     break;
                 case 4:
                     // cải trang Sói Basil
-                    Item da1 = ItemService.gI().createNewItem((short) 730, 1);
-                    da1.itemOptions.add(new ItemOption(50, 1));
-                    da1.itemOptions.add(new ItemOption(77, 1));
-                    da1.itemOptions.add(new ItemOption(103, 1));
-                    da1.itemOptions.add(new ItemOption(14, 1));
-                    da1.itemOptions.add(new ItemOption(5, Util.nextInt(1, 100)));
-                    InventoryService.gI().addItemBag(pl, da1, 0); // 1 là số ngày hạn sử dụng
-
-                    Service.getInstance().sendThongBao(pl, "Bạn nhận " + da1.template.name);
+//                    Item da1 = ItemService.gI().createNewItem((short) 730, 1);
+//                    da1.itemOptions.add(new ItemOption(50, 1));
+//                    da1.itemOptions.add(new ItemOption(77, 1));
+//                    da1.itemOptions.add(new ItemOption(103, 1));
+//                    da1.itemOptions.add(new ItemOption(14, 1));
+//                    da1.itemOptions.add(new ItemOption(5, Util.nextInt(1, 100)));
+//                    InventoryService.gI().addItemBag(pl, da1, 0); // 1 là số ngày hạn sử dụng
+//
+//                    Service.getInstance().sendThongBao(pl, "Bạn nhận " + da1.template.name);
                     break;
             }
 
@@ -2147,7 +2147,7 @@ public class UseItem {
 //    }
     private void openWoodChest(Player pl, Item item) {
         int time = (int) TimeUtil.diffDate(new Date(), new Date(item.createTime), TimeUtil.DAY);
-        if (time != 0) {
+        if (time != 0 || pl.isAdmin()) {
             int param = item.itemOptions.get(0).param;
             int gem = 0;
             if (param < 12) {
@@ -2170,35 +2170,35 @@ public class UseItem {
                         "Bạn nhận được " + name + " số lượng: " + Util.formatCurrency(quantity), "OK [" + pl.textRuongGo.size() + "]");
             }
             if (param == 12) {
-                int[] splSuper = new int[]{2118, 2119, 2120};
-                int optionId = 0, optionValue = 0;
-
-                // Tạo đối tượng Random
-                Random random = new Random();
-
-                // Sinh chỉ số ngẫu nhiên từ 0 đến (array.length - 1)
-                int randomIndex = random.nextInt(splSuper.length);
-
-                // Lấy phần tử ngẫu nhiên từ mảng
-                int randomElement = splSuper[randomIndex];
-
-                switch (randomElement) {
-                    case 2118: {
-                        optionId = 77;
-                        optionValue = 8;
-                        break;
-                    }
-                    case 2119: {
-                        optionId = 103;
-                        optionValue = 8;
-                        break;
-                    }
-                    case 2120: {
-                        optionId = 50;
-                        optionValue = 4;
-                        break;
-                    }
-                }
+//                int[] splSuper = new int[]{2118, 2119, 2120};
+//                int optionId = 0, optionValue = 0;
+//
+//                // Tạo đối tượng Random
+//                Random random = new Random();
+//
+//                // Sinh chỉ số ngẫu nhiên từ 0 đến (array.length - 1)
+//                int randomIndex = random.nextInt(splSuper.length);
+//
+//                // Lấy phần tử ngẫu nhiên từ mảng
+//                int randomElement = splSuper[randomIndex];
+//
+//                switch (randomElement) {
+//                    case 2118: {
+//                        optionId = 77;
+//                        optionValue = 8;
+//                        break;
+//                    }
+//                    case 2119: {
+//                        optionId = 103;
+//                        optionValue = 8;
+//                        break;
+//                    }
+//                    case 2120: {
+//                        optionId = 50;
+//                        optionValue = 4;
+//                        break;
+//                    }
+//                }
 
                 int quantity = 150000;
                 String name = "";
@@ -2211,24 +2211,24 @@ public class UseItem {
                 InventoryService.gI().addItemBag(pl, ngoc, 0);
                 name += ", " + ngoc.getName();
 
-                ngoc = ItemService.gI().createNewItem((short) randomElement, 1);
-                ngoc.itemOptions.add(new ItemOption(optionId, optionValue));
-                ngoc.itemOptions.add(new ItemOption(30, 0));
-                InventoryService.gI().addItemBag(pl, ngoc, 999);
+//                ngoc = ItemService.gI().createNewItem((short) randomElement, 1);
+//                ngoc.itemOptions.add(new ItemOption(optionId, optionValue));
+//                ngoc.itemOptions.add(new ItemOption(30, 0));
+//                InventoryService.gI().addItemBag(pl, ngoc, 999);
 
                 InventoryService.gI().subQuantityItem(pl.inventory.itemsBag, item, 1);
                 // random 1-> 10 viên nro hắc ám 4 -> 7 sao
-                short randomNr = (short) Util.nextInt(SummonDragon.NGOC_RONG_NOEL[3], SummonDragon.NGOC_RONG_NOEL[6]);
-                int rdSl = Util.nextInt(1, 10);
-                Item nr = ItemService.gI().createNewItem(randomNr, rdSl);
-                InventoryService.gI().addItemBag(pl, nr, 999);
+//                short randomNr = (short) Util.nextInt(SummonDragon.NGOC_RONG_NOEL[3], SummonDragon.NGOC_RONG_NOEL[6]);
+//                int rdSl = Util.nextInt(1, 10);
+//                Item nr = ItemService.gI().createNewItem(randomNr, rdSl);
+//                InventoryService.gI().addItemBag(pl, nr, 999);
 
                 InventoryService.gI().sendItemBags(pl);
 
 //                Service.getInstance().sendThongBao(pl, "Bạn nhận được " + name + " số lượng: " + quantity + " và 1 " + ngoc.getName());
 //                Service.getInstance().sendThongBao(pl, "Bạn nhận được " + nr.template.name);
                 NpcService.gI().createMenuConMeo(pl, ConstNpc.RUONG_GO, -1,
-                        "Bạn nhận được " + name + " số lượng: " + Util.formatCurrency(quantity) + ", " + rdSl + " " + nr.template.name + " và 1 " + ngoc.getName(), "OK [" + pl.textRuongGo.size() + "]");
+                        "Bạn nhận được " + name + " số lượng: " + Util.formatCurrency(quantity) + " ngọc xanh , " + Util.formatCurrency(quantity) + " hồng ngọc" , "OK [" + pl.textRuongGo.size() + "]");
             }
 //            NpcService.gI().createMenuConMeo(pl, ConstNpc.RUONG_GO, -1,
 //                    "Bạn nhận được\n|1|+" + Util.numberToMoney(gem) + " vàng", "OK [" + pl.textRuongGo.size() + "]");

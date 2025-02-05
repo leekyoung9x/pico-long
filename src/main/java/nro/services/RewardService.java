@@ -306,6 +306,70 @@ public class RewardService {
         return list;
     }
 
+    public List<Item> getListItemLuckyRoundGem(Player player, int num) {
+        List<Item> list = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            if (Util.isTrue(10, 100)) {
+                Item item = ItemService.gI().createNewItem((short) Util.nextInt(18, 20));// nr 5 -> 7 sao
+                list.add(item);
+            } else if (Util.isTrue(20, 100)) {
+                List<Short> lstSPL = new ArrayList<>();
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_441);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_442);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_443);
+//                lstSPL.add((short)ConstItem.SAO_PHA_LE_444);
+//                lstSPL.add((short)ConstItem.SAO_PHA_LE_445);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_446);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_447);
+                lstSPL.add((short)ConstItem.SAO_PHA_LE_964);
+                int indexItem = Util.nextInt(lstSPL.size());
+                Item item = ItemService.gI().createNewItem(lstSPL.get(indexItem));// cac loai sao pha le
+                initBaseOptionSaoPhaLeLucky(item);
+                list.add(item);
+            } else if (Util.isTrue(20, 100)) {
+                Item item = ItemService.gI().createNewItem((short) Util.nextInt(220, 224));// cac loai da nang cap
+                list.add(item);
+            } else if (Util.isTrue(20, 100)) {
+                Item item = ItemService.gI().createNewItem((short) Util.nextInt(2045, 2051));//nrsc
+                list.add(item);
+            }
+            // 3% ra đệ fide nhí
+//            else if (Util.isTrue(3, 100)) {
+//                Item item = ItemService.gI().createNewItem((short) ConstItem.DE_FIDE_NHI);//nrsc
+//                list.add(item);
+//            }
+            // ekko bỏ item c2
+//            else if (Util.isTrue(20, 100)) {
+//                Item item = ItemService.gI().createNewItem((short) Util.nextInt(1150, 1153));//item c2
+//                list.add(item);
+//            }
+            else if (Util.isTrue(0.05f, 100)) {
+                Item item = ItemService.gI().createNewItem((short) 2053);
+                item.itemOptions.add(new ItemOption(50,  Util.nextInt(1, 25)));
+                list.add(item);
+            } else if (Util.isTrue(0.05f, 100)) {
+                Item item = ItemService.gI().createNewItem((short) 1007);
+                item.itemOptions.add(new ItemOption(103, Util.nextInt(1, 25)));
+                list.add(item);
+            } else if (Util.isTrue(0.05f, 100)) {
+                Item item = ItemService.gI().createNewItem((short) 1254);
+                item.itemOptions.add(new ItemOption(77, Util.nextInt(1, 25)));
+                list.add(item);
+            } else if (Util.isTrue(0.05f, 100)) {
+                Item item = ItemService.gI().createNewItem((short) 1172);
+                item.itemOptions.add(new ItemOption(50, Util.nextInt(1, 20)));
+                item.itemOptions.add(new ItemOption(77, Util.nextInt(1, 20)));
+                item.itemOptions.add(new ItemOption(103, Util.nextInt(1, 20)));
+                list.add(item);
+            } else {
+                Item it = ItemService.gI().createNewItem((short) 189, Util.nextInt(5, 50) * 1000);
+                list.add(it);
+            }
+
+        }
+        return list;
+    }
+
     private void initBaseOptionSaoPhaLeLucky(Item item) {
         int optionId = 73;
         int optionVal = 0;
