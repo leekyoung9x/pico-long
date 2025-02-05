@@ -847,11 +847,11 @@ public class UseItem {
                 noti += doTL.template.name + " số lượng " + 1 + ", ";
             }
             // 20% Tỷ lệ nhận được 1 hộp SKH VIP
-            else if (Util.isTrue(20, 100)) {
+//            else if (Util.isTrue(20, 100)) {
 //                Item skhVip = ItemService.gI().createNewItem((short) 2013, 1);
 //                InventoryService.gI().addItemBag(pl, skhVip, 0);
 //                noti += skhVip.template.name + " số lượng " + 1 + ", ";
-            }
+//            }
             // 5% Tỷ lệ nhận được random 1-> 10 đá bảo vệ
             else if (Util.isTrue(5, 100)) {
                 int quantity = Util.nextInt(1, 10);
