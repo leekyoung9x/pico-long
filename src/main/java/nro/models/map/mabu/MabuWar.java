@@ -30,21 +30,21 @@ public class MabuWar {
 
     public static long TIME_CLOSE;
     // mở 19h
-//    public static final byte HOUR_OPEN = 19;
-//    public static final byte MIN_OPEN = 0;
-//    public static final byte SECOND_OPEN = 0;
-//    // đóng 20h
-//    public static final byte HOUR_CLOSE = 19;
-//    public static final byte MIN_CLOSE = 59;
-//    public static final byte SECOND_CLOSE = 59;
-    // mở 19h
-    public static final byte HOUR_OPEN = 0;
+    public static final byte HOUR_OPEN = 19;
     public static final byte MIN_OPEN = 0;
     public static final byte SECOND_OPEN = 0;
     // đóng 20h
-    public static final byte HOUR_CLOSE = 23;
+    public static final byte HOUR_CLOSE = 19;
     public static final byte MIN_CLOSE = 59;
     public static final byte SECOND_CLOSE = 59;
+    // mở 19h
+//    public static final byte HOUR_OPEN = 0;
+//    public static final byte MIN_OPEN = 0;
+//    public static final byte SECOND_OPEN = 0;
+//    // đóng 20h
+//    public static final byte HOUR_CLOSE = 23;
+//    public static final byte MIN_CLOSE = 59;
+//    public static final byte SECOND_CLOSE = 59;
     public int day = -1;
     public boolean initBoss;
     public boolean clearBoss;
