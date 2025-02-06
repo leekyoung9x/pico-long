@@ -4,6 +4,7 @@
  */
 package nro.models.npc.specialnpc;
 
+import nro.consts.ConstPet;
 import nro.models.player.Player;
 import nro.server.io.Message;
 import nro.services.PetService;

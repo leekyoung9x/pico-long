@@ -37,7 +37,7 @@ public class LuckyRoundGem extends AbsLuckyRound {
 
     @Override
     public List<Item> reward(Player player, byte quantity) {
-        List<Item> list = RewardService.gI().getListItemLuckyRound(player, quantity);
+        List<Item> list = RewardService.gI().getListItemLuckyRoundGem(player, quantity);
         addItemToBox(player, list);
         return list;
     }

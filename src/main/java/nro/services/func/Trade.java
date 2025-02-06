@@ -287,7 +287,7 @@ public class Trade {
             case 27:
                 // ekko cho phép thỏi vàng vip
                 return item.template.id != 590 &&
-                        item.template.id != 1969 &&
+//                        item.template.id != 1969 &&
                         item.template.id != 1143 &&
                         item.template.id != 1288 &&
                         item.template.id != ConstItem.BINH_NUOC &&
@@ -301,7 +301,8 @@ public class Trade {
                         item.template.id != ConstItem.BOT_MI &&
                         item.template.id != ConstItem.BANH_QUY &&
                         item.template.id != ConstItem.KEO_DUONG &&
-                        item.template.id != ConstItem.GAY_GO;
+                        item.template.id != ConstItem.GAY_GO &&
+                        item.template.id != ConstItem.DA_THAN_LINH;
             case 72:
             case 5: //cải trang
             case 6: //đậu thần

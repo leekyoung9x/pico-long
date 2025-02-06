@@ -1,8 +1,15 @@
 package nro.consts;
 
 public class ConstOption {
+    public static final short TAN_CONG = 0;
     public static final short PHAN_TRAM_SUC_DANH_CHI_MANG = 5;
+    public static final short HP = 6;
+    public static final short KI = 7;
+    public static final short CHI_MANG_PHAN_TRAM = 14;
+    public static final short CONG_HP_TREN_30_GIAY = 27;
+    public static final short CONG_KI_TREN_30_GIAY = 28;
     public static final short KHONG_THE_GIAO_DICH = 30;
+    public static final short GIAP = 47;
     public static final short SUC_DANH_CONG_PHAN_TRAM = 50;
     public static final short CAP = 72;
     public static final short HP_CONG_PHAN_TRAM = 77;

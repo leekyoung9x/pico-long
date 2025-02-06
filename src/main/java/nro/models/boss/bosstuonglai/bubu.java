@@ -30,7 +30,7 @@ public class bubu extends Boss{
         int tempId = -1;
         int sl = 1;
         if (Util.isTrue(1, 10)) {
-            tempId = 2089;
+//            tempId = 2089;
         } else if (Util.isTrue(3, 10)) {
             tempId = 2088;
         } else if (Util.isTrue(7, 10)) {
@@ -45,13 +45,14 @@ public class bubu extends Boss{
                 sl = Util.nextInt(1, 10); // Random số lượng từ 1 đến 10 cho tempId 2009
             }
             ItemMap itemMap = new ItemMap(this.zone, tempId, sl,pl.location.x, this.zone.map.yPhysicInTop(pl.location.x, pl.location.y - 24), pl.id);
-            if (tempId == 2089) {
-                // ekko nerf lại còn 50% chỉ số
-                itemMap.options.add(new ItemOption(50, 50));
-                itemMap.options.add(new ItemOption(77, 50));
-                itemMap.options.add(new ItemOption(103, 50));
-                itemMap.options.add(new ItemOption(93, 1));
-            }                RewardService.gI().initBaseOptionClothes(itemMap.itemTemplate.id, itemMap.itemTemplate.type, itemMap.options);
+//            if (tempId == 2089) {
+//                // ekko nerf lại còn 50% chỉ số
+//                itemMap.options.add(new ItemOption(50, 50));
+//                itemMap.options.add(new ItemOption(77, 50));
+//                itemMap.options.add(new ItemOption(103, 50));
+//                itemMap.options.add(new ItemOption(93, 1));
+//            }
+//            RewardService.gI().initBaseOptionClothes(itemMap.itemTemplate.id, itemMap.itemTemplate.type, itemMap.options);
             Service.getInstance().dropItemMap(this.zone, itemMap);
         }
 

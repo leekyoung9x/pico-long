@@ -299,8 +299,8 @@ public class ChangeMapService {
             boolean nextMapIsCold = MapService.gI().isMapCold(zoneJoin.map);
             boolean currMapIsDoanhTrai = MapService.gI().isMapDoanhTrai(pl.zone.map.mapId);
             boolean nextMapIsDoanhTrai = MapService.gI().isMapDoanhTrai(zoneJoin.map.mapId);
-            boolean currMapIsMabuWar = MapService.gI().isMapMabuWar14H(pl.zone.map.mapId);
-            boolean nextMapIsMabuWar = MapService.gI().isMapMabuWar14H(zoneJoin.map.mapId);
+//            boolean currMapIsMabuWar = MapService.gI().isMapMabuWar14H(pl.zone.map.mapId);
+//            boolean nextMapIsMabuWar = MapService.gI().isMapMabuWar14H(zoneJoin.map.mapId);
 
 //            if (pl.nPoint.power >= 200_000_000_000L) {
 //                if (MapService.gI().ismap212(zoneJoin.map.mapId)) {
@@ -405,22 +405,22 @@ public class ChangeMapService {
             }
 
             // map mabu war 6h thì tính toán lại chỉ số (/ 5 dame, hp, ki)
-            if (currMapIsMabuWar != nextMapIsMabuWar) {
-                if (!currMapIsMabuWar && nextMapIsMabuWar) {
-                    Service.getInstance().sendThongBao(pl, "Bạn đã đến Ma Bư 6h");
-                    if(pl.nPoint != null) {
-                        Service.getInstance().sendThongBao(pl, "Bạn đang ở trận chiến Ma Bư 6h nên chỉ số bị giảm 5 lần");
-                    }
-                } else {
-                    Service.getInstance().sendThongBao(pl, "Bạn đã rời Ma Bư 6h");
-                    if(pl.nPoint != null) {
-                        Service.getInstance().sendThongBao(pl, "Chỉ số của bạn đã trở lại bình thường");
-                    }
-                }
-
-                Service.getInstance().point(pl);
-                Service.getInstance().Send_Info_NV(pl);
-            }
+//            if (currMapIsMabuWar != nextMapIsMabuWar) {
+//                if (!currMapIsMabuWar && nextMapIsMabuWar) {
+//                    Service.getInstance().sendThongBao(pl, "Bạn đã đến Ma Bư 6h");
+//                    if(pl.nPoint != null) {
+//                        Service.getInstance().sendThongBao(pl, "Bạn đang ở trận chiến Ma Bư 6h nên chỉ số bị giảm 5 lần");
+//                    }
+//                } else {
+//                    Service.getInstance().sendThongBao(pl, "Bạn đã rời Ma Bư 6h");
+//                    if(pl.nPoint != null) {
+//                        Service.getInstance().sendThongBao(pl, "Chỉ số của bạn đã trở lại bình thường");
+//                    }
+//                }
+//
+//                Service.getInstance().point(pl);
+//                Service.getInstance().Send_Info_NV(pl);
+//            }
 
             checkJoinSpecialMap(pl);
             TranhNgocService.getInstance().sendUpdateLift(pl);
