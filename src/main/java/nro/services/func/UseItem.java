@@ -863,9 +863,9 @@ public class UseItem {
             // 5% Tỷ lệ nhận được Ván bay hoa đăng : 20% sức đánh,Hp,Ki
             else if (Util.isTrue(5, 100)) {
                 Item vanBayVeSau = ItemService.gI().createNewItem((short) 2133, 1);
-                vanBayVeSau.itemOptions.add(new ItemOption(50, 20));
-                vanBayVeSau.itemOptions.add(new ItemOption(77, 20));
-                vanBayVeSau.itemOptions.add(new ItemOption(103, 20));
+                vanBayVeSau.itemOptions.add(new ItemOption(50, 10));
+                vanBayVeSau.itemOptions.add(new ItemOption(77, 10));
+                vanBayVeSau.itemOptions.add(new ItemOption(103, 10));
                 InventoryService.gI().addItemBag(pl, vanBayVeSau, 0); // 1 là số ngày hạn sử dụng
                 noti += vanBayVeSau.template.name + " số lượng " + 1 + ", ";
             }

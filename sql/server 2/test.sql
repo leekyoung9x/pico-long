@@ -179,10 +179,27 @@ INSERT INTO item_shop_option (item_shop_id, option_id, param) VALUES
 (9951, 50, 2);
 
 
+-- cập nhật lại chỉ số của đồ trong cửa hàng santa
+UPDATE item_shop_option iso SET iso.param = 23 WHERE iso.item_shop_id = 455 AND iso.option_id IN (50, 77, 103);
+UPDATE item_shop_option iso SET iso.param = 24 WHERE iso.item_shop_id = 456 AND iso.option_id IN (50, 77, 103);
+UPDATE item_shop_option iso SET iso.param = 25 WHERE iso.item_shop_id = 457 AND iso.option_id IN (50, 77, 103);
+UPDATE item_shop_option iso SET iso.param = 26 WHERE iso.item_shop_id = 458 AND iso.option_id IN (50, 77, 103);
+UPDATE item_shop_option iso SET iso.param = 25 WHERE iso.item_shop_id = 480 AND iso.option_id IN (50, 77, 103);
 
 
 -- test
+
+
+SELECT * FROM shop s WHERE s.npc_id = 39;
+SELECT * FROM tab_shop ts WHERE ts.shop_id = 9;
+SELECT * FROM item_shop `is` WHERE `is`.tab_id = 17;
+SELECT * FROM item_shop_option iso WHERE iso.item_shop_id = 480;
+
 SELECT * FROM item_shop `is` ORDER BY `is`.id DESC;
+SELECT * FROM item_template it WHERE ID >= 220 AND ID <= 224;
+SELECT * FROM item_template it WHERE ID >= 2045 AND ID <= 2051;
+SELECT * FROM item_template it WHERE ID IN (2053, 1007, 1254, 1172, 189);
+SELECT * FROM item_option_template iot WHERE iot.id IN (50, 103, 77);
 SELECT * FROM item_shop_option iso;
 SELECT * FROM item_option_template iot where name like '%vàng từ quái%';
 SELECT * FROM item_option_template iot where name like '%tn,sm%';
@@ -322,8 +339,9 @@ select * FROM item_template it WHERE id IN (0, 6, 21, 27, 12);
 select * FROM item_template it WHERE id IN (1150, 1151, 1152, 1153);
 
 SELECT * FROM shop s WHERE s.npc_id = 39;
-SELECT * FROM tab_shop ts WHERE ts.shop_id = 20;
-SELECT * FROM item_shop `is` WHERE `is`.tab_id = 35;
+SELECT * FROM tab_shop ts WHERE ts.shop_id = 9;
+SELECT * FROM item_shop `is` WHERE `is`.tab_id = 17;
+SELECT * FROM item_shop_option iso WHERE iso.item_shop_id = 455;
 SELECT * FROM item_template it WHERE it.NAME LIKE '%hộp set kích hoạt%';
 
 

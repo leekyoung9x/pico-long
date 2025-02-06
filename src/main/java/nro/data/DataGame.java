@@ -29,10 +29,10 @@ import java.util.Map;
  *
  */
 public class DataGame {
-    public static byte vsData = 43;
-    public static byte vsMap = 43;
-    public static byte vsSkill = 43;
-    public static byte vsItem = 43;
+    public static byte vsData = 1;
+    public static byte vsMap = 1;
+    public static byte vsSkill = 1;
+    public static byte vsItem = 1;
 
     public static String LINK_IP_PORT = "NRO:localhost:14445:0";
     private static final String MOUNT_NUM
