@@ -13,3 +13,5 @@ TRUNCATE TABLE super;
 TRUNCATE TABLE super_history;
 TRUNCATE TABLE topup;
 TRUNCATE TABLE transaction_banking;
+TRUNCATE TABLE gift_codes;
+TRUNCATE TABLE player_special_aura;
