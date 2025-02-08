@@ -281,21 +281,21 @@ public class RewardService {
 //            }
             else if (Util.isTrue(0.05f, 100)) {
                 Item item = ItemService.gI().createNewItem((short) 2053);
-                item.itemOptions.add(new ItemOption(50,  Util.nextInt(1, 25)));
+                item.itemOptions.add(new ItemOption(50,  Util.nextInt(1, 10)));
                 list.add(item);
             } else if (Util.isTrue(0.05f, 100)) {
                 Item item = ItemService.gI().createNewItem((short) 1007);
-                item.itemOptions.add(new ItemOption(103, Util.nextInt(1, 25)));
+                item.itemOptions.add(new ItemOption(103, Util.nextInt(1, 10)));
                 list.add(item);
             } else if (Util.isTrue(0.05f, 100)) {
                 Item item = ItemService.gI().createNewItem((short) 1254);
-                item.itemOptions.add(new ItemOption(77, Util.nextInt(1, 25)));
+                item.itemOptions.add(new ItemOption(77, Util.nextInt(1, 10)));
                 list.add(item);
             } else if (Util.isTrue(0.05f, 100)) {
                 Item item = ItemService.gI().createNewItem((short) 1172);
-                item.itemOptions.add(new ItemOption(50, Util.nextInt(1, 20)));
-                item.itemOptions.add(new ItemOption(77, Util.nextInt(1, 20)));
-                item.itemOptions.add(new ItemOption(103, Util.nextInt(1, 20)));
+                item.itemOptions.add(new ItemOption(50, Util.nextInt(1, 10)));
+                item.itemOptions.add(new ItemOption(77, Util.nextInt(1, 10)));
+                item.itemOptions.add(new ItemOption(103, Util.nextInt(1, 10)));
                 list.add(item);
             } else {
                 Item it = ItemService.gI().createNewItem((short) 189, Util.nextInt(5, 50) * 1000);

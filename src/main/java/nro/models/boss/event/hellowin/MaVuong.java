@@ -52,25 +52,19 @@ public class MaVuong extends Boss {
         short quantity = 0;
         List<ItemOption> options = new ArrayList<>();
 
-        if (Util.isTrue(1, 2)) {
-            quantity = (short) Util.nextInt(5);
-            itemId = (short) ConstItem.CUC_XUONG;
-        } else if (Util.isTrue(3, 5)) {
-            int nrx = Util.nextInt(ConstItem.NGOC_RONG_BANG_1_SAO, ConstItem.NGOC_RONG_BANG_7_SAO);
-            itemId = (short) nrx;
+        if(Util.isTrue(10, 100)) {
+            itemId = (short) ConstItem.DANH_HIEU_BAT_BAI;
             quantity = 1;
+            options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
+            options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
+            options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
         } else {
-            if (Util.isTrue(3, 5)) {
-                itemId = (short) ConstItem.DA_NGU_SAC;
-                quantity = (short) Util.nextInt(5);
+            if(Util.isTrue(50, 100)) {
+                itemId = (short) ConstItem.NGOC_RONG_6_SAO;
             } else {
-                itemId = (short) ConstItem.DANH_HIEU_BAT_BAI;
-                quantity = 1;
-
-                options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
-                options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
-                options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(1, 30)));
+                itemId = (short) ConstItem.NGOC_RONG_7_SAO;
             }
+            quantity = 1;
         }
 
         AddItemReward(pl, itemId, quantity, options);
@@ -82,7 +76,7 @@ public class MaVuong extends Boss {
         item.itemOptions = options;
         InventoryService.gI().addItemBag(pl, item, 0);
         InventoryService.gI().sendItemBags(pl);
-        Service.getInstance().sendThongBao(pl, "Bạn nhận được x" + item.quantity + " " + item.template.name);
+        Service.getInstance().sendThongBao(pl, "Bạn nhận được x" + quantity + " " + item.template.name);
     }
 
     @Override

@@ -182,8 +182,11 @@ public class ConstNpc {
     public static final int QUY_DOI_POINT_NAP = 603;
     public static final int QUY_DOI_DIEM_SKIEN = 604;
     public static final int QUY_DOI_POINT_NAP2 = 605;
-
     public static final int QUY_DOI_DIEM_SKIEN2 = 606;
+
+    // index menu lý tiểu nương
+    public static final int DOI_DA_THAN_LINH = 600;
+    public static final int DOI_DO_THAN_LINH = 601;
 
     //index menu nau banh
     public static final int NAU_BANH_1_TRUNG = 602;

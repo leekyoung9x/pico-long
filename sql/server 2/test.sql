@@ -337,6 +337,7 @@ select * FROM open_box ob WHERE ob.template_id_from >= 964 AND ob.template_id_to
 
 select * FROM item_template it WHERE id IN (0, 6, 21, 27, 12);
 select * FROM item_template it WHERE id IN (1150, 1151, 1152, 1153);
+SELECT * FROM task_main_template tmt;
 
 SELECT * FROM shop s WHERE s.npc_id = 39;
 SELECT * FROM tab_shop ts WHERE ts.shop_id = 9;

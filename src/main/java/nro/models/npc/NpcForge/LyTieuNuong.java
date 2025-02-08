@@ -4,10 +4,7 @@
  */
 package nro.models.npc.NpcForge;
 
-import nro.consts.ConstAction;
-import nro.consts.ConstItem;
-import nro.consts.ConstNpc;
-import nro.consts.ConstPlayer;
+import nro.consts.*;
 import nro.dialog.MenuDialog;
 import nro.dialog.MenuRunable;
 import nro.jdbc.daos.PlayerDAO;
@@ -24,6 +21,7 @@ import nro.services.InventoryService;
 import nro.services.ItemService;
 import nro.services.Service;
 import nro.services.TaskService;
+import nro.services.func.CombineServiceNew;
 import nro.services.func.Input;
 import nro.services.func.MiniGame;
 import nro.services.func.ShopService;
@@ -71,8 +69,16 @@ public class LyTieuNuong extends Npc {
 //                            "|7|Số point nạp bạn có là: [" + player.getSession().poinCharging + "]",
 //                    "Mở VIP 1 (Tốn 50k vnđ)", "Mở VIP 2 (Tốn 50k vnđ)", "Quy Đổi Thỏi vàng\n[VIP]", "Cửa hàng", "Đổi\nhộp quà\nNoel", "Đổi điểm tích lũy", "Đổi\nBóng tuyết\n10-1", "Đổi\nBóng tuyết\n100-12");
             createOtherMenu(player, ConstNpc.BASE_MENU,
-                    "Ngươi muốn làm gì ?",
-                     "Quy Đổi Thỏi vàng\n[VIP]");
+                    "Bạn có muốn mở VIP không - điều này góp phần duy trì sever đếy!\n" +
+                            "Với 50k vnđ bạn có thể sỡ hữu các đặc quyền sau:\n" +
+                            "- Hào quang goku vô cực\n" +
+                            "- Capsule nhiệm vụ (có thể next đến nhiệm vụ nappa)\n" +
+                            "- Giao dịch được ngay mà không cần đạt 80 tỷ sức mạnh\n" +
+                            "- 500k Hồng ngọc & 500k ngọc xanh\n" +
+                            "- Nhận được x2 tiềm năng sức mạnh khi up quái\n" +
+                            "|7|Lưu ý bạn có thể mở VIP nhiều lần!\n" +
+                            "|7|Số point nạp bạn có là: [" + player.getSession().poinCharging + "]",
+                    "Mở VIP 1 (Tốn 50k vnđ)", "Quy Đổi Thỏi vàng\n[VIP]", "Đổi đá thần linh");
         }
     }
 
@@ -83,43 +89,43 @@ public class LyTieuNuong extends Npc {
             if (this.mapId == 5 || this.mapId == 0 || this.mapId == 7 || this.mapId == 14) {
                 if (player.iDMark.isBaseMenu()) {
                     switch (select) {
-//                        case 0:
-//                            if (player.getSession().vnd >= 50000) {
-//                                if (InventoryService.gI().getCountEmptyBag(player) > 1) {
-//                                    if (PlayerDAO.active(player, 50000)) {
-//                                        // Capsule nhiệm vụ
-//                                        Item item = ItemService.gI().createNewItem((short) 2137, 1);
-//                                        item.itemOptions.add(new ItemOption(30, 0));
-//                                        InventoryService.gI().addItemBag(player, item, 1);
-//
-//                                        // 2 hộp SKH
+                        case 0:
+                            if (player.getSession().vnd >= 50000) {
+                                if (InventoryService.gI().getCountEmptyBag(player) > 1) {
+                                    if (PlayerDAO.active(player, 50000)) {
+                                        // Capsule nhiệm vụ
+                                        Item item = ItemService.gI().createNewItem((short) 2137, 1);
+                                        item.itemOptions.add(new ItemOption(30, 0));
+                                        InventoryService.gI().addItemBag(player, item, 1);
+
+                                        // 2 hộp SKH
 //                                        item = ItemService.gI().createNewItem((short) ConstItem.HOP_QUA_THUONG, 2);
 //                                        item.itemOptions.add(new ItemOption(30, 0));
 //                                        InventoryService.gI().addItemBag(player, item, 2);
-//
-//                                        // 500k ruby and ngọc xanh
-//                                        item = ItemService.gI().createNewItem((short) ConstItem.HONG_NGOC, 500_000);
-//                                        // ekko ghi log add ruby
-//                                        Manager.addPlayerRubyHistory(player.id, player.inventory.ruby, player.inventory.ruby + 500_000, "LyTieuNuong-confirmMenu");
-//                                        InventoryService.gI().addItemBag(player, item, 0);
-//                                        item = ItemService.gI().createNewItem((short) ConstItem.NGOC, 500_000);
-//                                        InventoryService.gI().addItemBag(player, item, 0);
-//
-//                                        Service.getInstance().sendMoney(player);
-//                                        Service.getInstance().player(player);
-//                                        Service.getInstance().Send_Caitrang(player);
-//                                        InventoryService.gI().sendItemBags(player);
-//                                        Service.getInstance().sendThongBao(player, "Bạn đã kích hoạt víp thành công");
-//                                    } else {
-//                                        this.npcChat(player, "Lỗi vui lòng báo admin...");
-//                                    }
-//                                } else {
-//                                    Service.getInstance().sendThongBao(player, "Hàng trang đã đầy");
-//                                }
-//                            } else {
-//                                Service.getInstance().sendThongBao(player, "Số dư vnd không đủ vui lòng nạp thêm năm chục :D");
-//                            }
-//                            break;
+
+                                        // 500k ruby and ngọc xanh
+                                        item = ItemService.gI().createNewItem((short) ConstItem.HONG_NGOC, 500_000);
+                                        // ekko ghi log add ruby
+                                        Manager.addPlayerRubyHistory(player.id, player.inventory.ruby, player.inventory.ruby + 500_000, "LyTieuNuong-confirmMenu");
+                                        InventoryService.gI().addItemBag(player, item, 0);
+                                        item = ItemService.gI().createNewItem((short) ConstItem.NGOC, 500_000);
+                                        InventoryService.gI().addItemBag(player, item, 0);
+
+                                        Service.getInstance().sendMoney(player);
+                                        Service.getInstance().player(player);
+                                        Service.getInstance().Send_Caitrang(player);
+                                        InventoryService.gI().sendItemBags(player);
+                                        Service.getInstance().sendThongBao(player, "Bạn đã kích hoạt víp thành công");
+                                    } else {
+                                        this.npcChat(player, "Lỗi vui lòng báo admin...");
+                                    }
+                                } else {
+                                    Service.getInstance().sendThongBao(player, "Hàng trang đã đầy");
+                                }
+                            } else {
+                                Service.getInstance().sendThongBao(player, "Số dư vnd không đủ vui lòng nạp thêm năm chục :D");
+                            }
+                            break;
 //                        case 1:
 //                            if (player.getSession().actived == 1) {
 //                                MenuDialog menu = new MenuDialog("Bạn có chắc chắn muốn mở VIP lần 2 \n" +
@@ -198,8 +204,12 @@ public class LyTieuNuong extends Npc {
 //                                Service.getInstance().sendThongBao(player, "Bạn đã mở VIP 2 rồi");
 //                            }
 //                            break;
-                        case 0:
+                        case 1:
                             Input.gI().createFormTradeRuby(player);
+                            break;
+                        case 2:
+                            this.createOtherMenu(player, ConstNpc.DOI_DA_THAN_LINH,
+                                    "Con có muốn đổi 1 đồ thần linh thành 50 đá thần linh không ?", "Đồng ý", "Từ chối");
                             break;
 //                        case 1: {
 ////                            ShopService.gI().openShopSpecial(player, this, ConstNpc.SHOP_LTN_SPEC, 1, -1);
@@ -501,6 +511,23 @@ public class LyTieuNuong extends Npc {
                             default:
                                 break;
                         }
+                    }
+                } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
+                    switch (player.combineNew.typeCombine) {
+                        case CombineServiceNew.DOI_DA_THAN_LINH:
+                            if (select == 0) {
+                                CombineServiceNew.gI().startCombine(player);
+                            }
+                            break;
+                    }
+                } else if (player.iDMark.getIndexMenu() == ConstNpc.DOI_DA_THAN_LINH) {
+                    switch (select) {
+                        case 0:
+                            CombineServiceNew.gI().openTabCombine(player,
+                                    CombineServiceNew.DOI_DA_THAN_LINH);
+                            break;
+                        case 1:
+                            break;
                     }
                 }
             }

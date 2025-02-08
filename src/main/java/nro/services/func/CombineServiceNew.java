@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 import nro.models.mob.ArrietyDrop;
 
@@ -107,6 +108,7 @@ public class CombineServiceNew {
     public static final int NANG_CAP_CAI_TRANG_HOA_XUONG = 548;
     public static final int NANG_CAP_SKH = 549;
     public static final int NANG_CAP_PET = 550;
+    public static final int DOI_DA_THAN_LINH = 551;
     private static final int GOLD_MOCS_BONG_TAI = 500_000_000;
 
     private static final int RUBY_MOCS_BONG_TAI = 10_000;
@@ -124,6 +126,7 @@ public class CombineServiceNew {
     public static final int NANG_SKH_NEW_RUBY = 2091;
     private final Npc baHatMit;
     private final Npc cayNeu;
+    private final Npc lyTieuNuong;
 
 
     private final Npc bulmatl;
@@ -142,6 +145,7 @@ public class CombineServiceNew {
         this.quyLaoKame = NpcManager.getNpc(ConstNpc.QUY_LAO_KAME);
         this.duongtank = NpcManager.getNpc(ConstNpc.DUONG_TANG);
         this.cayNeu = NpcManager.getNpc(ConstNpc.CAY_NEU);
+        this.lyTieuNuong = NpcManager.getNpc(ConstNpc.LY_TIEU_NUONG);
     }
     public static CombineServiceNew gI() {
         if (i == null) {
@@ -2219,6 +2223,31 @@ public class CombineServiceNew {
                     this.quyLaoKame.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn 2 món thần linh hoặc 2 món SKH và x10 đá thần linh", "Đóng");
                 }
                 break;
+            case DOI_DA_THAN_LINH:
+                if (player.combineNew.itemsCombine.size() == 1) {
+                    if (InventoryService.gI().getCountEmptyBag(player) > 0) {
+                        Item doTL = null;
+                        for (Item item : player.combineNew.itemsCombine) {
+                            if (item.isNotNullItem() && item.isItemThanLinh()) {
+                                    doTL = item;
+                            }
+                        }
+                        if(doTL != null) {
+                            this.lyTieuNuong.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
+                                    "Bạn có muốn đổi " + doTL.template.name + " thành 50 đá thần linh không ?", "Đổi\n", "Từ chối");
+                            break;
+                        } else {
+                            this.lyTieuNuong.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                    "Con cần có 1 đồ thần linh", "Đóng");
+                        }
+                    } else {
+                        this.lyTieuNuong.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                "Hàng trang đã đầy", "Đóng");
+                    }
+                } else {
+                    this.lyTieuNuong.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn một món thần linh", "Đóng");
+                }
+                break;
             case NANG_CAP_PET:
                 if (player.combineNew.itemsCombine.size() == 3) {
                     if (InventoryService.gI().getCountEmptyBag(player) > 0) {
@@ -2792,6 +2821,9 @@ public class CombineServiceNew {
                     break;
                 case NANG_CAP_PET:
                     nangCapPet(player);
+                    break;
+                case DOI_DA_THAN_LINH:
+                    doiDaThanLinh(player);
                     break;
             }
             player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
@@ -6521,6 +6553,8 @@ public class CombineServiceNew {
                 return "Ta sẽ giúp ngươi\nnâng cấp SKH\n";
             case NANG_CAP_PET:
                 return "Ta sẽ giúp ngươi\nnâng cấp hoặc\ntẩy cấp Pet";
+            case DOI_DA_THAN_LINH:
+                return "Ta sẽ giúp ngươi\nđổi đá thần linh\n";
             default:
                 return "";
         }
@@ -6651,6 +6685,8 @@ public class CombineServiceNew {
                 return "Chọn trang bị\n2 món thần linh\nHoặc 2 món SKH\n và x10 đá thần linh\nSau đó chọn 'Nâng cấp'";
             case NANG_CAP_PET:
                 return "Chọn Pet\nx3 Đá Nguyệt Tử\n1k TVV\nđể nâng cấp\nHoặc Pet\nx1 Đá Thanh Tẩy\n1k TVV\nSau đó chọn 'Nâng cấp'";
+            case DOI_DA_THAN_LINH:
+                return "Chọn \n1 món thần linh\nSau đó chọn 'Nâng cấp'";
             default:
                 return "";
         }
@@ -6687,7 +6723,7 @@ public class CombineServiceNew {
 
     // ekko kiểm tra đồ có nằm trong danh sách SKH nâng cấp không
     public static int getNextIdInList(int id) {
-        for (int[][] itemType : ConstItem.LIST_ITEM_SKH) { // Lặp qua từng loại trang bị (áo, quần, ...)
+        for (int[][] itemType : ConstItem.LIST_ITEM_SKH_MINI) { // Lặp qua từng loại trang bị (áo, quần, ...)
             for (int[] upgradeLevel : itemType) { // Lặp qua từng cấp độ nâng cấp (td, nm, xd)
                 for (int i = 0; i < upgradeLevel.length - 1; i++) { // Duyệt qua các phần tử, trừ phần tử cuối
                     if (upgradeLevel[i] == id) { // Nếu tìm thấy ID cần kiểm tra
@@ -6701,19 +6737,19 @@ public class CombineServiceNew {
 
     public static int getFirstItemByPlanetAndType(int planetIndex, int itemTypeIndex) {
         // Kiểm tra hành tinh hợp lệ
-        if (planetIndex < 0 || planetIndex >= ConstItem.LIST_ITEM_SKH.length) {
+        if (planetIndex < 0 || planetIndex >= ConstItem.LIST_ITEM_SKH_MINI.length) {
 //            throw new IllegalArgumentException("Hành tinh không hợp lệ (planetIndex không nằm trong phạm vi).");
             return -1;
         }
 
         // Kiểm tra loại đồ hợp lệ
-        if (itemTypeIndex < 0 || itemTypeIndex >= ConstItem.LIST_ITEM_SKH[planetIndex].length) {
+        if (itemTypeIndex < 0 || itemTypeIndex >= ConstItem.LIST_ITEM_SKH_MINI[planetIndex].length) {
 //            throw new IllegalArgumentException("Loại đồ không hợp lệ (itemTypeIndex không nằm trong phạm vi).");\
             return -1;
         }
 
         // Lấy danh sách đồ của loại đồ được chỉ định
-        int[] upgradeLevel = ConstItem.LIST_ITEM_SKH[planetIndex][itemTypeIndex];
+        int[] upgradeLevel = ConstItem.LIST_ITEM_SKH_MINI[planetIndex][itemTypeIndex];
 
         // Trả về phần tử đầu tiên nếu danh sách không rỗng
         return upgradeLevel.length > 0 ? upgradeLevel[0] : -1;
@@ -6872,9 +6908,36 @@ public class CombineServiceNew {
         }
     }
 
+    // ekko
+    private void doiDaThanLinh(Player player) {
+        if (player.combineNew.itemsCombine.size() == 1){
+            if (InventoryService.gI().getCountEmptyBag(player) > 0) {
+                for (Item item : player.combineNew.itemsCombine) {
+                    if (item.isNotNullItem() && item.isItemThanLinh()) {
+                        Item daThanLinh = ItemService.gI().createNewItem((short) ConstItem.DA_THAN_LINH, 50);
+                        InventoryService.gI().addItemBag(player, daThanLinh, 0);
+                        InventoryService.gI().subQuantityItemsBag(player, item, 1);
+                        sendEffectSuccessCombine(player);
+                        InventoryService.gI().sendItemBags(player);
+                        Service.getInstance().sendMoney(player);
+                        reOpenItemCombine(player);
+                    }
+                }
+            } else {
+                this.lyTieuNuong.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                        "Hàng trang đã đầy", "Đóng");
+            }
+        } else {
+            this.lyTieuNuong.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy chọn một đồ thần linh", "Đóng");
+        }
+    }
+
     // init option cho đồ skh
     public static List<ItemOption> initOptionSKH(int itemID) {
         List<ItemOption> lstOption = new ArrayList<>();
+        double percentage = Util.nextInt(1, 15) / 100.0; // Từ 1% đến 15%
+        int optionOriginal = 0;
+        int optionVal = 0;
         switch (itemID) {
             // áo trái đất
             case ConstItem.AO_VAI_3_LO:
@@ -7422,6 +7485,49 @@ public class CombineServiceNew {
             case ConstItem.GIAY_LUONG_LONG:
                 lstOption.add(new ItemOption(ConstOption.KI, 23000));
                 lstOption.add(new ItemOption(ConstOption.CONG_KI_TREN_30_GIAY, 2800));
+                break;
+            case ConstItem.AO_THAN_LINH:
+            case ConstItem.AO_THAN_NAMEC:
+            case ConstItem.AO_THAN_XAYDA:
+                // random 1 -> 15% chỉ số 250 giáp
+                percentage = Util.nextInt(1, 15) / 100.0; // Từ 1% đến 15%
+                optionOriginal = 250;
+                optionVal = (int) (optionOriginal * percentage);
+                lstOption.add(new ItemOption(ConstOption.GIAP, optionVal));
+                break;
+            case ConstItem.QUAN_THAN_LINH:
+            case ConstItem.QUAN_THAN_NAMEC:
+            case ConstItem.QUAN_THAN_XAYDA:
+                // random 1 -> 15% chỉ số 50k hp
+                percentage = Util.nextInt(1, 15) / 100.0; // Từ 1% đến 15%
+                optionOriginal = 50_000;
+                optionVal = (int) (optionOriginal * percentage);
+                lstOption.add(new ItemOption(ConstOption.GIAP, optionVal));
+                break;
+            case ConstItem.GANG_THAN_LINH:
+            case ConstItem.GANG_THAN_NAMEC:
+            case ConstItem.GANG_THAN_XAYDA:
+                // random 1 -> 15% chỉ số tấn công 5k
+                percentage = Util.nextInt(1, 15) / 100.0; // Từ 1% đến 15%
+                optionOriginal = 5000;
+                optionVal = (int) (optionOriginal * percentage);
+                lstOption.add(new ItemOption(ConstOption.TAN_CONG, optionVal));
+                break;
+            case ConstItem.GIAY_THAN_LINH:
+            case ConstItem.GIAY_THAN_NAMEC:
+            case ConstItem.GIAY_THAN_XAYDA:
+                // random 1 -> 15% chỉ số 50k ki
+                percentage = Util.nextInt(1, 15) / 100.0; // Từ 1% đến 15%
+                optionOriginal = 50_000;
+                optionVal = (int) (optionOriginal * percentage);
+                lstOption.add(new ItemOption(ConstOption.KI, optionVal));
+                break;
+            case ConstItem.NHAN_THAN_LINH:
+                // random 1 -> 15% chỉ số 12% chí mạng
+                percentage = Util.nextInt(1, 15) / 100.0; // Từ 1% đến 15%
+                optionOriginal = 12;
+                optionVal = (int) (optionOriginal * percentage);
+                lstOption.add(new ItemOption(ConstOption.CHI_MANG_PHAN_TRAM, optionVal));
                 break;
             default:
                 break;
