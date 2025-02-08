@@ -841,11 +841,11 @@ public class UseItem {
                 noti += tvv.template.name + " số lượng " + quantityTVV + ", ";
             }
             // 20% Tỷ lệ nhận được random 1 món thần linh
-            else if (Util.isTrue(20, 100)) {
-                Item doTL = ArrietyDrop.GetRandomDoTL(pl);
-                InventoryService.gI().addItemBag(pl, doTL, 0);
-                noti += doTL.template.name + " số lượng " + 1 + ", ";
-            }
+//            else if (Util.isTrue(20, 100)) {
+//                Item doTL = ArrietyDrop.GetRandomDoTL(pl);
+//                InventoryService.gI().addItemBag(pl, doTL, 0);
+//                noti += doTL.template.name + " số lượng " + 1 + ", ";
+//            }
             // 20% Tỷ lệ nhận được 1 hộp SKH VIP
 //            else if (Util.isTrue(20, 100)) {
 //                Item skhVip = ItemService.gI().createNewItem((short) 2013, 1);
