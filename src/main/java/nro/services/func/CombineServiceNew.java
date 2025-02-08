@@ -4083,6 +4083,8 @@ public class CombineServiceNew {
                             if(optionSKHID != -1 && optionSetID != -1) {
                                 lstOption.add(new ItemOption(optionSKHID, 0));
                                 lstOption.add(new ItemOption(optionSetID, optionSetVal));
+                                // thêm option không thể giao dịch
+                                lstOption.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
                                 firstSKH.itemOptions = lstOption;
                                 // gửi đồ cho pl
                                 InventoryService.gI().addItemBag(player, firstSKH, 1);
@@ -4159,6 +4161,8 @@ public class CombineServiceNew {
                             if(optionSKHID != -1 && optionSetID != -1) {
                                 lstOption.add(new ItemOption(optionSKHID, 0));
                                 lstOption.add(new ItemOption(optionSetID, optionSetVal));
+                                // thêm option không thể giao dịch
+                                lstOption.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
                                 nextSKH.itemOptions = lstOption;
                                 // gửi đồ cho pl
                                 InventoryService.gI().addItemBag(player, nextSKH, 1);
