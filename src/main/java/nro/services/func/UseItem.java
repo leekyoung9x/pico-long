@@ -4097,16 +4097,16 @@ public class UseItem {
                     break;
             }
         }
-        else if (tempId >= SummonDragon.NGOC_RONG_NOEL[0] && tempId <= SummonDragon.NGOC_RONG_NOEL[6]) {
-            switch (tempId) {
-                case SummonDragon.NGOC_RONG_NOEL_1_SAO:
-                    SummonDragon.gI().openMenuSummonShenron(pl, (byte) SummonDragon.NGOC_RONG_NOEL[0], SummonDragon.DRAGON_NOEL);
-                    break;
-                default:
-                    Service.getInstance().sendThongBao(pl, "Bạn chỉ có thể gọi Rồng Hắc Ám từ ngọc 1 sao");
-                    break;
-            }
-        }
+//        else if (tempId >= SummonDragon.NGOC_RONG_NOEL[0] && tempId <= SummonDragon.NGOC_RONG_NOEL[6]) {
+//            switch (tempId) {
+//                case SummonDragon.NGOC_RONG_NOEL_1_SAO:
+//                    SummonDragon.gI().openMenuSummonShenron(pl, (byte) SummonDragon.NGOC_RONG_NOEL[0], SummonDragon.DRAGON_NOEL);
+//                    break;
+//                default:
+//                    Service.getInstance().sendThongBao(pl, "Bạn chỉ có thể gọi Rồng Hắc Ám từ ngọc 1 sao");
+//                    break;
+//            }
+//        }
     }
 
     private void activeBanhQuy(Player pl, Item item) {

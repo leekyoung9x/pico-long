@@ -449,10 +449,10 @@ public class SummonDragon {
             case (byte) 2045:
                 NpcService.gI().createMenuRongThieng(pl, ConstNpc.ICE_SHENRON, ICE_SHENRON_SAY, ICE_SHENRON_WISHES);
                 break;
-            case (byte) NGOC_RONG_NOEL_1_SAO: {
-                NpcService.gI().createMenuRongThieng(pl, ConstNpc.NOEL_SHENRON, NOEL_SAY, NOEL_SHENRON_WISHES);
-                break;
-            }
+//            case (byte) NGOC_RONG_NOEL_1_SAO: {
+//                NpcService.gI().createMenuRongThieng(pl, ConstNpc.NOEL_SHENRON, NOEL_SAY, NOEL_SHENRON_WISHES);
+//                break;
+//            }
         }
     }
 

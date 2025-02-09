@@ -304,19 +304,19 @@ public class Input {
                         InventoryService.gI().addItemBag(player, coint, 0);
 
                         // ekko nhận đá ngũ sắc
-                        Item dns = ItemService.gI().createNewItem((short) ConstItem.DA_NGU_SAC, cuantity / 1000);
-                        InventoryService.gI().addItemBag(player, dns, 0);
+//                        Item dns = ItemService.gI().createNewItem((short) ConstItem.DA_NGU_SAC, cuantity / 1000);
+//                        InventoryService.gI().addItemBag(player, dns, 0);
 
                         // ekko nhận rương ngọc hắc ám
-                        int multiple = addItemQuyDoi(player, cuantity, 50000, (short) ConstItem.RUONG_NGOC_HAC_AM);
-                        int slThiep = addItemQuyDoi(player, cuantity, 1000, (short) ConstItem.PET_MEO_DEN_DUOI_VANG);
+//                        int multiple = addItemQuyDoi(player, cuantity, 50000, (short) ConstItem.RUONG_NGOC_HAC_AM);
+//                        int slThiep = addItemQuyDoi(player, cuantity, 1000, (short) ConstItem.PET_MEO_DEN_DUOI_VANG);
 
                         InventoryService.gI().sendItemBags(player);
 
                         String notiMsg = "Đã đổi thành công bạn nhận được " + cuantity + " " + ConstItemName.MONEY_UNIT;
-                        notiMsg += " và " + multiple + " Rương ngọc hắc ám";
-                        notiMsg += " và " + slThiep + " Thiệp chúc tết";
-                        notiMsg += " và " + cuantity / 1000 + " Đá ngũ sắc";
+//                        notiMsg += " và " + multiple + " Rương ngọc hắc ám";
+//                        notiMsg += " và " + slThiep + " Thiệp chúc tết";
+//                        notiMsg += " và " + cuantity / 1000 + " Đá ngũ sắc";
 
                         Service.getInstance().sendThongBao(player, notiMsg);
                     }

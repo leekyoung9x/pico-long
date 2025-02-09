@@ -78,7 +78,7 @@ public class LyTieuNuong extends Npc {
                             "- Nhận được x2 tiềm năng sức mạnh khi up quái\n" +
                             "|7|Lưu ý bạn có thể mở VIP nhiều lần!\n" +
                             "|7|Số point nạp bạn có là: [" + player.getSession().poinCharging + "]",
-                    "Mở VIP 1 (Tốn 50k vnđ)", "Quy Đổi Thỏi vàng\n[VIP]", "Đổi đá thần linh");
+                    "Mở VIP 1 (Tốn 50k vnđ)", "Quy Đổi Thỏi vàng\n[VIP]", "Đổi đá thần linh", "Cửa hàng");
         }
     }
 
@@ -211,77 +211,77 @@ public class LyTieuNuong extends Npc {
                             this.createOtherMenu(player, ConstNpc.DOI_DA_THAN_LINH,
                                     "Con có muốn đổi 1 đồ thần linh thành 50 đá thần linh không ?", "Đồng ý", "Từ chối");
                             break;
-//                        case 1: {
-////                            ShopService.gI().openShopSpecial(player, this, ConstNpc.SHOP_LTN_SPEC, 1, -1);
-//                            Shop shop = ShopService.gI().getShop(this.tempId, 1, -1);
-//
-//                            for (int i = 0; i < shop.tabShops.size(); i++) {
-//                                if (shop.tabShops.get(i).name.contains("VIP")) {
-//                                    for (int j = 0; j < shop.tabShops.get(i).itemShops.size(); j++) {
-//                                        ItemShop itemShop = shop.tabShops.get(i).itemShops.get(j);
-//
-//                                        if (itemShop.temp.id == 555 || itemShop.temp.id == 557 || itemShop.temp.id == 559) {
-//                                            switch (player.gender) {
-//                                                case (byte) ConstPlayer.TRAI_DAT:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(555);
-//                                                    break;
-//                                                case (byte) ConstPlayer.NAMEC:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(557);
-//                                                    break;
-//                                                case (byte) ConstPlayer.XAYDA:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(559);
-//                                                    break;
-//                                            }
-//                                        }
-//
-//                                        if (itemShop.temp.id == 562 || itemShop.temp.id == 564 || itemShop.temp.id == 566) {
-//                                            switch (player.gender) {
-//                                                case (byte) ConstPlayer.TRAI_DAT:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(562);
-//                                                    break;
-//                                                case (byte) ConstPlayer.NAMEC:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(564);
-//                                                    break;
-//                                                case (byte) ConstPlayer.XAYDA:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(566);
-//                                                    break;
-//                                            }
-//                                        }
-//
-//                                        if (itemShop.temp.id == 563 || itemShop.temp.id == 565 || itemShop.temp.id == 567) {
-//                                            switch (player.gender) {
-//                                                case (byte) ConstPlayer.TRAI_DAT:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(563);
-//                                                    break;
-//                                                case (byte) ConstPlayer.NAMEC:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(565);
-//                                                    break;
-//                                                case (byte) ConstPlayer.XAYDA:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(567);
-//                                                    break;
-//                                            }
-//                                        }
-//
-//                                        if (itemShop.temp.id == 556 || itemShop.temp.id == 558 || itemShop.temp.id == 560) {
-//                                            switch (player.gender) {
-//                                                case (byte) ConstPlayer.TRAI_DAT:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(556);
-//                                                    break;
-//                                                case (byte) ConstPlayer.NAMEC:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(558);
-//                                                    break;
-//                                                case (byte) ConstPlayer.XAYDA:
-//                                                    itemShop.temp = ItemService.gI().getTemplate(560);
-//                                                    break;
-//                                            }
-//                                        }
-//                                    }
-//                                    break;
-//                                }
-//                            }
-//                            ShopService.gI().openShopType3(player, shop, ConstNpc.SHOP_LTN_SPEC);
-//                            break;
-//                        }
+                        case 3: {
+//                            ShopService.gI().openShopSpecial(player, this, ConstNpc.SHOP_LTN_SPEC, 1, -1);
+                            Shop shop = ShopService.gI().getShop(this.tempId, 1, -1);
+
+                            for (int i = 0; i < shop.tabShops.size(); i++) {
+                                if (shop.tabShops.get(i).id == 47) {
+                                    for (int j = 0; j < shop.tabShops.get(i).itemShops.size(); j++) {
+                                        ItemShop itemShop = shop.tabShops.get(i).itemShops.get(j);
+
+                                        if (itemShop.temp.id == 555 || itemShop.temp.id == 557 || itemShop.temp.id == 559) {
+                                            switch (player.gender) {
+                                                case (byte) ConstPlayer.TRAI_DAT:
+                                                    itemShop.temp = ItemService.gI().getTemplate(555);
+                                                    break;
+                                                case (byte) ConstPlayer.NAMEC:
+                                                    itemShop.temp = ItemService.gI().getTemplate(557);
+                                                    break;
+                                                case (byte) ConstPlayer.XAYDA:
+                                                    itemShop.temp = ItemService.gI().getTemplate(559);
+                                                    break;
+                                            }
+                                        }
+
+                                        if (itemShop.temp.id == 562 || itemShop.temp.id == 564 || itemShop.temp.id == 566) {
+                                            switch (player.gender) {
+                                                case (byte) ConstPlayer.TRAI_DAT:
+                                                    itemShop.temp = ItemService.gI().getTemplate(562);
+                                                    break;
+                                                case (byte) ConstPlayer.NAMEC:
+                                                    itemShop.temp = ItemService.gI().getTemplate(564);
+                                                    break;
+                                                case (byte) ConstPlayer.XAYDA:
+                                                    itemShop.temp = ItemService.gI().getTemplate(566);
+                                                    break;
+                                            }
+                                        }
+
+                                        if (itemShop.temp.id == 563 || itemShop.temp.id == 565 || itemShop.temp.id == 567) {
+                                            switch (player.gender) {
+                                                case (byte) ConstPlayer.TRAI_DAT:
+                                                    itemShop.temp = ItemService.gI().getTemplate(563);
+                                                    break;
+                                                case (byte) ConstPlayer.NAMEC:
+                                                    itemShop.temp = ItemService.gI().getTemplate(565);
+                                                    break;
+                                                case (byte) ConstPlayer.XAYDA:
+                                                    itemShop.temp = ItemService.gI().getTemplate(567);
+                                                    break;
+                                            }
+                                        }
+
+                                        if (itemShop.temp.id == 556 || itemShop.temp.id == 558 || itemShop.temp.id == 560) {
+                                            switch (player.gender) {
+                                                case (byte) ConstPlayer.TRAI_DAT:
+                                                    itemShop.temp = ItemService.gI().getTemplate(556);
+                                                    break;
+                                                case (byte) ConstPlayer.NAMEC:
+                                                    itemShop.temp = ItemService.gI().getTemplate(558);
+                                                    break;
+                                                case (byte) ConstPlayer.XAYDA:
+                                                    itemShop.temp = ItemService.gI().getTemplate(560);
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            ShopService.gI().openShopType3(player, shop, ConstNpc.SHOP_LTN_SPEC);
+                            break;
+                        }
 //                        case 4: {
 //                            int point = 10, quantity = 1, itemID = ConstItem.HOP_QUA_NOEL;
 //

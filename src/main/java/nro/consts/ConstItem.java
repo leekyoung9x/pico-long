@@ -1249,6 +1249,7 @@ public class ConstItem {
     public static final int GAY_GO = 1932;
     public static final int DA_TRI_TUE = 1954;
     public static final int DE_FIDE_NHI = 1969;
+    public static final int HOP_QUA_HONG_NGOC = 1991;
     public static final int BONG_TAI_CAP_3 = 1995;
     public static final int SKH_VIP = 2013;
     public static final int LINH_HON_CAI_TRANG = 2088;

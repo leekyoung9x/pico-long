@@ -568,7 +568,7 @@ public class ShopService {
                 }
                 switch (player.iDMark.getShopId()) {
                     case ConstNpc.SHOP_BILL_HUY_DIET_0:
-                        if (player.setClothes.godClothes || true) {
+                        if (player.setClothes.godClothes) {
                             Item meal = InventoryService.gI().findMealChangeDestroyClothes(player);
                             if (meal != null) {
                                 Item item = ItemService.gI().createItemFromItemShop(is);
@@ -702,75 +702,75 @@ public class ShopService {
                             return;
                         }
                         break;
-                    case ConstNpc.SHOP_LTN_SPEC: {
-                        Item itemShop = ItemService.gI().createItemFromItemShop(is);
-
-                        if (!Util.isTrue(50, 100)) {
-                            if (Util.isTrue(20, 100)) {
-                                if (Util.isTrue(1, 2)) {
-                                    switch (player.gender) {
-                                        case (byte) ConstPlayer.TRAI_DAT: {
-                                            itemShop.itemOptions.add(new ItemOption(248, 0));
-                                            itemShop.itemOptions.add(new ItemOption(250, 3));
-                                            break;
-                                        }
-                                        case (byte) ConstPlayer.XAYDA: {
-                                            itemShop.itemOptions.add(new ItemOption(134, 0));
-                                            itemShop.itemOptions.add(new ItemOption(137, 0));
-                                            break;
-                                        }
-                                        case (byte) ConstPlayer.NAMEC: {
-                                            itemShop.itemOptions.add(new ItemOption(130, 0));
-                                            itemShop.itemOptions.add(new ItemOption(142, 0));
-                                            break;
-                                        }
-                                    }
-                                } else {
-                                    switch (player.gender) {
-                                        case (byte) ConstPlayer.TRAI_DAT: {
-                                            itemShop.itemOptions.add(new ItemOption(128, 0));
-                                            itemShop.itemOptions.add(new ItemOption(140, 0));
-                                            break;
-                                        }
-                                        case (byte) ConstPlayer.XAYDA: {
-                                            itemShop.itemOptions.add(new ItemOption(133, 0));
-                                            itemShop.itemOptions.add(new ItemOption(136, 0));
-                                            break;
-                                        }
-                                        case (byte) ConstPlayer.NAMEC: {
-                                            itemShop.itemOptions.add(new ItemOption(132, 0));
-                                            itemShop.itemOptions.add(new ItemOption(144, 0));
-                                            break;
-                                        }
-                                    }
-                                }
-                            } else if (Util.isTrue(10, 100)) {
-                                switch (player.gender) {
-                                    case (byte) ConstPlayer.TRAI_DAT: {
-                                        itemShop.itemOptions.add(new ItemOption(129, 0));
-                                        itemShop.itemOptions.add(new ItemOption(141, 100));
-                                        break;
-                                    }
-                                    case (byte) ConstPlayer.XAYDA: {
-                                        itemShop.itemOptions.add(new ItemOption(135, 0));
-                                        itemShop.itemOptions.add(new ItemOption(138, 100));
-                                        break;
-                                    }
-                                    case (byte) ConstPlayer.NAMEC: {
-                                        itemShop.itemOptions.add(new ItemOption(131, 0));
-                                        itemShop.itemOptions.add(new ItemOption(143, 100));
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        InventoryService.gI().addItemBag(player, itemShop, 99);
-                        InventoryService.gI().sendItemBags(player);
-                        Service.getInstance().sendThongBao(player, "Mua thành công " + is.temp.name);
-
-                        break;
-                    }
+//                    case ConstNpc.SHOP_LTN_SPEC: {
+//                        Item itemShop = ItemService.gI().createItemFromItemShop(is);
+//
+//                        if (!Util.isTrue(50, 100)) {
+//                            if (Util.isTrue(20, 100)) {
+//                                if (Util.isTrue(1, 2)) {
+//                                    switch (player.gender) {
+//                                        case (byte) ConstPlayer.TRAI_DAT: {
+//                                            itemShop.itemOptions.add(new ItemOption(248, 0));
+//                                            itemShop.itemOptions.add(new ItemOption(250, 3));
+//                                            break;
+//                                        }
+//                                        case (byte) ConstPlayer.XAYDA: {
+//                                            itemShop.itemOptions.add(new ItemOption(134, 0));
+//                                            itemShop.itemOptions.add(new ItemOption(137, 0));
+//                                            break;
+//                                        }
+//                                        case (byte) ConstPlayer.NAMEC: {
+//                                            itemShop.itemOptions.add(new ItemOption(130, 0));
+//                                            itemShop.itemOptions.add(new ItemOption(142, 0));
+//                                            break;
+//                                        }
+//                                    }
+//                                } else {
+//                                    switch (player.gender) {
+//                                        case (byte) ConstPlayer.TRAI_DAT: {
+//                                            itemShop.itemOptions.add(new ItemOption(128, 0));
+//                                            itemShop.itemOptions.add(new ItemOption(140, 0));
+//                                            break;
+//                                        }
+//                                        case (byte) ConstPlayer.XAYDA: {
+//                                            itemShop.itemOptions.add(new ItemOption(133, 0));
+//                                            itemShop.itemOptions.add(new ItemOption(136, 0));
+//                                            break;
+//                                        }
+//                                        case (byte) ConstPlayer.NAMEC: {
+//                                            itemShop.itemOptions.add(new ItemOption(132, 0));
+//                                            itemShop.itemOptions.add(new ItemOption(144, 0));
+//                                            break;
+//                                        }
+//                                    }
+//                                }
+//                            } else if (Util.isTrue(10, 100)) {
+//                                switch (player.gender) {
+//                                    case (byte) ConstPlayer.TRAI_DAT: {
+//                                        itemShop.itemOptions.add(new ItemOption(129, 0));
+//                                        itemShop.itemOptions.add(new ItemOption(141, 100));
+//                                        break;
+//                                    }
+//                                    case (byte) ConstPlayer.XAYDA: {
+//                                        itemShop.itemOptions.add(new ItemOption(135, 0));
+//                                        itemShop.itemOptions.add(new ItemOption(138, 100));
+//                                        break;
+//                                    }
+//                                    case (byte) ConstPlayer.NAMEC: {
+//                                        itemShop.itemOptions.add(new ItemOption(131, 0));
+//                                        itemShop.itemOptions.add(new ItemOption(143, 100));
+//                                        break;
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                        InventoryService.gI().addItemBag(player, itemShop, 99);
+//                        InventoryService.gI().sendItemBags(player);
+//                        Service.getInstance().sendThongBao(player, "Mua thành công " + is.temp.name);
+//
+//                        break;
+//                    }
                     case ConstNpc.SHOP_BILL_SPEC: {
                         Item itemShop = ItemService.gI().createItemFromItemShop(is);
 
@@ -1123,45 +1123,43 @@ public class ShopService {
             msg.writer().writeByte(where);
             msg.writer().writeShort(index);
             // bán đồ 9 sao thì nhận 3tr ngọc xanh
-            boolean isNineStar = false;
-            boolean isTenStar = false;
-            for (ItemOption io : item.itemOptions) {
-                if (io.optionTemplate.id == 107) {
-                    if(io.param == 9) {
-                        isNineStar = true;
-                    } else if(io.param == 10) {
-                        isTenStar = true;
-                    }
-                }
-            }
-            if(isNineStar) {
-                int slGem = 3_000_000;
-                String said = "Bạn có muốn bán\n x1" + " " + item.template.name
-                        + "\nvới giá là " + slGem + " ngọc xanh ?";
-                msg.writer().writeUTF(said);
-            }
-            else if(isTenStar) {
-                int slGem = 6_000_000;
-                String said = "Bạn có muốn bán\n x1" + " " + item.template.name
-                        + "\nvới giá là " + slGem + " ngọc xanh ?";
-                msg.writer().writeUTF(said);
+//            boolean isNineStar = false;
+//            boolean isTenStar = false;
+//            for (ItemOption io : item.itemOptions) {
+//                if (io.optionTemplate.id == 107) {
+//                    if(io.param == 9) {
+//                        isNineStar = true;
+//                    } else if(io.param == 10) {
+//                        isTenStar = true;
+//                    }
+//                }
+//            }
+//            if(isNineStar) {
+//                int slGem = 3_000_000;
+//                String said = "Bạn có muốn bán\n x1" + " " + item.template.name
+//                        + "\nvới giá là " + slGem + " ngọc xanh ?";
+//                msg.writer().writeUTF(said);
+//            }
+//            else if(isTenStar) {
+//                int slGem = 6_000_000;
+//                String said = "Bạn có muốn bán\n x1" + " " + item.template.name
+//                        + "\nvới giá là " + slGem + " ngọc xanh ?";
+//                msg.writer().writeUTF(said);
 
+            String said = "Bạn có muốn bán\n x" + item.quantity + " " + item.template.name
+                    + "\nvới giá là " + item.quantity * 50 + " đá thần linh?";
+            if (item.isItemThanLinh()) {
+                msg.writer().writeUTF(said);
+            }
+            // ekko bán Rương quà đặc biệt
+            else if (item.template != null && item.template.id == ConstItem.RUONG_QUA_DAC_BIET) {
+                said = "Bạn có muốn bán\n x" + item.quantity + " " + item.template.name
+                        + "\nvới giá là " + item.quantity * 5 + "k thỏi vàng VIP ?";
+                msg.writer().writeUTF(said);
             } else {
-                String said = "Bạn có muốn bán\n x" + item.quantity + " " + item.template.name
-                        + "\nvới giá là " + item.quantity * 2 + " Đá ngũ sắc?";
-                if (item.isItemThanLinh()) {
-                    msg.writer().writeUTF(said);
-                }
-                // ekko bán Rương quà đặc biệt
-                else if (item.template != null && item.template.id == ConstItem.RUONG_QUA_DAC_BIET) {
-                    said = "Bạn có muốn bán\n x" + item.quantity + " " + item.template.name
-                            + "\nvới giá là " + item.quantity * 5 + "k thỏi vàng VIP ?";
-                    msg.writer().writeUTF(said);
-                } else {
-                    msg.writer().writeUTF("Bạn có muốn bán\n x" + (item.template.id == 457
-                            || item.template.id == 2011 ? 1 : item.quantity) + " " + item.template.name
-                            + "\nvới giá là " + Util.numberToMoney(goldReceive) + " vàng?");
-                }
+                msg.writer().writeUTF("Bạn có muốn bán\n x" + (item.template.id == 457
+                        || item.template.id == 2011 ? 1 : item.quantity) + " " + item.template.name
+                        + "\nvới giá là " + Util.numberToMoney(goldReceive) + " vàng?");
             }
             pl.sendMessage(msg);
             msg.cleanup();
@@ -1206,64 +1204,63 @@ public class ShopService {
                     break;
             }
             // bán đồ 9 sao thì nhận 3tr ngọc xanh
-            boolean isNineStar = false;
-            boolean isTenStar = false;
-            for (ItemOption io : item.itemOptions) {
-                if (io.optionTemplate.id == 107) {
-                    if(io.param == 9) {
-                        isNineStar = true;
-                    } else if(io.param == 10) {
-                        isTenStar = true;
-                    }
-                }
-            }
-            if(isNineStar) {
-                int slGem = 3_000_000;
-                pl.inventory.addGem(slGem);
+//            boolean isNineStar = false;
+//            boolean isTenStar = false;
+//            for (ItemOption io : item.itemOptions) {
+//                if (io.optionTemplate.id == 107) {
+//                    if(io.param == 9) {
+//                        isNineStar = true;
+//                    } else if(io.param == 10) {
+//                        isTenStar = true;
+//                    }
+//                }
+//            }
+//            if(isNineStar) {
+//                int slGem = 3_000_000;
+//                pl.inventory.addGem(slGem);
+//                if (where == 0) {
+//                    InventoryService.gI().subQuantityItemsBody(pl, item, item.quantity);
+//                    InventoryService.gI().sendItemBody(pl);
+//                } else {
+//                    InventoryService.gI().subQuantityItemsBag(pl, item, item.quantity);
+//                    InventoryService.gI().sendItemBags(pl);
+//                }
+//                Service.getInstance().sendMoney(pl);
+//                Service.getInstance().sendThongBao(pl, "Bạn nhận được  x" + slGem + " " + " ngọc xanh");
+//                return;
+//            }
+//            else if(isTenStar) {
+//                int slGem = 6_000_000;
+//                pl.inventory.addGem(slGem);
+//                if (where == 0) {
+//                    InventoryService.gI().subQuantityItemsBody(pl, item, item.quantity);
+//                    InventoryService.gI().sendItemBody(pl);
+//                } else {
+//                    InventoryService.gI().subQuantityItemsBag(pl, item, item.quantity);
+//                    InventoryService.gI().sendItemBags(pl);
+//                }
+//                Service.getInstance().sendMoney(pl);
+//                Service.getInstance().sendThongBao(pl, "Bạn nhận được  x" + slGem + " " + " ngọc xanh");
+//                return;
+//            }
+            // bán đồ 1 đồ thần linh thì nhận 50 Đá đá thần linh
+            if (item.isItemThanLinh()) {
+                Item coint = ItemService.gI().createNewItem((short) ConstItem.DA_THAN_LINH);
+                int quantity = item.quantity * 50;
+                coint.quantity = quantity;
+                InventoryService.gI().addItemBag(pl, coint, 0);
+
                 if (where == 0) {
                     InventoryService.gI().subQuantityItemsBody(pl, item, item.quantity);
                     InventoryService.gI().sendItemBody(pl);
+                    InventoryService.gI().sendItemBags(pl);
                 } else {
                     InventoryService.gI().subQuantityItemsBag(pl, item, item.quantity);
                     InventoryService.gI().sendItemBags(pl);
                 }
-                Service.getInstance().sendMoney(pl);
-                Service.getInstance().sendThongBao(pl, "Bạn nhận được  x" + slGem + " " + " ngọc xanh");
-                return;
-            }
-            else if(isTenStar) {
-                int slGem = 6_000_000;
-                pl.inventory.addGem(slGem);
-                if (where == 0) {
-                    InventoryService.gI().subQuantityItemsBody(pl, item, item.quantity);
-                    InventoryService.gI().sendItemBody(pl);
-                } else {
-                    InventoryService.gI().subQuantityItemsBag(pl, item, item.quantity);
-                    InventoryService.gI().sendItemBags(pl);
-                }
-                Service.getInstance().sendMoney(pl);
-                Service.getInstance().sendThongBao(pl, "Bạn nhận được  x" + slGem + " " + " ngọc xanh");
-                return;
-            }
-            else {
-                // bán đồ 1 đồ thần linh thì nhận 2 Đá ngũ sắc
-                if (item.isItemThanLinh()) {
-                    Item coint = ItemService.gI().createNewItem((short) ConstItem.DA_NGU_SAC);
-                    int quantity = item.quantity * 2;
-                    coint.quantity = quantity;
-                    InventoryService.gI().addItemBag(pl, coint, 0);
 
-                    if (where == 0) {
-                        InventoryService.gI().subQuantityItemsBody(pl, item, item.quantity);
-                        InventoryService.gI().sendItemBody(pl);
-                    } else {
-                        InventoryService.gI().subQuantityItemsBag(pl, item, item.quantity);
-                        InventoryService.gI().sendItemBags(pl);
-                    }
-
-                    Service.getInstance().sendThongBao(pl, "Bạn nhận được  x" + quantity + " " + coint.template.name);
-                    return;
-                }
+                Service.getInstance().sendThongBao(pl, "Bạn nhận được  x" + quantity + " " + coint.template.name);
+                return;
             }
             // bán 1 rương quà đặc biệt thì nhận 5k thỏi vàng vip
             if (item.template.id == ConstItem.RUONG_QUA_DAC_BIET) {

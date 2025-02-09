@@ -44,7 +44,7 @@ public class BrolyXanh extends Boss {
 //                ItemMap item = ArrietyDrop.DropItemSetHDKichHoat(plKill, plKill.gender, 1, x, y);
 //                Service.getInstance().dropItemMap(plKill.zone, item);
             } else {
-                this.dropItemReward(Util.nextInt(14, 20), (int) plKill.id);
+                this.dropItemReward(Util.nextInt(ConstItem.NGOC_RONG_4_SAO, ConstItem.NGOC_RONG_7_SAO), (int) plKill.id);
             }
 
             // 10% nhận được đá trí tuệ

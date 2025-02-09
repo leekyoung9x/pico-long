@@ -7,6 +7,8 @@ import nro.models.boss.BossData;
 import nro.models.boss.BossFactory;
 import nro.models.item.Item;
 import nro.models.item.ItemOption;
+import nro.models.map.ItemMap;
+import nro.models.mob.ArrietyDrop;
 import nro.models.player.Player;
 import nro.services.InventoryService;
 import nro.services.ItemService;
@@ -72,19 +74,25 @@ public class KamiOren extends Boss {
         if(Util.isTrue(10, 100)) {
             itemId = (short) ConstItem.DANH_HIEU_BAT_BAI;
             quantity = 1;
-            options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
-            options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
-            options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(5, 15)));
-        } else {
-            if(Util.isTrue(50, 100)) {
-                itemId = (short) ConstItem.NGOC_RONG_6_SAO;
-            } else {
-                itemId = (short) ConstItem.NGOC_RONG_7_SAO;
-            }
+            options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, (short) Util.nextInt(1, 15)));
+            options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, (short) Util.nextInt(1, 15)));
+            options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, (short) Util.nextInt(1, 15)));
+        }
+        else if(Util.isTrue(40, 100)) {
+            itemId = (short) ConstItem.DA_THAN_LINH;
+            quantity = 10;
+        }
+        else {
+            itemId = (short) Util.nextInt(ConstItem.NGOC_RONG_5_SAO, ConstItem.NGOC_RONG_7_SAO);
             quantity = 1;
         }
-
-        AddItemReward(pl, itemId, quantity, options);
+        if(Util.isTrue(5, 100)) {
+            ItemMap itemMap = null;
+            itemMap = ArrietyDrop.DropItemReWardDoTL(pl, 1, pl.location.x, pl.location.y);
+            Service.getInstance().dropItemMap(this.zone, itemMap);
+        } else {
+            AddItemReward(pl, itemId, quantity, options);
+        }
     }
 
     private static void AddItemReward(Player pl, short itemId, short quantity, List<ItemOption> options) {
@@ -93,7 +101,7 @@ public class KamiOren extends Boss {
         item.itemOptions = options;
         InventoryService.gI().addItemBag(pl, item, 0);
         InventoryService.gI().sendItemBags(pl);
-        Service.getInstance().sendThongBao(pl, "Bạn nhận được x" + item.quantity + " " + item.template.name);
+        Service.getInstance().sendThongBao(pl, "Bạn nhận được x" + quantity + " " + item.template.name);
     }
 
     @Override

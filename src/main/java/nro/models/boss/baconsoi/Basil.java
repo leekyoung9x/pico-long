@@ -35,43 +35,51 @@ public class Basil extends FutureBoss {
 
   @Override
 public void rewards(Player plKill) {
-    int[] itemDos = new int[]{
-        555, 557, 559,
-        562, 564, 566,
-        563, 565, 567};
-    int randomDo = new Random().nextInt(itemDos.length);
-    int selectedItem = itemDos[randomDo];
-
-    if (Util.isTrue(30, 100)) {
-        if (Util.isTrue(1, 5)) {
-            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
-            return;
-        }
-
-        // Tạo item và thêm option 30
-        ItemMap itemMap = Util.ratiItem(zone, selectedItem, 1, this.location.x, this.location.y, plKill.id);
-        itemMap.options.add(new ItemOption(30, 0)); // Thêm option 30 cho tất cả các item
-        Service.getInstance().dropItemMap(this.zone, itemMap);
-    } else {
-        if (plKill != null) {
-            this.dropItemReward(1991, (int) plKill.id);
-//                generalRewards(plKill);
-        }
-    }
+//    int[] itemDos = new int[]{
+//        555, 557, 559,
+//        562, 564, 566,
+//        563, 565, 567};
+//    int randomDo = new Random().nextInt(itemDos.length);
+//    int selectedItem = itemDos[randomDo];
+//
+//    if (Util.isTrue(30, 100)) {
+//        if (Util.isTrue(1, 5)) {
+//            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
+//            return;
+//        }
+//
+//        // Tạo item và thêm option 30
+//        ItemMap itemMap = Util.ratiItem(zone, selectedItem, 1, this.location.x, this.location.y, plKill.id);
+//        itemMap.options.add(new ItemOption(30, 0)); // Thêm option 30 cho tất cả các item
+//        Service.getInstance().dropItemMap(this.zone, itemMap);
+//    } else {
+//        if (plKill != null) {
+//            this.dropItemReward(1991, (int) plKill.id);
+////                generalRewards(plKill);
+//        }
+//    }
 
     int slDrop = 1;
     ItemMap itemMap = null;
-    // đồ thần linh là 2%
-    if (Util.isTrue(2, 100)) {
+    int itemID = -1;
+    // đồ thần linh là 10%
+    if (Util.isTrue(10, 100)) {
       itemMap = ArrietyDrop.DropItemReWardDoTL(plKill, 1, plKill.location.x, plKill.location.y);
       Service.getInstance().dropItemMap(this.zone, itemMap);
     }
-    // ngọc rồng 4 sao là 98%
-    if (Util.isTrue(98, 100)) {
-      int itemDragonID = ConstItem.NGOC_RONG_4_SAO;
-      ItemMap itemDragon = new ItemMap(this.zone, itemDragonID, slDrop ,plKill.location.x, this.zone.map.yPhysicInTop(plKill.location.x, plKill.location.y - 24), plKill.id);
-      Service.getInstance().dropItemMap(this.zone, itemDragon);
+    // ngọc rồng 4 sao là 40%
+    else if (Util.isTrue(40, 100)) {
+        itemID = Util.nextInt(ConstItem.NGOC_RONG_4_SAO, ConstItem.NGOC_RONG_7_SAO);
+        ItemMap itemDragon = new ItemMap(this.zone, itemID, slDrop ,plKill.location.x, this.zone.map.yPhysicInTop(plKill.location.x, plKill.location.y - 24), plKill.id);
+        Service.getInstance().dropItemMap(this.zone, itemDragon);
     }
+      // 50% ra hộp quà hồng ngọc
+      else {
+          itemID = ConstItem.HOP_QUA_HONG_NGOC;
+          ItemMap itemDragon = new ItemMap(this.zone, itemID, slDrop ,plKill.location.x, this.zone.map.yPhysicInTop(plKill.location.x, plKill.location.y - 24), plKill.id);
+          Service.getInstance().dropItemMap(this.zone, itemDragon);
+      }
+
 }
 
     @Override
