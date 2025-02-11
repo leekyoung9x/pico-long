@@ -554,6 +554,9 @@ public class UseItem {
                         case ConstItem.HOP_QUA_THUONG:
                             UseItem.gI().hopQuaKichHoat(pl, item);
                             break;
+                        case ConstItem.HOP_QUA_SET_TNSM:
+                            UseItem.gI().hopQuaSetTNSM(pl, item);
+                            break;
                         case ConstItem.HOP_SKH_HUY_DIET:
                             UseItem.gI().hopQuaKichHoatHuyDiet(pl, item);
                             break;
@@ -4323,6 +4326,15 @@ public class UseItem {
     private void hopQuaKichHoat(Player player, Item item) {
         NpcService.gI().createMenuConMeo(player,
                 ConstNpc.MENU_OPTION_USE_ITEM1105, -1, "Chọn hành tinh của mày đi",
+                "Set trái đất",
+                "Set namec",
+                "Set xayda",
+                "Từ chổi");
+    }
+
+    private void hopQuaSetTNSM(Player player, Item item) {
+        NpcService.gI().createMenuConMeo(player,
+                ConstNpc.MENU_OPTION_USE_ITEM1910, -1, "Chọn hành tinh của mày đi",
                 "Set trái đất",
                 "Set namec",
                 "Set xayda",

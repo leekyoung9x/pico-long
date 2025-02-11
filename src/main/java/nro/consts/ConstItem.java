@@ -1242,6 +1242,7 @@ public class ConstItem {
     public static final int VE_SAU_XEN_TIEN_HOA = 1253;
 
     public static final int THOI_VANG_VIP = 1288;
+    public static final int HOP_QUA_SET_TNSM = 1910;
     public static final int DA_THAN_LINH = 1911;
     public static final int DA_NGUYET_TU = 1917;
     public static final int DA_THANH_TAY = 1918;

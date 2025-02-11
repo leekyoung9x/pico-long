@@ -50,7 +50,7 @@ public class SetClothes {
     public int ctHaiTac = -1;
     public int ctBunmaXecXi = -1;
     public int setThienSu = 0;
-    public byte setGohan;
+    public byte setTNSM;
     public byte setKHA;
     public byte setMaThuat;
 
@@ -244,11 +244,11 @@ public class SetClothes {
                             isActSet = true;
                             setCadic++;
                             break;
-                            // ekko set gohan
-                        case 248:
-                        case 250:
+                            // ekko set TNSM
+                        case ConstOption.SET_TNSM:
+                        case ConstOption.SET_X_TNSM_5_MON:
                             isActSet = true;
-                            setGohan++;
+                            setTNSM++;
                             break;
                         case 253:
                             setSucDanh++;
@@ -273,7 +273,7 @@ public class SetClothes {
         setNappa = validateSKH(setNappa, isFullSetTL);
         setKakarot = validateSKH(setKakarot, isFullSetTL);
         setCadic = validateSKH(setCadic, isFullSetTL);
-        setGohan = validateSKH(setGohan, isFullSetTL);
+        setTNSM = validateSKH(setTNSM, isFullSetTL);
 
         setSongoku = validateSKH(setSongoku, isFullSetHUYDIET);
         setTenshinhan = validateSKH(setTenshinhan, isFullSetHUYDIET);
@@ -284,7 +284,7 @@ public class SetClothes {
         setNappa = validateSKH(setNappa, isFullSetHUYDIET);
         setKakarot = validateSKH(setKakarot, isFullSetHUYDIET);
         setCadic = validateSKH(setCadic, isFullSetHUYDIET);
-        setGohan = validateSKH(setGohan, isFullSetHUYDIET);
+        setTNSM = validateSKH(setTNSM, isFullSetHUYDIET);
 
         setKHA = validateSKH(setKHA, isFullSetHUYDIET);
         setMaThuat = validateSetMaThuat(setMaThuat, isFullSetMaThuat);
@@ -330,7 +330,7 @@ public class SetClothes {
         this.ctHaiTac = -1;
         this.ctBunmaXecXi = -1;
         this.setThienSu = 0;
-        this.setGohan = 0;
+        this.setTNSM = 0;
         this.setSucDanh = 0;
         this.setKHA = 0;
         this.setMaThuat = 0;

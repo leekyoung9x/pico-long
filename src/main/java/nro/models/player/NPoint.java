@@ -2002,6 +2002,9 @@ public class NPoint {
                 // ekko NHS giảm /2 so với hiện tại
                 tiemNang /= 60;
             }
+            if (MapService.gI().isMapNappa(mapid)) {
+                tiemNang /= 5;
+            }
             if (this.player.actived) {
                 int turn = EventTurnManager.ManageEventShiba(ConstAction.GET_BY_ID, player.id);
                 if (turn <= 0) {

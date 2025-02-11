@@ -254,6 +254,11 @@ public class ConstNpc {
     public static final int MENU_NM_HD = 2169;
     public static final int MENU_XD_HD = 2170;
 
+    public static final int MENU_OPTION_USE_ITEM1910 = 1910;
+    public static final int menuTNSMTD = 1911;
+    public static final int menuTNSMNM = 1912;
+    public static final int menuTNSMXD = 1913;
+
     public static final int MENU_OPTION_USE_ITEM_HOP_BTC3 = 2071;
 
     public static final int MENU_USE_ITEM_BLACK_GOKU = 1109;

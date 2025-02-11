@@ -76,6 +76,21 @@ public class IntrinsicService {
                 "Chọn đi ku", "Set\nKakarot", "Set\nCadic", "Set\nNappa", "Từ chối");
     }
 
+    public void setTNSMTD(Player player) {
+        NpcService.gI().createMenuConMeo(player, ConstNpc.menuTNSMTD, -1,
+                "Chọn đi ku", "Set\nTNSM", "Từ chối");
+    }
+
+    public void setTNSMNM(Player player) {
+        NpcService.gI().createMenuConMeo(player, ConstNpc.menuTNSMNM, -1,
+                "Chọn đi ku", "Set\nTNSM", "Từ chối");
+    }
+
+    public void setTNSMXD(Player player) {
+        NpcService.gI().createMenuConMeo(player, ConstNpc.menuTNSMXD, -1,
+                "Chọn đi ku", "Set\nTNSM", "Từ chối");
+    }
+
     // ekko set hủy diệt kích hoạt
     public void setTDHD(Player player) {
         NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_TD_HD, -1,

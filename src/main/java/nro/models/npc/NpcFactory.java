@@ -476,6 +476,21 @@ public class NpcFactory {
                                 break;
                         }
                         break;
+                    case ConstNpc.MENU_OPTION_USE_ITEM1910:
+                        switch (select) {
+                            case 0:
+                                IntrinsicService.gI().setTNSMTD(player);
+                                break;
+                            case 1:
+                                IntrinsicService.gI().setTNSMNM(player);
+                                break;
+                            case 2:
+                                IntrinsicService.gI().setTNSMXD(player);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
                     case ConstNpc.MENU_OPTION_USE_ITEM2167:
                         switch (select) {
                             case 0:
@@ -588,6 +603,42 @@ public class NpcFactory {
                                 ItemService.gI().setNappa(player);
                             } catch (Exception e) {
                                 e.printStackTrace();
+                            }
+                            break;
+                        }
+                        break;
+                    case ConstNpc.menuTNSMTD:
+                        switch (select) {
+                            case 0: {
+                                try {
+                                    ItemService.gI().setTNSMTD(player);
+                                } catch (Exception ex) {
+                                    Logger.getLogger(NpcFactory.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                            break;
+                        }
+                        break;
+                    case ConstNpc.menuTNSMNM:
+                        switch (select) {
+                            case 0: {
+                                try {
+                                    ItemService.gI().setTNSMNM(player);
+                                } catch (Exception ex) {
+                                    Logger.getLogger(NpcFactory.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                            break;
+                        }
+                        break;
+                    case ConstNpc.menuTNSMXD:
+                        switch (select) {
+                            case 0: {
+                                try {
+                                    ItemService.gI().setTNSMXD(player);
+                                } catch (Exception ex) {
+                                    Logger.getLogger(NpcFactory.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             }
                             break;
                         }

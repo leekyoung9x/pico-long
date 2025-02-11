@@ -201,7 +201,7 @@ public class Mob {
         }
         tiemNang = (int) pl.nPoint.calSucManhTiemNang(tiemNang);
         // Set gohan đủ 5 món thì x3 tnsm
-        if(pl.setClothes.setGohan == 5) {
+        if(pl.setClothes.setTNSM == 5) {
             tiemNang *= 3;
         }
 
@@ -234,7 +234,7 @@ public class Mob {
         }
         tiemNang = (int) pl.nPoint.calSucManhTiemNang(tiemNang);
         // Set gohan đủ 5 món thì x3 tnsm
-        if(pl.setClothes.setGohan == 5) {
+        if(pl.setClothes.setTNSM == 5) {
             tiemNang *= 3;
         }
         return tiemNang;

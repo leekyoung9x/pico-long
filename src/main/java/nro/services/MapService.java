@@ -457,6 +457,10 @@ public class MapService {
         return mapId >= 160 && mapId <= 163;
     }
 
+    public boolean isMapNappa(int mapId) {
+        return mapId == 36 || (mapId >= 63 && mapId <= 77) || (mapId >= 79 && mapId <= 83);
+    }
+
     public boolean isMapBanDoKhoBau(int mapId) {
         return mapId >= 135 && mapId <= 138;
     }

@@ -1,6 +1,8 @@
 package nro.models.boss.tieudoisatthu;
 
 import java.util.Calendar;
+
+import nro.consts.ConstItem;
 import nro.models.boss.*;
 import nro.models.map.ItemMap;
 import nro.models.player.Player;
@@ -28,13 +30,13 @@ public class So2 extends FutureBoss {
     @Override
     public void rewards(Player pl) {
         TaskService.gI().checkDoneTaskKillBoss(pl, this);
-//        generalRewards(pl);
-//        if (pl != null) {
-//            ItemMap itemMap = new ItemMap(this.zone, 1143, 1, this.location.x, this.location.y, pl.id);
-//            if (itemMap != null) {
-//                Service.getInstance().dropItemMap(this.zone, itemMap);
-//            }
-//        }
+        generalRewards(pl);
+        if (pl != null) {
+            ItemMap itemMap = new ItemMap(this.zone, ConstItem.DA_BAO_VE, 1, this.location.x, this.location.y, pl.id);
+            if (itemMap != null) {
+                Service.getInstance().dropItemMap(this.zone, itemMap);
+            }
+        }
     }
 
     @Override

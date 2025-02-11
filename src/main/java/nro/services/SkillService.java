@@ -1066,8 +1066,8 @@ public class SkillService {
                 return;
             }
             if (player.skillSpecial.skillSpecial.template.id == Skill.MAFUBA) {
-                Service.gI().sendThongBao(player, "Kỹ năng bị đang bảo trì do quá OP!");
-//                this.activeSkillMaFuBa(player);
+//                Service.gI().sendThongBao(player, "Kỹ năng bị đang bảo trì do quá OP!");
+                this.activeSkillMaFuBa(player);
             } else {
                 if (player.skillSpecial.stepSkillSpecial == 0
                         && Util.canDoWithTime(player.skillSpecial.lastTimeSkillSpecial,

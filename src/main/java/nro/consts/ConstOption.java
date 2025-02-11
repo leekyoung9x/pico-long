@@ -42,7 +42,9 @@ public class ConstOption {
     public static final short SUC_DANH_MA_THUAT_TANG_PHAN_TRAM = 198;
     public static final short PHAN_TRAM_SAT_THUONG_LEN_BOSS = 244;
     public static final short PHAN_TRAM_SAT_THUONG_NO = 243;
+    public static final short SET_TNSM = 248;
     public static final short CHI_SO_AN = 249;
+    public static final short SET_X_TNSM_5_MON = 250;
     public static final short SET_X2_THOI_GIAN_DE_TRUNG = 255;
     // option các loại sao pha lê
     // Biến 5% tấn công thành HP ( 441 )

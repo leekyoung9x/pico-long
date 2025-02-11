@@ -6300,11 +6300,11 @@ public class CombineServiceNew {
             case 19:
                 return 5; // +5%ki
             case 18:
-                return 3; // +5%hp/30s
+                return 5; // +5%hp/30s
             case 17:
                 return 5; // +5%ki/30s
             case 16:
-                return 5; // +3%sđ
+                return 3; // +3%sđ
             case 15:
                 return 2; // +2%giáp
             case 14:
@@ -6324,11 +6324,11 @@ public class CombineServiceNew {
             case 19:
                 return 103;
             case 18:
-                return 50;
+                return 80;
             case 17:
                 return 81;
             case 16:
-                return 80;
+                return 50;
             case 15:
                 return 94;
             case 14:

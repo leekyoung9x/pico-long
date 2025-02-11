@@ -579,18 +579,18 @@ public class Pet extends Player {
 //                    return false;
                 case Skill.MAFUBA:
                     // ekko nếu đang dùng skill mafuba thì không thể dùng skill laze
-//                    if (!Util.canDoWithTime(this.skillSpecial.lastTimeSkillSpecial, SkillSpecial.TIME_USE_MAFUBA) && this.playerSkill.skillSelect.template.id == Skill.MAKANKOSAPPO) {
-//                        Service.gI().sendThongBao(this, "Đang sử dụng kỹ năng Ma Phong Ba, không thể sử dụng kỹ năng khác");
-//                        return false;
-//                    }
-//                    if (SkillService.gI().canUseSkillWithCooldown(this)
-//                            && SkillService.gI().canUseSkillWithMana(this)) {
-//                        SpecialSkill.gI().executeSpecialSkill(this, (short) Skill.MAFUBA, (short) this.location.x,
-//                                (short) this.location.y, (byte) dir, (short) mobAttack.location.x, (short) mobAttack.location.y);
-//                        return true;
-//                    }
-//                    return false;
-                    Service.gI().sendThongBao(this.master, "Kỹ năng bị đang bảo trì do quá OP!");
+                    if (!Util.canDoWithTime(this.skillSpecial.lastTimeSkillSpecial, SkillSpecial.TIME_USE_MAFUBA) && this.playerSkill.skillSelect.template.id == Skill.MAKANKOSAPPO) {
+                        Service.gI().sendThongBao(this, "Đang sử dụng kỹ năng Ma Phong Ba, không thể sử dụng kỹ năng khác");
+                        return false;
+                    }
+                    if (SkillService.gI().canUseSkillWithCooldown(this)
+                            && SkillService.gI().canUseSkillWithMana(this)) {
+                        SpecialSkill.gI().executeSpecialSkill(this, (short) Skill.MAFUBA, (short) this.location.x,
+                                (short) this.location.y, (byte) dir, (short) mobAttack.location.x, (short) mobAttack.location.y);
+                        return true;
+                    }
+                    return false;
+//                    Service.gI().sendThongBao(this.master, "Kỹ năng bị đang bảo trì do quá OP!");
                 default:
                     return false;
             }

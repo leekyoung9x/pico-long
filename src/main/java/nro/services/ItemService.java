@@ -285,6 +285,43 @@ public class ItemService {
         }
     }
 
+    public void setTNSMTD(Player player) throws Exception {
+        Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, ConstItem.HOP_QUA_SET_TNSM);
+        Item ao = ItemService.gI().otpKH((short) 0);
+        Item quan = ItemService.gI().otpKH((short) 6);
+        Item gang = ItemService.gI().otpKH((short) 21);
+        Item giay = ItemService.gI().otpKH((short) 27);
+        Item rd = ItemService.gI().otpKH((short) 12);
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));//129
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        if (InventoryService.gI().getCountEmptyBag(player) > 4) {
+            InventoryService.gI().addItemBag(player, ao, 0);
+            InventoryService.gI().addItemBag(player, quan, 0);
+            InventoryService.gI().addItemBag(player, gang, 0);
+            InventoryService.gI().addItemBag(player, giay, 0);
+            InventoryService.gI().addItemBag(player, rd, 0);
+            InventoryService.gI().sendItemBags(player);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt TNSM");
+            InventoryService.gI().subQuantityItemsBag(player, hq, 1);
+            InventoryService.gI().sendItemBags(player);
+        } else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 5 ô trống hành trang");
+        }
+    }
+
     public void setSongokuHD(Player player) throws Exception {
         Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, ConstItem.HOP_SKH_HUY_DIET);
         Item ao = ItemService.gI().otpKHHD((short) 650);
@@ -492,6 +529,44 @@ public class ItemService {
             InventoryService.gI().addItemBag(player, rd, 0);
             InventoryService.gI().sendItemBags(player);
             Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt Dende");
+            InventoryService.gI().subQuantityItemsBag(player, hq, 1);
+            InventoryService.gI().sendItemBags(player);
+        } else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 5 ô trống hành trang");
+        }
+    }
+
+    public void setTNSMNM(Player player) throws Exception {
+        Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, ConstItem.HOP_QUA_SET_TNSM);
+        Item ao = ItemService.gI().otpKH((short) 1);
+        Item quan = ItemService.gI().otpKH((short) 7);
+        Item gang = ItemService.gI().otpKH((short) 22);
+        Item giay = ItemService.gI().otpKH((short) 28);
+        Item rd = ItemService.gI().otpKH((short) 12);
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        if (InventoryService.gI().getCountEmptyBag(player) > 4) {
+            InventoryService.gI().addItemBag(player, ao, 0);
+            InventoryService.gI().addItemBag(player, quan, 0);
+            InventoryService.gI().addItemBag(player, gang, 0);
+            InventoryService.gI().addItemBag(player, giay, 0);
+            InventoryService.gI().addItemBag(player, rd, 0);
+            InventoryService.gI().sendItemBags(player);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt TNSM");
             InventoryService.gI().subQuantityItemsBag(player, hq, 1);
             InventoryService.gI().sendItemBags(player);
         } else {
@@ -709,6 +784,44 @@ public class ItemService {
             InventoryService.gI().addItemBag(player, rd, 0);
             InventoryService.gI().sendItemBags(player);
             Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt Kakarot");
+            InventoryService.gI().subQuantityItemsBag(player, hq, 1);
+            InventoryService.gI().sendItemBags(player);
+        } else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 5 ô trống hành trang");
+        }
+    }
+
+    public void setTNSMXD(Player player) throws Exception {
+        Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, ConstItem.HOP_QUA_SET_TNSM);
+        Item ao = ItemService.gI().otpKH((short) 2);
+        Item quan = ItemService.gI().otpKH((short) 8);
+        Item gang = ItemService.gI().otpKH((short) 23);
+        Item giay = ItemService.gI().otpKH((short) 29);
+        Item rd = ItemService.gI().otpKH((short) 12);
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_TNSM, 0));
+
+        ao.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        quan.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        gang.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        giay.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        rd.itemOptions.add(new ItemOption(ConstOption.SET_X_TNSM_5_MON, 3));
+        ao.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        quan.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        gang.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        giay.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        rd.itemOptions.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 0));
+        if (InventoryService.gI().getCountEmptyBag(player) > 4) {
+            InventoryService.gI().addItemBag(player, ao, 0);
+            InventoryService.gI().addItemBag(player, quan, 0);
+            InventoryService.gI().addItemBag(player, gang, 0);
+            InventoryService.gI().addItemBag(player, giay, 0);
+            InventoryService.gI().addItemBag(player, rd, 0);
+            InventoryService.gI().sendItemBags(player);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được set Kích hoạt TNSM");
             InventoryService.gI().subQuantityItemsBag(player, hq, 1);
             InventoryService.gI().sendItemBags(player);
         } else {

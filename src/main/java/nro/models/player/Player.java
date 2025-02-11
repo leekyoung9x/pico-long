@@ -461,13 +461,14 @@ public class Player {
                             "|1|Bạn phải 100 tỷ sức mạnh mới được qua map này");
                 }
             }
-            if (this.zone.map.mapId == 139 || this.zone.map.mapId == 140) {
-                if (this.nPoint.power < 90_000_000_000L) {
-                    ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
-                    Service.getInstance().sendBigMessage(this, 1139,
-                            "|1|Bạn phải 90 tỷ sức mạnh mới được qua map này");
-                }
-            }
+            // ekko bỏ điều kiện 90 tỷ mới vào được hành tinh potaufeu
+//            if (this.zone.map.mapId == 139 || this.zone.map.mapId == 140) {
+//                if (this.nPoint.power < 90_000_000_000L) {
+//                    ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
+//                    Service.getInstance().sendBigMessage(this, 1139,
+//                            "|1|Bạn phải 90 tỷ sức mạnh mới được qua map này");
+//                }
+//            }
             if (MapService.gI().isMapHTTV(mapid)) {
                 if (this.nPoint.power < 120_000_000_000L) {
                     ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
@@ -519,15 +520,15 @@ public class Player {
                             "|1|Bạn phải hoàn thành nhiệm vụ đánh bại Fide mới được đến khu vực này");
                 }
             }
-            if (MapService.gI().isMapQuestTDST(mapid)) {
-                // hoàn thành nhiệm vụ TDST thì không được vào map có TDST
-                // ekko khu 0 có TDST thì vẫn cho vào
-                if (MapService.gI().isMapCoTieuDoiSatThu(this.zone) && this.playerTask.taskMain.id > 20 && this.zone.zoneId != 0) {
-                    ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
-                    Service.getInstance().sendBigMessage(this, 1139,
-                            "|1|Bạn đã hoàn thành nhiệm vụ Tiểu đội sát thủ nên không thể vào khu vực này");
-                }
-            }
+//            if (MapService.gI().isMapQuestTDST(mapid)) {
+//                // hoàn thành nhiệm vụ TDST thì không được vào map có TDST
+//                // ekko khu 0 có TDST thì vẫn cho vào
+//                if (MapService.gI().isMapCoTieuDoiSatThu(this.zone) && this.playerTask.taskMain.id > 20 && this.zone.zoneId != 0) {
+//                    ChangeMapService.gI().changeMapNonSpaceship(this, this.gender + 21, 400, 336);
+//                    Service.getInstance().sendBigMessage(this, 1139,
+//                            "|1|Bạn đã hoàn thành nhiệm vụ Tiểu đội sát thủ nên không thể vào khu vực này");
+//                }
+//            }
 //            if (MapService.gI().ismap212(mapid)) {
 //                // ekko người chơi đạt 200 tỉ sức mạnh thì bị sút khỏi map
 //                if (this.nPoint != null && this.nPoint.power >= 200_000_000_000L) {

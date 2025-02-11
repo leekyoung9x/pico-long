@@ -195,21 +195,38 @@ DELETE FROM item_shop_option WHERE item_shop_id = 9905 AND option_id = 249;
 DELETE FROM item_shop_option WHERE item_shop_id = 9906 AND option_id = 249;
 
 -- đồ thần linh đổi bằng đá thần linh
-UPDATE item_shop `is` SET `is`.item_exchange = 1911 AND `is`.quantity_exchange = 500 WHERE `is`.id IN (9902, 9903, 9904, 9905, 9906);
+UPDATE item_shop `is` SET `is`.item_exchange = 1911, `is`.quantity_exchange = 500 WHERE `is`.id IN (9902, 9903, 9904, 9905, 9906);
 
 -- cập nhật tên tab shop
 UPDATE tab_shop ts SET ts.NAME = 'Shop<>thần linh' WHERE ts.id = 47;
 
 
+-- hộp quà set tnsm
+UPDATE item_template SET TYPE = 27, gender = 3, NAME = 'Hộp quà Set TNSM', description = 'Hộp quà chứa SKH TNSM', icon_id = 11006, part = -1, is_up_to_up = 0, power_require = 0 WHERE id = 1910;
+-- update set gohan -> set TNSM
+UPDATE item_option_template iot SET iot.NAME = 'Set TNSM' where ID = 248;
 
 
 -- test
+select * FROM item_template it WHERE id = 1910;
+SELECT * FROM map_template mt WHERE mt.id = 68;
+SELECT * FROM map_template mt WHERE ID = 122;
+SELECT * from map_template mt WHERE ID >= 105 AND ID <= 110;
 
+SELECT * FROM item_option_template iot WHERE iot.NAME like '%gohan%';
+select * FROM item_option_template iot WHERE iot.id IN (248, 250);
+SELECT * FROM item_template it WHERE it.NAME like '%Hộp%';
+
+SELECT * FROM account a WHERE a.is_admin = 1;
+SELECT * FROM map_template mt where mt.NAME like '%nappa%';
 SELECT * FROM npc_template nt WHERE nt.NAME like '%lý tiểu nương%';
 SELECT * FROM shop s where s.npc_id = 54;
 SELECT * FROM tab_shop ts WHERE ts.shop_id = 27;
 SELECT * FROM item_shop `is` WHERE `is`.tab_id = 47;
 SELECT * FROM item_shop_option iso WHERE iso.item_shop_id = 9902;
+
+SELECT * FROM item_option_template iot WHERE iot.id IN (248, 250);
+SELECT * FROM item_template it WHERE it.id IN (561, 1991)
 
 SELECT * FROM shop s WHERE s.npc_id = 39;
 SELECT * FROM tab_shop ts WHERE ts.shop_id = 9;
