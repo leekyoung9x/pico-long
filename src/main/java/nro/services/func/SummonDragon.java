@@ -68,10 +68,14 @@ public class SummonDragon {
 //            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Nâng cấp \nbông tai cấp 4", "Giàu có\n+2tr\nHồng ngọc", "+200 Tr\nSức mạnh\nvà tiềm\nnăng",
 //                "Găng tay đệ\nđang mang\nlên 1 cấp",
 //                "Điều ước\nkhác"};
-    public static final String[] SHENRON_1_STAR_WISHES_2
-            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Giàu có\n+2tr\nHồng ngọc", "+200 Tr\nSức mạnh\nvà tiềm\nnăng",
-            "Găng tay đệ\nđang mang\nlên 1 cấp",
-            "Điều ước\nkhác"};
+//    public static final String[] SHENRON_1_STAR_WISHES_2
+//            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Giàu có\n+2tr\nHồng ngọc", "+200 Tr\nSức mạnh\nvà tiềm\nnăng",
+//            "Găng tay đệ\nđang mang\nlên 1 cấp",
+//            "Điều ước\nkhác"};
+public static final String[] SHENRON_1_STAR_WISHES_2
+        = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Giàu có\n+2tr\nHồng ngọc",
+        "Găng tay đệ\nđang mang\nlên 1 cấp",
+        "Điều ước\nkhác"};
     public static final String[] SHENRON_1_STAR_WISHES_3
             = new String[]{"Nâng cấp \nbông tai\ncấp 4", "Găng tay\nđang mang\nlên 1 cấp", "Nâng quần\nđang mang\nlên cấp 8",
             "Nâng găng\nđang mang\nlên cấp 8", "Nâng giày\nđang mang\nlên cấp 8"};
@@ -378,31 +382,32 @@ public class SummonDragon {
     }
 
     public void summonIceShenron(Player pl) {
-        if (checkShenronBall(pl, DRAGON_ICE_SHENRON)) {
-            if (isIcecShenronAppear) {
-                Service.getInstance().sendThongBao(pl, "Không thể thực hiện");
-                return;
-            }
-            // ekko sửa lại thời gian chờ gọi rồng siêu cấp là 1 phút
-            // admin thì không phải đợi
-            if (Util.canDoWithTime(lastTimeIceShenronAppeared, timeResummonIceShenron) || pl.isAdmin()) {
-                playerSummonShenron = pl;
-                playerSummonShenronId = (int) pl.id;
-                mapShenronAppear = pl.zone;
-                for (int i : NGOC_RONG_SIEU_CAP) {
-                    InventoryService.gI().subQuantityItemsBag(pl, InventoryService.gI().findItemBagByTemp(pl, i), 1);
-                }
-                InventoryService.gI().sendItemBags(pl);
-                sendNotifyShenronAppear(DRAGON_ICE_SHENRON);
-                isIcecShenronAppear = true;
-                activeDragonNew(pl, true, (byte) 50);
-//            activeShenron(pl, true);
-                sendWhishesShenron(pl);
-            } else {
-                int timeLeft = (int) ((timeResummonIceShenron - (System.currentTimeMillis() - lastTimeIceShenronAppeared)) / 1000);
-                Service.getInstance().sendThongBao(pl, "Vui lòng đợi " + (timeLeft < 60 ? timeLeft + " giây" : timeLeft / 60 + " phút") + " nữa");
-            }
-        }
+        Service.getInstance().sendThongBao(pl, "Chức năng đang bảo trì");
+//        if (checkShenronBall(pl, DRAGON_ICE_SHENRON)) {
+//            if (isIcecShenronAppear) {
+//                Service.getInstance().sendThongBao(pl, "Không thể thực hiện");
+//                return;
+//            }
+//            // ekko sửa lại thời gian chờ gọi rồng siêu cấp là 1 phút
+//            // admin thì không phải đợi
+//            if (Util.canDoWithTime(lastTimeIceShenronAppeared, timeResummonIceShenron) || pl.isAdmin()) {
+//                playerSummonShenron = pl;
+//                playerSummonShenronId = (int) pl.id;
+//                mapShenronAppear = pl.zone;
+//                for (int i : NGOC_RONG_SIEU_CAP) {
+//                    InventoryService.gI().subQuantityItemsBag(pl, InventoryService.gI().findItemBagByTemp(pl, i), 1);
+//                }
+//                InventoryService.gI().sendItemBags(pl);
+//                sendNotifyShenronAppear(DRAGON_ICE_SHENRON);
+//                isIcecShenronAppear = true;
+//                activeDragonNew(pl, true, (byte) 50);
+////            activeShenron(pl, true);
+//                sendWhishesShenron(pl);
+//            } else {
+//                int timeLeft = (int) ((timeResummonIceShenron - (System.currentTimeMillis() - lastTimeIceShenronAppeared)) / 1000);
+//                Service.getInstance().sendThongBao(pl, "Vui lòng đợi " + (timeLeft < 60 ? timeLeft + " giây" : timeLeft / 60 + " phút") + " nữa");
+//            }
+//        }
     }
 
     private void reSummonShenron(byte Dragon) {
@@ -740,8 +745,8 @@ public class SummonDragon {
                         Manager.addPlayerRubyHistory(this.playerSummonShenron.id, oldRuby, this.playerSummonShenron.inventory.ruby, "SummonDragon-confirmWish");
                         PlayerService.gI().sendInfoHpMpMoney(this.playerSummonShenron);
                         break;
-                    case 2: //+200 tr smtn
-                        Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 200000000, false);
+//                    case 2: //+200 tr smtn
+//                        Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 200000000, false);
 //                        if (false) {
 //                            Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 200000000, false);
 //                        }
@@ -750,8 +755,8 @@ public class SummonDragon {
 //                            reOpenShenronWishes(playerSummonShenron);
 //                            return;
 //                        }
-                        break;
-                    case 3: //găng tay đệ lên 1 cấp
+//                        break;
+                    case 2: //găng tay đệ lên 1 cấp
                         if (this.playerSummonShenron.pet != null) {
                             Item item = this.playerSummonShenron.pet.inventory.itemsBody.get(2);
                             if (item.isNotNullItem()) {

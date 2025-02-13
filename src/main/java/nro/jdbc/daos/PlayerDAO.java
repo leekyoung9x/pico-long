@@ -711,7 +711,7 @@ public class PlayerDAO {
                     String itemTime = dataItemTime.toJSONString();
 
                     JSONArray dataItemNew = new JSONArray();
-                    dataItemNew.add(player.itemTime.isDuoiKhi ? (ItemTime.TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeDuoiKhi)) : 0);
+                    dataItemNew.add(player.itemTime.isX2TNSMDeVaSuPhu ? (ItemTime.TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeX2TNSMDeVaSuPhu)) : 0);
                     dataItemNew.add(player.itemTime.isBanhTrungThu1Trung ? (ItemTime.TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeBanhTrungThu1Trung)) : 0);
                     dataItemNew.add(player.itemTime.isBanhTrungThu2Trung ? (ItemTime.TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeBanhTrungThu2Trung)) : 0);
 

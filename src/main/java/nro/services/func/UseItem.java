@@ -3940,12 +3940,12 @@ public class UseItem {
                 updatePoint = true;
                 break;
             case 638:
-                if (pl.itemTime.isDuoiKhi) {
+                if (pl.itemTime.isX2TNSMDeVaSuPhu) {
                     Service.getInstance().sendThongBao(pl, "Chỉ có thể sự dụng cùng lúc 1 vật phẩm bổ trợ cùng loại");
                     return;
                 }
-                pl.itemTime.lastTimeDuoiKhi = System.currentTimeMillis();
-                pl.itemTime.isDuoiKhi = true;
+                pl.itemTime.lastTimeX2TNSMDeVaSuPhu = System.currentTimeMillis();
+                pl.itemTime.isX2TNSMDeVaSuPhu = true;
                 updatePoint = true;
                 break;
             case 382: //bổ huyết

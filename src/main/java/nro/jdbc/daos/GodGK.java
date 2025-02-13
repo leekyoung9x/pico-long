@@ -513,7 +513,7 @@ public class GodGK {
                         dauThanCap11 = Integer.parseInt(String.valueOf(dataArray.get(13)));
 //                        item212x2 = Integer.parseInt(String.valueOf(dataArray.get(7)));
                     }
-                    player.itemTime.lastTimeDuoiKhi = System.currentTimeMillis() - (ItemTime.TIME_MAY_DO - duoiKhi);
+                    player.itemTime.lastTimeX2TNSMDeVaSuPhu = System.currentTimeMillis() - (ItemTime.TIME_MAY_DO - duoiKhi);
                     player.itemTime.lastTimeBanhTrungThu1Trung = System.currentTimeMillis() - (ItemTime.TIME_MAY_DO - timeBanh1Trung);
                     player.itemTime.lastTimeBanhTrungThu2Trung = System.currentTimeMillis() - (ItemTime.TIME_MAY_DO - timeBanh2Trung);
                     player.itemTime.lastTimerateHit = System.currentTimeMillis() - (ItemTime.TIME_ITEM - rateDraHit);
@@ -528,7 +528,7 @@ public class GodGK {
                     player.itemTime.lastTimeNaoCho = System.currentTimeMillis() - (ItemTime.NAO_CHO - rateNaoCho);
                     player.itemTime.lastTimeNangLuongBill = System.currentTimeMillis() - (ItemTime.TEN_MINUTES - nangLuongBill);
                     player.itemTime.lastTimeDauThanCap11 = System.currentTimeMillis() - (ItemTime.THIRTY_MINUTES - dauThanCap11);
-                    player.itemTime.isDuoiKhi = duoiKhi != 0;
+                    player.itemTime.isX2TNSMDeVaSuPhu = duoiKhi != 0;
                     player.itemTime.isBanhTrungThu1Trung = timeBanh1Trung != 0;
                     player.itemTime.isBanhTrungThu2Trung = timeBanh2Trung != 0;
                     player.itemTime.rateDragonHit = rateDraHit != 0;

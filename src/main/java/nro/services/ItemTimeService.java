@@ -50,8 +50,8 @@ public class ItemTimeService {
         if (player.itemTime.isDauThanCap11) {
             sendItemTime(player, 29155, (int) ((THIRTY_MINUTES - (System.currentTimeMillis() - player.itemTime.lastTimeDauThanCap11)) / 1000));
         }
-        if (player.itemTime.isDuoiKhi) {
-            sendItemTime(player, 5829, (int) ((TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeDuoiKhi)) / 1000));
+        if (player.itemTime.isX2TNSMDeVaSuPhu) {
+            sendItemTime(player, 5829, (int) ((TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeX2TNSMDeVaSuPhu)) / 1000));
         }
         if (player.itemTime.isUsebinhtangluc) {
             sendItemTime(player, 1403, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimebinhtangluc)) / 1000));

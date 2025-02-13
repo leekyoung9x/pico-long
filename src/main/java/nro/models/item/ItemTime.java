@@ -34,7 +34,7 @@ public class ItemTime {
     public boolean isUseBoKhi2;
     public boolean isUseGiapXen2;
     public boolean isUseCuongNo2;
-    public boolean isDuoiKhi;
+    public boolean isX2TNSMDeVaSuPhu;
 
     public boolean isMaTroi;
     public long lastTimeMaTroi;
@@ -82,7 +82,7 @@ public class ItemTime {
     public long lastTimeBoKhi2;
     public long lastTimeGiapXen2;
     public long lastTimeCuongNo2;
-    public long lastTimeDuoiKhi;
+    public long lastTimeX2TNSMDeVaSuPhu;
 
     public boolean isUsebinhtangluc;
     public long lastTimebinhtangluc;
@@ -172,9 +172,9 @@ public class ItemTime {
                 update = true;
             }
         }
-        if (isDuoiKhi) {
-            if (Util.canDoWithTime(lastTimeDuoiKhi, TIME_MAY_DO)) {
-                isDuoiKhi = false;
+        if (isX2TNSMDeVaSuPhu) {
+            if (Util.canDoWithTime(lastTimeX2TNSMDeVaSuPhu, TIME_MAY_DO)) {
+                isX2TNSMDeVaSuPhu = false;
                 update = true;
             }
         }

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import nro.art.ServerLog;
 import nro.manager.EventTurnManager;
 import nro.manager.TopWhis;
 import nro.server.ServerNotify;
@@ -2082,8 +2081,8 @@ public class NPoint {
                     tiemNang += ((Pet) this.player).nPoint.suphu;
                 }
             }
-            if (((this.player.isPl() && this.player.itemTime.isDuoiKhi) || (this.player.isPet && ((Pet) this.player).master.itemTime.isDuoiKhi))) {
-                tiemNang += tn * 4;
+            if (((this.player.isPl() && this.player.itemTime.isX2TNSMDeVaSuPhu) || (this.player.isPet && ((Pet) this.player).master.itemTime.isX2TNSMDeVaSuPhu))) {
+                tiemNang += tn * 2;
             }
             if (((this.player.isPl() && this.player.itemTime.isBanhTrungThu2Trung) || (this.player.isPet && ((Pet) this.player).master.itemTime.isBanhTrungThu2Trung))) {
                 tiemNang += (long) (tn * 0.1);

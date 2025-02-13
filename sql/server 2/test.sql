@@ -207,15 +207,29 @@ UPDATE item_template SET TYPE = 27, gender = 3, NAME = 'Hộp quà Set TNSM', de
 UPDATE item_option_template iot SET iot.NAME = 'Set TNSM' where ID = 248;
 
 
+-- thêm rương cải trang vip
+DELETE FROM item_shop WHERE ID = 9952;
+INSERT INTO item_shop (id, tab_id, temp_id, gold, gem, is_new, is_sell, item_exchange, quantity_exchange, create_time) VALUES
+(9952, 35, 2122, 0, 0, 1, 1, 1288, 5000, '2024-09-01 15:15:03');
+
+
+-- update
+UPDATE item_template it SET it.description = 'Vũ khí của người Potaufeu (x2 TNSM đệ và sư phụ)' WHERE ID = 638;
+
 -- test
+select * from item_shop `is` ORDER BY `is`.id DESC;
 select * FROM item_template it WHERE id = 1910;
 SELECT * FROM map_template mt WHERE mt.id = 68;
 SELECT * FROM map_template mt WHERE ID = 122;
 SELECT * from map_template mt WHERE ID >= 105 AND ID <= 110;
+select * FROM map_template mt where mt.NAME like '%hành tinh potaufeu%';
+SELECT * FROM map_template mt WHERE mt.id = 140;
+select * FROM map_template mt where mt.NAME IN ('Thung lũng nappa', 'Vực cấm', 'Núi appule', 'Căn cứ raspberry', 'Thung lũng raspberry', 'Núi dây leo', 'Núi cây quỷ', 'Trại lính fide', 'Trại quỷ già', 'Vực chết', 'Thung lũng chết', 'Đồi cây fide', 'Khe núi tử thần', 'Núi đá', 'Rừng đá', 'Hang quỷ chim', 'Núi khỉ đen', 'Hang khỉ đen', 'Núi khỉ đỏ', 'Núi khỉ vàng');
+
 
 SELECT * FROM item_option_template iot WHERE iot.NAME like '%gohan%';
-select * FROM item_option_template iot WHERE iot.id IN (248, 250);
-SELECT * FROM item_template it WHERE it.NAME like '%Hộp%';
+select * FROM item_option_template iot WHERE iot.id IN (80, 50);
+SELECT * FROM item_template it WHERE it.NAME like '%commeson%';
 
 SELECT * FROM account a WHERE a.is_admin = 1;
 SELECT * FROM map_template mt where mt.NAME like '%nappa%';
@@ -230,7 +244,8 @@ SELECT * FROM item_template it WHERE it.id IN (561, 1991)
 
 SELECT * FROM shop s WHERE s.npc_id = 39;
 SELECT * FROM tab_shop ts WHERE ts.shop_id = 9;
-SELECT * FROM item_shop `is` WHERE `is`.tab_id = 17;
+SELECT * FROM tab_shop ts WHERE ts.shop_id IN (5, 9, 17, 18, 19, 20, 21);
+SELECT * FROM item_shop `is` WHERE `is`.tab_id = 35;
 SELECT * FROM item_shop_option iso WHERE iso.item_shop_id = 480;
 
 SELECT * FROM item_shop `is` ORDER BY `is`.id DESC;

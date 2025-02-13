@@ -42,8 +42,8 @@ public class Potage extends Npc {
                 int turn = EventTurnManager.ManageHumanityChallenge(ConstAction.GET_BY_ID, player.id);
 
                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                        "text npc"
-                        , "20k ngọc xanh","Gọi Boss\nNhân bản\n 5k coin", "Từ chối");
+                        "Chào mừng người đến với thế giới Tôn Hành Giả gặp Giả Hành Tôn"
+                        , "Gọi Boss\nNhân bản\n 5k TVV", "Từ chối");
             }
         }
     }
@@ -57,27 +57,33 @@ public class Potage extends Npc {
                 if (player.iDMark.isBaseMenu()) {
                     switch (select) {
                         case 0:
-                            if (player.inventory.gem < COST_RUBY) {
-                                this.npcChat(player, "Nhà ngươi không đủ 20k ngọc");
+//                            if (player.inventory.gem < COST_RUBY) {
+//                                this.npcChat(player, "Nhà ngươi không đủ 20k ngọc");
+//                                return;
+//                            }
+                            Item tvv = InventoryService.gI().findItemBagByTemp(player, ConstItem.THOI_VANG_VIP);
+                            if (tvv == null || tvv.quantity < 5_000) {
+                                this.npcChat(player, "Nhà ngươi không đủ 1k TVV");
                                 return;
                             }
                             MakeCopy(player);
                             this.npcChat(player, "Hắn đã xuất hiện");
-                            player.inventory.addGem(-COST_RUBY);
-                            Service.getInstance().sendMoney(player);
-                            break;
-                        case 1:
-                            Item pi = InventoryService.gI().findItemBagByTemp(player, ConstItem.THOI_VANG_VIP);
-                            if (pi == null || pi.quantity < 5_000) {
-                                this.npcChat(player, "Nhà ngươi không đủ 5k pi");
-                                return;
-                            }
-                            MakeCopy(player);
-                            this.npcChat(player, "Hắn đã xuất hiện");
-                            InventoryService.gI().subQuantityItemsBag(player, pi, 5_000);
+                            InventoryService.gI().subQuantityItemsBag(player, tvv, 5_000);
                             InventoryService.gI().sendItemBags(player);
                             Service.getInstance().sendMoney(player);
                             break;
+//                        case 1:
+//                            Item pi = InventoryService.gI().findItemBagByTemp(player, ConstItem.THOI_VANG_VIP);
+//                            if (pi == null || pi.quantity < 5_000) {
+//                                this.npcChat(player, "Nhà ngươi không đủ 5k TVV");
+//                                return;
+//                            }
+//                            MakeCopy(player);
+//                            this.npcChat(player, "Hắn đã xuất hiện");
+//                            InventoryService.gI().subQuantityItemsBag(player, pi, 5_000);
+//                            InventoryService.gI().sendItemBags(player);
+//                            Service.getInstance().sendMoney(player);
+//                            break;
 
                     }
                 }

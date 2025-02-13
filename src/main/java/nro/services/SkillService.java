@@ -469,7 +469,9 @@ public class SkillService {
                             }
                         }
                         for (Player pl : playersToInjure) {
-                            pl.injured(player, pl.isBoss ? (dame / 100) * 60 : dame, false, false);
+                            // neff xd 50% dame
+//                            pl.injured(player, pl.isBoss ? (dame / 100) * 60 : dame, false, false);
+                            pl.injured(player, pl.isBoss ? (dame / 100) * 50 : dame, false, false);
                             PlayerService.gI().sendInfoHpMpMoney(pl);
                             Service.getInstance().Send_Info_NV(pl);
                         }
