@@ -63,7 +63,7 @@ public class Potage extends Npc {
 //                            }
                             Item tvv = InventoryService.gI().findItemBagByTemp(player, ConstItem.THOI_VANG_VIP);
                             if (tvv == null || tvv.quantity < 5_000) {
-                                this.npcChat(player, "Nhà ngươi không đủ 1k TVV");
+                                this.npcChat(player, "Nhà ngươi không đủ 5k TVV");
                                 return;
                             }
                             MakeCopy(player);
