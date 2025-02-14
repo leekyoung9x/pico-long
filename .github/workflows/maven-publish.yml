@@ -109,4 +109,4 @@ jobs:
       - name: Upload to FTP
         run: |
           FTP_URL="ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/"
-          curl --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} $FTP_URL
+          curl --ftp-pasv -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} $FTP_URL
