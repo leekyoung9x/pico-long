@@ -79,16 +79,16 @@ jobs:
             gh release create "$TAG" develop-${{ github.event.inputs.BUILD_VERSION }}.zip --title "$RELEASE_NAME" --notes "Automated release for version ${{ github.event.inputs.BUILD_VERSION }}"
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build to Release
         run: |
           TAG="v${{ github.event.inputs.BUILD_VERSION }}"
           gh release upload "$TAG" develop-${{ github.event.inputs.BUILD_VERSION }}.zip --clobber
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-to-vps:
+  deploy-to-fpt:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -100,17 +100,17 @@ jobs:
       - name: Install Python WinRM Module
         run: pip install pywinrm
 
-      - name: Upload Build to Windows VPS via WinRM
+      - name: Upload Build to Windows FPT Server via WinRM
         run: |
           python - <<EOF
           import winrm
 
-          # Kết nối đến VPS Windows
-          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"))
+          # Kết nối đến FPT Server (thực ra là Windows VPS) qua WinRM
+          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"), transport="ntlm")
 
-          # Tải file từ GitHub Releases về VPS
+          # Tải file từ GitHub Releases về FPT Server
           url = "https://github.com/${{ github.repository }}/releases/download/v${{ github.event.inputs.BUILD_VERSION }}/develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
-          dest = "C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
+          dest = R"C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
           command = f"powershell -Command Invoke-WebRequest -Uri {url} -OutFile {dest}"
           result = session.run_ps(command)
 
@@ -118,20 +118,18 @@ jobs:
           print(result.std_err.decode())
           EOF
 
-      - name: Extract Build on Windows VPS
+      - name: Extract Build on FPT Server
         run: |
           python - <<EOF
           import winrm
 
           # Kết nối lại với WinRM
-          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"))
+          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"), transport="ntlm")
 
-          # Giải nén file trên VPS Windows
-          extract_command = "powershell -Command Expand-Archive -Path 'C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip' -DestinationPath 'C:\\Deploys'"
+          # Giải nén file trên FPT Server
+          extract_command = R"powershell -Command Expand-Archive -Path 'C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip' -DestinationPath 'C:\\Deploys'"
           result = session.run_ps(extract_command)
 
           print(result.std_out.decode())
           print(result.std_err.decode())
           EOF
-
-
