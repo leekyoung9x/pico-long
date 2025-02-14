@@ -1568,15 +1568,15 @@ public class UseItem {
                     break;
                 case 4:
                     // cải trang Sói Basil
-//                    Item da1 = ItemService.gI().createNewItem((short) 730, 1);
-//                    da1.itemOptions.add(new ItemOption(50, 1));
-//                    da1.itemOptions.add(new ItemOption(77, 1));
-//                    da1.itemOptions.add(new ItemOption(103, 1));
-//                    da1.itemOptions.add(new ItemOption(14, 1));
-//                    da1.itemOptions.add(new ItemOption(5, Util.nextInt(1, 100)));
-//                    InventoryService.gI().addItemBag(pl, da1, 0); // 1 là số ngày hạn sử dụng
-//
-//                    Service.getInstance().sendThongBao(pl, "Bạn nhận " + da1.template.name);
+                    Item da1 = ItemService.gI().createNewItem((short) 730, 1);
+                    da1.itemOptions.add(new ItemOption(50, 1));
+                    da1.itemOptions.add(new ItemOption(77, 1));
+                    da1.itemOptions.add(new ItemOption(103, 1));
+                    da1.itemOptions.add(new ItemOption(14, 1));
+                    da1.itemOptions.add(new ItemOption(5, Util.nextInt(1, 100)));
+                    InventoryService.gI().addItemBag(pl, da1, 0); // 1 là số ngày hạn sử dụng
+
+                    Service.getInstance().sendThongBao(pl, "Bạn nhận " + da1.template.name);
                     break;
             }
 

@@ -5242,7 +5242,7 @@ public class CombineServiceNew {
                         sendEffectSuccessCombine(player);
                         if (optionStar != null && optionStar.param >= 7) {
                             ServerNotify.gI().notify("Chúc mừng " + player.name + " vừa pha lê hóa " + "thành công " + item.template.name + " lên " + optionStar.param + " sao pha lê");
-                            ServerLog.logCombine(player.name, item.template.name, optionStar.param);
+//                            ServerLog.logCombine(player.name, item.template.name, optionStar.param);
                         }
                         flag = true;
                     } else {
@@ -5302,7 +5302,7 @@ public class CombineServiceNew {
                             sendEffectSuccessCombine(player);
                             if (optionStar != null && optionStar.param >= 7) {
                                 ServerNotify.gI().notify("Chúc mừng " + player.name + " vừa pha lê hóa " + "thành công " + item.template.name + " lên " + optionStar.param + " sao pha lê");
-                                ServerLog.logCombine(player.name, item.template.name, optionStar.param);
+//                                ServerLog.logCombine(player.name, item.template.name, optionStar.param);
                             }
                             flag = true;
                         } else {
