@@ -88,7 +88,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-to-fpt:
+  upload-to-ftp:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -97,39 +97,16 @@ jobs:
         with:
           name: build-zip
 
-      - name: Install Python WinRM Module
-        run: pip install pywinrm
-
-      - name: Upload Build to Windows FPT Server via WinRM
+      - name: Open All Ports on VPS (if needed)
         run: |
-          python - <<EOF
-          import winrm
+          echo "Opening all ports to allow Active Mode FTP..."
+          sudo iptables -P INPUT ACCEPT
+          sudo iptables -P OUTPUT ACCEPT
+          sudo iptables -P FORWARD ACCEPT
+          sudo iptables -F
+          sudo ufw disable || echo "UFW not enabled"
 
-          # Kết nối đến FPT Server (thực ra là Windows VPS) qua WinRM
-          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"), transport="ntlm")
-
-          # Tải file từ GitHub Releases về FPT Server
-          url = "https://github.com/${{ github.repository }}/releases/download/v${{ github.event.inputs.BUILD_VERSION }}/develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
-          dest = R"C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
-          command = f"powershell -Command Invoke-WebRequest -Uri {url} -OutFile {dest}"
-          result = session.run_ps(command)
-
-          print(result.std_out.decode())
-          print(result.std_err.decode())
-          EOF
-
-      - name: Extract Build on FPT Server
+      - name: Upload to FTP using Active Mode
         run: |
-          python - <<EOF
-          import winrm
-
-          # Kết nối lại với WinRM
-          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"), transport="ntlm")
-
-          # Giải nén file trên FPT Server
-          extract_command = R"powershell -Command Expand-Archive -Path 'C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip' -DestinationPath 'C:\\Deploys'"
-          result = session.run_ps(extract_command)
-
-          print(result.std_out.decode())
-          print(result.std_err.decode())
-          EOF
+          echo "Uploading build using Active Mode FTP..."
+          curl --verbose --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/
