@@ -106,7 +106,8 @@ jobs:
           sudo iptables -F
           sudo ufw disable || echo "UFW not enabled"
 
-      - name: Upload to FTP using Active Mode
+      - name: Upload to FTP using Active Mode (Force)
         run: |
           echo "Uploading build using Active Mode FTP..."
-          curl --disable-epsv --verbose --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/
+          curl --verbose --disable-epsv --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/
+
