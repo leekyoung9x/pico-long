@@ -109,4 +109,4 @@ jobs:
       - name: Upload to FTP using Active Mode
         run: |
           echo "Uploading build using Active Mode FTP..."
-          curl --verbose --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/
+          curl --disable-epsv --verbose --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/
