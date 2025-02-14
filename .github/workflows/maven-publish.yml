@@ -10,7 +10,7 @@ on:
       REBUILD:
         description: 'Rebuild code'
         required: true
-        default: 'false'
+        default: 'true'
         type: boolean
 
 jobs:
