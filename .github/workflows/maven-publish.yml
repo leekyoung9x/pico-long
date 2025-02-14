@@ -17,18 +17,55 @@ jobs:
   setup-environment:
     runs-on: ubuntu-latest
     steps:
-      - name: Check and Install Java, Maven, Zip, Curl
+      - name: Check and Install Java, Maven, Zip, Curl (if not installed)
         run: |
           echo "Checking system dependencies..."
-          sudo apt update
-          sudo apt install -y openjdk-17-jdk maven zip curl
-
+  
+          # Kiểm tra và cài đặt Java 17 nếu chưa có
+          if ! command -v java &>/dev/null || ! java -version 2>&1 | grep -q "17"; then
+            echo "Java 17 is not installed. Installing..."
+            sudo apt update && sudo apt install -y openjdk-17-jdk
+          else
+            echo "Java 17 is already installed."
+          fi
+  
+          # Kiểm tra và cài đặt Maven nếu chưa có
+          if ! command -v mvn &>/dev/null; then
+            echo "Maven is not installed. Installing..."
+            sudo apt install -y maven
+          else
+            echo "Maven is already installed."
+          fi
+  
+          # Kiểm tra và cài đặt Zip nếu chưa có
+          if ! command -v zip &>/dev/null; then
+            echo "Zip is not installed. Installing..."
+            sudo apt install -y zip
+          else
+            echo "Zip is already installed."
+          fi
+  
+          # Kiểm tra và cài đặt Curl nếu chưa có
+          if ! command -v curl &>/dev/null; then
+            echo "Curl is not installed. Installing..."
+            sudo apt install -y curl
+          else
+            echo "Curl is already installed."
+          fi
+  
       - name: Verify Installed Versions
         run: |
-          java -version
-          mvn -version
-          zip --version
-          curl --version
+          echo "Java Version:"
+          java -version || echo "Java is missing!"
+          
+          echo "Maven Version:"
+          mvn -version || echo "Maven is missing!"
+          
+          echo "Zip Version:"
+          zip --version || echo "Zip is missing!"
+          
+          echo "Curl Version:"
+          curl --version || echo "Curl is missing!"
 
   build:
     runs-on: ubuntu-latest
