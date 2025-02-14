@@ -76,11 +76,11 @@ jobs:
             gh release create "$TAG" develop-${{ github.event.inputs.BUILD_VERSION }}.zip --title "$RELEASE_NAME" --notes "Automated release for version ${{ github.event.inputs.BUILD_VERSION }}"
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Upload Build to Release
         run: |
           TAG="v${{ github.event.inputs.BUILD_VERSION }}"
           gh release upload "$TAG" develop-${{ github.event.inputs.BUILD_VERSION }}.zip --clobber
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
