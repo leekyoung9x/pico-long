@@ -67,7 +67,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: setup-environment
-    if: ${{ github.event.inputs.REBUILD == 'true' }}
+    if: ${{ github.event.inputs.REBUILD == 'true' || github.event.inputs.REBUILD == true }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -79,10 +79,21 @@ jobs:
         run: |
           zip -r develop-${{ github.event.inputs.BUILD_VERSION }}.zip target/
 
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-zip
+          path: develop-${{ github.event.inputs.BUILD_VERSION }}.zip
+
   upload-to-ftp:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-zip
+
       - name: Upload to FTP
         run: |
           curl --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u administrator:12345678@Abc ftp://188.166.248.61:21/
