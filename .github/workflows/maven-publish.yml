@@ -97,25 +97,41 @@ jobs:
         with:
           name: build-zip
 
-      - name: Install WinRM client (pywinrm)
-        run: |
-          pip install pywinrm
+      - name: Install Python WinRM Module
+        run: pip install pywinrm
 
       - name: Upload Build to Windows VPS via WinRM
-        uses: cloudbase/winrm-action@v1.0.0
-        with:
-          hostname: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          command: |
-            Invoke-WebRequest -Uri "https://github.com/${{ github.repository }}/releases/download/v${{ github.event.inputs.BUILD_VERSION }}/develop-${{ github.event.inputs.BUILD_VERSION }}.zip" -OutFile "C:\Users\${{ secrets.VPS_WINRM_USER }}\Downloads\develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
+        run: |
+          python - <<EOF
+          import winrm
+
+          # Kết nối đến VPS Windows
+          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"))
+
+          # Tải file từ GitHub Releases về VPS
+          url = "https://github.com/${{ github.repository }}/releases/download/v${{ github.event.inputs.BUILD_VERSION }}/develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
+          dest = "C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
+          command = f"powershell -Command Invoke-WebRequest -Uri {url} -OutFile {dest}"
+          result = session.run_ps(command)
+
+          print(result.std_out.decode())
+          print(result.std_err.decode())
+          EOF
 
       - name: Extract Build on Windows VPS
-        uses: cloudbase/winrm-action@v1.0.0
-        with:
-          hostname: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          command: |
-            Expand-Archive -Path "C:\Users\${{ secrets.VPS_WINRM_USER }}\Downloads\develop-${{ github.event.inputs.BUILD_VERSION }}.zip" -DestinationPath "C:\Deploys"
+        run: |
+          python - <<EOF
+          import winrm
+
+          # Kết nối lại với WinRM
+          session = winrm.Session("${{ secrets.FTP_HOST }}", auth=("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}"))
+
+          # Giải nén file trên VPS Windows
+          extract_command = "powershell -Command Expand-Archive -Path 'C:\\Users\\${{ secrets.FTP_USERNAME }}\\Downloads\\develop-${{ github.event.inputs.BUILD_VERSION }}.zip' -DestinationPath 'C:\\Deploys'"
+          result = session.run_ps(extract_command)
+
+          print(result.std_out.decode())
+          print(result.std_err.decode())
+          EOF
+
 
