@@ -96,4 +96,5 @@ jobs:
 
       - name: Upload to FTP
         run: |
-          curl --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u administrator:12345678@Abc ftp://188.166.248.61:21/
+          FTP_URL="ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}/"
+          curl --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} $FTP_URL
