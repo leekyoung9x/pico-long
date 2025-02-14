@@ -1,0 +1,88 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      BUILD_VERSION:
+        description: 'Version number for the build'
+        required: true
+        default: '1.0.0'
+      REBUILD:
+        description: 'Rebuild code'
+        required: true
+        default: 'false'
+        type: boolean
+
+jobs:
+  setup-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check and Install Java, Maven, Zip, Curl
+        run: |
+          echo "Checking system dependencies..."
+          
+          # Kiểm tra và cài đặt Java 17 nếu chưa có
+          if ! java -version 2>&1 | grep -q "17"; then
+            echo "Java 17 is not installed. Installing..."
+            sudo apt update && sudo apt install -y openjdk-17-jdk
+          else
+            echo "Java 17 is already installed."
+          fi
+          
+          # Kiểm tra và cài đặt Maven nếu chưa có
+          if ! mvn -version &>/dev/null; then
+            echo "Maven is not installed. Installing..."
+            sudo apt install -y maven
+          else
+            echo "Maven is already installed."
+          fi
+
+          # Kiểm tra và cài đặt Zip nếu chưa có
+          if ! zip --version &>/dev/null; then
+            echo "Zip is not installed. Installing..."
+            sudo apt install -y zip
+          else
+            echo "Zip is already installed."
+          fi
+
+          # Kiểm tra và cài đặt Curl nếu chưa có
+          if ! curl --version &>/dev/null; then
+            echo "Curl is not installed. Installing..."
+            sudo apt install -y curl
+          else
+            echo "Curl is already installed."
+          fi
+
+      - name: Verify Java, Maven, Zip, and Curl Versions
+        run: |
+          echo "Java Version:"
+          java -version
+          echo "Maven Version:"
+          mvn -version
+          echo "Zip Version:"
+          zip --version
+          echo "Curl Version:"
+          curl --version
+
+  build:
+    runs-on: ubuntu-latest
+    needs: setup-environment
+    if: ${{ github.event.inputs.REBUILD == 'true' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build with Maven
+        run: mvn clean package -Dversion=${{ github.event.inputs.BUILD_VERSION }}
+
+      - name: Zip the Build using ZIP
+        run: |
+          zip -r develop-${{ github.event.inputs.BUILD_VERSION }}.zip target/
+
+  upload-to-ftp:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Upload to FTP
+        run: |
+          curl --ftp-port - -T develop-${{ github.event.inputs.BUILD_VERSION }}.zip -u administrator:12345678@Abc ftp://188.166.248.61:21/
