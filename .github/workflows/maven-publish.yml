@@ -87,3 +87,35 @@ jobs:
           gh release upload "$TAG" develop-${{ github.event.inputs.BUILD_VERSION }}.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+  deploy-to-vps:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-zip
+
+      - name: Install WinRM client (pywinrm)
+        run: |
+          pip install pywinrm
+
+      - name: Upload Build to Windows VPS via WinRM
+        uses: cloudbase/winrm-action@v1.0.0
+        with:
+          hostname: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          command: |
+            Invoke-WebRequest -Uri "https://github.com/${{ github.repository }}/releases/download/v${{ github.event.inputs.BUILD_VERSION }}/develop-${{ github.event.inputs.BUILD_VERSION }}.zip" -OutFile "C:\Users\${{ secrets.VPS_WINRM_USER }}\Downloads\develop-${{ github.event.inputs.BUILD_VERSION }}.zip"
+
+      - name: Extract Build on Windows VPS
+        uses: cloudbase/winrm-action@v1.0.0
+        with:
+          hostname: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          command: |
+            Expand-Archive -Path "C:\Users\${{ secrets.VPS_WINRM_USER }}\Downloads\develop-${{ github.event.inputs.BUILD_VERSION }}.zip" -DestinationPath "C:\Deploys"
+
