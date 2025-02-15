@@ -100,8 +100,8 @@ public class MechaSat extends Boss {
             return 0;
         } else {
             // dame gây ra chia 3
-            long damageAfter = damage / 3;
-            return super.injured(plAtt, damageAfter, piercing, isMobAttack);
+//            long damageAfter = damage / 3;
+            return super.injured(plAtt, damage, piercing, isMobAttack);
         }
     }
 }

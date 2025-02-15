@@ -34,15 +34,24 @@ public class Calich_Tang5 extends BossMabuWar {
             return 0;
         } else {
             if (plAtt != null) {
-                if (Util.isTrue(20, 100)) {
-                    plAtt.addPercentPowerPoint(1);
-                    Service.getInstance().sendPowerInfo(plAtt, "%", plAtt.getPercentPowerPont());
-                }
+//                if (Util.isTrue(20, 100)) {
+//                    plAtt.addPercentPowerPoint(1);
+//                    Service.getInstance().sendPowerInfo(plAtt, "%", plAtt.getPercentPowerPont());
+//                }
+//                int skill = plAtt.playerSkill.skillSelect.template.id;
+//                if (skill == Skill.KAMEJOKO || skill == Skill.ANTOMIC || skill == Skill.MASENKO || skill == Skill.LIEN_HOAN) {
+//                    damage = 1;
+//                    Service.getInstance().chat(this, "Chưởng trúng cho con bò..");
+//                } else if (Util.isTrue(25,100)) {
+//                    damage = 1;
+//                    Service.getInstance().chat(this, "Xí hụt..");
+//                }
                 int skill = plAtt.playerSkill.skillSelect.template.id;
-                if (skill == Skill.KAMEJOKO || skill == Skill.ANTOMIC || skill == Skill.MASENKO || skill == Skill.LIEN_HOAN) {
-                    damage = 1;
-                    Service.getInstance().chat(this, "Chưởng trúng cho con bò..");
-                } else if (Util.isTrue(25,100)) {
+                if (skill == Skill.GALICK || skill == Skill.DRAGON || skill == Skill.DEMON) {
+                    if(damage > 3_000_000) {
+                        damage = 3_000_000;
+                    }
+                } else {
                     damage = 1;
                     Service.getInstance().chat(this, "Xí hụt..");
                 }

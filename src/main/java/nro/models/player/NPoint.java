@@ -305,10 +305,12 @@ public class NPoint {
             case 49: //Tấn công+#%  / 2
             case 50: //Sức đánh+#% / 2
             case 198: // Sức đánh ma thuật tăng #%
+            case ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM:
                 this.tlDame.add(io.param / chiSoChiaSD);
                 break;
             case 77: //HP+#% / 2
             case 186: // HP ma thuật tăng #%
+            case ConstOption.HP_NGUYET_TU_TANG_PHAN_TRAM:
                 this.tlHp.add(io.param / chiSoChiaHP);
                 break;
             case 80: //HP+#%/30s
@@ -340,6 +342,7 @@ public class NPoint {
                 break;
             case 103: //KI +#%
             case 163: //KI ma thuật tăng #%
+            case ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM:
                 this.tlMp.add(io.param / chiSoChiaKI);
                 break;
             case 104: //Biến #% tấn công quái thành HP
@@ -535,10 +538,12 @@ public class NPoint {
                                 break;
                             case 50: //Sức đánh+#%
                             case 198: // Sức đánh ma thuật +#%
+                            case ConstOption.SUC_DANH_NGUYET_TU_TANG_PHAN_TRAM:
                                 this.tlDame.add(io.param);
                                 break;
                             case 77: //HP+#%
                             case 186: //HP+#%
+                            case ConstOption.HP_NGUYET_TU_TANG_PHAN_TRAM:
                                 this.tlHp.add(io.param);
                                 break;
                             case 94: //Giáp #%
@@ -549,6 +554,7 @@ public class NPoint {
                                 break;
                             case 103: //KI +#%
                             case 163: //KI ma thuật tăng #%
+                            case ConstOption.KI_NGUYET_TU_TANG_PHAN_TRAM:
                                 this.tlMp.add(io.param);
                                 break;
                             case 108: //#% Né đòn
@@ -2082,13 +2088,13 @@ public class NPoint {
                 }
             }
             if (((this.player.isPl() && this.player.itemTime.isX2TNSMDeVaSuPhu) || (this.player.isPet && ((Pet) this.player).master.itemTime.isX2TNSMDeVaSuPhu))) {
-                tiemNang += tn * 2;
+                tiemNang += tiemNang * 2;
             }
             if (((this.player.isPl() && this.player.itemTime.isBanhTrungThu2Trung) || (this.player.isPet && ((Pet) this.player).master.itemTime.isBanhTrungThu2Trung))) {
-                tiemNang += (long) (tn * 0.1);
+                tiemNang += (long) (tiemNang * 0.1);
             }
             if (this.player.itemTime != null && this.player.itemTime.isBanhTrungThu1Trung) {
-                tiemNang += (long) (tn * 0.1);
+                tiemNang += (long) (tiemNang * 0.1);
             }
             tiemNang *= Manager.RATE_EXP_SERVER;
             tiemNang = calSubTNSM(tiemNang);

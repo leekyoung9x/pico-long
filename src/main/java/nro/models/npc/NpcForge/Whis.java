@@ -4,6 +4,7 @@
  */
 package nro.models.npc.NpcForge;
 
+import nro.consts.ConstItem;
 import nro.consts.ConstNpc;
 import nro.consts.ConstPet;
 import nro.models.item.Item;
@@ -234,197 +235,217 @@ public class Whis extends Npc {
 //                                    break;
                                 // nâng cấp tuyệt kỹ
                                 case 1: {
-                                    Message msg;
+                                    // cần 999 bí kíp tuyệt k
+                                    Item biKip = null;
                                     try {
-                                        if (player.gender == 0) {
-                                            Skill curSkill = SkillUtil.getSkillbyId(player, Skill.SUPER_KAME);
-                                            // học skill 9 không cần tốn bí kiếp tuyệt kỹ
-                                            //Chỉ trừ 60 tỷ tiềm năng của player
-                                            if (curSkill == null || curSkill.point == 0) {
-                                                long powYC = 80_000_000_000L;
-                                                long tnsub = 60_000_000_000L;
-                                                if (player.nPoint != null && player.nPoint.power >= powYC && player.nPoint.tiemNang >= tnsub) {
+                                        biKip = InventoryService.gI().findItem(player.inventory.itemsBag, ConstItem.BI_KIP_TUYET_KY);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    if (biKip == null || biKip.quantity < 999) {
+                                        this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
+                                    } else {
+                                        Message msg;
+                                        try {
+                                            if (player.gender == 0) {
+                                                Skill curSkill = SkillUtil.getSkillbyId(player, Skill.SUPER_KAME);
+                                                // học skill 9 không cần tốn bí kiếp tuyệt kỹ
+                                                //Chỉ trừ 60 tỷ tiềm năng của player
+                                                if (curSkill == null || curSkill.point == 0) {
+                                                    long powYC = 80_000_000_000L;
+                                                    long tnsub = 60_000_000_000L;
+                                                    if (player.nPoint != null && player.nPoint.power >= powYC && player.nPoint.tiemNang >= tnsub) {
                                                         if (player.inventory != null && player.inventory.ruby > 20_000) {
+                                                            int oldRuby = player.inventory.ruby;
+                                                            player.inventory.addRuby(-20_000);
+                                                            // ekko ghi log add ruby
+                                                            Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
+                                                            InventoryService.gI().subQuantityItemsBag(player, biKip, 999);
+                                                            player.nPoint.tiemNang -= tnsub;
+                                                            PlayerService.gI().sendTNSM(player, (byte) 1, -tnsub);
+                                                            Service.getInstance().point(player);
+                                                            Service.getInstance().player(player);
+                                                            Service.getInstance().sendMoney(player);
+                                                            InventoryService.gI().sendItemBags(player);
+                                                            curSkill = SkillUtil.createSkill(Skill.SUPER_KAME, 1);
+                                                            SkillUtil.setSkill(player, curSkill);
+                                                            msg = Service.getInstance().messageSubCommand((byte) 23);
+                                                            msg.writer().writeShort(curSkill.skillId);
+                                                            player.sendMessage(msg);
+                                                            msg.cleanup();
+                                                        } else {
+                                                            Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                        }
+                                                    } else {
+                                                        Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh trên 80 Tỷ và 60 tỷ Tnsm");
+                                                    }
+                                                } else if (curSkill != null && curSkill.point > 0 && curSkill.point < 9) {
+//                                                    Item bikieptuyetky = null;
+//                                                    try {
+//                                                        bikieptuyetky = InventoryService.gI().findItem(player.inventory.itemsBag, 1229);
+//                                                    } catch (Exception e) {
+//                                                        e.printStackTrace();
+//                                                    }
+                                                    if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby < 35_000) {
+                                                        Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                    }
+//                                                    else if (bikieptuyetky == null || bikieptuyetky.quantity < 999) {
+//                                                        this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
+//                                                    }
+                                                    else if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby > 35_000) {
                                                         int oldRuby = player.inventory.ruby;
-                                                        player.inventory.addRuby(-20_000);
+                                                        player.inventory.addRuby(-35_000);
                                                         // ekko ghi log add ruby
                                                         Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
-                                                        player.nPoint.tiemNang -= tnsub;
-                                                        PlayerService.gI().sendTNSM(player, (byte) 1, -tnsub);
-                                                        Service.getInstance().point(player);
-                                                        Service.getInstance().player(player);
-                                                        Service.getInstance().sendMoney(player);
+                                                        InventoryService.gI().subQuantityItemsBag(player, biKip, 999);
                                                         InventoryService.gI().sendItemBags(player);
-                                                        curSkill = SkillUtil.createSkill(Skill.SUPER_KAME, 1);
+                                                        Service.getInstance().sendMoney(player);
+                                                        curSkill = SkillUtil.createSkill(Skill.SUPER_KAME, curSkill.point + 1);
                                                         SkillUtil.setSkill(player, curSkill);
-                                                        msg = Service.getInstance().messageSubCommand((byte) 23);
+                                                        msg = Service.getInstance().messageSubCommand((byte) 62);
                                                         msg.writer().writeShort(curSkill.skillId);
                                                         player.sendMessage(msg);
                                                         msg.cleanup();
                                                     } else {
-                                                        Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                        Service.getInstance().sendThongBao(player, "Thông thạo của bạn chưa đủ 100%");
                                                     }
                                                 } else {
-                                                    Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh trên 80 Tỷ và 60 tỷ Tnsm");
+                                                    Service.getInstance().sendThongBao(player, "Tuyệt kĩ của bạn đã đạt cấp tối đa");
                                                 }
-                                            } else if (curSkill != null && curSkill.point > 0 && curSkill.point < 9) {
-                                                Item bikieptuyetky = null;
-                                                try {
-                                                    bikieptuyetky = InventoryService.gI().findItem(player.inventory.itemsBag, 1229);
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                }
-                                                if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby < 35_000) {
-                                                    Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
-                                                } else if (bikieptuyetky == null || bikieptuyetky.quantity < 999) {
-                                                    this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
-                                                } else if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby > 35_000) {
-                                                    int oldRuby = player.inventory.ruby;
-                                                    player.inventory.addRuby(-35_000);
-                                                    // ekko ghi log add ruby
-                                                    Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
-                                                    InventoryService.gI().subQuantityItemsBag(player, bikieptuyetky, 999);
-                                                    InventoryService.gI().sendItemBags(player);
-                                                    Service.getInstance().sendMoney(player);
-                                                    curSkill = SkillUtil.createSkill(Skill.SUPER_KAME, curSkill.point + 1);
-                                                    SkillUtil.setSkill(player, curSkill);
-                                                    msg = Service.getInstance().messageSubCommand((byte) 62);
-                                                    msg.writer().writeShort(curSkill.skillId);
-                                                    player.sendMessage(msg);
-                                                    msg.cleanup();
-                                                } else {
-                                                    Service.getInstance().sendThongBao(player, "Thông thạo của bạn chưa đủ 100%");
-                                                }
-                                            } else {
-                                                Service.getInstance().sendThongBao(player, "Tuyệt kĩ của bạn đã đạt cấp tối đa");
                                             }
-                                        }
-                                        if (player.gender == 1) {
-                                            Skill curSkill = SkillUtil.getSkillbyId(player, Skill.MAFUBA);
-                                            if (curSkill != null && curSkill.point == 0) {
-                                                long powYC = 80_000_000_000L;
-                                                long tnsub = 60_000_000_000L;
-                                                if (player.nPoint != null && player.nPoint.power >= powYC && player.nPoint.tiemNang >= tnsub) {
-                                                    if (player.inventory != null && player.inventory.ruby > 20_000) {
+                                            if (player.gender == 1) {
+                                                Skill curSkill = SkillUtil.getSkillbyId(player, Skill.MAFUBA);
+                                                if (curSkill != null && curSkill.point == 0) {
+                                                    long powYC = 80_000_000_000L;
+                                                    long tnsub = 60_000_000_000L;
+                                                    if (player.nPoint != null && player.nPoint.power >= powYC && player.nPoint.tiemNang >= tnsub) {
+                                                        if (player.inventory != null && player.inventory.ruby > 20_000) {
+                                                            int oldRuby = player.inventory.ruby;
+                                                            player.inventory.addRuby(-20_000);
+                                                            // ekko ghi log add ruby
+                                                            Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
+                                                            InventoryService.gI().subQuantityItemsBag(player, biKip, 999);
+                                                            player.nPoint.tiemNang -= tnsub;
+                                                            PlayerService.gI().sendTNSM(player, (byte) 1, -tnsub);
+                                                            Service.getInstance().point(player);
+                                                            Service.getInstance().player(player);
+                                                            InventoryService.gI().sendItemBags(player);
+                                                            Service.getInstance().sendMoney(player);
+                                                            curSkill = SkillUtil.createSkill(Skill.MAFUBA, 1);
+                                                            SkillUtil.setSkill(player, curSkill);
+                                                            msg = Service.getInstance().messageSubCommand((byte) 23);
+                                                            msg.writer().writeShort(curSkill.skillId);
+                                                            player.sendMessage(msg);
+                                                            msg.cleanup();
+                                                        } else {
+                                                            Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                        }
+                                                    } else {
+                                                        Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh trên 80 Tỷ và 60 tỷ Tnsm");
+                                                    }
+                                                } else if (curSkill != null && curSkill.point > 0 && curSkill.point < 9) {
+//                                                    Item bikieptuyetky = null;
+//                                                    try {
+//                                                        bikieptuyetky = InventoryService.gI().findItem(player.inventory.itemsBag, 1229);
+//                                                    } catch (Exception e) {
+//                                                        e.printStackTrace();
+//                                                    }
+                                                    if (curSkill.currLevel == 1000 && player.inventory.ruby < 35_000) {
+                                                        Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                    }
+//                                                    else if (bikieptuyetky == null || bikieptuyetky.quantity < 999) {
+//                                                        this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
+//                                                    }
+                                                    else if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby > 35_000) {
                                                         int oldRuby = player.inventory.ruby;
-                                                        player.inventory.addRuby(-20_000);
+                                                        player.inventory.addRuby(-35_000);
                                                         // ekko ghi log add ruby
                                                         Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
-                                                        player.nPoint.tiemNang -= tnsub;
-                                                        PlayerService.gI().sendTNSM(player, (byte) 1, -tnsub);
-                                                        Service.getInstance().point(player);
-                                                        Service.getInstance().player(player);
+                                                        InventoryService.gI().subQuantityItemsBag(player, biKip, 999);
                                                         InventoryService.gI().sendItemBags(player);
                                                         Service.getInstance().sendMoney(player);
-                                                        curSkill = SkillUtil.createSkill(Skill.MAFUBA, 1);
+                                                        curSkill = SkillUtil.createSkill(Skill.MAFUBA, curSkill.point + 1);
                                                         SkillUtil.setSkill(player, curSkill);
-                                                        msg = Service.getInstance().messageSubCommand((byte) 23);
+                                                        msg = Service.getInstance().messageSubCommand((byte) 62);
                                                         msg.writer().writeShort(curSkill.skillId);
                                                         player.sendMessage(msg);
                                                         msg.cleanup();
                                                     } else {
-                                                        Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                        Service.getInstance().sendThongBao(player, "Thông thạo của bạn chưa đủ 100%");
                                                     }
                                                 } else {
-                                                    Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh trên 80 Tỷ và 60 tỷ Tnsm");
+                                                    Service.getInstance().sendThongBao(player, "Tuyệt kĩ của bạn đã đạt cấp tối đa");
                                                 }
-                                            } else if (curSkill != null && curSkill.point > 0 && curSkill.point < 9) {
-                                                Item bikieptuyetky = null;
-                                                try {
-                                                    bikieptuyetky = InventoryService.gI().findItem(player.inventory.itemsBag, 1229);
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                }
-                                                if (curSkill.currLevel == 1000 && player.inventory.ruby < 35_000) {
-                                                    Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
-                                                } else if (bikieptuyetky == null || bikieptuyetky.quantity < 999) {
-                                                    this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
-                                                } else if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby > 35_000) {
-                                                    int oldRuby = player.inventory.ruby;
-                                                    player.inventory.addRuby(-35_000);
-                                                    // ekko ghi log add ruby
-                                                    Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
-                                                    InventoryService.gI().subQuantityItemsBag(player, bikieptuyetky, 999);
-                                                    InventoryService.gI().sendItemBags(player);
-                                                    Service.getInstance().sendMoney(player);
-                                                    curSkill = SkillUtil.createSkill(Skill.MAFUBA, curSkill.point + 1);
-                                                    SkillUtil.setSkill(player, curSkill);
-                                                    msg = Service.getInstance().messageSubCommand((byte) 62);
-                                                    msg.writer().writeShort(curSkill.skillId);
-                                                    player.sendMessage(msg);
-                                                    msg.cleanup();
-                                                } else {
-                                                    Service.getInstance().sendThongBao(player, "Thông thạo của bạn chưa đủ 100%");
-                                                }
-                                            } else {
-                                                Service.getInstance().sendThongBao(player, "Tuyệt kĩ của bạn đã đạt cấp tối đa");
                                             }
-                                        }
-                                        if (player.gender == 2) {
-                                            Skill curSkill = SkillUtil.getSkillbyId(player, Skill.SUPER_ANTOMIC);
-                                            if (curSkill != null && curSkill.point == 0) {
-                                                long powYC = 80_000_000_000L;
-                                                long tnsub = 60_000_000_000L;
-                                                if (player.nPoint != null && player.nPoint.power >= powYC && player.nPoint.tiemNang >= tnsub) {
-                                                    if (player.inventory != null && player.inventory.ruby > 20_000) {
+                                            if (player.gender == 2) {
+                                                Skill curSkill = SkillUtil.getSkillbyId(player, Skill.SUPER_ANTOMIC);
+                                                if (curSkill != null && curSkill.point == 0) {
+                                                    long powYC = 80_000_000_000L;
+                                                    long tnsub = 60_000_000_000L;
+                                                    if (player.nPoint != null && player.nPoint.power >= powYC && player.nPoint.tiemNang >= tnsub) {
+                                                        if (player.inventory != null && player.inventory.ruby > 20_000) {
+                                                            int oldRuby = player.inventory.ruby;
+                                                            player.inventory.addRuby(-20_000);
+                                                            // ekko ghi log add ruby
+                                                            Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
+                                                            InventoryService.gI().subQuantityItemsBag(player, biKip, 999);
+                                                            player.nPoint.tiemNang -= tnsub;
+                                                            PlayerService.gI().sendTNSM(player, (byte) 1, -tnsub);
+                                                            Service.getInstance().point(player);
+                                                            Service.getInstance().player(player);
+                                                            Service.getInstance().sendMoney(player);
+                                                            InventoryService.gI().sendItemBags(player);
+                                                            curSkill = SkillUtil.createSkill(Skill.SUPER_ANTOMIC, 1);
+                                                            SkillUtil.setSkill(player, curSkill);
+                                                            msg = Service.getInstance().messageSubCommand((byte) 23);
+                                                            msg.writer().writeShort(curSkill.skillId);
+                                                            player.sendMessage(msg);
+                                                            msg.cleanup();
+                                                        } else {
+                                                            Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                        }
+                                                    } else {
+                                                        Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh trên 80 Tỷ và 60 tỷ Tnsm");
+                                                    }
+                                                } else if (curSkill != null && curSkill.point > 0 && curSkill.point < 9) {
+//                                                    Item bikieptuyetky = null;
+//                                                    try {
+//                                                        bikieptuyetky = InventoryService.gI().findItem(player.inventory.itemsBag, 1229);
+//                                                    } catch (Exception e) {
+//                                                        e.printStackTrace();
+//                                                    }
+                                                    if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby < 35_000) {
+                                                        Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                    }
+//                                                    else if (bikieptuyetky == null || bikieptuyetky.quantity < 999) {
+//                                                        this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
+//                                                    }
+                                                    else if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby > 35_000) {
                                                         int oldRuby = player.inventory.ruby;
-                                                        player.inventory.addRuby(-20_000);
+                                                        player.inventory.addRuby(-35_000);
                                                         // ekko ghi log add ruby
                                                         Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
-                                                        player.nPoint.tiemNang -= tnsub;
-                                                        PlayerService.gI().sendTNSM(player, (byte) 1, -tnsub);
-                                                        Service.getInstance().point(player);
-                                                        Service.getInstance().player(player);
-                                                        Service.getInstance().sendMoney(player);
+                                                        InventoryService.gI().subQuantityItemsBag(player, biKip, 999);
                                                         InventoryService.gI().sendItemBags(player);
-                                                        curSkill = SkillUtil.createSkill(Skill.SUPER_ANTOMIC, 1);
+                                                        Service.getInstance().sendMoney(player);
+                                                        curSkill = SkillUtil.createSkill(Skill.SUPER_ANTOMIC,
+                                                                curSkill.point + 1);
                                                         SkillUtil.setSkill(player, curSkill);
-                                                        msg = Service.getInstance().messageSubCommand((byte) 23);
+                                                        msg = Service.getInstance().messageSubCommand((byte) 62);
                                                         msg.writer().writeShort(curSkill.skillId);
                                                         player.sendMessage(msg);
                                                         msg.cleanup();
                                                     } else {
-                                                        Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
+                                                        Service.getInstance().sendThongBao(player, "Thông thạo của bạn chưa đủ 100%");
                                                     }
                                                 } else {
-                                                    Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh trên 80 Tỷ và 60 tỷ Tnsm");
+                                                    Service.getInstance().sendThongBao(player, "Tuyệt kĩ của bạn đã đạt cấp tối đa");
                                                 }
-                                            } else if (curSkill != null && curSkill.point > 0 && curSkill.point < 9) {
-                                                Item bikieptuyetky = null;
-                                                try {
-                                                    bikieptuyetky = InventoryService.gI().findItem(player.inventory.itemsBag, 1229);
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                }
-                                                if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby < 35_000) {
-                                                    Service.getInstance().sendThongBao(player, "Không đủ Hồng ngọc");
-                                                } else if (bikieptuyetky == null || bikieptuyetky.quantity < 999) {
-                                                    this.npcChat(player, "Bạn không đủ 999 bí kíp tuyệt kĩ");
-                                                } else if (curSkill.currLevel == 1000 && player.inventory != null && player.inventory.ruby > 35_000) {
-                                                    int oldRuby = player.inventory.ruby;
-                                                    player.inventory.addRuby(-35_000);
-                                                    // ekko ghi log add ruby
-                                                    Manager.addPlayerRubyHistory(player.id, oldRuby, player.inventory.ruby, "Whis-confirmMenu");
-                                                    InventoryService.gI().subQuantityItemsBag(player, bikieptuyetky, 999);
-                                                    InventoryService.gI().sendItemBags(player);
-                                                    Service.getInstance().sendMoney(player);
-                                                    curSkill = SkillUtil.createSkill(Skill.SUPER_ANTOMIC,
-                                                            curSkill.point + 1);
-                                                    SkillUtil.setSkill(player, curSkill);
-                                                    msg = Service.getInstance().messageSubCommand((byte) 62);
-                                                    msg.writer().writeShort(curSkill.skillId);
-                                                    player.sendMessage(msg);
-                                                    msg.cleanup();
-                                                } else {
-                                                    Service.getInstance().sendThongBao(player, "Thông thạo của bạn chưa đủ 100%");
-                                                }
-                                            } else {
-                                                Service.getInstance().sendThongBao(player, "Tuyệt kĩ của bạn đã đạt cấp tối đa");
                                             }
+                                        } catch (Exception ex) {
+                                            ex.printStackTrace();
+                                            System.out.println("loi ne   4534     ClassCastException ");
                                         }
-                                    } catch (Exception ex) {
-                                        ex.printStackTrace();
-                                        System.out.println("loi ne   4534     ClassCastException ");
                                     }
                                 }
                             }

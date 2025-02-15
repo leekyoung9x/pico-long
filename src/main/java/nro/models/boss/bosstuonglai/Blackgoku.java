@@ -1,5 +1,6 @@
 package nro.models.boss.bosstuonglai;
 
+import nro.consts.ConstItem;
 import nro.consts.ConstRatio;
 import nro.models.boss.Boss;
 import nro.models.boss.BossData;
@@ -181,9 +182,10 @@ public class Blackgoku extends Boss {
 
     @Override
     public void rewards(Player plKill) {
-//        if (Util.isTrue(10, 90)) {
-//            this.dropItemRewardWithOption(992, (int) plKill.id, false, 1);
-//        } else {
+        if (Util.isTrue(10, 100)) {
+            this.dropItemRewardWithOption(ConstItem.NHAN_THOI_KHONG_SAI_LECH, (int) plKill.id, false, 1);
+        }
+//        else {
 //            this.dropItemReward(16, (int) plKill.id);
 //        }
     }

@@ -29,7 +29,7 @@ public class KamiOren extends Boss {
         if (this.isDie()) {
             return 0;
         } else {
-            damage = damage / 3;
+//            damage = damage / 3;
 
 //            if (plAtt != null && plAtt.getSession() != null && plAtt.isAdmin()) {
 //                damage = this.nPoint.hpMax;

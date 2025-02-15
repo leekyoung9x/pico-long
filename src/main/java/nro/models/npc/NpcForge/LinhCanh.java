@@ -62,7 +62,7 @@ public class LinhCanh extends Npc {
                 }
                 if (player.getSession().actived != 1) {
                     NpcService.gI().createTutorial(player, avartar,
-                            "Bạn phải kích hoạt tài khoản mới có thể tham gia");
+                            "Bạn phải mở VIP 1 mới có thể tham gia");
                     return;
                 }
                 if (!player.clan.haveGoneDoanhTrai && player.clan.timeOpenDoanhTrai != 0) {

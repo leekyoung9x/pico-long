@@ -355,7 +355,7 @@ public class UseItem {
                             hopQuaTanThu(pl, item);
                             break;
                         case 992:
-//                            ChangeMapService.gI().goToPrimaryForest(pl);
+                            ChangeMapService.gI().goToPrimaryForest(pl);
                             break;
                         case 2078:
                             Input.gI().createFormTangGem(pl);
