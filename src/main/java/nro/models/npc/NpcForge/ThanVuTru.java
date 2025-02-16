@@ -35,7 +35,8 @@ public class ThanVuTru extends Npc {
     public void openBaseMenu(Player player) {
         if (canOpenNpc(player)) {
             if (this.mapId == 48) {
-                this.createOtherMenu(player, ConstNpc.BASE_MENU, "Con muốn làm gì nào", "Di chuyển", "Tăng kẹo tuyết");
+//                this.createOtherMenu(player, ConstNpc.BASE_MENU, "Con muốn làm gì nào", "Di chuyển", "Tăng kẹo tuyết");
+                this.createOtherMenu(player, ConstNpc.BASE_MENU, "Con muốn làm gì nào", "Di chuyển");
             }
         }
     }
@@ -55,24 +56,24 @@ public class ThanVuTru extends Npc {
                                     "Con muốn đi đâu?", "Về\nthần điện", "Thánh địa\nKaio",
                                     "Từ chối");
                             break;
-                        case 1: {
-                            Item item = InventoryService.gI().findItemBagByTemp(player, ConstItem.KEO_NGUOI_TUYET);
-
-                            if (item == null || item.quantity < 99) {
-                                Service.getInstance().sendThongBao(player, "Con không có đủ 99 kẹo người tuyết!");
-                                return;
-                            }
-
-                            InventoryService.gI().subQuantityItemsBag(player, item, 99);
-
-                            Item reward = ItemService.gI().createNewItem((short) ConstItem.HOP_QUA_GIANG_SINH);
-                            reward.quantity = 1;
-
-                            InventoryService.gI().addItemBag(player, reward, 0);
-                            InventoryService.gI().sendItemBags(player);
-
-                            break;
-                        }
+//                        case 1: {
+//                            Item item = InventoryService.gI().findItemBagByTemp(player, ConstItem.KEO_NGUOI_TUYET);
+//
+//                            if (item == null || item.quantity < 99) {
+//                                Service.getInstance().sendThongBao(player, "Con không có đủ 99 kẹo người tuyết!");
+//                                return;
+//                            }
+//
+//                            InventoryService.gI().subQuantityItemsBag(player, item, 99);
+//
+//                            Item reward = ItemService.gI().createNewItem((short) ConstItem.HOP_QUA_GIANG_SINH);
+//                            reward.quantity = 1;
+//
+//                            InventoryService.gI().addItemBag(player, reward, 0);
+//                            InventoryService.gI().sendItemBags(player);
+//
+//                            break;
+//                        }
                     }
                 } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_DI_CHUYEN) {
                     switch (select) {

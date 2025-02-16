@@ -81,10 +81,10 @@ public class FideDaiCa2 extends FutureBoss {
                         return 0;
                 }
             }
-            if (plAtt != null && plAtt.playerTask.taskMain.id != 21) {
-                Service.getInstance().sendThongBao(plAtt, "Bạn chưa đến nhiệm vụ tấn công Boss này");
-                return 0;
-            }
+//            if (plAtt != null && plAtt.playerTask.taskMain.id != 21) {
+//                Service.getInstance().sendThongBao(plAtt, "Bạn chưa đến nhiệm vụ tấn công Boss này");
+//                return 0;
+//            }
             dame = super.injured(plAtt, damage, piercing, isMobAttack);
             if (this.isDie()) {
                 rewards(plAtt);

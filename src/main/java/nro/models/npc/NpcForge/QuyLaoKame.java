@@ -52,9 +52,12 @@ public class QuyLaoKame extends Npc {
 //                this.createOtherMenu(player, ConstNpc.BASE_MENU,
 //                        "Chào con, con muốn ta giúp gì nào?",
 //                        "Nói chuyện", "Tiến đến\n thung lũng đá ", "Tiến tới\nĐịa ngục", "Từ chối");
+//                this.createOtherMenu(player, ConstNpc.BASE_MENU,
+//                        "Chào con, con muốn ta giúp gì nào?",
+//                        "Nói chuyện", "Phân rã\nSKH VIP", "Tuần lộc ở đâu ?", "Chế tạo SKH", "Từ chối");
                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
                         "Chào con, con muốn ta giúp gì nào?",
-                        "Nói chuyện", "Phân rã\nSKH VIP", "Tuần lộc ở đâu ?", "Chế tạo SKH", "Từ chối");
+                        "Nói chuyện", "Chế tạo SKH", "Từ chối");
 //                this.createOtherMenu(player, ConstNpc.BASE_MENU,
 //                        "Chào con, con muốn ta giúp gì nào?",
 //                        "Nói chuyện", "Từ chối");
@@ -92,14 +95,14 @@ public class QuyLaoKame extends Npc {
                         );
                         break;
                     // ekko
+//                    case 1:
+//                        this.createOtherMenu(player, ConstNpc.PHAN_RA_SKH_VIP,
+//                                "Con có muốn phân rã SKH VIP không ?\nVới 1 hồng ngọc cùng 1 món SKH VIP bất kỳ sau khi phân rã con sẽ nhận được x1 \"Đá ngũ sắc\" đó.", "Đồng ý", "Từ chối");
+//                        break;
+//                    case 2:
+//                        BossManager.gI().showListBossTuanLoc(player);
+//                        break;
                     case 1:
-                        this.createOtherMenu(player, ConstNpc.PHAN_RA_SKH_VIP,
-                                "Con có muốn phân rã SKH VIP không ?\nVới 1 hồng ngọc cùng 1 món SKH VIP bất kỳ sau khi phân rã con sẽ nhận được x1 \"Đá ngũ sắc\" đó.", "Đồng ý", "Từ chối");
-                        break;
-                    case 2:
-                        BossManager.gI().showListBossTuanLoc(player);
-                        break;
-                    case 3:
                         this.createOtherMenu(player, ConstNpc.NANG_CAP_SKH,
                                 "Con có muốn nâng cấp SKH không ?\nVí dụ 1: với 2 áo thần linh, x10 đá thần linh sau khi nâng cấp con sẽ nhận được x1 \"Áo vải thô kích hoạt (Random SKH)\" đó.\n Ví dụ 2: Ví dụ từ 2 áo vải thô set Nappa và x10 \"Đá thần linh\" sẽ lên 1 áo thun thô set Nappa.", "Đồng ý", "Từ chối");
                         break;

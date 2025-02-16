@@ -23,9 +23,12 @@ public class CuaHangKyGui extends Npc {
     @Override
     public void openBaseMenu(Player player) {
         if (canOpenNpc(player)) {
+//            this.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+//                    "Cửa hàng chúng tôi chuyên mua bán hàng hiệu, hàng độc, cảm ơn bạn đã ghé thăm.",
+//                    "Hướng\ndẫn\nthêm", "Mua bán", "Danh sách\nHết Hạn", "Hủy");
             this.createOtherMenu(player, ConstNpc.IGNORE_MENU,
-                    "Cửa hàng chúng tôi chuyên mua bán hàng hiệu, hàng độc, cảm ơn bạn đã ghé thăm.",
-                    "Hướng\ndẫn\nthêm", "Mua bán", "Danh sách\nHết Hạn", "Hủy");
+                    "Chức năng tạm đóng",
+                    "Đóng");
         }
     }
 
@@ -35,14 +38,16 @@ public class CuaHangKyGui extends Npc {
             switch (player.iDMark.getIndexMenu()) {
                 case ConstNpc.BASE_MENU:
                     switch (select) {
+//                        case 0:
+//                            Service.getInstance().sendPopUpMultiLine(player, tempId, avartar, "Cửa hàng chuyên nhận ký gửi mua bán vật phẩm\bGiá trị ký gửi 10k-200Tr vàng hoặc 2-2k ngọc\bMột người bán, vạn người mua, mại dô, mại dô");
+//                            break;
+//                        case 1:
+//                            ConsignmentShop.getInstance().show(player);
+//                            break;
+//                        case 2:
+//                            ConsignmentShop.getInstance().showExpiringItems(player);
+//                            break;
                         case 0:
-                            Service.getInstance().sendPopUpMultiLine(player, tempId, avartar, "Cửa hàng chuyên nhận ký gửi mua bán vật phẩm\bGiá trị ký gửi 10k-200Tr vàng hoặc 2-2k ngọc\bMột người bán, vạn người mua, mại dô, mại dô");
-                            break;
-                        case 1:
-                            ConsignmentShop.getInstance().show(player);
-                            break;
-                        case 2:
-                            ConsignmentShop.getInstance().showExpiringItems(player);
                             break;
                     }
                     break;

@@ -215,12 +215,35 @@ INSERT INTO item_shop (id, tab_id, temp_id, gold, gem, is_new, is_sell, item_exc
 
 -- update
 UPDATE item_template it SET it.description = 'Vũ khí của người Potaufeu (x2 TNSM đệ và sư phụ)' WHERE ID = 638;
+update item_template it SET it.TYPE = 27 WHERE ID = 992;
+
+-- bỏ rơi đá ngũ sắc thung lũng đá, gậy gỗ
+DELETE FROM mob_reward_map WHERE mob_reward_id = 22;
+DELETE FROM mob_reward_map WHERE mob_reward_id = 23;
+
+
+
+
+
+
+
+
 
 -- test
+USE pico_2
+SELECT * FROM mob_reward_map mrm WHERE mrm.mob_reward_id = 23;
+SELECT * FROM map_template mt WHERE ID = 123;
+SELECT * FROM mob_reward mr WHERE mr.item_id = 1932;
+SELECT * FROM item_template it WHERE ID IN (861, 16, 992);
 SELECT * FROM player p ORDER BY p.power DESC;
 select * from task_main_template tmt;
 SELECT * FROM task_sub_template tst;
 SELECT * FROM side_task_template stt;
+SELECT * FROM map_template mt WHERE mt.NAME like '%đại hội%';
+SELECT p.data_task, p.* from player p WHERE p.name = 'zengaming';
+SELECT * FROM account a WHERE a.id = 2;
+SELECT * FROM  item_option_template iot WHERE name like '%hsd%';
+SELECT * FROM item_template it WHERE it.NAME like '%ngọc rồng%';
 
 
 SELECT p.data_task, p.data_side_task, p.* from player p WHERE p.account_id = 879;
@@ -244,7 +267,7 @@ select * FROM map_template mt where mt.NAME IN ('Thung lũng nappa', 'Vực cấ
 
 SELECT * FROM item_option_template iot WHERE iot.NAME like '%gohan%';
 select * FROM item_option_template iot WHERE iot.id IN (80, 50);
-SELECT * FROM item_template it WHERE it.NAME like '%commeson%';
+SELECT * FROM item_template it WHERE it.NAME like '%hộp quà tích lũy%';
 
 SELECT * FROM account a WHERE a.is_admin = 1;
 SELECT * FROM map_template mt where mt.NAME like '%nappa%';

@@ -71,7 +71,8 @@ public class RewardToTask {
 
 //        int dragonBall = Util.nextInt(SummonDragon.NGOC_RONG_NOEL[2], SummonDragon.NGOC_RONG_NOEL[6]);
 //        sendItemToPlayer(player, (short) dragonBall, 1);
-        sendItemToPlayer(player, (short) ConstItem.KEO_NGUOI_TUYET, point);
+        // ekko bỏ rơi keo người tuyết nhiệm vụ bò mộng
+//        sendItemToPlayer(player, (short) ConstItem.KEO_NGUOI_TUYET, point);
 
         Service.getInstance().point2(player);
         // ekko

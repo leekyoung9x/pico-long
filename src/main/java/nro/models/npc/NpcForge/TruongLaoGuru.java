@@ -33,9 +33,12 @@ public class TruongLaoGuru extends Npc {
         int slMCL = (mcl == null) ? 0 : mcl.quantity;
         if (canOpenNpc(player)) {
             if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
-                this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                        "Ngọc rồng Namếc đang bị 2 thế lực tranh giành\nHãy chọn cấp độ tham gia tùy theo sức mạnh bản thân",
-                        "Tham gia", "Đổi điểm\nThưởng\n[" + slMCL + "]", "Bảng\nxếp hạng", "Từ chối");
+//                this.createOtherMenu(player, ConstNpc.BASE_MENU,
+//                        "Ngọc rồng Namếc đang bị 2 thế lực tranh giành\nHãy chọn cấp độ tham gia tùy theo sức mạnh bản thân",
+//                        "Tham gia", "Đổi điểm\nThưởng\n[" + slMCL + "]", "Bảng\nxếp hạng", "Từ chối");
+                this.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                        "Chức năng tạm đóng",
+                        "Đóng");
             }
         }
     }

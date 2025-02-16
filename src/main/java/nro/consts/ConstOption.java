@@ -13,6 +13,7 @@ public class ConstOption {
     public static final short SUC_DANH_CONG_PHAN_TRAM = 50;
     public static final short CAP = 72;
     public static final short HP_CONG_PHAN_TRAM = 77;
+    public static final short HAN_SU_DUNG = 93;
     public static final short KI_CONG_PHAN_TRAM = 103;
     public static final int SET_TENSHINHAN = 127;
     public static final int SET_KRILLIN = 128;

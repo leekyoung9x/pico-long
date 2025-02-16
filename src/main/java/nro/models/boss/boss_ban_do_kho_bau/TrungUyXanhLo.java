@@ -5,12 +5,16 @@
  */
 package nro.models.boss.boss_ban_do_kho_bau;
 
+import nro.consts.ConstItem;
+import nro.consts.ConstOption;
 import nro.consts.ConstRatio;
 import nro.consts.MapName;
 import nro.models.boss.BossData;
 import nro.models.boss.BossFactory;
+import nro.models.item.ItemOption;
 import nro.models.map.phoban.BanDoKhoBau;
 import nro.models.player.Player;
+import nro.services.RewardService;
 import nro.services.SkillService;
 import nro.services.func.ChangeMapService;
 import nro.utils.Util;
@@ -101,12 +105,26 @@ public class TrungUyXanhLo extends BossBanDoKhoBau {
                 y = this.zone.map.yPhysicInTop(x, y - 24);
             }
 
-            // Drop the main item
-            dropItem(player, Util.nextInt(2045, 2051), x, y);
 
-            // Drop additional items 2095 and 2096
-            dropItem(player, 2095, x, y);
-            dropItem(player, 2096, x, y);
+//            dropItem(player, Util.nextInt(2045, 2051), x, y);
+//
+//            // Drop additional items 2095 and 2096
+//            dropItem(player, 2095, x, y);
+//            dropItem(player, 2096, x, y);
+            // 90% rơi ngọc rồng từ 4s -> 7s
+            ItemMap itemMap = null;
+            if (Util.isTrue(90, ConstRatio.PER100)) {
+                dropItem(player, Util.nextInt(ConstItem.NGOC_RONG_4_SAO, ConstItem.NGOC_RONG_7_SAO), x, y);
+            } else {
+                itemMap = new ItemMap(this.zone, ConstItem.CAI_TRANG_ZAMASU, 1, x, y, player.id);
+                itemMap.options.add(new ItemOption(ConstOption.SUC_DANH_CONG_PHAN_TRAM, Util.nextInt(30, 35)));
+                itemMap.options.add(new ItemOption(ConstOption.KI_CONG_PHAN_TRAM, 15));
+                itemMap.options.add(new ItemOption(ConstOption.HP_CONG_PHAN_TRAM, 15));
+                itemMap.options.add(new ItemOption(ConstOption.HAN_SU_DUNG, 1));
+                itemMap.options.add(new ItemOption(ConstOption.KHONG_THE_GIAO_DICH, 1));
+                RewardService.gI().initBaseOptionClothes(itemMap.itemTemplate.id, itemMap.itemTemplate.type, itemMap.options);
+                Service.getInstance().dropItemMap(zone, itemMap);
+            }
         }
     }
 
