@@ -101,7 +101,8 @@ public class RewardService {
             // giảm tỉ lệ rơi đồ thần linh map cold từ 10000 -> 30000
             if (Util.isTrue(1, 30000)) {
                 ItemMap itemMap = ArrietyDrop.DropItemReWardDoTL(player, 1, mob.location.x, yEnd);
-                ServerLog.logItemDrop(player.name, itemMap.itemTemplate.name);
+                // ekko bỏ log tránh văng lỗi
+//                ServerLog.logItemDrop(player.name, itemMap.itemTemplate.name);
                 list.add(itemMap);
                 ServerNotify.gI().notify(player.name + " vừa nhặt được " + itemMap.itemTemplate.name + " tại " + mob.zone.map.mapName + " khu vực " + mob.zone.zoneId);
             }

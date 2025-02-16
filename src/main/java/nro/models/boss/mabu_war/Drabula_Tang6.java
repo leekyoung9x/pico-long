@@ -94,6 +94,9 @@ public class Drabula_Tang6 extends BossMabuWar {
                     Service.getInstance().chat(this, "Xí hụt..");
                 }
             }
+            if(isMobAttack) {
+                damage = 1;
+            }
             long dame = super.injuredNotCheckDie(plAtt, damage, piercing);
             if (this.isDie()) {
                 rewards(plAtt);

@@ -1233,138 +1233,143 @@ public class SkillService {
                 player.skillSpecial.closeSkillSpecial();
                 int timeBinh = SkillUtil.getTimeBinh();//thời gian biến thành bình
                 //hút người
-                for (Player playerMap : player.zone.getHumanoids()) {
-                    if (playerMap == null || playerMap.id == player.id) {
-                        continue;
-                    }
-                    if (player.skillSpecial.dir == -1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500 && this.canAttackPlayer(player, playerMap)) {
-                        player.skillSpecial.playersTaget.add(playerMap);
+                // ekko thêm check null
+                if(player != null && player.zone != null) {
+                    for (Player playerMap : player.zone.getHumanoids()) {
+                        if (playerMap == null || playerMap.id == player.id) {
+                            continue;
+                        }
+                        if (player.skillSpecial.dir == -1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500 && this.canAttackPlayer(player, playerMap)) {
+                            player.skillSpecial.playersTaget.add(playerMap);
 
-                    } else if (player.skillSpecial.dir == 1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500 && this.canAttackPlayer(player, playerMap)) {
-                        player.skillSpecial.playersTaget.add(playerMap);
+                        } else if (player.skillSpecial.dir == 1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500 && this.canAttackPlayer(player, playerMap)) {
+                            player.skillSpecial.playersTaget.add(playerMap);
 
+                        }
                     }
-                }
-                //hút quái
-                for (Mob mobMap : player.zone.mobs) {
-                    if (mobMap == null) {
-                        continue;
-                    }
-                    if (player.skillSpecial.dir == -1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
-                        player.skillSpecial.mobsTaget.add(mobMap);
-                    } else if (player.skillSpecial.dir == 1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
-                        player.skillSpecial.mobsTaget.add(mobMap);
+                    //hút quái
+                    for (Mob mobMap : player.zone.mobs) {
+                        if (mobMap == null) {
+                            continue;
+                        }
+                        if (player.skillSpecial.dir == -1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
+                            player.skillSpecial.mobsTaget.add(mobMap);
+                        } else if (player.skillSpecial.dir == 1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
+                            player.skillSpecial.mobsTaget.add(mobMap);
 
+                        }
                     }
-                }
-                //bắt đầu hút
-                this.startSkillSpecialID26(player);
-                Thread.sleep(3000);//nghỉ 3s
-                //biến quái - bình
-                for (Mob mobMap : player.zone.mobs) {
-                    if (mobMap == null) {
-                        continue;
-                    }
-                    if (player.skillSpecial.dir == -1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
-                        player.skillSpecial.mobsTaget.add(mobMap);
-                    } else if (player.skillSpecial.dir == 1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
-                        player.skillSpecial.mobsTaget.add(mobMap);
-                        {
-                            if (player.isPl()) {
-                                Item item = player.inventory.itemsBody.get(11);
-                                if (item != null && item.isNotNullItem()) {
-                                    EffectSkillService.gI().sendMobToBinh2(player, mobMap, timeBinh); // biến mob thành bình
-                                } else {
-                                    EffectSkillService.gI().sendMobToBinh(player, mobMap, timeBinh); // biến mob thành bình
-                                }
-                            } else {
-                                EffectSkillService.gI().sendMobToBinh(player, mobMap, timeBinh); // biến mob thành bình
+                    //bắt đầu hút
+                    this.startSkillSpecialID26(player);
+                    Thread.sleep(3000);//nghỉ 3s
+                    //biến quái - bình
+                    if(player != null && player.zone != null) {
+                        for (Mob mobMap : player.zone.mobs) {
+                            if (mobMap == null) {
+                                continue;
                             }
-                            playerAttackMob(player, mobMap, false, false); // trừ dame
-                        }
-                    }
-                }
-
-                //biến người - bình
-                ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-
-                for (Player playerMap : player.zone.getHumanoids()) {
-                    if (playerMap == null || playerMap.id == player.id) {
-                        continue;
-                    }
-                    if (player.skillSpecial.dir == -1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500
-                            && this.canAttackPlayer(player, playerMap)) {
-                        player.skillSpecial.playersTaget.add(playerMap);
-                    } else if (player.skillSpecial.dir == 1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500
-                            && this.canAttackPlayer(player, playerMap)) {
-                        player.skillSpecial.playersTaget.add(playerMap);
-                    }
-                    if (this.canAttackPlayer(player, playerMap)) {
-                        {
-                            if (player.isPl()) {
-                                Item item = player.inventory.itemsBody.get(11);
-                                if (item != null && item.isNotNullItem()) {
-                                    ItemTimeService.gI().sendItemTime(playerMap, 11237, timeBinh / 1000);
-                                    EffectSkillService.gI().setBinh2(playerMap, System.currentTimeMillis(), timeBinh);
-                                } else {
-                                    ItemTimeService.gI().sendItemTime(playerMap, 11236, timeBinh / 1000);
-                                    EffectSkillService.gI().setBinh(playerMap, System.currentTimeMillis(), timeBinh);
+                            if (player.skillSpecial.dir == -1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
+                                player.skillSpecial.mobsTaget.add(mobMap);
+                            } else if (player.skillSpecial.dir == 1 && !mobMap.isDie() && Util.getDistance(player, mobMap) <= 500) {
+                                player.skillSpecial.mobsTaget.add(mobMap);
+                                {
+                                    if (player.isPl()) {
+                                        Item item = player.inventory.itemsBody.get(11);
+                                        if (item != null && item.isNotNullItem()) {
+                                            EffectSkillService.gI().sendMobToBinh2(player, mobMap, timeBinh); // biến mob thành bình
+                                        } else {
+                                            EffectSkillService.gI().sendMobToBinh(player, mobMap, timeBinh); // biến mob thành bình
+                                        }
+                                    } else {
+                                        EffectSkillService.gI().sendMobToBinh(player, mobMap, timeBinh); // biến mob thành bình
+                                    }
+                                    playerAttackMob(player, mobMap, false, false); // trừ dame
                                 }
-                            } else {
-                                ItemTimeService.gI().sendItemTime(playerMap, 11236, timeBinh / 1000);
-                                EffectSkillService.gI().setBinh(playerMap, System.currentTimeMillis(), timeBinh);
                             }
-                            Service.getInstance().Send_Caitrang(playerMap);
                         }
-                        Skill curSkill = SkillUtil.getSkillbyId(player, Skill.MAFUBA);
-                        double ptdame = 0;
-                        switch (curSkill.point) {
-                            case 1:
-                                ptdame = 0.1;
-                                break;
-                            case 2:
-                                ptdame = 0.1 + (0.2 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 3:
-                                ptdame = 0.1 + (0.3 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 4:
-                                ptdame = 0.1 + (0.4 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 5:
-                                ptdame = 0.1 + (0.5 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 6:
-                                ptdame = 0.1 + (0.6 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 7:
-                                ptdame = 0.1 + (0.7 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 8:
-                                ptdame = 0.1 + (0.8 * 0.1); // Cộng thêm 20%
-                                break;
-                            case 9:
-                                ptdame = 0.1 + (0.9 * 0.1); // Cộng thêm 20%
-                                break;
-                            default:
-                                ptdame = 0.01;
-                                break;
-                        }
-                        double dameHit = (player.nPoint.hpMax * ptdame);
-                        for (int i = 0; i < 10; i++) {
-                            final int index = i;
-                            executorService.schedule(() -> {
-                                playerMap.injured(player, (int) dameHit, false, false);
-                                PlayerService.gI().sendInfoHpMpMoney(playerMap); //gửi in4 hp cho player bị nhốt
-                                this.playerAttackPlayer(player, playerMap, false);
-                                if (index == 0) {
-                                    this.playerAttackPlayer(player, playerMap, true);
+
+                        //biến người - bình
+                        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+
+                        for (Player playerMap : player.zone.getHumanoids()) {
+                            if (playerMap == null || playerMap.id == player.id) {
+                                continue;
+                            }
+                            if (player.skillSpecial.dir == -1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500
+                                    && this.canAttackPlayer(player, playerMap)) {
+                                player.skillSpecial.playersTaget.add(playerMap);
+                            } else if (player.skillSpecial.dir == 1 && !playerMap.isDie() && Util.getDistance(player, playerMap) <= 500
+                                    && this.canAttackPlayer(player, playerMap)) {
+                                player.skillSpecial.playersTaget.add(playerMap);
+                            }
+                            if (this.canAttackPlayer(player, playerMap)) {
+                                {
+                                    if (player.isPl()) {
+                                        Item item = player.inventory.itemsBody.get(11);
+                                        if (item != null && item.isNotNullItem()) {
+                                            ItemTimeService.gI().sendItemTime(playerMap, 11237, timeBinh / 1000);
+                                            EffectSkillService.gI().setBinh2(playerMap, System.currentTimeMillis(), timeBinh);
+                                        } else {
+                                            ItemTimeService.gI().sendItemTime(playerMap, 11236, timeBinh / 1000);
+                                            EffectSkillService.gI().setBinh(playerMap, System.currentTimeMillis(), timeBinh);
+                                        }
+                                    } else {
+                                        ItemTimeService.gI().sendItemTime(playerMap, 11236, timeBinh / 1000);
+                                        EffectSkillService.gI().setBinh(playerMap, System.currentTimeMillis(), timeBinh);
+                                    }
+                                    Service.getInstance().Send_Caitrang(playerMap);
                                 }
-                            }, index, TimeUnit.SECONDS);
+                                Skill curSkill = SkillUtil.getSkillbyId(player, Skill.MAFUBA);
+                                double ptdame = 0;
+                                switch (curSkill.point) {
+                                    case 1:
+                                        ptdame = 0.1;
+                                        break;
+                                    case 2:
+                                        ptdame = 0.1 + (0.2 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 3:
+                                        ptdame = 0.1 + (0.3 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 4:
+                                        ptdame = 0.1 + (0.4 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 5:
+                                        ptdame = 0.1 + (0.5 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 6:
+                                        ptdame = 0.1 + (0.6 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 7:
+                                        ptdame = 0.1 + (0.7 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 8:
+                                        ptdame = 0.1 + (0.8 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    case 9:
+                                        ptdame = 0.1 + (0.9 * 0.1); // Cộng thêm 20%
+                                        break;
+                                    default:
+                                        ptdame = 0.01;
+                                        break;
+                                }
+                                double dameHit = (player.nPoint.hpMax * ptdame);
+                                for (int i = 0; i < 10; i++) {
+                                    final int index = i;
+                                    executorService.schedule(() -> {
+                                        playerMap.injured(player, (int) dameHit, false, false);
+                                        PlayerService.gI().sendInfoHpMpMoney(playerMap); //gửi in4 hp cho player bị nhốt
+                                        this.playerAttackPlayer(player, playerMap, false);
+                                        if (index == 0) {
+                                            this.playerAttackPlayer(player, playerMap, true);
+                                        }
+                                    }, index, TimeUnit.SECONDS);
+                                }
+                            }
                         }
+                        executorService.shutdown();
                     }
                 }
-                executorService.shutdown();
             }
         } catch (Exception e) {
             e.printStackTrace();

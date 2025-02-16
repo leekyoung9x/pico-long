@@ -358,10 +358,12 @@ public class CombineServiceNew {
                     Item sachtk = null;
                     Item kimbam = null;
                     for (Item item : player.combineNew.itemsCombine) {
-                        if (item.template.id >= 2071 && item.template.id <= 2073) {
-                            sachtk = item;
-                        } else if (item.template.id == 2069) {
-                            kimbam = item;
+                        if(item != null && item.template != null) {
+                            if (item.template.id >= 2071 && item.template.id <= 2073) {
+                                sachtk = item;
+                            } else if (item.template.id == 2069) {
+                                kimbam = item;
+                            }
                         }
                     }
 

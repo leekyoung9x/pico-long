@@ -17,7 +17,7 @@ public class SkillSpecial {
     public static final int TIME_GONG = 2000;
     public static final int TIME_END_24_25 = 3000;
     public static final int TIME_END_26 = 11000;
-    public static final int TIME_USE_MAFUBA = 12000;
+    public static final int TIME_USE_MAFUBA = 16000;
 
     private Player player;
 

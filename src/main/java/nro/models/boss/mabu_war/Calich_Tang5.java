@@ -56,6 +56,9 @@ public class Calich_Tang5 extends BossMabuWar {
                     Service.getInstance().chat(this, "Xí hụt..");
                 }
             }
+            if(isMobAttack) {
+                damage = 1;
+            }
             long dame = super.injured(plAtt, damage, piercing, isMobAttack);
 //            if (this.isDie()) {
 //                rewards(plAtt);
